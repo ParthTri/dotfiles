@@ -1,0 +1,34 @@
+# if you're having troubles finding key codes for a key just type skhd --observe in a terminal and type a key. Pretty cool! Or just check the wiki.
+
+## HYPER == SHIFT + CMD + ALT + OPTION
+
+## Close active application
+hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+# test a command
+# lshift - x : terminal-notifier -message "lshift - x"
+#lshift - x : terminal-notifier -message "$(yabai -m query --windows --window | jq -re ".id")"
+
+## open terminal
+hyper - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+
+## open emacs
+hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/Emacs.app/Contents/MacOS/Emacs 
+
+## open emacs bare bones
+hyper - b : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/Emacs.app/Contents/MacOS/Emacs -q -l ~/Documents/.emacs.d/init.el
+
+## open brave browser
+hyper - q : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+
+## open firefox browser
+hyper - f : /Applications/Firefox.app/Contents/MacOS/firefox-bin
+
+## open discord
+hyper - d : /Applications/Discord.app/Contents/MacOS/Discord
+
+## open spotify
+hyper - s : /Applications/Spotify.app/Contents/MacOS/Spotify
+
+## open calander
+hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
