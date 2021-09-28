@@ -127,6 +127,9 @@
     :global-prefix "C-SPC")
 
   (pt/leader-keys
+    "SPC" '(dired :which-key "dired"))
+  
+  (pt/leader-keys
     "b" '(:ignore b :which-key "buffer")
     "bk" '(kill-this-buffer :which-key "kill")
     "bi" '(ibuffer :which-key "ibuffer")
