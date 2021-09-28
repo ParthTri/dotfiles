@@ -224,7 +224,7 @@
   (setq projectile-switch-project-action #'projectile-dired)
 
   (pt/leader-keys
-    "p" '(:ignore p :which-key "projectile")
+    "p" '(:ignore p :which-key "projects")
     "pp" '(projectile-switch-project :which-key "switch to project")
     "pt" '(projectile-test-project :which-key "test project")))
 
