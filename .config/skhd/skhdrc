@@ -15,9 +15,6 @@ hyper - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 ## open emacs
 hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/Emacs.app/Contents/MacOS/Emacs 
 
-## open emacs bare bones
-hyper - b : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/Emacs.app/Contents/MacOS/Emacs -q -l ~/Documents/.emacs.d/init.el
-
 ## open brave browser
 hyper - q : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 
