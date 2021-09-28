@@ -57,11 +57,14 @@
 (use-package dashboard
   :ensure t
   :config
+  (setq dashboard-agenda-release-buffers t)
   (dashboard-setup-startup-hook)
   (dashboard-refresh-buffer))
 
 (setq dashboard-center-content t)
 (setq dashboard-startup-banner "~/.emacs.d/Dragonfly.png")
+(with-current-buffer "*dashboard*"
+  (emacs-lock-mode 'kill))
 
 ;; Get counsel
 (use-package counsel
