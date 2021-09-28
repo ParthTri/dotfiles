@@ -117,6 +117,19 @@
   :config
   (setq which-key-idle 0.3))
 
+;;; Keybindings
+(use-package general
+  :ensure t
+  :config
+  (general-create-definer pt/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (pt/leader-keys
+   "t"  '(:ignore t :which-key "toggles")
+   "tt" '(counsel-load-theme :which-key "choose theme")))
+
 ;;; Evil
 (use-package evil
   :init
@@ -181,19 +194,6 @@
  '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
  '(org-level-4 ((t (:inherit outline-4 :height 1.2))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
-
-;;; Keybindings
-(use-package general
-  :ensure t
-  :config
-  (general-create-definer pt/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-
-  (pt/leader-keys
-   "t"  '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")))
 
 ;;; Hydra
 (use-package hydra)
