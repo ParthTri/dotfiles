@@ -102,19 +102,6 @@
       kaolin-themes-italic t
       kaolin-themes-underline t)
 
-;;; Workspaces
-(use-package persp-mode
-  :ensure t
-  :config
-  (setq persp-update-completion-system 'ivy-completing-read)
-  (persp-mode t)
-  (pt/leader-keys
-    "k" '(:ignore k :which-key "perspective")
-    "kn" '(persp-add-new :which-key "add")
-    "ks" '(persp-switch :which-key "switch")
-    "kk" '(persp-kill :which-key "kill")
-    ))
-
 ;; Modeline
 (use-package all-the-icons)
 
@@ -166,6 +153,19 @@
     "wj" '(evil-window-down :which-key "down")
     "wk" '(evil-window-up :which-key "up")
     "wl" '(evil-window-right :which-key "right")))
+
+;;; Workspaces
+(use-package persp-mode
+  :ensure t
+  :config
+  (setq persp-update-completion-system 'ivy-completing-read)
+  (persp-mode t)
+  (pt/leader-keys
+    "k" '(:ignore k :which-key "perspective")
+    "kn" '(persp-add-new :which-key "add")
+    "ks" '(persp-switch :which-key "switch")
+    "kk" '(persp-kill :which-key "kill")
+    ))
 
 ;;; Evil
 (use-package evil
