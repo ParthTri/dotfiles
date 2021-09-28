@@ -61,7 +61,7 @@
   (dashboard-refresh-buffer))
 
 (setq dashboard-center-content t)
-(setq dashboard-startup-banner "./Dragonfly.png")
+(setq dashboard-startup-banner "~/.emacs.d/Dragonfly.png")
 
 ;; Get counsel
 (use-package counsel
