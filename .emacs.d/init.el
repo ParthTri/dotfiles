@@ -245,7 +245,14 @@
 ;;; Magit
 (use-package magit
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (pt/leader-keys
+    "g" '(:ignore g :which-key "git")
+    "gs" '(magit-stage-file :which-key "stage file")
+    "gS" '(magit-stage :which-key "stage all")
+    "gc" '(magit-commit :which-key "commit")
+    "gg" '(magit-status :which-key "status")))
 
 ;;;; Programming modes
 
