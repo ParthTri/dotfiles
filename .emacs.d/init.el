@@ -99,6 +99,19 @@
       kaolin-themes-italic t
       kaolin-themes-underline t)
 
+;;; Workspaces
+(use-package persp-mode
+  :ensure t
+  :config
+  (setq persp-update-completion-system 'ivy-completing-read)
+  (persp-mode t)
+  (pt/leader-keys
+    "k" '(:ignore k :which-key "perspective")
+    "kn" '(persp-add-new :which-key "add")
+    "ks" '(persp-switch :which-key "switch")
+    "kk" '(persp-kill :which-key "kill")
+    ))
+
 ;; Modeline
 (use-package all-the-icons)
 
@@ -312,10 +325,6 @@
   :ensure t
   :init
   (global-flycheck-mode))
-
-;;; Workspaces
-(use-package persp-mode
-  :ensure t)
 
 ;;; Pdf tools
 (use-package pdf-tools
