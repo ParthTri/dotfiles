@@ -127,7 +127,7 @@
     :global-prefix "C-SPC")
 
   (pt/leader-keys
-    "SPC" '(dired :which-key "dired"))
+    "SPC" '(find-file :which-key "dired"))
   
   (pt/leader-keys
     "b" '(:ignore b :which-key "buffer")
