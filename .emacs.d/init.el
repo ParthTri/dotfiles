@@ -221,7 +221,12 @@
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/Developer/Projects")
     (setq projectile-project-search-path '("~/Developer/Projects")))
-  (setq projectile-switch-project-action #'projectile-dired))
+  (setq projectile-switch-project-action #'projectile-dired)
+
+  (pt/leader-keys
+    "p" '(:ignore p :which-key "projectile")
+    "pp" '(projectile-switch-project :which-key "switch to project")
+    "pt" '(projectile-test-project :which-key "test project")))
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
