@@ -127,6 +127,12 @@
     :global-prefix "C-SPC")
 
   (pt/leader-keys
+    "b" '(:ignore b :which-key "buffer")
+    "bk" '(kill-this-buffer :which-key "kill")
+    "bi" '(ibuffer :which-key "ibuffer")
+    "bb" '(switch-to-buffer :which-key "switch"))
+  
+  (pt/leader-keys
    "t"  '(:ignore t :which-key "toggles")
    "tt" '(counsel-load-theme :which-key "choose theme")))
 
