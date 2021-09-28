@@ -137,7 +137,18 @@
   
   (pt/leader-keys
    "t"  '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")))
+   "tt" '(counsel-load-theme :which-key "choose theme"))
+
+  (pt/leader-keys
+    "w" '(:ignore w :which-key "window")
+    "ws" '(evil-window-split :which-key "horizontal split")
+    "wv" '(evil-window-vsplit :which-key "vertical split")
+    "wd" '(evil-window-delete :which-key "delete")
+    "wr" '(evil-window-rotate-upwards :which-key "rotate")
+    "wh" '(evil-window-left :which-key "left")
+    "wj" '(evil-window-down :which-key "down")
+    "wk" '(evil-window-up :which-key "up")
+    "wl" '(evil-window-right :which-key "right")))
 
 ;;; Evil
 (use-package evil
