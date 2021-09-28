@@ -234,6 +234,9 @@
 	skeletor-user-directory "~/.emacs.d/Templates"
 	skeletor--project-types nil))
 
+(skeletor-define-template "python-project"
+  :title "Python Project")
+
 ;;; Magit
 (use-package magit
   :custom
