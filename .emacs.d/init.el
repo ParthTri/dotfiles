@@ -231,11 +231,8 @@
   :config
   (setq skeletor-completing-read-function 'ivy-completing-read
 	skeletor-project-directory "~/Developer/Projects"
+	skeletor-user-directory "~/.emacs.d/Templates"
 	skeletor--project-types nil))
-
-(skeletor-define-template "python-project"
-  :title "Python Project"
-  :default-license (rx bol "gpl"))
 
 ;;; Magit
 (use-package magit
