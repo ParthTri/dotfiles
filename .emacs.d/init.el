@@ -154,6 +154,8 @@
     "wk" '(evil-window-up :which-key "up")
     "wl" '(evil-window-right :which-key "right")))
 
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
+
 ;;; Workspaces
 (use-package persp-mode
   :ensure t
