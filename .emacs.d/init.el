@@ -198,15 +198,14 @@
 (setq org-directory "~/org/")
 (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
-(defun dw/org-mode-setup ()
+(defun pt/org-mode-setup ()
   (org-indent-mode)
-  (variable-pitch-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
   (setq evil-auto-indent nil))
 
 (use-package org
-  :hook (org-mode . dw/org-mode-setup)
+  :hook (org-mode . pt/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"
         org-hide-emphasis-markers t))
