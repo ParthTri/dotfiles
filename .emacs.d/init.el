@@ -315,7 +315,9 @@
 
 ;; html snippets
 (use-package emmet-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'html-mode-hook 'emmet-mode 'emmet-preview-mode))
 
 ;; Javascript
 (use-package js2-mode
