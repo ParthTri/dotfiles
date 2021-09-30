@@ -227,6 +227,10 @@
 
 ;; Org headings
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.4))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
@@ -303,6 +307,10 @@
 (use-package web-mode
   :ensure t)
 
+;; html snippets
+(use-package emmet-mode
+  :ensure t)
+
 ;; Javascript
 (use-package js2-mode
   :ensure t)
@@ -341,9 +349,5 @@
 
 ;;; init.el ends here
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(package-selected-packages
+   '(emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
