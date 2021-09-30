@@ -237,6 +237,12 @@
  '(org-level-4 ((t (:inherit outline-4 :height 1.2))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
 
+;; org-toc
+(use-package toc-org
+  :ensure t
+  :config (add-hook 'org-mode-hook 'toc-org-mode))
+
+
 ;;; Hydra
 (use-package hydra)
 (defhydra hydra-text-scale (:timeout 4)
@@ -349,5 +355,9 @@
 
 ;;; init.el ends here
 (custom-set-variables
-   '(package-selected-packages
-   '(emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(toc-org emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
