@@ -14,3 +14,5 @@ alias pipenv="python3 -m pipenv"
 # neofetch
 alias md-org="pandoc -f markdown -t org -o"
 alias download="~/.local/share/virtualenvs/Media-Downloader-Q9ismdSu/bin/python ~/Developer/Media-Downloader/src/main.py"
+
+eval "$(starship init zsh)"
