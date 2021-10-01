@@ -280,7 +280,7 @@
   :config
   (setq skeletor-completing-read-function 'ivy-completing-read
 	skeletor-project-directory "~/Developer/Projects"
-	skeletor-user-directory "~/.emacs.d/Templates"
+	skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
 	skeletor--project-types nil))
 
 (skeletor-define-template "python-project"
