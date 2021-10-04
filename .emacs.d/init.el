@@ -157,17 +157,19 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;;; Workspaces
-(use-package persp-mode
+(use-package perspective
   :ensure t
+  :init
+  (persp-mode)
   :config
-  (setq persp-update-completion-system 'ivy-completing-read)
-  (persp-mode t)
   (pt/leader-keys
     "k" '(:ignore k :which-key "perspective")
-    "kn" '(persp-add-new :which-key "add")
+    "ka" '(persp-add-buffer :which-key "add")
     "ks" '(persp-switch :which-key "switch")
+    "kr" '(persp-remove :whick-key "remove")
+    "kb" '(persp-ivy-switch-buffer :which-key "buffer")
     "kk" '(persp-kill :which-key "kill")
-    ))
+  ))
 
 ;;; Evil
 (use-package evil
@@ -377,4 +379,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(toc-org emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(perspective toc-org emmet-mode rainbow-delimiters pdf-tools flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
