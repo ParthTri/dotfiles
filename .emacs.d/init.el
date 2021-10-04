@@ -331,10 +331,6 @@
 (use-package rust-mode
   :ensure t)
 
-;;; Yaml Support
-(use-package yaml-mode
-  :ensure t)
-
 ;;; Snippets
 (use-package yasnippet-snippets
   :ensure t)
@@ -366,4 +362,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yaml-mode toc-org emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(toc-org emmet-mode rainbow-delimiters pdf-tools persp-mode flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
