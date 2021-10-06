@@ -301,10 +301,12 @@
 	skeletor--project-types nil))
 
 (skeletor-define-template "python-project"
-  :title "Python Project")
+  :title "Python Project"
+  :initialise)
 
 (skeletor-define-template "vanilla-js"
-  :title "Vanilla JS Project")
+  :title "Vanilla JS Project"
+  :initialise)
 
 ;;; Magit
 (use-package magit
