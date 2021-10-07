@@ -360,7 +360,7 @@
 ;;; Autocomplete
 (use-package company
   :ensure t
-  :init (company-mode))
+  :hook (prog-mode . company-mode))
 
 ;;; Spell Check
 (use-package flycheck
