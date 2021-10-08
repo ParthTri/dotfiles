@@ -326,6 +326,27 @@
   :config
   (global-git-gutter-mode t))
 
+;;; Treemacs
+(use-package treemacs
+  :ensure t
+  :config
+  (treemacs-resize-icons 14)
+  (pt/leader-keys
+    "te" '(treemacs :which-key "treemacs")
+    ))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
 ;;;; Programming modes
 
 ;;; Python Setup
@@ -389,5 +410,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(helm-minibuffer-history-key "M-p")
+ '(org-agenda-files
+   '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Meetings/06-09-21.org" "/Users/parthtrivedi/org/Pulse/Meetings/20-09-2021.org" "/Users/parthtrivedi/org/Pulse/Meetings/28-08-2021.org" "/Users/parthtrivedi/org/Pulse/Meetings/28-09-2021.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org" "/Users/parthtrivedi/org/Things_to_get.org"))
  '(package-selected-packages
-   '(git-gutter perspective toc-org emmet-mode rainbow-delimiters pdf-tools flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter perspective toc-org emmet-mode rainbow-delimiters pdf-tools flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
