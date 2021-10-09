@@ -157,17 +157,16 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;;; Workspaces
-(use-package perspective
+(use-package persp-mode
   :ensure t
-  :init
-  (persp-mode)
   :config
+  (persp-mode)
   (pt/leader-keys
-    "k" '(:ignore k :which-key "perspective")
+    "k" '(:ignore k :which-key "workspaces")
     "ka" '(persp-add-buffer :which-key "add")
     "ks" '(persp-switch :which-key "switch")
     "kr" '(persp-remove :whick-key "remove")
-    "kb" '(persp-ivy-switch-buffer :which-key "buffer")
+    "kb" '(persp-switch-to-buffer :which-key "buffer")
     "kk" '(persp-kill :which-key "kill")
   ))
 
@@ -412,7 +411,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
- '(org-agenda-files
-   '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Meetings/06-09-21.org" "/Users/parthtrivedi/org/Pulse/Meetings/20-09-2021.org" "/Users/parthtrivedi/org/Pulse/Meetings/28-08-2021.org" "/Users/parthtrivedi/org/Pulse/Meetings/28-09-2021.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org" "/Users/parthtrivedi/org/Things_to_get.org"))
  '(package-selected-packages
-   '(treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter perspective toc-org emmet-mode rainbow-delimiters pdf-tools flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org emmet-mode rainbow-delimiters pdf-tools flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
