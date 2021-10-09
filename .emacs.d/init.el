@@ -393,10 +393,6 @@
   :ensure t
   :hook (web-mode . prettier-mode-hook))
 
-;;; Rust Setup
-(use-package rust-mode
-  :ensure t)
-
 ;;; Snippets
 (use-package yasnippet-snippets
   :ensure t)
