@@ -402,7 +402,7 @@
   :ensure t
   :hook (prog-mode . company-mode))
 
-;;; Spell Check
+;;; Syntax Checking
 (use-package flycheck
   :ensure t
   :init
