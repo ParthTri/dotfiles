@@ -173,7 +173,8 @@
 (use-package persp-mode-projectile-bridge
   :ensure t
   :after persp-mode
-  :hook (persp-mode . persp-mode-projectile-bridge-mode))
+  :init
+  (persp-mode-projectile-bridge-mode 1))
 
 ;;; Evil
 (use-package evil
