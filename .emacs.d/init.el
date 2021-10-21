@@ -386,7 +386,10 @@
 
 ;; Scss support
 (use-package scss-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq sccs-compile-at-save t)
+  (scss-compile-maybe))
 
 ;; Prettier
 (use-package prettier
