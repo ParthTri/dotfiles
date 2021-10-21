@@ -380,7 +380,9 @@
   :ensure t
   :hook ((web-mode . emmet-mode)
 	 (html-mode . emmet-mode)
-	 (js-jsx-mode . emmet-mode)))
+	 (js-jsx-mode . emmet-mode))
+  :config
+  (setq emmet-move-cursor-between-quotes t))
 
 ;; Javascript
 (use-package js2-mode
