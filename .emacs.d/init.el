@@ -391,7 +391,11 @@
 ;; Prettier
 (use-package prettier
   :ensure t
-  :hook (web-mode . prettier-mode-hook))
+  :hook ((web-mode . prettier-mode)
+	 (js-mode . prettier-mode)
+	 (html-mode . prettier-mode)
+	 (css-mode . prettier-mode)
+	 (scss-mode . prettier-mode)))
 
 ;;; Snippets
 (use-package yasnippet-snippets
