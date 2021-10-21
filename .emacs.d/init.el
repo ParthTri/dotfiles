@@ -391,6 +391,8 @@
   (setq sccs-compile-at-save t)
   (scss-compile-maybe))
 
+;;; Extra not important stuff
+
 ;; Prettier
 (use-package prettier
   :ensure t
