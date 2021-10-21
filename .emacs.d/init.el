@@ -7,6 +7,7 @@
 ;; No flashing or alerting
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (scroll-bar-mode -1)    ; Remove bar
 (tool-bar-mode -1)      ; Disable the tool bar
