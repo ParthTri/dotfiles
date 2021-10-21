@@ -376,9 +376,9 @@
 ;; html snippets
 (use-package emmet-mode
   :ensure t
-  :config
-  (add-hook 'web-mode-hook 'emmet-mode 'emmet-preview-mode)
-  (add-hook 'js-jsx-mode-hook 'emmet-mode))
+  :hook ((web-mode . emmet-mode)
+	 (html-mode . emmet-mode)
+	 (js-jsx-mode . emmet-mode)))
 
 ;; Javascript
 (use-package js2-mode
