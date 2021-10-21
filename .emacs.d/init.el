@@ -22,6 +22,7 @@
 (dolist (mode '(org-mode-hook
 		dired-mode-hook
 		image-mode-hook
+		pdf-view-mode-hook
                 term-mode-hook
 		treemacs-mode-hook
                 eshell-mode-hook
