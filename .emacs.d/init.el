@@ -395,7 +395,9 @@
 
 ;;; Snippets
 (use-package yasnippet-snippets
-  :ensure t)
+  :ensure t
+  :hook (prog-mode . yas-minor-mode)
+  :bind (("C-c s" . yas-insert-snippet)))
 
 ;;; Autocomplete
 (use-package company
