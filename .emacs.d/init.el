@@ -172,7 +172,7 @@
     "k" '(:ignore k :which-key "workspaces")
     "ka" '(persp-add-buffer :which-key "add")
     "ks" '(persp-switch :which-key "switch")
-    "kr" '(persp-remove :whick-key "remove")
+    "kr" '(persp-remove-buffer :whick-key "remove")
     "kb" '(persp-switch-to-buffer :which-key "buffer")
     "kk" '(persp-kill :which-key "kill")
   ))
