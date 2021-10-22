@@ -156,7 +156,10 @@
     "wh" '(evil-window-left :which-key "left")
     "wj" '(evil-window-down :which-key "down")
     "wk" '(evil-window-up :which-key "up")
-    "wl" '(evil-window-right :which-key "right")))
+    "wl" '(evil-window-right :which-key "right"))
+  (pt/leader-keys
+    "o" '(:ignore o :which-key "open")
+    "oe" '(eshell :which-key "eshell")))
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
@@ -441,7 +444,10 @@
   :ensure t)
 
 (use-package vterm
-    :ensure t)
+  :ensure t
+  :config
+  (pt/leader-keys
+    "ot" '(vterm :which-key "terminal")))
 
 ;;; init.el ends here
 (custom-set-variables
