@@ -373,6 +373,9 @@
  :ensure t)
 
 ;;;; Web Setup
+(add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . mhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs?\\'" . mhtml-mode))
+
 (use-package web-mode
   :ensure t)
 
