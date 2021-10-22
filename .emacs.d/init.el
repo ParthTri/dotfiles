@@ -375,6 +375,7 @@
 ;;;; Web Setup
 (add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . mhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs?\\'" . mhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
 
 (use-package web-mode
   :ensure t)
