@@ -376,10 +376,6 @@
  :ensure t)
 
 ;;;; Web Setup
-(add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . mhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs?\\'" . mhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
-
 (use-package web-mode
   :ensure t)
 
@@ -391,28 +387,6 @@
 	 (js-jsx-mode . emmet-mode))
   :config
   (setq emmet-move-cursor-between-quotes t))
-
-;; Javascript
-(use-package js2-mode
-  :ensure t)
-
-;; Scss support
-(use-package scss-mode
-  :ensure t
-  :config
-  (setq sccs-compile-at-save t)
-  (scss-compile-maybe))
-
-;;; Extra not important stuff
-
-;; Prettier
-(use-package prettier
-  :ensure t
-  :hook ((web-mode . prettier-mode)
-	 (js-mode . prettier-mode)
-	 (html-mode . prettier-mode)
-	 (css-mode . prettier-mode)
-	 (scss-mode . prettier-mode)))
 
 ;;; Snippets
 (use-package yasnippet-snippets
@@ -457,6 +431,6 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(org-agenda-files
-   '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org" "/Users/parthtrivedi/org/Things_to_get.org"))
+   '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org"))
  '(package-selected-packages
    '(vterm restclient pdf-tools prettier treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org emmet-mode rainbow-delimiters flycheck yasnippet-snippets rust-mode scss-mode js2-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
