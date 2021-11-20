@@ -32,3 +32,6 @@ hyper - s : /Applications/Spotify.app/Contents/MacOS/Spotify
 
 ## open calander
 hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
+
+## open notes
+hyper - x : /System/Applications/Notes.app/Contents/MacOS/Notes
