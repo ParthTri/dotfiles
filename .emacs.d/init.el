@@ -365,12 +365,11 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 ;;;; Programming modes
+(add-hook 'prog-mode 'hs-minor-mode)
 
 ;;; Python Setup
 (use-package elpy
-	 :ensure t
-	 :init
-	 (elpy-enable))
+	 :ensure t)
 
 (use-package auto-virtualenv
  :ensure t)
@@ -391,12 +390,6 @@
 	 (js-jsx-mode . emmet-mode))
   :config
   (setq emmet-move-cursor-between-quotes t))
-
-;;; Snippets
-(use-package yasnippet-snippets
-  :ensure t
-  :hook (prog-mode . yas-minor-mode)
-  :bind (("C-c s" . yas-insert-snippet)))
 
 ;;; Autocomplete
 (use-package company
@@ -439,4 +432,4 @@
  '(org-agenda-files
    '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org"))
  '(package-selected-packages
-   '(emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck yasnippet-snippets rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
