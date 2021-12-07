@@ -427,6 +427,8 @@
   (pt/leader-keys
     "ot" '(vterm :which-key "terminal")))
 
+(use-package json-mode)
+
 ;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
