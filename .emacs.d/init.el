@@ -179,7 +179,7 @@
 
 (use-package persp-mode-projectile-bridge
   :ensure t
-  :after persp-mode
+  :after (persp projectile)
   :init
   (persp-mode-projectile-bridge-mode 1))
 
