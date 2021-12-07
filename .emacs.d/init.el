@@ -375,6 +375,10 @@
 (use-package auto-virtualenv
  :ensure t)
 
+;;; Haskell Setup
+(use-package haskell-mode
+  :ensure t)
+
 ;;;; Web Setup
 (use-package web-mode
   :ensure t)
