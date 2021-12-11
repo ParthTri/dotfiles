@@ -395,6 +395,18 @@
 (use-package company
   :ensure t
   :hook (prog-mode . company-mode))
+;;; Centaur Tabs
+(use-package centaur-tabs
+  :ensure t
+  :config
+  (setq centaur-tabs-set-bar 'over
+	centaur-tabs-set-icons t
+	centaur-tabs-gray-out-icons 'buffer
+	centaur-tabs-height 24
+	centaur-tabs-set-modified-marker t
+	centaur-tabs-set-modifier-marker "•")
+  (centaur-tabs-headline-match)
+  (centaur-tabs-mode t))
 
 ;;; Syntax Checking
 (use-package flycheck
