@@ -365,7 +365,7 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 ;;;; Programming modes
-(add-hook 'prog-mode 'hs-minor-mode)
+(add-hook 'prog-mode-hook 'outline-minor-mode)
 
 ;;; Python Setup
 (use-package elpy
