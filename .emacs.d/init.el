@@ -394,7 +394,9 @@
 ;;; Autocomplete
 (use-package company
   :ensure t
-  :hook (prog-mode . company-mode))
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
+
 ;;; Centaur Tabs
 (use-package centaur-tabs
   :ensure t
