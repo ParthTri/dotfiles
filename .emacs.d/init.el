@@ -416,8 +416,12 @@
 	centaur-tabs-gray-out-icons 'buffer
 	centaur-tabs-height 24
 	centaur-tabs-set-modified-marker t
-	centaur-tabs-set-modifier-marker "•")
+	centaur-tabs-set-modifier-marker "•"
+	centaur-tabs-set-bar 'under)
+  (centaur-tabs-group-by-projectile-project)
   (centaur-tabs-headline-match)
+  (global-set-key (kbd "<M-right>") 'centaur-tabs-forward)
+  (global-set-key (kbd "<M-left>") 'centaur-tabs-backward)
   (centaur-tabs-mode t))
 
 ;;; Syntax Checking
