@@ -365,7 +365,7 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 ;;;; Programming modes
-(add-hook 'prog-mode-hook 'outline-minor-mode)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 ;;; Python Setup
 (use-package elpy
@@ -420,8 +420,7 @@
 	centaur-tabs-gray-out-icons 'buffer
 	centaur-tabs-height 24
 	centaur-tabs-set-modified-marker t
-	centaur-tabs-set-modifier-marker "•"
-	centaur-tabs-set-bar 'under)
+	centaur-tabs-set-modifier-marker "•")
   (centaur-tabs-group-by-projectile-project)
   (centaur-tabs-headline-match)
   (global-set-key (kbd "<M-right>") 'centaur-tabs-forward)
@@ -465,4 +464,5 @@
  '(org-agenda-files
    '("/Users/parthtrivedi/org/Exams/Business.org" "/Users/parthtrivedi/org/Exams/English.org" "/Users/parthtrivedi/org/Exams/Exams.org" "/Users/parthtrivedi/org/Exams/Science.org" "/Users/parthtrivedi/org/Pulse/Fencer Analysis.org" "/Users/parthtrivedi/org/Pulse/Landing_page.org" "/Users/parthtrivedi/org/Pulse/Mangement Descriptions.org" "/Users/parthtrivedi/org/Pulse/TODO.org" "/Users/parthtrivedi/org/Research/NixOS.org" "/Users/parthtrivedi/org/Research/Portable OS.org" "/Users/parthtrivedi/org/Research/Remote Development Environment.org" "/Users/parthtrivedi/org/Books_to_read.org" "/Users/parthtrivedi/org/Browser Games.org" "/Users/parthtrivedi/org/Emacs.org" "/Users/parthtrivedi/org/Ideas.org" "/Users/parthtrivedi/org/Keebs.org" "/Users/parthtrivedi/org/Learn.org" "/Users/parthtrivedi/org/Server.org" "/Users/parthtrivedi/org/Subjects.org"))
  '(package-selected-packages
-   '(prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package)))
+   '(lua-mode prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package))
+ '(server-mode t))
