@@ -378,6 +378,10 @@
 (use-package haskell-mode
   :ensure t)
 
+;;; Lua Setup
+(use-package lua-mode
+  :ensure t)
+
 ;;;; Web Setup
 (use-package web-mode
   :ensure t)
