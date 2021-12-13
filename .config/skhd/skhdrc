@@ -13,7 +13,7 @@ hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -
 hyper - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 ## open emacs
-hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/Emacs.app/Contents/MacOS/Emacs 
+hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.3/Emacs.app/Contents/MacOS/Emacs 
 
 ## open emacsclient
 hyper - c : emacsclient -c 
