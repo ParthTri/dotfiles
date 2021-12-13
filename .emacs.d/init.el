@@ -400,8 +400,7 @@
 (use-package emmet-mode
   :ensure t
   :hook ((web-mode . emmet-mode)
-	 (html-mode . emmet-mode)
-	 (js-jsx-mode . emmet-mode))
+	 (rjsx-mode . emmet-mode))
   :config
   (setq emmet-move-cursor-between-quotes t))
 
