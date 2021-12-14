@@ -13,3 +13,9 @@ spoon.MiroWindowsManager:bindHotkeys({
   left = {hyper, "Left"},
   fullscreen = {hyper, "Space"}
 })
+
+spoon.SpoonInstall:andUse("WindowScreenLeftAndRight")
+spoon.WindowScreenLeftAndRight:bindHotkeys({
+      screen_left = {hyper, "h"},
+      screen_right = {hyper, "l"},
+})
