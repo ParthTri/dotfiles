@@ -181,7 +181,7 @@
   :ensure t
   :after (persp)
   :init
-  (persp-mode-projectile-bridge-mode t))
+  (persp-mode-projectile-bridge-mode))
 
 ;;; Evil
 (use-package evil
