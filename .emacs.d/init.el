@@ -424,6 +424,8 @@
   (centaur-tabs-headline-match)
   (global-set-key (kbd "<M-right>") 'centaur-tabs-forward)
   (global-set-key (kbd "<M-left>") 'centaur-tabs-backward)
+  (global-set-key (kbd "<M-S-left>") 'centaur-tabs-move-current-tab-to-left)
+  (global-set-key (kbd "<M-S-right>") 'centaur-tabs-move-current-tab-to-right)
   (centaur-tabs-mode t))
 
 ;;; Syntax Checking
