@@ -20,32 +20,50 @@ spoon.WindowScreenLeftAndRight:bindHotkeys({
       screen_right = {hyper, "l"},
 })
 
-hs.hotkey.bind("ctrl", "k", function ()
+hs.hotkey.bind("alt", "k", function ()
 		   local win = hs.window.focusedWindow()
 		   local apps = hs.window.allWindows()
 		   local curr = 1
 
-		   for i = 1, #apps do
+		   for i = 1, #apps - 1 do
+		      if apps[i]:title() == "*dashboard*" then
+			 table.remove(apps, i)
+		      end
+		   end
+		   
+		   for i = 1, #apps - 1 do
 		      if win == apps[i] then curr = i end
 		   end
+
+		   print (curr, apps[curr])
+		   print (curr + 1, apps[curr + 1])
+		   print (#apps)
 
 		   if curr == #apps then curr = 0 end
-		   print (apps[curr + 1])
+		   print (curr)
 		   apps[curr + 1]:focus()
-		   print (hs.window.focusedWindow())
 end )
 
-hs.hotkey.bind("ctrl", "j", function ()
+hs.hotkey.bind("alt", "j", function ()
 		   local win = hs.window.focusedWindow()
 		   local apps = hs.window.allWindows()
 		   local curr = 1
 
-		   for i = 1, #apps do
+		   for i = 1, #apps - 1 do
+		      if apps[i]:title() == "*dashboard*" then
+			 table.remove(apps, i)
+		      end
+		   end
+
+		   for i = 1, #apps - 1 do
 		      if win == apps[i] then curr = i end
 		   end
+
+		   print (curr, apps[curr])
+		   print (curr - 1, apps[curr - 1])
+
 		   if curr == 1 then curr = #apps end
 
 		   apps[curr - 1]:focus() 
-		   print (hs.window.focusedWindow())
 end )
 
