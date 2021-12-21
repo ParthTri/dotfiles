@@ -418,6 +418,10 @@
 ;;; Centaur Tabs
 (use-package centaur-tabs
   :ensure t
+  :bind (("C-c l" . centaur-tabs-forward)
+	 ("C-c h" . centaur-tabs-backward)
+	 ("C-c k" . centaur-tabs-move-current-tab-to-right)
+	 ("C-c j" . centaur-tabs-move-current-tab-to-left))
   :config
   (setq centaur-tabs-set-bar 'over
 	centaur-tabs-set-icons t
@@ -427,10 +431,6 @@
 	centaur-tabs-modified-marker "•")
   (centaur-tabs-group-by-projectile-project)
   (centaur-tabs-headline-match)
-  (global-set-key (kbd "<M-right>") 'centaur-tabs-forward)
-  (global-set-key (kbd "<M-left>") 'centaur-tabs-backward)
-  (global-set-key (kbd "<M-S-left>") 'centaur-tabs-move-current-tab-to-left)
-  (global-set-key (kbd "<M-S-right>") 'centaur-tabs-move-current-tab-to-right)
   (centaur-tabs-mode t))
 
 ;;; Syntax Checking
