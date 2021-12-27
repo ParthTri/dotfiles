@@ -177,12 +177,6 @@
     "kk" '(persp-kill :which-key "kill")
   ))
 
-(use-package persp-mode-projectile-bridge
-  :ensure t
-  :after (persp)
-  :init
-  (persp-mode-projectile-bridge-mode))
-
 ;;; Evil
 (use-package evil
   :init
@@ -368,6 +362,13 @@
   :after (treemacs persp-mode)
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile)
+  :config
+  (persp-mode-projectile-bridge-mode)
+  )
 
 ;;;; Programming modes
 (add-hook 'prog-mode-hook 'hs-minor-mode)
