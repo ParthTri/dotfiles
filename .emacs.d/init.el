@@ -58,12 +58,12 @@
 (setq use-package-always-ensure t)
 
 ;;; Dashboard
-(use-package dashboard
-  :ensure t
-  :config
-  (setq dashboard-agenda-release-buffers t)
-  (dashboard-setup-startup-hook)
-  (dashboard-refresh-buffer))
+ (use-package dashboard
+   :ensure t
+   :config
+   (setq dashboard-agenda-release-buffers t)
+   (dashboard-setup-startup-hook)
+   (dashboard-refresh-buffer))
 
 (setq dashboard-center-content t)
 (setq dashboard-startup-banner "~/.emacs.d/Dragonfly.png")
