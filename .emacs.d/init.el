@@ -254,6 +254,13 @@
 (setq org-agenda-files '("~/org/"
                          "~/Documents/School Work/"))
 
+;; Revursive searching
+;; (setq org-agenda-files 
+;;       (append
+;;        (directory-files-recursively "~/org/" "\\.org$")
+;;        (directory-files-recursively "~/Documents/School Work/" "\\.org$")
+;;        ))
+
 (org-agenda-exit)
 
 (setq org-todo-keywords
