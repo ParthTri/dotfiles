@@ -261,12 +261,12 @@
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "MEETING")))
 
 (setq org-todo-keyword-faces
-      '(("TODO" :foreground "red" :weight bold :height (:inherit org-level-faces))
-        ("ONGOING" :foreground "orange" :weight bold)
-	("REVIEWING" :foreground "light blue" :weight bold)
-        ("DONE" :foreground "green" :weight bold)
-        ("WAITING" :foreground "light blue" :weight bold)
-        ("CANCELLED" :foreground "forest green" :weight bold)
+      '(("TODO" :foreground "Purple" :weight bold )
+        ("ONGOING" :foreground "Orange" :weight bold)
+	("REVIEWING" :foreground "MediumAquamarine" :weight bold)
+        ("DONE" :foreground "SeaGreen3" :weight bold)
+        ("WAITING" :foreground "DeepSkyBlue" :weight bold)
+        ("CANCELLED" :foreground "Red" :weight bold)
         ("MEETING" :foreground "forest green" :weight bold)))
 
 ;;; Org roam
