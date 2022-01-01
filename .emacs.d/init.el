@@ -14,7 +14,7 @@
 (tooltip-mode -1)       ; Disable tooltips
 (set-fringe-mode 10)    ; Provide breathing room
 
-(set-face-attribute 'default nil :font "Fira Code" :height 125)
+(set-face-attribute 'default nil :font "Fira Code" :height 115)
 
 ;;; Line numbers
 (global-display-line-numbers-mode)
@@ -496,4 +496,4 @@
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
    '(org-journal lua-mode prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package))
- '(server-mode t))
+ )
