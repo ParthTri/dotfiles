@@ -391,10 +391,8 @@
 
 (use-package persp-mode-projectile-bridge
   :ensure t
-  :after (persp projectile)
-  :config
-  (persp-mode-projectile-bridge-mode)
-  )
+  :after (persp projectile))
+(persp-mode-projectile-bridge-mode t)
 
 ;;;; Programming modes
 (add-hook 'prog-mode-hook 'hs-minor-mode)
