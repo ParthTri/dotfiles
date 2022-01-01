@@ -57,19 +57,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;;; Dashboard
- (use-package dashboard
-   :ensure t
-   :config
-   (setq dashboard-agenda-release-buffers t)
-   (dashboard-setup-startup-hook)
-   (dashboard-refresh-buffer))
-
-(setq dashboard-center-content t)
-(setq dashboard-startup-banner "~/.emacs.d/Dragonfly.png")
-(with-current-buffer "*dashboard*"
-  (emacs-lock-mode 'kill))
-
 ;; Get counsel
 (use-package counsel
   :ensure t
@@ -493,5 +480,4 @@
  '(centaur-tabs-mode t nil (centaur-tabs))
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(org-journal lua-mode prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel dashboard use-package))
- )
+   '(org-journal lua-mode prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel use-package)))
