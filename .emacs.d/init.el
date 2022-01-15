@@ -347,6 +347,20 @@
   :title "Vanilla JS Project"
   :initialise)
 
+(skeletor-define-template "react-project"
+  :title "React.js Project"
+  :no-license? t
+  :after-creation
+  (lambda (dir)
+    (skeletor-async-shell-command "create-react-app $PWD")
+  :initialise
+  )
+
+(pt/leader-keys
+  "pc" '(skeletor-create-project :which-key "create project")
+  "pC" '(skeletor-create-project-at :which-key "create project at")
+  )
+
 ;;; Magit
 (use-package magit
   :custom
