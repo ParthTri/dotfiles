@@ -20,6 +20,7 @@
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'visual)
 (dolist (mode '(org-mode-hook
+		org-agenda-mode-hook
 		dired-mode-hook
 		image-mode-hook
 		pdf-view-mode-hook
@@ -237,6 +238,10 @@
   :ensure t
   :config (add-hook 'org-mode-hook 'toc-org-mode))
 
+;;; Org Export
+;; iCal
+(setq org-icalendar-use-scheduled '(event-if-todo-not-done))
+
 ;;; Org Agenda
 (setq org-agenda-files '("~/org/"
                          "~/Documents/School Work/"))
@@ -248,7 +253,7 @@
 ;;        (directory-files-recursively "~/Documents/School Work/" "\\.org$")
 ;;        ))
 
-(org-agenda-exit)
+;; (org-agenda-exit)
 
 (setq org-todo-keywords
       '((sequencep "TODO(t)" "ONGOING(o)" "REVIEWING(r)" "|" "DONE(d)")
@@ -263,6 +268,16 @@
         ("CANCELLED" :foreground "Red" :weight bold)
         ("MEETING" :foreground "forest green" :weight bold)))
 
+(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-custom-commands
+      '(("n" "Agenda / ONGOING / REVIEWING / WAITING"
+	 ((agenda "" nil)
+	  (todo "ONGOING" nil)
+	  (todo "REVIEWING" nil)
+	  (todo "WAITING" nil))
+	 nil))
+      )
+      
 ;;; Org roam
 (use-package org-roam
   :ensure t
