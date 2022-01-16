@@ -341,6 +341,13 @@
 
 (skeletor-define-template "python-project"
   :title "Python Project"
+  :after-creation
+  (lambda (dir)
+    (skeletor-async-shell-command "python3 -m venv venv")
+    (vterm)
+    (vterm-send-string (format "cd %s \n" dir))
+    (rename-buffer skeletor-project-name)
+    )
   :initialise)
 
 (skeletor-define-template "vanilla-js"
