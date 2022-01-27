@@ -17,7 +17,7 @@
                 "rules": [
                     {
                         "description": "Ctrl Key → Hyper Key (⌃⌥⇧⌘)",
-                    "manipulators": [
+                        "manipulators": [
                             {
                                 "from": {
                                     "key_code": "left_control",
