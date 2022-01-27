@@ -423,8 +423,9 @@
 (use-package elpy
 	 :ensure t)
 
-(use-package auto-virtualenv
- :ensure t)
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
 
 ;;; Haskell Setup
 (use-package haskell-mode
