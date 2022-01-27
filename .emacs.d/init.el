@@ -506,13 +506,14 @@
 
 (use-package json-mode)
 
-;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(centaur-tabs-mode t nil (centaur-tabs))
- '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages
-   '(org-journal lua-mode prettier-js rjsx-mode centaur-tabs haskell-mode json-mode emmet-mode vterm restclient pdf-tools treemacs-persp persp-mode-projectile-bridge persp-mode treemacs-magit treemacs-projectile treemacs-evil treemacs git-gutter toc-org rainbow-delimiters flycheck rust-mode web-mode auto-virtualenv elpy magit skeletor counsel-projectile projectile hydra general org-bullets evil-collection evil which-key command-log-mode doom-modeline all-the-icons kaolin-themes counsel use-package)))
+(use-package bm
+  :ensure t
+  :hook (prog . bm)
+  :bind (("C-c b n" . bm-next)
+	 ("C-c b a" . bm-bookmark-line)
+	 ("C-c b o" . bm-show-all)
+	 ("C-c b A" . bm-bookmark-annotate)
+	 ("C-c b r" . bm-toggle))
+  )
+
+;;; Init.el ends here
