@@ -419,6 +419,13 @@
 ;;;; Programming modes
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
+;; LSP mode
+(use-package lsp-mode
+  :ensure t
+  :hook ((python . lsp)
+	 (js . lsp))
+  )
+
 ;;; Python Setup
 (use-package elpy
 	 :ensure t)
