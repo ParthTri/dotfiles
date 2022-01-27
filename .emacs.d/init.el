@@ -518,6 +518,7 @@
   :ensure t
   :hook (prog . bm)
   :bind (("C-c b n" . bm-next)
+	 ("C-c b p" . bm-previous)
 	 ("C-c b a" . bm-bookmark-line)
 	 ("C-c b o" . bm-show-all)
 	 ("C-c b A" . bm-bookmark-annotate)
