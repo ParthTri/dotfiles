@@ -1,6 +1,5 @@
 ;;; package --- Summary
 
-;;; Commentary:
 
 ;;; Code:
 
@@ -359,7 +358,7 @@
   :no-license? t
   :after-creation
   (lambda (dir)
-    (skeletor-async-shell-command "create-react-app $PWD")
+    (skeletor-async-shell-command "create-react-app $PWD"))
   :initialise
   )
 
