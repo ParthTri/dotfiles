@@ -426,13 +426,20 @@
 ;; LSP mode
 (use-package lsp-mode
   :ensure t
-  :hook ((python . lsp)
-	 (js . lsp))
-  )
+  :commands (lsp lsp-deferred)
+  :hook (prog-mode . lsp-mode)
+  :init
+  (setq lsp-keymap-prefix "C-c L")
+  :config
+  (lsp-enable-which-key-integration t)
+  (setq lsp-prefer-capf t))
 
 ;;; Python Setup
 (use-package elpy
-	 :ensure t)
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 
 (use-package pyvenv
   :config
@@ -472,7 +479,10 @@
 (use-package company
   :ensure t
   :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-idle-delay 0)
+  )
 
 ;;; Centaur Tabs
 (use-package centaur-tabs
