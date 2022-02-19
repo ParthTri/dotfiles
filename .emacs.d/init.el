@@ -85,13 +85,11 @@
   (ivy-mode 1))
 
 ;; Get theme
-(use-package kaolin-themes
+(use-package atom-one-dark-theme
+  :ensure t
   :config
-  (load-theme 'kaolin-bubblegum t))
-
-(setq kaolin-themes-bold t
-      kaolin-themes-italic t
-      kaolin-themes-underline t)
+  (load-theme 'atom-one-dark t)
+  (setq atom-one-dark-theme-force-faces-for-mode t))
 
 ;; Modeline
 (use-package all-the-icons)
