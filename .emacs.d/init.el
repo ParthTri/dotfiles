@@ -297,10 +297,6 @@
   :config
   (org-roam-setup))
 
-;;; Org Journal
-(use-package org-journal
-  :after org
-  :ensure t)
 
 ;;; Hydra
 (use-package hydra)
