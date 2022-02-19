@@ -334,7 +334,7 @@
 (use-package skeletor
   :config
   (setq skeletor-completing-read-function 'ivy-completing-read
-	skeletor-project-directory "~/Developer/Projects"
+	skeletor-project-directory "~/Projects"
 	skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
 	skeletor--project-types nil))
 
