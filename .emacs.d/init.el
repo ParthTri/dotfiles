@@ -253,8 +253,8 @@
 ;; (org-agenda-exit)
 
 (setq org-todo-keywords
-      '((sequencep "TODO(t)" "ONGOING(o)" "REVIEWING(r)" "|" "DONE(d)")
-        (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "MEETING")))
+      '((sequencep "TODO(t)" "ONGOING(o)" "REVIEWING(r)" "|" "DONE(D)")
+        (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 (setq org-todo-keyword-faces
       '(("TODO" :foreground "Purple" :weight bold )
@@ -263,6 +263,7 @@
         ("DONE" :foreground "SeaGreen3" :weight bold)
         ("WAITING" :foreground "DeepSkyBlue" :weight bold)
         ("CANCELLED" :foreground "Red" :weight bold)
+        ("PAUSED" :foreground "OrangeRed" :weight bold)
         ("MEETING" :foreground "forest green" :weight bold)))
 
 (setq org-agenda-dim-blocked-tasks nil)
@@ -272,8 +273,13 @@
 	  (todo "ONGOING" nil)
 	  (todo "REVIEWING" nil)
 	  (todo "WAITING" nil))
-	 nil))
-      )
+	 nil)
+
+	("d" "Completed Tasks"
+	 ((agenda "" nil)
+	  (todo "DONE" nil))
+	 nil)
+	))
       
 ;;; Org roam
 (use-package org-roam
