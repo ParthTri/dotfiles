@@ -19,7 +19,7 @@ hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.3/Emacs.app/Contents/Ma
 hyper - c : emacsclient -c 
 
 ## open emacs with school file
-hyper - p : emacsclient -ce '(find-file "~/Documents/School Work/Subjects.org")'
+hyper - p : emacsclient -ce '(persp-switch "school")'
 
 ## open brave browser
 hyper - q : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
