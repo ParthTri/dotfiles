@@ -272,20 +272,11 @@
 (setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
 
 ;;; Org Agenda
-(setq org-agenda-files '("~/org/"
-                         "~/Documents/School Work/"))
-
-;; Revursive searching
-;; (setq org-agenda-files 
-;;       (append
-;;        (directory-files-recursively "~/org/" "\\.org$")
-;;        (directory-files-recursively "~/Documents/School Work/" "\\.org$")
-;;        ))
-
-;; (org-agenda-exit)
+(setq org-agenda-files '("~/org/gtd.org"
+                         "~/Documents/School Work/Subjects.org"))
 
 (setq org-todo-keywords
-      '((sequencep "TODO(t)" "ONGOING(o)" "REVIEWING(r)" "|" "DONE(D)")
+      '((sequencep "TODO(t)" "ONGOING(o)" "REVIEWING(r)" "|" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 (setq org-todo-keyword-faces
