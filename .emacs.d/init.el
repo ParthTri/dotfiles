@@ -234,10 +234,12 @@
 ;; org capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/notes.org")
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
 	 "* TODO %?\n %i\n %a")
-	("i" "Project Idea" entry (file "~/org/Ideas.org")
-	 "* %?\n %i\n ")))
+	("p" "Project" entry (file+headline "~/org/gtd.org" "Projects")
+	 "** %?\n %i\n")
+	("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
+	 "** %?\n %i\n ")))
 
 ;; org-toc
 (use-package toc-org
