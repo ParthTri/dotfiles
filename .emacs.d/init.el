@@ -238,6 +238,8 @@
 	 "* TODO %?\n %i\n %a")
 	("p" "Project" entry (file+headline "~/org/gtd.org" "Projects")
 	 "** %?\n %i\n")
+	("l" "Something for Later" entry (file+headline "~/org/gtd.org" "Later")
+	 "** %?\n %i\n")
 	("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
 	 "** %?\n %i\n ")))
 
