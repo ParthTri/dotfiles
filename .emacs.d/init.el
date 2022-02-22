@@ -145,7 +145,8 @@
   (pt/leader-keys
     "o" '(:ignore o :which-key "open")
     "oe" '(eshell :which-key "eshell")
-    "oa" '(org-agenda :which-key "agenda")))
+    "oa" '(org-agenda :which-key "agenda")
+    "oc" '(org-capture :which-key "capture")))
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
@@ -229,6 +230,14 @@
  '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
  '(org-level-4 ((t (:inherit outline-4 :height 1.2))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
+
+;; org capture
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/notes.org")
+	 "* TODO %?\n %i\n %a")
+	("i" "Project Idea" entry (file "~/org/Ideas.org")
+	 "* %?\n %i\n ")))
 
 ;; org-toc
 (use-package toc-org
