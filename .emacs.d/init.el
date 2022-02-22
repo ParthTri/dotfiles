@@ -239,6 +239,9 @@
 ;; iCal
 (setq org-icalendar-use-scheduled '(event-if-todo-not-done))
 
+;; html
+(setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
+
 ;;; Org Agenda
 (setq org-agenda-files '("~/org/"
                          "~/Documents/School Work/"))
