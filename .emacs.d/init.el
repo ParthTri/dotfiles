@@ -246,7 +246,8 @@
 ;; org refile
 (setq org-refile-targets
       '(("~/org/gtd.org" :maxlevel . 1)
-        ("~/org/Ideas.org" :maxlevel . 1)))
+        ("~/org/Ideas.org" :maxlevel . 1)
+	("~/org/done.archive.org" :maxlevel . 1)))
 
 ;; org tags
 (setq org-tag-alist '((:startgroup)
