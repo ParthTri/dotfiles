@@ -246,6 +246,16 @@
       '(("~/org/gtd.org" :maxlevel . 1)
         ("~/org/Ideas.org" :maxlevel . 1)))
 
+;; org tags
+(setq org-tag-alist '((:startgroup)
+		      ("@work" . ?W)
+		      ("@home" . ?H)
+		      (:endgroup)
+		      ("work" . ?w)
+		      ("privy" . ?p)
+		      ("school" . ?s)
+		      ("dev" . ?d)))
+
 ;; org-toc
 (use-package toc-org
   :ensure t
