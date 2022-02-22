@@ -233,12 +233,15 @@
 
 ;; org capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq gtd-file "~/org/gtd.org")
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-	 "* TODO %?\n %i\n %a")
-	("p" "Project" entry (file+headline "~/org/gtd.org" "Projects")
+      '(("t" "Todo" entry (file+headline gtd-file "Tasks")
+	 "** TODO %?\n %i\n %a")
+	("s" "School" entry (file+headline gtd-file "Projects")
+	 "** TODO %?\n*** TODO Module(s)\n*** TODO TMA(s)\n*** TODO Assessment\n")
+	("p" "Project" entry (file+headline gtd-file "Projects")
 	 "** %?\n %i\n")
-	("l" "Something for Later" entry (file+headline "~/org/gtd.org" "Later")
+	("l" "Something for Later" entry (file+headline gtd-file "Later")
 	 "** %?\n %i\n")
 	("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
 	 "** %?\n %i\n ")))
