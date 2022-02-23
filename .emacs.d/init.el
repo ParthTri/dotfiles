@@ -475,6 +475,10 @@
 (use-package lua-mode
   :ensure t)
 
+;;; Nim support
+(use-package nim-mode
+  :ensure t)
+
 ;;;; Web Setup
 (use-package web-mode
   :ensure t)
