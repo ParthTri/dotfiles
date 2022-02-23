@@ -279,12 +279,13 @@
                          "~/Documents/School Work/Subjects.org"))
 
 (setq org-todo-keywords
-      '((sequencep "TODO(t)" "NEXT(n)" "|" "DONE(d/!)")
+      '((sequencep "TODO(t)" "NEXT(n)" "|" "ONGOING(o)" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 (setq org-todo-keyword-faces
       '(("TODO" :foreground "Purple" :weight bold )
-        ("NEXT" :foreground "Orange" :weight bold)
+        ("ONGOING" :foreground "Orange" :weight bold)
+	("NEXT" :foreground "DeepSkyBlue" :weight bold)
         ("DONE" :foreground "SeaGreen3" :weight bold)
         ("WAITING" :foreground "DeepSkyBlue" :weight bold)
         ("CANCELLED" :foreground "Red" :weight bold)
