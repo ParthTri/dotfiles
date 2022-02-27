@@ -467,10 +467,6 @@
   :config
   (pyvenv-mode 1))
 
-;;; Haskell Setup
-(use-package haskell-mode
-  :ensure t)
-
 ;;; Lua Setup
 (use-package lua-mode
   :ensure t)
