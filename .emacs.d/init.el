@@ -238,9 +238,9 @@
       '(("t" "Todo" entry (file+headline gtd-file "Tasks")
 	 "** TODO %?\n %i\n %a")
 	("s" "School" entry (file+headline gtd-file "Projects")
-	 "** TODO [n]%?\n#+COOKIE_DATA:todo\n*** TODO Module(s)\n*** TODO TMA(s)\n*** TODO Assessment\n")
+	 "** TODO [/]%?\n#+COOKIE_DATA:todo\n*** NEXT Module(s)\n*** NEXT TMA(s)\n*** NEXT Assessment\n")
 	("p" "Project" entry (file+headline gtd-file "Projects")
-	 "** %? [n]\n#+COOKIE_DATA:todo\n %i\n")
+	 "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
 	("l" "Something for Later" entry (file+headline gtd-file "Later")
 	 "** %?\n %i\n")
 	("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
@@ -279,7 +279,7 @@
                          "~/Documents/School Work/Subjects.org"))
 
 (setq org-todo-keywords
-      '((sequencep "TODO(t)" "NEXT(n)" "|" "ONGOING(o)" "DONE(d/!)")
+      '((sequencep "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 (setq org-todo-keyword-faces
