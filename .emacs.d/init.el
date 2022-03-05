@@ -24,7 +24,7 @@
 		image-mode-hook
 		pdf-view-mode-hook
                 term-mode-hook
-		treemacs-mode-hook
+		neotree-mode-hook
                 eshell-mode-hook
 		vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -411,31 +411,13 @@
   :config
   (global-git-gutter-mode t))
 
-;;; Treemacs
-(use-package treemacs
+;;; Neotree
+(use-package neotree
   :ensure t
   :config
-  (treemacs-resize-icons 14)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (pt/leader-keys
-    "te" '(treemacs :which-key "treemacs")
-    ))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
-(use-package treemacs-persp
-  :after (treemacs persp-mode)
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
+   "te" '(neotree-toggle :which-key "neotree")))
 
 (use-package persp-mode-projectile-bridge
   :ensure t
