@@ -294,16 +294,14 @@
 
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-custom-commands
-      '(("n" "Agenda / ONGOING / REVIEWING / WAITING"
+      '(("n" "All"
 	 ((agenda "" nil)
-	  (todo "ONGOING" nil)
-	  (todo "REVIEWING" nil)
-	  (todo "WAITING" nil))
-	 nil)
-
-	("d" "Completed Tasks"
-	 ((agenda "" nil)
-	  (todo "DONE" nil))
+	  (todo "ONGOING"
+		((org-agenda-overriding-header "Ongoing Tasks")))
+	  (todo "NEXT"
+		((org-agenda-overriding-header "Next Tasks")))
+	  (todo "WAITING"
+		((org-agenda-overriding-header "Waiting On"))))
 	 nil)
 	))
       
