@@ -307,6 +307,14 @@
 	 nil)
 	))
       
+;;; Org mobile
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+(setq org-mobile-files (list "~/org/Ideas.org"
+			 "~/org/Books.org"
+			 "~/org/gtd.org"
+			 "~/org/Learn.org"))
+
 ;;; Org roam
 ;; (use-package org-roam
 ;;   :ensure t
