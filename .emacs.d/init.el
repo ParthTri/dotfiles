@@ -538,5 +538,7 @@
 
 (use-package json-mode)
 
+(use-package dockerfile-mode
+  :ensure t)
 
 ;;; Init.el ends here
