@@ -92,7 +92,8 @@
   (setq atom-one-dark-theme-force-faces-for-mode t))
 
 ;; Modeline
-(use-package all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 
 (use-package doom-modeline
   :ensure t
