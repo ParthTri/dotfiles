@@ -492,8 +492,12 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (setq company-idle-delay 0)
-  )
+  (setq company-idle-delay 0))
+
+(use-package company-box
+  :ensure t
+  :after (company-mode)
+  :hook (company-mode . company-box-mode))
 
 ;;; Centaur Tabs
 (use-package centaur-tabs
