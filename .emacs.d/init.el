@@ -98,7 +98,9 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 5)))
+  :custom
+  (doom-modeline-height 5)
+  (display-time-mode 't))
 
 ;;; Command log mode
 (use-package command-log-mode)
