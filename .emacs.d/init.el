@@ -519,6 +519,9 @@
   (centaur-tabs-headline-match)
   (centaur-tabs-mode t))
 
+(pt/leader-keys
+  "tc" '(centaur-tabs-mode :which-key "tabs"))
+
 ;;; Syntax Checking
 (use-package flycheck
   :ensure t
