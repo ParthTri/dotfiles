@@ -485,7 +485,8 @@
 ;;; rjsx
 (use-package rjsx-mode
   :ensure t
-  :mode "\\.js\\'")
+  :mode "\\.js\\'"
+  :hook (rjsx-mode . lsp-deferred))
 
 (use-package prettier-js
   :ensure t
