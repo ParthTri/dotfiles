@@ -447,6 +447,11 @@
   (lsp-enable-which-key-integration t)
   (setq lsp-prefer-capf t))
 
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
 ;;; Python Setup
 (use-package elpy
   :ensure t
