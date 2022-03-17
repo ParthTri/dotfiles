@@ -442,7 +442,7 @@
   :commands (lsp lsp-deferred)
   :hook (prog-mode . lsp-mode)
   :init
-  (setq lsp-keymap-prefix "C-c L")
+  (setq lsp-keymap-prefix "C-l")
   :config
   (lsp-enable-which-key-integration t)
   (setq lsp-prefer-capf t))
