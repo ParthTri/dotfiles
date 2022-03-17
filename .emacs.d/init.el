@@ -420,6 +420,9 @@
   :config
   (global-git-gutter-mode t))
 
+(pt/leader-keys
+  "tg" '(git-gutter-mode :which-key "gutter"))
+
 ;;; Neotree
 (use-package neotree
   :ensure t
