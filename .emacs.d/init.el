@@ -57,6 +57,60 @@
   (doom-modeline-height 5)
   (display-time-mode 't))
 
+;; Which Key
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle 0.3))
+
+;; Keybindings
+
+(use-package general
+  :ensure t
+  :config
+  (general-create-definer pt/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC"))
+
+  (pt/leader-keys
+    "SPC" '(find-file :which-key "files")
+    "RET" '(bookmark-jump :which-key "bookmarks"))
+
+  (pt/leader-keys
+    "b" '(:ignore b :which-key "buffer")
+    "bk" '(kill-this-buffer :which-key "kill")
+    "bi" '(ibuffer :which-key "ibuffer")
+    "bb" '(switch-to-buffer :which-key "switch"))
+
+  (pt/leader-keys
+   "t"  '(:ignore t :which-key "toggles")
+   "tt" '(counsel-load-theme :which-key "choose theme"))
+
+  (pt/leader-keys
+    "w" '(:ignore w :which-key "window")
+    "ws" '(evil-window-split :which-key "horizontal split")
+    "wv" '(evil-window-vsplit :which-key "vertical split")
+    "wd" '(evil-window-delete :which-key "delete")
+    "wr" '(evil-window-rotate-upwards :which-key "rotate")
+    "wh" '(evil-window-left :which-key "left")
+    "wj" '(evil-window-down :which-key "down")
+    "wk" '(evil-window-up :which-key "up")
+    "wl" '(evil-window-right :which-key "right"))
+
+  (pt/leader-keys
+    "o" '(:ignore o :which-key "open")
+    "oe" '(eshell :which-key "eshell")
+    "oa" '(org-agenda :which-key "agenda")
+    "oc" '(org-capture :which-key "capture"))
+
+(pt/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
+
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
+
 ;; Counsel
 
 (use-package counsel
@@ -93,9 +147,6 @@
   ("j" text-scale-increase "in")
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
-
-(pt/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 ;; Evil
 
@@ -137,11 +188,6 @@
     "kk" '(persp-kill :which-key "kill")
     ))
 
-(use-package persp-mode-projectile-bridge
-  :ensure t
-  :after (persp projectile))
-(persp-mode-projectile-bridge-mode)
-
 ;; Company
 
 (use-package company
@@ -155,56 +201,6 @@
   :ensure t
   :after (company-mode)
   :hook (company-mode . company-box-mode))
-
-;; Which Key
-
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle 0.3))
-
-;; Keybindings
-
-(use-package general
-  :ensure t
-  :config
-  (general-create-definer pt/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-
-  (pt/leader-keys
-    "SPC" '(find-file :which-key "files")
-    "RET" '(bookmark-jump :which-key "bookmarks"))
-
-  (pt/leader-keys
-    "b" '(:ignore b :which-key "buffer")
-    "bk" '(kill-this-buffer :which-key "kill")
-    "bi" '(ibuffer :which-key "ibuffer")
-    "bb" '(switch-to-buffer :which-key "switch"))
-
-  (pt/leader-keys
-   "t"  '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme"))
-
-  (pt/leader-keys
-    "w" '(:ignore w :which-key "window")
-    "ws" '(evil-window-split :which-key "horizontal split")
-    "wv" '(evil-window-vsplit :which-key "vertical split")
-    "wd" '(evil-window-delete :which-key "delete")
-    "wr" '(evil-window-rotate-upwards :which-key "rotate")
-    "wh" '(evil-window-left :which-key "left")
-    "wj" '(evil-window-down :which-key "down")
-    "wk" '(evil-window-up :which-key "up")
-    "wl" '(evil-window-right :which-key "right"))
-  (pt/leader-keys
-    "o" '(:ignore o :which-key "open")
-    "oe" '(eshell :which-key "eshell")
-    "oa" '(org-agenda :which-key "agenda")
-    "oc" '(org-capture :which-key "capture")))
-
-(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;; Centaur Tabs
 
@@ -246,6 +242,10 @@
 
 (use-package org
   :hook (org-mode . pt/org-mode-setup)
+  :bind (:map org-mode-map
+              ("C-C e" . org-mobile-push)
+              ("C-c i" . org-mobile-pull))
+
   :config
   (setq org-ellipsis " ▾"
         org-hide-emphasis-markers t))
@@ -277,105 +277,93 @@
 
 ;; Agenda
 
-( org-agenda-files '("~/org/gtd.org"
+(setq org-agenda-files '("~/org/gtd.org"
                      "~/Documents/School Work/Subjects.org"))
 
 ;; Capture
 
-(org-default-notes-file (concat org-directory "/notes.org"))
-  (gtd-file "~/org/gtd.org")
-  (org-capture-templates
-    '(("t" "Todo" entry (file+headline gtd-file "Tasks")
-       "** TODO %?\n %i\n %a")
-      ("s" "School" entry (file+headline gtd-file "Projects")
-       "** TODO [/]%?\n#+COOKIE_DATA:todo\n*** NEXT Module(s)\n*** NEXT TMA(s)\n*** NEXT Assessment\n")
-      ("p" "Project" entry (file+headline gtd-file "Projects")
-       "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
-      ("l" "Something for Later" entry (file+headline gtd-file "Later")
-       "** %?\n %i\n")
-      ("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
-       "** %?\n %i\n ")))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq gtd-file "~/org/gtd.org")
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline gtd-file "Tasks")
+         "** TODO %?\n %i\n %a")
+        ("s" "School" entry (file+headline gtd-file "Projects")
+         "** TODO [/]%?\n#+COOKIE_DATA:todo\n*** NEXT Module(s)\n*** NEXT TMA(s)\n*** NEXT Assessment\n")
+        ("p" "Project" entry (file+headline gtd-file "Projects")
+         "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
+        ("l" "Something for Later" entry (file+headline gtd-file "Later")
+         "** %?\n %i\n")
+        ("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
+         "** %?\n %i\n ")))
 
 ;; Refile
 
-(org-refile-targets
-  '(("~/org/gtd.org" :maxlevel . 1)
-    ("~/org/Ideas.org" :maxlevel . 1)
-    ("~/org/done.archive.org" :maxlevel . 1)))
+(setq org-refile-targets
+      '(("~/org/gtd.org" :maxlevel . 1)
+        ("~/org/Ideas.org" :maxlevel . 1)
+        ("~/org/done.archive.org" :maxlevel . 1)))
 
 ;; Tags
 
-(org-tag-alist '((:startgroup)
-                 ("@work" . ?W)
-                 ("@home" . ?H)
-                 (:endgroup)
-                 ("work" . ?w)
-                 ("privy" . ?p)
-                 ("school" . ?s)
-                 ("dev" . ?d)))
+(setq org-tag-alist '((:startgroup)
+                      ("@work" . ?W)
+                      ("@home" . ?H)
+                      (:endgroup)
+                      ("work" . ?w)
+                      ("privy" . ?p)
+                      ("school" . ?s)
+                      ("dev" . ?d)))
 
 ;; Keywords
 
-(org-todo-keywords
-  '((sequencep "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d/!)")
-    (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
+(setq org-todo-keywords
+      '((sequencep "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d/!)")
+        (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 ;; Keyword Faces
 
-(org-todo-keyword-faces
- '(("TODO" :foreground "Purple" :weight bold )
-   ("ONGOING" :foreground "Orange" :weight bold)
-   ("NEXT" :foreground "DeepSkyBlue" :weight bold)
-   ("DONE" :foreground "SeaGreen3" :weight bold)
-   ("WAITING" :foreground "DeepSkyBlue" :weight bold)
-   ("CANCELLED" :foreground "Red" :weight bold)
-   ("PAUSED" :foreground "OrangeRed" :weight bold)
-   ("MEETING" :foreground "forest green" :weight bold)))
+(setq org-todo-keyword-faces
+      '(("TODO" :foreground "Purple" :weight bold )
+        ("ONGOING" :foreground "Orange" :weight bold)
+        ("NEXT" :foreground "DeepSkyBlue" :weight bold)
+        ("DONE" :foreground "SeaGreen3" :weight bold)
+        ("WAITING" :foreground "DeepSkyBlue" :weight bold)
+        ("CANCELLED" :foreground "Red" :weight bold)
+        ("PAUSED" :foreground "OrangeRed" :weight bold)
+        ("MEETING" :foreground "forest green" :weight bold)))
 
 ;; Views
 
-(org-agenda-dim-blocked-tasks nil)
-(org-agenda-custom-commands
- '(("n" "All"
-    ((agenda "" nil)
-     (todo "ONGOING"
-           ((org-agenda-overriding-header "Ongoing Tasks")))
-     (todo "NEXT"
-           ((org-agenda-overriding-header "Next Tasks")))
-     (todo "WAITING"
-           ((org-agenda-overriding-header "Waiting On"))))
-    nil)
-   ))
+(setq org-agenda-dim-blocked-tasks nil)
+(setq org-agenda-custom-commands
+      '(("n" "All"
+         ((agenda "" nil)
+          (todo "ONGOING"
+                ((org-agenda-overriding-header "Ongoing Tasks")))
+          (todo "NEXT"
+                ((org-agenda-overriding-header "Next Tasks")))
+          (todo "WAITING"
+                ((org-agenda-overriding-header "Waiting On"))))
+         nil)
+        ))
 
 ;; Mobile
 
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-    (setq org-mobile-inbox-for-pull "~/org/flagged.org")
-    (setq org-mobile-files (list "~/org/Ideas.org"
-                                 "~/org/Books.org"
-                                 "~/org/gtd.org"
-                                 "~/org/Learn.org"))
-(define-key org-mode-map (kbd "C-c e") 'org-mobile-push)
-(define-key org-mode-map (kbd "C-c i") 'org-mobile-pull)
-
-;; Babel
-
-(org-babel-tangle)
-(org-babel-tangle-file "~/.dotfiles/.emacs.d/Emacs.org")
-
-;; Structure Templates
-
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("se" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("sp" . "src python"))
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+(setq org-mobile-files (list "~/org/Ideas.org"
+                             "~/org/Books.org"
+                             "~/org/gtd.org"
+                             "~/org/Learn.org"))
 
 ;; Tangle on save
 
 (defun pt/org-babel-tangle-config ()
-  (when (string-equal (buffer-file-name)
-                    (expand-file-name "~/.dotfiles/.emacs.d/Emacs.org"))
-  (let ((org-confirm-babel-evaluate nil))
-    (org-babel-tangle))
+    (when (string-equal (buffer-file-name)
+                        (expand-file-name "~/.dotfiles/.emacs.d/Emacs.org"))
+      ;; Dynamic scoping to the rescue
+      (let ((org-confirm-babel-evaluate nil))
+        (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 
@@ -458,6 +446,11 @@
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile))
+(persp-mode-projectile-bridge-mode)
 
 ;; Rainbow Delimiters
 
