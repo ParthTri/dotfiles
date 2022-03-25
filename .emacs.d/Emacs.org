@@ -506,9 +506,10 @@ Write backups to ~/.emacs.d/backup/
   (use-package neotree
     :ensure t
     :config
-    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
     (pt/leader-keys
-     "te" '(neotree-toggle :which-key "neotree")))
+      "te" '(neotree-toggle :which-key "neotree")))
+
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 #+end_src
 *** Rest Client
 #+begin_src emacs-lisp
