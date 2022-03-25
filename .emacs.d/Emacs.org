@@ -423,11 +423,11 @@ Write backups to ~/.emacs.d/backup/
 *** Skeletor
 #+begin_src emacs-lisp
   (use-package skeletor
-    :config
-    (setq skeletor-completing-read-function 'ivy-completing-read
-          skeletor-project-directory "~/Projects"
-          skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
-          skeletor--project-types nil))
+      :config
+      (setq skeletor-completing-read-function 'ivy-completing-read
+            skeletor-project-directory "~/Projects"
+            skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
+            skeletor--project-types nil))
 
   (pt/leader-keys
     "pc" '(skeletor-create-project :which-key "create project")
@@ -444,6 +444,8 @@ Write backups to ~/.emacs.d/backup/
       (skeletor-async-shell-command "python3 -m venv venv")
       (vterm)
       (vterm-send-string (format "cd %s \n" dir))
+      (vterm-send-string ". venv/bin/activate.fish \n")
+      (vterm-send-string "pip3 install pytest")
       (rename-buffer skeletor-project-name)
       )
     :initialise)
