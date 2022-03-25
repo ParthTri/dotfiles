@@ -87,7 +87,8 @@
 
   (pt/leader-keys
    "t"  '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme"))
+   "tt" '(counsel-load-theme :which-key "choose theme")
+   "tv" '(visual-line-mode :which-key "visual line mode"))
 
   (pt/leader-keys
     "w" '(:ignore w :which-key "window")
@@ -354,7 +355,8 @@
 (setq org-mobile-files (list "~/org/Ideas.org"
                              "~/org/Books.org"
                              "~/org/gtd.org"
-                             "~/org/Learn.org"))
+                             "~/org/Learn.org"
+                             "~/org/Shows to watch.org"))
 
 ;; Tangle on save
 
@@ -384,11 +386,11 @@
 ;; Skeletor
 
 (use-package skeletor
-  :config
-  (setq skeletor-completing-read-function 'ivy-completing-read
-        skeletor-project-directory "~/Projects"
-        skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
-        skeletor--project-types nil))
+    :config
+    (setq skeletor-completing-read-function 'ivy-completing-read
+          skeletor-project-directory "~/Projects"
+          skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
+          skeletor--project-types nil))
 
 (pt/leader-keys
   "pc" '(skeletor-create-project :which-key "create project")
@@ -404,6 +406,8 @@
     (skeletor-async-shell-command "python3 -m venv venv")
     (vterm)
     (vterm-send-string (format "cd %s \n" dir))
+    (vterm-send-string ". venv/bin/activate.fish \n")
+    (vterm-send-string "pip3 install pytest")
     (rename-buffer skeletor-project-name)
     )
   :initialise)
@@ -462,9 +466,10 @@
 (use-package neotree
   :ensure t
   :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (pt/leader-keys
-   "te" '(neotree-toggle :which-key "neotree")))
+    "te" '(neotree-toggle :which-key "neotree")))
+
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 ;; Rest Client
 
@@ -600,3 +605,4 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'bottom))
+(put 'upcase-region 'disabled nil)
