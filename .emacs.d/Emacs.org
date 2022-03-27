@@ -42,7 +42,7 @@
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 #+end_src
 ** Use package
-#+begin_src lisp
+#+begin_src emacs-lisp
   (require 'package)
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")
