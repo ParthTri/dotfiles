@@ -21,7 +21,7 @@
 #+end_src
 *** Font
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :font "Fira Code" :height 115)
+  (set-face-attribute 'default nil :font "Fira Code" :height 100)
 #+end_src
 *** Line Numbers
 #+begin_src emacs-lisp
@@ -84,6 +84,11 @@ Write backups to ~/.emacs.d/backup/
     :custom
     (doom-modeline-height 5)
     (display-time-mode 't))
+#+end_src
+** Icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :if (display-graphic-p))
 #+end_src
 ** Which Key
 #+begin_src emacs-lisp

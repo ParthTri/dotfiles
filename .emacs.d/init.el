@@ -13,7 +13,7 @@
 
 ;; Font
 
-(set-face-attribute 'default nil :font "Fira Code" :height 115)
+(set-face-attribute 'default nil :font "Fira Code" :height 100)
 
 ;; Line Numbers
 
@@ -56,6 +56,11 @@
   :custom
   (doom-modeline-height 5)
   (display-time-mode 't))
+
+;; Icons
+
+(use-package all-the-icons
+  :if (display-graphic-p))
 
 ;; Which Key
 
@@ -605,4 +610,3 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'bottom))
-(put 'upcase-region 'disabled nil)
