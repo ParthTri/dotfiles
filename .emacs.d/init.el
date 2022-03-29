@@ -317,7 +317,9 @@
         ("l" "Something for Later" entry (file+headline gtd-file "Later")
          "** %?\n %i\n")
         ("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
-         "** %?\n %i\n ")))
+         "** %?\n %i\n ")
+        ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
+         "** TODO %?\n")))
 
 ;; Refile
 
