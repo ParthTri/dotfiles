@@ -309,9 +309,9 @@
 (setq gtd-file "~/org/gtd.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline gtd-file "Tasks")
-         "** TODO %?\n %i\n %a")
+         "** TODO %?\n %i\n")
         ("s" "School" entry (file+headline gtd-file "Projects")
-         "** TODO [/]%?\n#+COOKIE_DATA:todo\n*** NEXT Module(s)\n*** NEXT TMA(s)\n*** NEXT Assessment\n")
+         "** TODO [/]%?\n")
         ("p" "Project" entry (file+headline gtd-file "Projects")
          "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
         ("l" "Something for Later" entry (file+headline gtd-file "Later")
