@@ -13,7 +13,7 @@
 
 ;; Font
 
-(set-face-attribute 'default nil :font "Fira Code" :height 100)
+(set-face-attribute 'default nil :font "Fira Code" :height 115)
 
 ;; Line Numbers
 
@@ -390,6 +390,30 @@
         (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
+
+;; Brain
+
+(use-package org-brain
+  :ensure t
+  :init
+  (setq org-brain-path "~/org/Brain")
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualise-mode 'emacs))
+  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
+  (setq org-id-track-globally t)
+  (setq org-id-locactions-file "~/org/.org-id-locations")
+  (push '("b" "Brain" plain (function org-brain-goto-end)
+          "* %i%?" :empty-line 1)
+        org-capture-templates)
+  (setq org-brain-visualize-default-choices 'all)
+  (setq org-brain-title-max-length 12)
+  (setq org-brain-include-file-entries nil
+        org-brain-file-entries-use-title nil))
+
+;; Allows you to edit entries directly from org-brain-visualize
+(use-package polymode
+  :config
+  (add-hook 'org-brain-visualize-mode-hook #'org-brain-polymode))
 
 ;; toc
 
