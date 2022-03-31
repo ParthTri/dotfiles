@@ -432,6 +432,11 @@
 
 (setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
 
+;; Latex
+
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+(setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
+
 ;; Skeletor
 
 (use-package skeletor

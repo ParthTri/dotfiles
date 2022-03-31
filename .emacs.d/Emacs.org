@@ -452,6 +452,11 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
 #+end_src
+*** Latex
+#+begin_src emacs-lisp
+  (setq org-latex-toc-command "\\tableofcontents \\clearpage")
+  (setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
+#+end_src
 * Development
 *** Skeletor
 #+begin_src emacs-lisp
