@@ -1,6 +1,6 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Parth Trivedi
-#+DESCRIPTION: My Emacs Congiuration that I use on a daily basis
+#+DESCRIPTION: My Emacs Configuration that I use on a daily basis
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :comments org
 
 * General
