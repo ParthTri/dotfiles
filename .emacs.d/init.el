@@ -416,6 +416,18 @@
   :config
   (org-roam-setup))
 
+;; Roam UI
+
+(use-package org-roam-ui
+  :ensure t
+  :after org-roam
+  :bind (("C-c n u" . org-roam-ui-mode))
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
 ;; toc
 
 (use-package toc-org
