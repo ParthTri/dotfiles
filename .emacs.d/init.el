@@ -225,28 +225,6 @@
   :after (company-mode)
   :hook (company-mode . company-box-mode))
 
-;; Centaur Tabs
-
-(use-package centaur-tabs
-  :ensure t
-  :bind (("C-c l" . centaur-tabs-forward)
-         ("C-c h" . centaur-tabs-backward)
-         ("C-c k" . centaur-tabs-move-current-tab-to-right)
-         ("C-c j" . centaur-tabs-move-current-tab-to-left))
-  :config
-  (setq centaur-tabs-set-bar 'over
-        centaur-tabs-set-icons t
-        centaur-tabs-gray-out-icons 'buffer
-        centaur-tabs-height 24
-        centaur-tabs-set-modified-marker t
-        centaur-tabs-modified-marker "•")
-  (centaur-tabs-group-by-projectile-project)
-  (centaur-tabs-headline-match)
-  (centaur-tabs-mode t))
-
-(pt/leader-keys
-  "tc" '(centaur-tabs-mode :which-key "tabs"))
-
 ;; Pdf Tools
 
 (use-package pdf-tools
