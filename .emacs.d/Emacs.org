@@ -3,6 +3,39 @@
 #+DESCRIPTION: My Emacs Configuration that I use on a daily basis
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :comments org
 
+* Table of Contents :toc:
+- [[#general][General]]
+  - [[#basic-stuff][Basic Stuff]]
+  - [[#use-package][Use package]]
+  - [[#backups][Backups]]
+  - [[#theme][Theme]]
+  - [[#modeline][Modeline]]
+  - [[#icons][Icons]]
+  - [[#which-key][Which Key]]
+  - [[#keybindings][Keybindings]]
+  - [[#counsel][Counsel]]
+  - [[#ivy][Ivy]]
+  - [[#hydra][Hydra]]
+  - [[#evil][Evil]]
+  - [[#persp][Persp]]
+  - [[#company][Company]]
+  - [[#pdf-tools][Pdf Tools]]
+  - [[#transparency][Transparency]]
+- [[#org-mode][Org Mode]]
+  - [[#org-configuration][Org Configuration]]
+  - [[#custom-faces][Custom Faces]]
+  - [[#agenda][Agenda]]
+  - [[#mobile][Mobile]]
+  - [[#babel][Babel]]
+  - [[#roam][Roam]]
+  - [[#toc][toc]]
+  - [[#exports][Exports]]
+- [[#development][Development]]
+  - [[#git][Git]]
+  - [[#languages][Languages]]
+  - [[#terminals][Terminals]]
+  - [[#lsp][LSP]]
+
 * General
 ** Basic Stuff
 *** No flashing or alerting
