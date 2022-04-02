@@ -246,8 +246,8 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Transparency
 #+begin_src emacs-lisp
-  (set-frame-parameter (selected-frame) 'alpha '(65 50))
-  (add-to-list 'default-frame-alist '(alpha 65 50))
+  (set-frame-parameter (selected-frame) 'alpha '(85 50))
+  (add-to-list 'default-frame-alist '(alpha 85 50))
 #+end_src
 
 * Org Mode
