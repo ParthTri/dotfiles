@@ -30,6 +30,10 @@
                 vterm-mode-hook))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Make ESC quit prompts
+
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 ;; Use package
 
 (require 'package)
@@ -109,7 +113,6 @@
 
   (pt/leader-keys
    "t"  '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")
    "tv" '(visual-line-mode :which-key "visual line mode"))
 
   (pt/leader-keys
@@ -233,8 +236,28 @@
 
 ;; Transparency
 
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
-(add-to-list 'default-frame-alist '(alpha 85 50))
+(setq transparent 't)
+
+(defun set-transparency (value)
+  "Set transparency based on value passed"
+  (set-frame-parameter (selected-frame) 'alpha `(,value 60))
+  (add-to-list 'default-frame-alist `(alpha ,value 60)))
+
+(defun toggle-transparency ()
+  "Toggle transparency function"
+  (interactive)
+  (if transparent
+      (progn
+        (set-transparency 100)
+        (setq transparent 'nil))
+
+    (progn
+      (set-transparency 85)
+      (setq transparent 't))
+    ))
+
+(pt/leader-keys
+  "tt" '(toggle-transparency :which-key "transparency"))
 
 ;; Org Configuration
 
