@@ -578,11 +578,6 @@
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi)))
 
-;; Nim
-
-(use-package nim-mode
-  :ensure t)
-
 ;; Lua
 
 (use-package lua-mode
