@@ -414,6 +414,9 @@ Write backups to ~/.emacs.d/backup/
 *** Views
 #+begin_src emacs-lisp
   (setq org-agenda-dim-blocked-tasks nil)
+#+end_src
+**** All
+#+begin_src emacs-lisp
   (setq org-agenda-custom-commands
         '(("n" "All"
            ((agenda "" nil)

@@ -367,6 +367,9 @@
 ;; Views
 
 (setq org-agenda-dim-blocked-tasks nil)
+
+;; All
+
 (setq org-agenda-custom-commands
       '(("n" "All"
          ((agenda "" nil)
