@@ -291,6 +291,24 @@
                          '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
+;; Single line
+
+(fset 'latex-frag
+      (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?\} escape ?i ?e ?q ?a backspace ?u ?a ?t ?i ?o ?n escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?O escape ?\s-s] 0 "%d"))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map "C-c l" 'latex-frag)))
+
+;; Multiline 
+
+(fset 'latex-frag-mult
+   (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?e ?q ?u ?a ?t ?i ?o ?n ?\} escape ?y ?y ?p ?w ?c ?w ?n backspace ?e ?n ?d escape ?k ?y ?y ?p ?w ?w] 0 "%d"))
+
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (define-key org-mode-map "C-c L" 'latex-frag-mult)))
+
 ;; Custom Faces
 
 (custom-set-faces
