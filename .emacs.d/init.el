@@ -273,7 +273,9 @@
   :hook (org-mode . pt/org-mode-setup)
   :bind (:map org-mode-map
               ("C-C e" . org-mobile-push)
-              ("C-c i" . org-mobile-pull))
+              ("C-c i" . org-mobile-pull)
+              ("C-c l" . latex-frag)
+              ("C-c L" . latex-frag-mult))
 
   :config
   (setq org-ellipsis " ▾"
@@ -296,18 +298,10 @@
 (fset 'latex-frag
       (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?\} escape ?i ?e ?q ?a backspace ?u ?a ?t ?i ?o ?n escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?O escape ?\s-s] 0 "%d"))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map "C-c l" 'latex-frag)))
-
 ;; Multiline 
 
 (fset 'latex-frag-mult
-   (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?e ?q ?u ?a ?t ?i ?o ?n ?\} escape ?y ?y ?p ?w ?c ?w ?n backspace ?e ?n ?d escape ?k ?y ?y ?p ?w ?w] 0 "%d"))
-
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (define-key org-mode-map "C-c L" 'latex-frag-mult)))
+   (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?e ?q ?u ?a ?t ?i ?o ?n ?\} escape ?y ?y ?p ?l ?w ?w ?c ?w ?s ?p ?l ?i ?t escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?k ?k ?y ?y ?j ?j ?p ?w ?c ?w ?e ?n ?d escape ?k ?O escape] 0 "%d"))
 
 ;; Custom Faces
 
