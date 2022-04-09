@@ -259,6 +259,11 @@
 (pt/leader-keys
   "tt" '(toggle-transparency :which-key "transparency"))
 
+;; Moving Frames
+
+(global-set-key (kbd "<prior>") 'ns-next-frame)
+(global-set-key (kbd "<next>") 'ns-prev-frame)
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
