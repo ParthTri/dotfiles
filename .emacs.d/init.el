@@ -240,8 +240,8 @@
 
 (defun set-transparency (value)
   "Set transparency based on value passed"
-  (set-frame-parameter (selected-frame) 'alpha `(,value 60))
-  (add-to-list 'default-frame-alist `(alpha ,value 60)))
+  (set-frame-parameter (selected-frame) 'alpha `(,value 75))
+  (add-to-list 'default-frame-alist `(alpha ,value 75)))
 
 (defun toggle-transparency ()
   "Toggle transparency function"
