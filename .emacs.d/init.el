@@ -25,7 +25,7 @@
                 image-mode-hook
                 pdf-view-mode-hook
                 term-mode-hook
-                neotree-mode-hook
+                treemacs-mode-hook
                 eshell-mode-hook
                 vterm-mode-hook))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -551,15 +551,31 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Neotree
+;; Treemacs
 
-(use-package neotree
+(use-package treemacs
   :ensure t
   :config
+  (treemacs-resize-icons 14)
   (pt/leader-keys
-    "te" '(neotree-toggle :which-key "neotree")))
+    "te" '(treemacs :which-key "treemacs")))
 
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-persp
+  :after (treemacs persp-mode)
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
 
 ;; Rest Client
 
