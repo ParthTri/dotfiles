@@ -264,6 +264,11 @@
 (global-set-key (kbd "<prior>") 'ns-next-frame)
 (global-set-key (kbd "<next>") 'ns-prev-frame)
 
+;; Org Capture Todo
+
+(fset 'open-org-capture-todo
+   (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
