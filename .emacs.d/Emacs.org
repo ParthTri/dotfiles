@@ -22,6 +22,7 @@
   - [[#pdf-tools][Pdf Tools]]
   - [[#transparency][Transparency]]
   - [[#moving-frames][Moving Frames]]
+  - [[#flyspell][Flyspell]]
   - [[#macros][Macros]]
 - [[#org-mode][Org Mode]]
   - [[#org-configuration][Org Configuration]]
@@ -282,7 +283,7 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Transparency
 #+begin_src emacs-lisp
-  (setq transparent 't)
+  (setq transparent 'nil)
 
   (defun set-transparency (value)
     "Set transparency based on value passed"
@@ -310,6 +311,11 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (global-set-key (kbd "<prior>") 'ns-next-frame)
   (global-set-key (kbd "<next>") 'ns-prev-frame)
+#+end_src
+** Flyspell
+#+begin_src emacs-lisp
+  (dolist (hook '(text-mode-hook))
+               (add-hook hook (lambda () (flycheck-mode 1))))
 #+end_src
 ** Macros
 *** Org Capture Todo
@@ -355,6 +361,8 @@ Write backups to ~/.emacs.d/backup/
                                  (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 #+end_src
 ** Latex Fragments
+#+begin_src 
+#+end_src
 *** Single line
 #+begin_src emacs-lisp
   (fset 'latex-frag
@@ -755,9 +763,16 @@ Default hook to allow code collapsing
 #+begin_src emacs-lisp
   (use-package vterm
     :ensure t
+    )
+#+end_src
+
+**** Toggle
+#+begin_src emacs-lisp
+  (use-package vterm-toggle
+    :ensure t
     :config
     (pt/leader-keys
-      "ot" '(vterm :which-key "terminal")))
+      "ot" '(vterm-toggle :which-key "terminal")))
 #+end_src
 ** LSP
 #+begin_src emacs-lisp

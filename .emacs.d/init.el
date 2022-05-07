@@ -236,7 +236,7 @@
 
 ;; Transparency
 
-(setq transparent 't)
+(setq transparent 'nil)
 
 (defun set-transparency (value)
   "Set transparency based on value passed"
@@ -263,6 +263,11 @@
 
 (global-set-key (kbd "<prior>") 'ns-next-frame)
 (global-set-key (kbd "<next>") 'ns-prev-frame)
+
+;; Flyspell
+
+(dolist (hook '(text-mode-hook))
+             (add-hook hook (lambda () (flycheck-mode 1))))
 
 ;; Org Capture Todo
 
@@ -689,9 +694,15 @@
 
 (use-package vterm
   :ensure t
+  )
+
+;; Toggle
+
+(use-package vterm-toggle
+  :ensure t
   :config
   (pt/leader-keys
-    "ot" '(vterm :which-key "terminal")))
+    "ot" '(vterm-toggle :which-key "terminal")))
 
 ;; LSP
 
