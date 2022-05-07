@@ -464,6 +464,17 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+;; Journal
+
+(use-package org-journal
+  :ensure t
+  :init
+  (pt/leader-keys
+    "oj" '(org-journal-new-entry :which-key "journal"))
+  :config
+  (setq org-journal-dir "~/journal/"
+        org-journal-date-format "%A, %d %B %Y"))
+
 ;; toc
 
 (use-package toc-org
