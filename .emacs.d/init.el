@@ -371,7 +371,8 @@
                       ("work" . ?w)
                       ("privy" . ?p)
                       ("school" . ?s)
-                      ("dev" . ?d)))
+                      ("dev" . ?d)
+                      ("crypt" . ?c)))
 
 ;; Keywords
 
@@ -418,6 +419,19 @@
                              "~/org/gtd.org"
                              "~/org/Learn.org"
                              "~/org/Shows to watch.org"))
+
+;; Crypt
+
+(use-package org-crypt
+  :ensure nil
+  :after org
+  :bind (:map org-mode-map
+              ("C-c d" . org-decrypt-entry))
+  :config
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance '("crypt"))
+  :custom
+  (setq org-crypt-key "0x49A69233"))
 
 ;; Tangle on save
 

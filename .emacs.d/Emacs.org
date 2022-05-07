@@ -30,6 +30,7 @@
   - [[#custom-faces][Custom Faces]]
   - [[#agenda][Agenda]]
   - [[#mobile][Mobile]]
+  - [[#crypt][Crypt]]
   - [[#babel][Babel]]
   - [[#roam][Roam]]
   - [[#journal][Journal]]
@@ -431,7 +432,8 @@ Write backups to ~/.emacs.d/backup/
                         ("work" . ?w)
                         ("privy" . ?p)
                         ("school" . ?s)
-                        ("dev" . ?d)))
+                        ("dev" . ?d)
+                        ("crypt" . ?c)))
 #+end_src
 *** Keywords
 #+begin_src emacs-lisp
@@ -478,6 +480,20 @@ Write backups to ~/.emacs.d/backup/
                                "~/org/gtd.org"
                                "~/org/Learn.org"
                                "~/org/Shows to watch.org"))
+
+#+end_src
+** Crypt
+#+begin_src emacs-lisp
+  (use-package org-crypt
+    :ensure nil
+    :after org
+    :bind (:map org-mode-map
+                ("C-c d" . org-decrypt-entry))
+    :config
+    (org-crypt-use-before-save-magic)
+    (setq org-tags-exclude-from-inheritance '("crypt"))
+    :custom
+    (setq org-crypt-key "0x49A69233"))
 
 #+end_src
 ** Babel
