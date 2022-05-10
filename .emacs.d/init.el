@@ -433,6 +433,14 @@
   :custom
   (setq org-crypt-key "0x49A69233"))
 
+;; Epa
+
+(use-package epa
+  :ensure t
+  :config
+  (custom-set-variables '(epa-gpg-program "/usr/local/bin/gpg"))
+  (epa-file-enable))
+
 ;; Tangle on save
 
 (defun pt/org-babel-tangle-config ()

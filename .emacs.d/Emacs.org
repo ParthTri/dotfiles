@@ -31,6 +31,7 @@
   - [[#agenda][Agenda]]
   - [[#mobile][Mobile]]
   - [[#crypt][Crypt]]
+  - [[#epa][Epa]]
   - [[#babel][Babel]]
   - [[#roam][Roam]]
   - [[#journal][Journal]]
@@ -495,6 +496,14 @@ Write backups to ~/.emacs.d/backup/
     :custom
     (setq org-crypt-key "0x49A69233"))
 
+#+end_src
+** Epa
+#+begin_src emacs-lisp
+  (use-package epa
+    :ensure t
+    :config
+    (custom-set-variables '(epa-gpg-program "/usr/local/bin/gpg"))
+    (epa-file-enable))
 #+end_src
 ** Babel
 *** Tangle on save
