@@ -1,0 +1,17 @@
+#+LaTeX_CLASS: org-plain-latex
+#+LaTeX_CLASS_OPTIONS: [letterpaper]
+#+LATEX_HEADER: \usepackage{lmodern} % Ensures we have the right font
+#+LATEX_HEADER: \usepackage[default]{sourcesanspro}
+
+#+LATEX_HEADER: \usepackage[AUTO]{inputenc}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{amsmath, amsthm, amssymb}
+#+LATEX_HEADER: \usepackage[table, xcdraw]{xcolor}
+
+% Colorizing links in a nicer way.
+#+LATEX_HEADER: \definecolor{bblue}{HTML}{0645AD}
+#+LATEX_HEADER: \usepackage[colorlinks]{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks, linkcolor=blue, urlcolor=bblue}
+
+% Source blocks
+# #+LATEX_HEADER: \usepackage{listings}
