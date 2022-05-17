@@ -712,23 +712,27 @@
 (use-package emmet-mode
   :ensure t
   :hook ((web-mode . emmet-mode)
-         (rjsx-mode . emmet-mode))
+         (js-mode . emmet-mode))
   :config
   (setq emmet-move-cursor-between-quotes t))
 
 ;; rjsx
 
 (use-package rjsx-mode
-  :ensure t
-  :mode "\\.js\\'"
-  :hook (rjsx-mode . lsp-deferred))
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2))
 
 ;; Prettier
 
 (use-package prettier-js
   :ensure t
-  :after (rjsx-mode)
-  :hook (rjsx-mode . prettier-js-mode))
+  :after (js-mode)
+  :hook (((js2-mode rjsx-mode) . prettier-js-mode)))
 
 ;; Json
 
@@ -758,13 +762,19 @@
 
 (use-package lsp-mode
   :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (prog-mode . lsp-mode)
+  :commands lsp
+  :diminish lsp-mode
+  :hook ((python-mode . lsp)
+         ((js2-mode rjsx-mode) . lsp))
   :init
-  (setq lsp-keymap-prefix "C-l")
+  (setq lsp-keymap-prefix "s-l")
   :config
   (lsp-enable-which-key-integration t)
-  (setq lsp-prefer-capf t))
+  (setq lsp-prefer-capf t)
+  (setq lsp-auto-configure t
+        lsp-auto-guess-root t
+        ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
+        lsp-diagnostic-package :none))
 
 ;; UI
 
