@@ -3,6 +3,8 @@
 #+LATEX_HEADER: \usepackage{lmodern} % Ensures we have the right font
 #+LATEX_HEADER: \usepackage[default]{sourcesanspro}
 
+#+LATEX_HEADER: \setcounter{secnumdepth}{0} % ignoring heading numbers
+
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
 #+LATEX_HEADER: \usepackage{graphicx}
 #+LATEX_HEADER: \usepackage{amsmath, amsthm, amssymb}
