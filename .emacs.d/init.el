@@ -533,6 +533,17 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
+;; Presentations
+
+(use-package org-tree-slide
+  :ensure t
+  :after org
+  :config
+  (setq org-tree-slide-slide-in-effect-toggle nil))
+
+(pt/leader-keys
+  "tP" '(org-tree-slide-mode :which-key "Present"))
+
 ;; Skeletor
 
 (use-package skeletor

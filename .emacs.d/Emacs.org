@@ -37,6 +37,7 @@
   - [[#journal][Journal]]
   - [[#toc][toc]]
   - [[#exports][Exports]]
+  - [[#presentations][Presentations]]
 - [[#development][Development]]
   - [[#git][Git]]
   - [[#languages][Languages]]
@@ -599,6 +600,17 @@ Write backups to ~/.emacs.d/backup/
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+#+end_src
+** Presentations
+#+begin_src emacs-lisp
+  (use-package org-tree-slide
+    :ensure t
+    :after org
+    :config
+    (setq org-tree-slide-slide-in-effect-toggle nil))
+
+  (pt/leader-keys
+    "tP" '(org-tree-slide-mode :which-key "Present"))
 #+end_src
 * Development
 *** Skeletor
