@@ -333,13 +333,13 @@
 
 ;; Agenda
 
-(setq org-agenda-files '("~/Dropbox/org/gtd.org"
+(setq org-agenda-files '("~/org/gtd.org"
                      "~/Documents/School Work/Subjects.org"))
 
 ;; Capture
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq gtd-file "~/Dropbox/org/gtd.org")
+(setq gtd-file "~/org/gtd.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline gtd-file "Tasks")
          "** TODO %?\n %i\n")
@@ -349,18 +349,18 @@
          "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
         ("l" "Something for Later" entry (file+headline gtd-file "Later")
          "** %?\n %i\n")
-        ("i" "Idea" entry (file+headline "~/Dropbox/org/Ideas.org" "General")
+        ("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
          "** %?\n %i\n ")
-        ("B" "Book" entry (file+headline "~/Dropbox/org/Books.org" "Other")
+        ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
          "** TODO %?\n")))
 
 ;; Refile
 
 (setq org-refile-targets
-      '(("~/Dropbox/org/gtd.org" :maxlevel . 1)
-        ("~/Dropbox/org/Ideas.org" :maxlevel . 1)
-        ("~/Dropbox/org/done.archive.org" :maxlevel . 1)
-        ("~/Dropbox/org/Books.org" :maxlevel . 1)))
+      '(("~/org/gtd.org" :maxlevel . 1)
+        ("~/org/Ideas.org" :maxlevel . 1)
+        ("~/org/done.archive.org" :maxlevel . 1)
+        ("~/org/Books.org" :maxlevel . 1)))
 
 ;; Tags
 
