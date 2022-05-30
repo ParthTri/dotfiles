@@ -24,6 +24,7 @@
   - [[#moving-frames][Moving Frames]]
   - [[#flyspell][Flyspell]]
   - [[#macros][Macros]]
+  - [[#elfeed][Elfeed]]
 - [[#org-mode][Org Mode]]
   - [[#org-configuration][Org Configuration]]
   - [[#latex-fragments][Latex Fragments]]
@@ -38,6 +39,7 @@
   - [[#toc][toc]]
   - [[#exports][Exports]]
   - [[#presentations][Presentations]]
+  - [[#elfeed-org][Elfeed Org]]
 - [[#development][Development]]
   - [[#git][Git]]
   - [[#languages][Languages]]
@@ -328,41 +330,53 @@ Write backups to ~/.emacs.d/backup/
      (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
 #+end_src
+** Elfeed
+#+begin_src emacs-lisp
+  (use-package elfeed
+    :ensure t
+    :config
+    (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+          elfeed-show-entry-switch 'display-buffer))
+
+  (pt/leader-keys
+    "or" '(elfeed :which-key "elfeed"))
+#+end_src
 
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
-      (setq org-directory "~/org/")
+  (setq org-directory "~/org/")
 
-      (defun pt/org-mode-setup ()
-        (org-indent-mode)
-        (auto-fill-mode 0)
-        (visual-line-mode 1)
-        (setq evil-auto-indent nil))
+  (defun pt/org-mode-setup ()
+    (org-indent-mode)
+    (auto-fill-mode 0)
+    (visual-line-mode 1)
+    (setq evil-auto-indent nil))
 
-      (use-package org
-        :hook (org-mode . pt/org-mode-setup)
-        :bind (:map org-mode-map
-                    ("C-C e" . org-mobile-push)
-                    ("C-c i" . org-mobile-pull)
-                    ("C-c l" . latex-frag)
-                    ("C-c L" . latex-frag-mult))
+  (use-package org
+    :hook (org-mode . pt/org-mode-setup)
+    :bind (:map org-mode-map
+                ("C-C e" . org-mobile-push)
+                ("C-c i" . org-mobile-pull)
+                ("C-c l" . latex-frag)
+                ("C-c L" . latex-frag-mult)
+                ("C-c R" . org-table-sort-lines))
 
-        :config
-        (setq org-ellipsis " ▾"
-              org-hide-emphasis-markers t))
+    :config
+    (setq org-ellipsis " ▾"
+          org-hide-emphasis-markers t))
 
-      (setq org-hide-emphasis-markers t)
-      (use-package org-bullets
-        :after org
-        :hook (org-mode . org-bullets-mode)
-        :custom
-        (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+  (setq org-hide-emphasis-markers t)
+  (use-package org-bullets
+    :after org
+    :hook (org-mode . org-bullets-mode)
+    :custom
+    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-      ;; Replace list hyphen with dot
-      (font-lock-add-keywords 'org-mode
-                               '(("^ *\\([-]\\) "
-                                 (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  ;; Replace list hyphen with dot
+  (font-lock-add-keywords 'org-mode
+                           '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 #+end_src
 ** Latex Fragments
 #+begin_src 
@@ -611,6 +625,16 @@ Write backups to ~/.emacs.d/backup/
 
   (pt/leader-keys
     "tP" '(org-tree-slide-mode :which-key "Present"))
+#+end_src
+** Elfeed Org
+#+begin_src emacs-lisp
+  (use-package elfeed-org
+    :ensure t
+    :config
+    (setq elfeed-show-entry-switch 'display-buffer)
+    (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+    :init
+    (elfeed-org))
 #+end_src
 * Development
 *** Skeletor

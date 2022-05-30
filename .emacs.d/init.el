@@ -274,6 +274,17 @@
 (fset 'open-org-capture-todo
    (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
+;; Elfeed
+
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+        elfeed-show-entry-switch 'display-buffer))
+
+(pt/leader-keys
+  "or" '(elfeed :which-key "elfeed"))
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
@@ -290,7 +301,8 @@
               ("C-C e" . org-mobile-push)
               ("C-c i" . org-mobile-pull)
               ("C-c l" . latex-frag)
-              ("C-c L" . latex-frag-mult))
+              ("C-c L" . latex-frag-mult)
+              ("C-c R" . org-table-sort-lines))
 
   :config
   (setq org-ellipsis " ▾"
@@ -543,6 +555,14 @@
 
 (pt/leader-keys
   "tP" '(org-tree-slide-mode :which-key "Present"))
+
+;; Elfeed Org
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (setq elfeed-show-entry-switch 'display-buffer)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
 ;; Skeletor
 
