@@ -694,7 +694,8 @@ Write backups to ~/.emacs.d/backup/
   (use-package persp-mode-projectile-bridge
     :ensure t
     :after (persp projectile))
-  (persp-mode-projectile-bridge-mode)
+
+  (add-hook 'after-init-hook #'persp-mode-projectile-bridge-mode)
 
 #+end_src
 *** Rainbow Delimiters

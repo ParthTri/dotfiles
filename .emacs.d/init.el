@@ -621,7 +621,8 @@
 (use-package persp-mode-projectile-bridge
   :ensure t
   :after (persp projectile))
-(persp-mode-projectile-bridge-mode)
+
+(add-hook 'after-init-hook #'persp-mode-projectile-bridge-mode)
 
 ;; Rainbow Delimiters
 
