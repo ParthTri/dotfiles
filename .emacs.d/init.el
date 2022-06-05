@@ -26,6 +26,8 @@
                 pdf-view-mode-hook
                 term-mode-hook
                 treemacs-mode-hook
+                elfeed-mode-hook
+                eww-mode-hook
                 eshell-mode-hook
                 vterm-mode-hook))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -273,17 +275,6 @@
 
 (fset 'open-org-capture-todo
    (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
-
-;; Elfeed
-
-(use-package elfeed
-  :ensure t
-  :config
-  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
-        elfeed-show-entry-switch 'display-buffer))
-
-(pt/leader-keys
-  "or" '(elfeed :which-key "elfeed"))
 
 ;; Org Configuration
 
@@ -556,14 +547,6 @@
 (pt/leader-keys
   "tP" '(org-tree-slide-mode :which-key "Present"))
 
-;; Elfeed Org
-
-(use-package elfeed-org
-  :ensure t
-  :config
-  (setq elfeed-show-entry-switch 'display-buffer)
-  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
-
 ;; Skeletor
 
 (use-package skeletor
@@ -813,3 +796,30 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'bottom))
+
+;; Elfeed
+
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+        elfeed-show-entry-switch 'display-buffer))
+
+(defun update-and-open-elfeed ()
+  (interactive)
+  (elfeed-update)
+  (elfeed))
+
+(pt/leader-keys
+  "or" '(update-and-open-elfeed :which-key "elfeed"))
+
+;; Elfeed Org
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (setq elfeed-show-entry-switch 'display-buffer)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+  :init
+  (elfeed-org))
+
