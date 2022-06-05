@@ -4,3 +4,4 @@
 .config/fish/functions
 .config/fish/fish_variables
 .config/karabiner/automatic_backups/
+*.org_archive

@@ -29,6 +29,7 @@
                 elfeed-mode-hook
                 eww-mode-hook
                 eshell-mode-hook
+                helm-mode-hook
                 vterm-mode-hook))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -104,14 +105,14 @@
     :global-prefix "C-SPC"))
 
   (pt/leader-keys
-    "SPC" '(find-file :which-key "files")
-    "RET" '(bookmark-jump :which-key "bookmarks"))
+    "SPC" '(helm-find-files :which-key "files")
+    "RET" '(helm-bookmarks :which-key "bookmarks"))
 
   (pt/leader-keys
     "b" '(:ignore b :which-key "buffer")
     "bk" '(kill-this-buffer :which-key "kill")
     "bi" '(ibuffer :which-key "ibuffer")
-    "bb" '(switch-to-buffer :which-key "switch"))
+    "bb" '(helm-buffers-list :which-key "switch"))
 
   (pt/leader-keys
    "t"  '(:ignore t :which-key "toggles")
@@ -139,33 +140,17 @@
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
-;; Counsel
+;; Helm
 
-(use-package counsel
+(use-package helm
   :ensure t
-  :config (counsel-mode))
-
-(global-set-key (kbd "M-x") 'counsel-M-x)
-
-;; Ivy
-
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
   :config
-  (ivy-mode 1))
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (if (daemonp)
+      (setq helm-display-function 'helm-default-display-buffer)
+    (setq helm-display-function 'helm-default-display-buffer))
+  (helm-mode 1)
+  )
 
 ;; Hydra
 
@@ -554,8 +539,7 @@
 
 (use-package skeletor
     :config
-    (setq skeletor-completing-read-function 'ivy-completing-read
-          skeletor-project-directory "~/Projects"
+    (setq skeletor-project-directory "~/Projects"
           skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
           skeletor--project-types nil))
 
@@ -615,8 +599,11 @@
     "pp" '(projectile-switch-project :which-key "switch to project")
     "pt" '(projectile-test-project :which-key "test project")))
 
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
+(use-package helm-projectile
+  :ensure t
+  :after (helm projectile)
+  :config
+  (helm-projectile-on))
 
 (use-package persp-mode-projectile-bridge
   :ensure t
