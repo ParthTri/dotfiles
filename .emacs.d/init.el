@@ -311,6 +311,8 @@
                          '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
+(setq org-duration-format (quote h:mm))
+
 ;; Single line
 
 (fset 'latex-frag
