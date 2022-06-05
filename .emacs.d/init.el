@@ -522,6 +522,7 @@
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
+(add-to-list 'org-latex-packages-alist '("" "tabularx"))
 
 (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
