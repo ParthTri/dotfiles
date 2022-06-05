@@ -645,7 +645,15 @@
 ;; Rest Client
 
 (use-package restclient
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode (("\\.http\\'" . restclient-mode))
+  :bind (:map restclient-mode-map
+              ("C-c C-f" . json-mode-beautify))) ;TODO: change to only apply json formatting when the content-type is application/json
+
+(use-package restclient-helm
+  :ensure t
+  :after (restclient))
 
 ;; Syntax Checkin
 
