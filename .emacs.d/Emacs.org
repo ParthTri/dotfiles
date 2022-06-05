@@ -45,6 +45,7 @@
   - [[#lsp][LSP]]
 - [[#other][Other]]
   - [[#elfeed][Elfeed]]
+  - [[#ledger][Ledger]]
 
 * General
 ** Basic Stuff
@@ -908,3 +909,16 @@ Default hook to allow code collapsing
     :init
     (elfeed-org))
 #+end_src
+** Ledger
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :ensure t
+    :mode ("\\.journal\\'" "\\.ledger.*\\'"))
+#+end_src
+** Invoice Maker
+#+begin_src emacs-lisp
+  (defun get-org-properties
+      "Function that reads a org subtree and returns a list of the properties"
+    )
+#+end_src
+
