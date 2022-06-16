@@ -148,7 +148,9 @@
   (global-set-key (kbd "M-x") 'helm-M-x)
   (if (daemonp)
       (setq helm-display-function 'helm-default-display-buffer)
-    (setq helm-display-function 'helm-default-display-buffer))
+    (setq helm-display-function 'helm-display-buffer-in-own-frame
+          helm-display-buffer-reuse-frame t
+          helm-use-undecorated-frame-option t))
   (helm-mode 1)
   )
 
