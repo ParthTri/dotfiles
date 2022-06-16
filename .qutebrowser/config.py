@@ -170,3 +170,5 @@ config.bind('n', 'quickmark-del')
 c.tabs.position = "left"
 c.completion.shrink = True
 config.bind('xx', 'config-cycle tabs.show always switching')
+
+config.bind('<Ctrl-W>', 'close')
