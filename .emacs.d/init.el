@@ -487,7 +487,7 @@
   :ensure t
   :init
   (pt/leader-keys
-    "oj" '(org-journal-new-entry :which-key "journal"))
+    "Oj" '(org-journal-new-entry :which-key "journal"))
   :config
   (setq org-journal-dir "~/journal/"
         org-journal-date-format "%A, %d %B %Y"))
@@ -539,7 +539,7 @@
   (setq org-tree-slide-slide-in-effect-toggle nil))
 
 (pt/leader-keys
-  "tP" '(org-tree-slide-mode :which-key "Present"))
+  "Op" '(org-tree-slide-mode :which-key "Present"))
 
 ;; Temporary Buffer
 
