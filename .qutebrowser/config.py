@@ -158,7 +158,7 @@ config.set('content.notifications.enabled', False, 'https://www.reddit.com')
 config.set("colors.webpage.darkmode.enabled", True)
 
 # Play Video in VLC
-config.bind('M', 'hint links spawn mpv {hint-url}')
+config.bind('M', 'hint links spawn mpv "{hint-url}"')
 
 # Bookmark and quickmark bindings
 config.bind('B', 'bookmark-add')
