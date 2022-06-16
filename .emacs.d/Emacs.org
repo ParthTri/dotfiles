@@ -811,7 +811,8 @@ Default hook to allow code collapsing
 *** Web
 #+begin_src emacs-lisp
   (use-package web-mode
-    :ensure t)
+    :ensure t
+    :mode ("\\.html\\'"))
 #+end_src
 
 **** Emmet mode

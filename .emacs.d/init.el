@@ -736,7 +736,8 @@
 ;; Web
 
 (use-package web-mode
-  :ensure t)
+  :ensure t
+  :mode ("\\.html\\'"))
 
 ;; Emmet mode
 
