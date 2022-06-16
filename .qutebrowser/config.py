@@ -166,3 +166,7 @@ config.bind('b', 'bookmark-del')
 config.bind('N', 'quickmark-add')
 config.bind('n', 'quickmark-del')
 
+# Config for customising tab bar
+c.tabs.position = "left"
+c.completion.shrink = True
+config.bind('xx', 'config-cycle tabs.show always switching')
