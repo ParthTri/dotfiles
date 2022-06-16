@@ -535,6 +535,19 @@
 (pt/leader-keys
   "tP" '(org-tree-slide-mode :which-key "Present"))
 
+;; Temporary Buffer
+
+(defun create-tmp-org ()
+  "Create a temporary org buffer"
+  (interactive)
+  (create-file-buffer "tmp.org")
+  (persp-add-buffer "tmp.org")
+  (switch-to-buffer "tmp.org")
+  (org-mode))
+
+(pt/leader-keys
+  "oo" '(create-tmp-org :which-key "tmp org"))
+
 ;; Skeletor
 
 (use-package skeletor

@@ -37,6 +37,7 @@
   - [[#toc][toc]]
   - [[#exports][Exports]]
   - [[#presentations][Presentations]]
+  - [[#temporary-buffer][Temporary Buffer]]
 - [[#development][Development]]
   - [[#git][Git]]
   - [[#languages][Languages]]
@@ -603,6 +604,19 @@ Write backups to ~/.emacs.d/backup/
 
   (pt/leader-keys
     "tP" '(org-tree-slide-mode :which-key "Present"))
+#+end_src
+** Temporary Buffer
+#+begin_src emacs-lisp
+  (defun create-tmp-org ()
+    "Create a temporary org buffer"
+    (interactive)
+    (create-file-buffer "tmp.org")
+    (persp-add-buffer "tmp.org")
+    (switch-to-buffer "tmp.org")
+    (org-mode))
+
+  (pt/leader-keys
+    "oo" '(create-tmp-org :which-key "tmp org"))
 #+end_src
 * Development
 *** Skeletor
