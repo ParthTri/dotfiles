@@ -429,6 +429,8 @@ Write backups to ~/.emacs.d/backup/
                         ("privy" . ?p)
                         ("school" . ?s)
                         ("dev" . ?d)
+                        ("paid" . ?P)
+                        ("volunteer" . ?V)
                         ("crypt" . ?c)))
 #+end_src
 *** Keywords

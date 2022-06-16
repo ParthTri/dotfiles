@@ -364,6 +364,8 @@
                       ("privy" . ?p)
                       ("school" . ?s)
                       ("dev" . ?d)
+                      ("paid" . ?P)
+                      ("volunteer" . ?V)
                       ("crypt" . ?c)))
 
 ;; Keywords
