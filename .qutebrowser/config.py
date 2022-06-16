@@ -172,3 +172,6 @@ c.completion.shrink = True
 config.bind('xx', 'config-cycle tabs.show always switching')
 
 config.bind('<Ctrl-W>', 'close')
+
+config.bind('<Ctrl-Shift-R>', 'config-source')
+
