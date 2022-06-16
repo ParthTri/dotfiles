@@ -536,7 +536,7 @@
   :ensure t
   :after org
   :config
-  (setq org-tree-slide-slide-in-effect-toggle nil))
+  (setq org-tree-slide-slide-in-effect nil))
 
 (pt/leader-keys
   "Op" '(org-tree-slide-mode :which-key "Present"))
