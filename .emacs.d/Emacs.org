@@ -748,7 +748,7 @@ Write backups to ~/.emacs.d/backup/
     :ensure t
     :after (restclient))
 #+end_src
-*** Syntax Checkin
+*** Syntax Checking
 #+begin_src emacs-lisp
   (use-package flycheck
     :ensure t

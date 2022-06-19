@@ -674,7 +674,7 @@
   :ensure t
   :after (restclient))
 
-;; Syntax Checkin
+;; Syntax Checking
 
 (use-package flycheck
   :ensure t
