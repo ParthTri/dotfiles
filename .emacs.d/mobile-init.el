@@ -395,32 +395,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Treemacs
-
-(use-package treemacs
-  :ensure t
-  :config
-  (treemacs-resize-icons 14)
-  (pt/leader-keys
-    "te" '(treemacs :which-key "treemacs")))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
-(use-package treemacs-persp
-  :after (treemacs persp-mode)
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
-
 ;; Magit
 
 (use-package magit
