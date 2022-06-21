@@ -29,7 +29,6 @@
                 elfeed-mode-hook
                 eww-mode-hook
                 eshell-mode-hook
-                helm-mode-hook
                 vterm-mode-hook))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -105,14 +104,14 @@
     :global-prefix "C-SPC"))
 
 (pt/leader-keys
-  "SPC" '(helm-find-files :which-key "files")
-  "RET" '(helm-bookmarks :which-key "bookmarks"))
+  "SPC" '(find-files :which-key "files")
+  "RET" '(list-bookmarks :which-key "bookmarks"))
 
 (pt/leader-keys
   "b" '(:ignore b :which-key "buffer")
   "bk" '(kill-this-buffer :which-key "kill")
   "bi" '(ibuffer :which-key "ibuffer")
-  "bb" '(helm-buffers-list :which-key "switch"))
+  "bb" '(switch-to-buffer :which-key "switch"))
 
 (pt/leader-keys
   "t"  '(:ignore t :which-key "toggles")
@@ -141,19 +140,33 @@
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
-;; Helm
+;; Ivy
 
-(use-package helm
-  :ensure t
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
   :config
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (if (daemonp)
-      (setq helm-display-function 'helm-default-display-buffer)
-    (setq helm-display-function 'helm-display-buffer-in-own-frame
-          helm-display-buffer-reuse-frame t
-          helm-use-undecorated-frame-option t))
-  (helm-mode 1)
-  )
+  (ivy-mode 1))
+
+;; Counsel
+
+(use-package counsel
+  :ensure t
+  :config (counsel-mode))
+
+(global-set-key (kbd "M-x") 'counsel-M-x)
 
 ;; Hydra
 
@@ -616,13 +629,9 @@
   (pt/leader-keys
     "p" '(:ignore p :which-key "projects")
     "pp" '(projectile-switch-project :which-key "switch to project")
-    "pt" '(projectile-test-project :which-key "test project")))
-
-(use-package helm-projectile
-  :ensure t
-  :after (helm projectile)
-  :config
-  (helm-projectile-on))
+    "pt" '(projectile-test-project :which-key "test project"))
+  :custom
+  (setq projectile-ignored-projects "~/"))
 
 (use-package persp-mode-projectile-bridge
   :ensure t
@@ -669,10 +678,6 @@
   :mode (("\\.http\\'" . restclient-mode))
   :bind (:map restclient-mode-map
               ("C-c C-f" . json-mode-beautify))) ;TODO: change to only apply json formatting when the content-type is application/json
-
-(use-package restclient-helm
-  :ensure t
-  :after (restclient))
 
 ;; Syntax Checking
 
