@@ -921,7 +921,7 @@ Default hook to allow code collapsing
     (elfeed))
 
   (pt/leader-keys
-    "or" '(update-and-open-elfeed :which-key "elfeed"))
+    "Or" '(update-and-open-elfeed :which-key "elfeed"))
 #+end_src
 
 *** Elfeed Org

@@ -833,7 +833,7 @@
   (elfeed))
 
 (pt/leader-keys
-  "or" '(update-and-open-elfeed :which-key "elfeed"))
+  "Or" '(update-and-open-elfeed :which-key "elfeed"))
 
 ;; Elfeed Org
 
