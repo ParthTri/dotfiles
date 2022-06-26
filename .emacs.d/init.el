@@ -847,9 +847,3 @@
 (use-package ledger-mode
   :ensure t
   :mode ("\\.journal\\'" "\\.ledger.*\\'"))
-
-;; Invoice Maker
-
-(defun get-org-properties
-    "Function that reads a org subtree and returns a list of the properties"
-  )

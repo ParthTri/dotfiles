@@ -936,10 +936,6 @@ Default hook to allow code collapsing
     :ensure t
     :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 #+end_src
-** Invoice Maker
-#+begin_src emacs-lisp
-  (defun get-org-properties
-      "Function that reads a org subtree and returns a list of the properties"
-    )
-#+end_src
+
+
 
