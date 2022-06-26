@@ -801,30 +801,18 @@
   (pt/leader-keys
     "ot" '(vterm-toggle :which-key "terminal")))
 
-;; LSP
+;; Eglot
 
-(use-package lsp-mode
-  :ensure t
-  :commands lsp
-  :diminish lsp-mode
-  :hook ((python-mode . lsp)
-         ((js2-mode rjsx-mode) . lsp))
-  :init
-  (setq lsp-keymap-prefix "s-l")
+(use-package eglot
+  :defer t
+  :bind (:map eglot-mode-map
+              ("C-c l a" . eglot-code-actions)
+              ("C-c l r" . eglot-rename)
+              ("C-c l f" . eglot-format)
+              ("C-c l d" . eldoc))
   :config
-  (lsp-enable-which-key-integration t)
-  (setq lsp-prefer-capf t)
-  (setq lsp-auto-configure t
-        lsp-auto-guess-root t
-        ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
-        lsp-diagnostic-package :none))
-
-;; UI
-
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom))
+  (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
+  (add-to-list 'eglot-server-programs '((js2-mode rjsx-mode) "typescript-language-server"))
 
 ;; Elfeed
 
