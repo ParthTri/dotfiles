@@ -65,11 +65,16 @@
 
 ;; Theme
 
-(use-package atom-one-dark-theme
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'atom-one-dark t)
-  (setq atom-one-dark-theme-force-faces-for-mode t))
+  (load-theme 'doom-tokyo-night)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t)
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; Modeline
 
