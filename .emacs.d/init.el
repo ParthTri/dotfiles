@@ -303,7 +303,8 @@
 
   :config
   (setq org-ellipsis " ▾"
-        org-hide-emphasis-markers t))
+        org-hide-emphasis-markers t)
+  (setq org-image-actual-width nil))
 
 (setq org-hide-emphasis-markers t)
 (use-package org-bullets
@@ -444,7 +445,7 @@
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance '("crypt"))
   :custom
-  (setq org-crypt-key "0x49A69233"))
+  (setq org-crypt-key "0x577FBF62"))
 
 ;; Epa
 
