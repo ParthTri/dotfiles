@@ -272,11 +272,6 @@
 (global-set-key (kbd "<prior>") 'ns-next-frame)
 (global-set-key (kbd "<next>") 'ns-prev-frame)
 
-;; Flyspell
-
-(dolist (hook '(text-mode-hook))
-             (add-hook hook (lambda () (flycheck-mode 1))))
-
 ;; Org Capture Todo
 
 (fset 'open-org-capture-todo
@@ -293,7 +288,8 @@
   (setq evil-auto-indent nil))
 
 (use-package org
-  :hook (org-mode . pt/org-mode-setup)
+  :hook ((org-mode . pt/org-mode-setup)
+         (flyspell-mode . org-mode))
   :bind (:map org-mode-map
               ("C-C e" . org-mobile-push)
               ("C-c i" . org-mobile-pull)
