@@ -109,7 +109,7 @@
     :global-prefix "C-SPC"))
 
 (pt/leader-keys
-  "SPC" '(find-files :which-key "files")
+  "SPC" '(find-file :which-key "files")
   "RET" '(list-bookmarks :which-key "bookmarks"))
 
 (pt/leader-keys
