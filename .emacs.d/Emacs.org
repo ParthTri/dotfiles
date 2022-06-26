@@ -851,6 +851,12 @@ Default hook to allow code collapsing
           js-indent-level 2))
 #+end_src
 
+**** JS2
+#+begin_src emacs-lisp
+  (use-package js2-mode
+    :ensure t)
+#+end_src
+
 **** Prettier
 #+begin_src emacs-lisp
   (use-package prettier-js

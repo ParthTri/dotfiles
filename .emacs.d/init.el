@@ -770,6 +770,11 @@
         js2-basic-offset 2
         js-indent-level 2))
 
+;; JS2
+
+(use-package js2-mode
+  :ensure t)
+
 ;; Prettier
 
 (use-package prettier-js
