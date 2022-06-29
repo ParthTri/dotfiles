@@ -851,3 +851,11 @@
 (use-package ledger-mode
   :ensure t
   :mode ("\\.journal\\'" "\\.ledger.*\\'"))
+
+;; Centered Window
+
+(use-package centered-window
+  :ensure t
+  :config
+  (pt/leader-keys
+    "tc" '(centered-window-mode :which-key "center")))

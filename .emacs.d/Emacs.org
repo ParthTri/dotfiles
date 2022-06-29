@@ -46,6 +46,7 @@
 - [[#other][Other]]
   - [[#elfeed][Elfeed]]
   - [[#ledger][Ledger]]
+  - [[#centered-window][Centered Window]]
 
 * General
 ** Basic Stuff
@@ -940,6 +941,11 @@ Default hook to allow code collapsing
     :ensure t
     :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 #+end_src
-
-
-
+** Centered Window
+#+begin_src emacs-lisp
+  (use-package centered-window
+    :ensure t
+    :config
+    (pt/leader-keys
+      "tc" '(centered-window-mode :which-key "center")))
+#+end_src
