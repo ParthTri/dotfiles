@@ -877,6 +877,9 @@ Default hook to allow code collapsing
 #+begin_src emacs-lisp
   (use-package vterm
     :ensure t
+    :config
+    (pt/leader-keys
+      "ot" '(vterm :which-key "vterm"))
     )
 #+end_src
 
@@ -886,7 +889,7 @@ Default hook to allow code collapsing
     :ensure t
     :config
     (pt/leader-keys
-      "ot" '(vterm-toggle :which-key "terminal")))
+      "tT" '(vterm-toggle :which-key "vterm Toggle")))
 #+end_src
 ** Eglot
 #+begin_src emacs-lisp

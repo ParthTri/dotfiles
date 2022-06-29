@@ -793,6 +793,9 @@
 
 (use-package vterm
   :ensure t
+  :config
+  (pt/leader-keys
+    "ot" '(vterm :which-key "vterm"))
   )
 
 ;; Toggle
@@ -801,7 +804,7 @@
   :ensure t
   :config
   (pt/leader-keys
-    "ot" '(vterm-toggle :which-key "terminal")))
+    "tT" '(vterm-toggle :which-key "vterm Toggle")))
 
 ;; Eglot
 
