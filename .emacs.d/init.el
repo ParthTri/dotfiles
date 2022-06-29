@@ -285,11 +285,11 @@
   (org-indent-mode)
   (auto-fill-mode 0)
   (visual-line-mode 1)
+  (flyspell-mode)
   (setq evil-auto-indent nil))
 
 (use-package org
-  :hook ((org-mode . pt/org-mode-setup)
-         (flyspell-mode . org-mode))
+  :hook ((org-mode . pt/org-mode-setup))
   :bind (:map org-mode-map
               ("C-C e" . org-mobile-push)
               ("C-c i" . org-mobile-pull)
