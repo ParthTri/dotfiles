@@ -916,6 +916,7 @@ Default hook to allow code collapsing
 
   (defun update-and-open-elfeed ()
     (interactive)
+    (elfeed-org)
     (elfeed-update)
     (elfeed))
 

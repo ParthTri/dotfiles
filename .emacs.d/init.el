@@ -829,6 +829,7 @@
 
 (defun update-and-open-elfeed ()
   (interactive)
+  (elfeed-org)
   (elfeed-update)
   (elfeed))
 
