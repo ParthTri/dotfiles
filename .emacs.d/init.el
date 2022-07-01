@@ -858,4 +858,5 @@
   :ensure t
   :config
   (pt/leader-keys
-    "tc" '(centered-window-mode :which-key "center")))
+    "tc" '(centered-window-mode :which-key "center"))
+  (setq cwm-centered-window-width 140))
