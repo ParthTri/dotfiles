@@ -68,7 +68,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-tokyo-night)
+  (load-theme 'doom-tokyo-night t)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t)
   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
@@ -295,7 +295,8 @@
               ("C-c i" . org-mobile-pull)
               ("C-c l" . latex-frag)
               ("C-c L" . latex-frag-mult)
-              ("C-c R" . org-table-sort-lines))
+              ("C-c R" . org-table-sort-lines)
+              ("C-c [" . org-reftex-citation))
 
   :config
   (setq org-ellipsis " ▾"
@@ -817,7 +818,7 @@
               ("C-c l d" . eldoc))
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
-  (add-to-list 'eglot-server-programs '((js2-mode rjsx-mode) "typescript-language-server"))
+  (add-to-list 'eglot-server-programs '((js2-mode rjsx-mode) "typescript-language-server")))
 
 ;; Elfeed
 
@@ -860,3 +861,11 @@
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(epa-gpg-program "/usr/local/bin/gpg")
+ '(package-selected-packages
+   '(org-fancy-priorities counsel-projectile yaml-mode which-key web-mode vterm-toggle use-package treemacs-projectile treemacs-persp treemacs-magit treemacs-evil toc-org skeletor rust-mode rjsx-mode rich-minority restclient rainbow-delimiters prettier-js powerline popup perspective persp-mode-projectile-bridge pdf-tools ox-pandoc org-tree-slide org-roam-ui org-journal org-bullets nvm neotree lua-mode lsp-jedi ledger-mode json-mode iter2 htmlize gnuplot-mode gnuplot git-gutter general flycheck evil-collection esxml epc emmet-mode elpy elfeed-org eglot doom-themes doom-modeline dockerfile-mode counsel company-box commenter command-log-mode colorless-themes citeproc centered-window bibtex-completion autothemer async)))
