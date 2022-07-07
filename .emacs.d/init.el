@@ -498,7 +498,7 @@
 
 (defun pt/org-babel-tangle-config ()
     (when (string-equal (buffer-file-name)
-                        (expand-file-name "~/.dotfiles/.emacs.d/Emacs.org"))
+                        (expand-file-name "~/.dotfiles/Emacs.org"))
       ;; Dynamic scoping to the rescue
       (let ((org-confirm-babel-evaluate nil))
         (org-babel-tangle))))
