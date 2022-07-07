@@ -19,4 +19,8 @@ bind \cn 'nvim'
 # keyboard shortcut to fuzzy find and switch to directory
 bind \cf 'sd'
 
+# keyboard shortcut to open a tmux session in current directory
+bind \ct 'tmux new -s (basename (pwd))'
+
+
 starship init fish | source
