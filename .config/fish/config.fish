@@ -13,4 +13,7 @@ alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Make
 # alias for fzf directory switching
 alias sd "cd ~ && cd (find * -type d | fzf)"
 
+# keyboard shortcut to open neovim in current directory
+bind \cn 'nvim'
+
 starship init fish | source
