@@ -2,39 +2,26 @@
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
 
-## Close active application
-hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
-
-# test a command
-# lshift - x : terminal-notifier -message "lshift - x"
-#lshift - x : terminal-notifier -message "$(yabai -m query --windows --window | jq -re ".id")"
-
 ## open terminal
-hyper - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# hyper - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 ## open emacs
 hyper - e : /usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.3/Emacs.app/Contents/MacOS/Emacs 
 
 ## open emacsclient
-hyper - c : emacsclient -c 
-
-## open emacs with school file
-hyper - p : emacsclient -ce '(persp-switch "school")'
+hyper - f : emacsclient -c 
 
 ## open brave browser
-hyper - q : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-
-## open firefox browser
-hyper - f : /Applications/Firefox.app/Contents/MacOS/firefox-bin
+# hyper - q : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 
 ## open discord
-hyper - d : /Applications/Discord.app/Contents/MacOS/Discord
+# hyper - d : /Applications/Discord.app/Contents/MacOS/Discord
 
 ## open spotify
-hyper - s : /Applications/Spotify.app/Contents/MacOS/Spotify
+# hyper - s : /Applications/Spotify.app/Contents/MacOS/Spotify
 
 ## open calander
-hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
+# hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
 
 ## open notes
-hyper - x : /System/Applications/Notes.app/Contents/MacOS/Notes
+# hyper - x : /System/Applications/Notes.app/Contents/MacOS/Notes
