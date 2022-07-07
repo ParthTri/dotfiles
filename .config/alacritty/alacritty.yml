@@ -5,7 +5,7 @@ window:
     x: 5
     y: 0
   dynamic_padding: false
-  opacity: 0.9
+  opacity: 0.95
   decorations: none
 
 font:
