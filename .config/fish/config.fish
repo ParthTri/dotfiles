@@ -11,9 +11,12 @@ alias ghci "stack ghci"
 alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Maker/src/main.py"
 
 # alias for fzf directory switching
-alias sd "cd ~ && cd (find * -type d | fzf)"
+alias sd "cd && cd (find ~/* -type d -path (string join '/' $HOME 'Library/*') -prune -o -print | fzf)"
 
 # keyboard shortcut to open neovim in current directory
 bind \cn 'nvim'
+
+# keyboard shortcut to fuzzy find and switch to directory
+bind \cf 'sd'
 
 starship init fish | source
