@@ -41,4 +41,7 @@ require('packer').startup(function()
 
     -- Git
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
+    -- Status line
+    use 'ojroques/nvim-hardline'
 end)

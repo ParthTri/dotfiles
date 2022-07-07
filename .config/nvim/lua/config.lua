@@ -40,3 +40,5 @@ lsp.setup()
 local neogit = require('neogit')
 
 neogit.setup {}
+-- Status line_lenses
+require('hardline').setup()
