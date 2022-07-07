@@ -22,5 +22,7 @@ bind \cf 'sd'
 # keyboard shortcut to open a tmux session in current directory
 bind \ct 'tmux new -s (basename (pwd))'
 
+# keyboard shortcut to attach to last tmux session  
+bind \cr 'tmux a'
 
 starship init fish | source
