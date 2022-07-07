@@ -36,6 +36,10 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Move to trash instead of delete
+
+(setq delete-by-moving-to-trash t)
+
 ;; Use package
 
 (require 'package)
@@ -194,6 +198,7 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (define-key evil-normal-state-map (kbd "?") 'replace-regexp)
 
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
@@ -277,6 +282,37 @@
 (fset 'open-org-capture-todo
    (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
+;; Rainbow Delimiters
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Treemacs
+
+(use-package treemacs
+  :ensure t
+  :config
+  (treemacs-resize-icons 14)
+  (pt/leader-keys
+    "te" '(treemacs :which-key "treemacs")))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-persp
+  :after (treemacs persp-mode)
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
@@ -316,6 +352,12 @@
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 (setq org-duration-format (quote h:mm))
+
+;; Org Citations
+
+(use-package org-ref
+  :ensure t
+  :after org)
 
 ;; Single line
 
@@ -570,256 +612,6 @@
 (pt/leader-keys
   "Oo" '(create-tmp-org :which-key "tmp org"))
 
-;; Skeletor
-
-(use-package skeletor
-    :config
-    (setq skeletor-project-directory "~/Projects"
-          skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
-          skeletor--project-types nil))
-
-(pt/leader-keys
-  "pc" '(skeletor-create-project :which-key "create project")
-  "pC" '(skeletor-create-project-at :which-key "create project at")
-  )
-
-;; Python
-
-(skeletor-define-template "python-project"
-  :title "Python Project"
-  :after-creation
-  (lambda (dir)
-    (skeletor-async-shell-command "python3 -m venv venv")
-    (vterm)
-    (vterm-send-string (format "cd %s \n" dir))
-    (vterm-send-string ". venv/bin/activate.fish \n")
-    (vterm-send-string "pip3 install pytest")
-    (rename-buffer skeletor-project-name)
-    )
-  :initialise)
-
-;; Vanilla JS
-
-(skeletor-define-template "vanilla-js"
-  :title "Vanilla JS Project"
-  :initialise)
-
-;; React
-
-(skeletor-define-template "react-project"
-  :title "React.js Project"
-  :no-license? t
-  :after-creation
-  (lambda (dir)
-    (skeletor-async-shell-command "create-react-app $PWD"))
-  :initialise
-  )
-
-;; Projectile
-
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Projects")
-    (setq projectile-project-search-path '("~/Projects")))
-  (setq projectile-switch-project-action #'projectile-dired)
-
-  (pt/leader-keys
-    "p" '(:ignore p :which-key "projects")
-    "pp" '(projectile-switch-project :which-key "switch to project")
-    "pt" '(projectile-test-project :which-key "test project"))
-  :custom
-  (setq projectile-ignored-projects "~/"))
-
-(use-package persp-mode-projectile-bridge
-  :ensure t
-  :after (persp projectile))
-
-(add-hook 'after-init-hook #'persp-mode-projectile-bridge-mode)
-
-;; Rainbow Delimiters
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-;; Treemacs
-
-(use-package treemacs
-  :ensure t
-  :config
-  (treemacs-resize-icons 14)
-  (pt/leader-keys
-    "te" '(treemacs :which-key "treemacs")))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
-(use-package treemacs-persp
-  :after (treemacs persp-mode)
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
-
-;; Rest Client
-
-(use-package restclient
-  :ensure t
-  :defer t
-  :mode (("\\.http\\'" . restclient-mode))
-  :bind (:map restclient-mode-map
-              ("C-c C-f" . json-mode-beautify))) ;TODO: change to only apply json formatting when the content-type is application/json
-
-;; Syntax Checking
-
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode))
-
-;; Magit
-
-(use-package magit
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  :config
-  (pt/leader-keys
-    "g" '(:ignore g :which-key "git")
-    "gs" '(magit-stage-file :which-key "stage file")
-    "gS" '(magit-stage :which-key "stage all")
-    "gc" '(magit-commit :which-key "commit")
-    "gg" '(magit-status :which-key "status")))
-
-;; Git Gutter
-
-(use-package git-gutter
-  :ensure t
-  :config
-  (global-git-gutter-mode t))
-
-(pt/leader-keys
-  "tg" '(git-gutter-mode :which-key "gutter"))
-
-;; Languages
-;; Default hook to allow code collapsing
-
-
-(add-hook 'prog-mode-hook 'hs-minor-mode)
-
-;; Python
-
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
-
-(use-package pyvenv
-  :config
-  (pyvenv-mode 1))
-
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
-
-;; Lua
-
-(use-package lua-mode
-  :ensure t)
-
-;; Web
-
-(use-package web-mode
-  :ensure t
-  :mode ("\\.html\\'"))
-
-;; Emmet mode
-
-(use-package emmet-mode
-  :ensure t
-  :hook ((web-mode . emmet-mode)
-         (rjsx-mode . emmet-mode))
-  :config
-  (setq emmet-move-cursor-between-quotes t))
-
-;; rjsx
-
-(use-package rjsx-mode
-  :mode ("\\.js\\'"
-         "\\.jsx\\'")
-  :config
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil
-        js2-basic-offset 2
-        js-indent-level 2))
-
-;; JS2
-
-(use-package js2-mode
-  :ensure t)
-
-;; Prettier
-
-(use-package prettier-js
-  :ensure t
-  :after (js-mode)
-  :hook (((js2-mode rjsx-mode) . prettier-js-mode)))
-
-;; Json
-
-(use-package json-mode
-  :ensure t)
-
-;; Docker
-
-(use-package dockerfile-mode
-  :ensure t)
-
-;; Vterm
-
-(use-package vterm
-  :ensure t
-  :config
-  (pt/leader-keys
-    "ot" '(vterm :which-key "vterm"))
-  )
-
-;; Toggle
-
-(use-package vterm-toggle
-  :ensure t
-  :config
-  (pt/leader-keys
-    "tT" '(vterm-toggle :which-key "vterm Toggle")))
-
-;; Eglot
-
-(use-package eglot
-  :defer t
-  :bind (:map eglot-mode-map
-              ("C-c l a" . eglot-code-actions)
-              ("C-c l r" . eglot-rename)
-              ("C-c l f" . eglot-format)
-              ("C-c l d" . eldoc))
-  :config
-  (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
-  (add-to-list 'eglot-server-programs '((js2-mode rjsx-mode) "typescript-language-server")))
-
 ;; Elfeed
 
 (use-package elfeed
@@ -861,11 +653,3 @@
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(epa-gpg-program "/usr/local/bin/gpg")
- '(package-selected-packages
-   '(org-fancy-priorities counsel-projectile yaml-mode which-key web-mode vterm-toggle use-package treemacs-projectile treemacs-persp treemacs-magit treemacs-evil toc-org skeletor rust-mode rjsx-mode rich-minority restclient rainbow-delimiters prettier-js powerline popup perspective persp-mode-projectile-bridge pdf-tools ox-pandoc org-tree-slide org-roam-ui org-journal org-bullets nvm neotree lua-mode lsp-jedi ledger-mode json-mode iter2 htmlize gnuplot-mode gnuplot git-gutter general flycheck evil-collection esxml epc emmet-mode elpy elfeed-org eglot doom-themes doom-modeline dockerfile-mode counsel company-box commenter command-log-mode colorless-themes citeproc centered-window bibtex-completion autothemer async)))

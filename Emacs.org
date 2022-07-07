@@ -23,8 +23,11 @@
   - [[#transparency][Transparency]]
   - [[#moving-frames][Moving Frames]]
   - [[#macros][Macros]]
+  - [[#rainbow-delimiters][Rainbow Delimiters]]
+  - [[#treemacs][Treemacs]]
 - [[#org-mode][Org Mode]]
   - [[#org-configuration][Org Configuration]]
+  - [[#org-citations][Org Citations]]
   - [[#latex-fragments][Latex Fragments]]
   - [[#custom-faces][Custom Faces]]
   - [[#agenda][Agenda]]
@@ -38,11 +41,6 @@
   - [[#exports][Exports]]
   - [[#presentations][Presentations]]
   - [[#temporary-buffer][Temporary Buffer]]
-- [[#development][Development]]
-  - [[#git][Git]]
-  - [[#languages][Languages]]
-  - [[#terminals][Terminals]]
-  - [[#eglot][Eglot]]
 - [[#other][Other]]
   - [[#elfeed][Elfeed]]
   - [[#ledger][Ledger]]
@@ -88,6 +86,10 @@
 *** Make ESC quit prompts
 #+begin_src emacs-lisp
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+end_src
+*** Move to trash instead of delete
+#+begin_src emacs-lisp
+  (setq delete-by-moving-to-trash t)
 #+end_src
 ** Use package
 #+begin_src emacs-lisp
@@ -338,6 +340,37 @@ Write backups to ~/.emacs.d/backup/
      (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
 #+end_src
+** Rainbow Delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+** Treemacs
+#+begin_src emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :config
+    (treemacs-resize-icons 14)
+    (pt/leader-keys
+      "te" '(treemacs :which-key "treemacs")))
+
+  (use-package treemacs-evil
+    :after (treemacs evil)
+    :ensure t)
+
+  (use-package treemacs-projectile
+    :after (treemacs projectile)
+    :ensure t)
+
+  (use-package treemacs-magit
+    :after (treemacs magit)
+    :ensure t)
+
+  (use-package treemacs-persp
+    :after (treemacs persp-mode)
+    :ensure t
+    :config (treemacs-set-scope-type 'Perspectives))
+#+end_src
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
@@ -378,6 +411,12 @@ Write backups to ~/.emacs.d/backup/
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   (setq org-duration-format (quote h:mm))
+#+end_src
+** Org Citations
+#+begin_src emacs-lisp
+  (use-package org-ref
+    :ensure t
+    :after org)
 #+end_src
 ** Latex Fragments
 #+begin_src 
@@ -528,7 +567,7 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (defun pt/org-babel-tangle-config ()
       (when (string-equal (buffer-file-name)
-                          (expand-file-name "~/.dotfiles/.emacs.d/Emacs.org"))
+                          (expand-file-name "~/.dotfiles/Emacs.org"))
         ;; Dynamic scoping to the rescue
         (let ((org-confirm-babel-evaluate nil))
           (org-babel-tangle))))
@@ -644,270 +683,6 @@ Write backups to ~/.emacs.d/backup/
   (pt/leader-keys
     "Oo" '(create-tmp-org :which-key "tmp org"))
 #+end_src
-* Development
-*** Skeletor
-#+begin_src emacs-lisp
-  (use-package skeletor
-      :config
-      (setq skeletor-project-directory "~/Projects"
-            skeletor-user-directory "~/.dotfiles/.emacs.d/Templates"
-            skeletor--project-types nil))
-
-  (pt/leader-keys
-    "pc" '(skeletor-create-project :which-key "create project")
-    "pC" '(skeletor-create-project-at :which-key "create project at")
-    )
-#+end_src
-**** Templates
-***** Python
-#+begin_src emacs-lisp
-  (skeletor-define-template "python-project"
-    :title "Python Project"
-    :after-creation
-    (lambda (dir)
-      (skeletor-async-shell-command "python3 -m venv venv")
-      (vterm)
-      (vterm-send-string (format "cd %s \n" dir))
-      (vterm-send-string ". venv/bin/activate.fish \n")
-      (vterm-send-string "pip3 install pytest")
-      (rename-buffer skeletor-project-name)
-      )
-    :initialise)
-#+end_src
-***** Vanilla JS
-#+begin_src emacs-lisp
-  (skeletor-define-template "vanilla-js"
-    :title "Vanilla JS Project"
-    :initialise)
-#+end_src
-***** React
-#+begin_src emacs-lisp
-  (skeletor-define-template "react-project"
-    :title "React.js Project"
-    :no-license? t
-    :after-creation
-    (lambda (dir)
-      (skeletor-async-shell-command "create-react-app $PWD"))
-    :initialise
-    )
-#+end_src
-
-*** Projectile
-#+begin_src emacs-lisp
-  (use-package projectile
-    :diminish projectile-mode
-    :config (projectile-mode)
-    :custom ((projectile-completion-system 'ivy))
-    :bind-keymap
-    ("C-c p" . projectile-command-map)
-    :init
-    ;; NOTE: Set this to the folder where you keep your Git repos!
-    (when (file-directory-p "~/Projects")
-      (setq projectile-project-search-path '("~/Projects")))
-    (setq projectile-switch-project-action #'projectile-dired)
-
-    (pt/leader-keys
-      "p" '(:ignore p :which-key "projects")
-      "pp" '(counsel-projectile-switch-project :which-key "switch to project")
-      "pt" '(projectile-test-project :which-key "test project"))
-    :custom
-    (setq projectile-ignored-projects "~/"))
-
-  (use-package persp-mode-projectile-bridge
-    :ensure t
-    :after (persp projectile))
-
-  (add-hook 'after-init-hook #'persp-mode-projectile-bridge-mode)
-
-#+end_src
-*** Rainbow Delimiters
-#+begin_src emacs-lisp
-  (use-package rainbow-delimiters
-    :hook (prog-mode . rainbow-delimiters-mode))
-#+end_src
-*** Treemacs
-#+begin_src emacs-lisp
-  (use-package treemacs
-    :ensure t
-    :config
-    (treemacs-resize-icons 14)
-    (pt/leader-keys
-      "te" '(treemacs :which-key "treemacs")))
-
-  (use-package treemacs-evil
-    :after (treemacs evil)
-    :ensure t)
-
-  (use-package treemacs-projectile
-    :after (treemacs projectile)
-    :ensure t)
-
-  (use-package treemacs-magit
-    :after (treemacs magit)
-    :ensure t)
-
-  (use-package treemacs-persp
-    :after (treemacs persp-mode)
-    :ensure t
-    :config (treemacs-set-scope-type 'Perspectives))
-#+end_src
-*** Rest Client
-#+begin_src emacs-lisp
-  (use-package restclient
-    :ensure t
-    :defer t
-    :mode (("\\.http\\'" . restclient-mode))
-    :bind (:map restclient-mode-map
-                ("C-c C-f" . json-mode-beautify))) ;TODO: change to only apply json formatting when the content-type is application/json
-#+end_src
-*** Syntax Checking
-#+begin_src emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init
-    (global-flycheck-mode))
-#+end_src
-** Git
-*** Magit
-#+begin_src emacs-lisp
-  (use-package magit
-    :custom
-    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-    :config
-    (pt/leader-keys
-      "g" '(:ignore g :which-key "git")
-      "gs" '(magit-stage-file :which-key "stage file")
-      "gS" '(magit-stage :which-key "stage all")
-      "gc" '(magit-commit :which-key "commit")
-      "gg" '(magit-status :which-key "status")))
-#+end_src
-*** Git Gutter
-#+begin_src emacs-lisp
-  (use-package git-gutter
-    :ensure t
-    :config
-    (global-git-gutter-mode t))
-
-  (pt/leader-keys
-    "tg" '(git-gutter-mode :which-key "gutter"))
-#+end_src
-** Languages
-Default hook to allow code collapsing
-
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'hs-minor-mode)
-#+end_src
-*** Python
-#+begin_src emacs-lisp
-  (use-package elpy
-    :ensure t
-    :defer t
-    :init
-    (advice-add 'python-mode :before 'elpy-enable))
-
-  (use-package pyvenv
-    :config
-    (pyvenv-mode 1))
-
-  (use-package lsp-jedi
-    :ensure t
-    :config
-    (with-eval-after-load "lsp-mode"
-      (add-to-list 'lsp-disabled-clients 'pyls)
-      (add-to-list 'lsp-enabled-clients 'jedi)))
-#+end_src
-*** Lua
-#+begin_src emacs-lisp
-  (use-package lua-mode
-    :ensure t)
-#+end_src
-*** Web
-#+begin_src emacs-lisp
-  (use-package web-mode
-    :ensure t
-    :mode ("\\.html\\'"))
-#+end_src
-
-**** Emmet mode
-#+begin_src emacs-lisp
-  (use-package emmet-mode
-    :ensure t
-    :hook ((web-mode . emmet-mode)
-           (rjsx-mode . emmet-mode))
-    :config
-    (setq emmet-move-cursor-between-quotes t))
-#+end_src
-
-**** rjsx
-#+begin_src emacs-lisp
-  (use-package rjsx-mode
-    :mode ("\\.js\\'"
-           "\\.jsx\\'")
-    :config
-    (setq js2-mode-show-parse-errors nil
-          js2-mode-show-strict-warnings nil
-          js2-basic-offset 2
-          js-indent-level 2))
-#+end_src
-
-**** JS2
-#+begin_src emacs-lisp
-  (use-package js2-mode
-    :ensure t)
-#+end_src
-
-**** Prettier
-#+begin_src emacs-lisp
-  (use-package prettier-js
-    :ensure t
-    :after (js-mode)
-    :hook (((js2-mode rjsx-mode) . prettier-js-mode)))
-#+end_src
-
-**** Json
-#+begin_src emacs-lisp
-  (use-package json-mode
-    :ensure t)
-#+end_src
-
-*** Docker
-#+begin_src emacs-lisp
-  (use-package dockerfile-mode
-    :ensure t)
-#+end_src
-** Terminals
-*** Vterm
-#+begin_src emacs-lisp
-  (use-package vterm
-    :ensure t
-    :config
-    (pt/leader-keys
-      "ot" '(vterm :which-key "vterm"))
-    )
-#+end_src
-
-**** Toggle
-#+begin_src emacs-lisp
-  (use-package vterm-toggle
-    :ensure t
-    :config
-    (pt/leader-keys
-      "tT" '(vterm-toggle :which-key "vterm Toggle")))
-#+end_src
-** Eglot
-#+begin_src emacs-lisp
-  (use-package eglot
-    :defer t
-    :bind (:map eglot-mode-map
-                ("C-c l a" . eglot-code-actions)
-                ("C-c l r" . eglot-rename)
-                ("C-c l f" . eglot-format)
-                ("C-c l d" . eldoc))
-    :config
-    (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
-    (add-to-list 'eglot-server-programs '((js2-mode rjsx-mode) "typescript-language-server")))
-#+end_src
-
 * Other
 ** Elfeed
 #+begin_src emacs-lisp
