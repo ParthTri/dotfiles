@@ -11,6 +11,19 @@
 ## open emacsclient
 hyper - f : emacsclient -c 
 
+## opening Alacritty
+hyper - t : alacritty
+
+## opening spotify
+hyper - m : /Applications/Spotify.app/Contents/MacOS/Spotify
+
+## opening discord
+hyper - d : /Applications/Discord.app/Contents/MacOS/Discord
+
+## opening calendar
+hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
+
+##### YABAI BINGINGS #####
 # focus window
 ctrl + shift - h : yabai -m window --focus west
 ctrl + shift - j : yabai -m window --focus south
