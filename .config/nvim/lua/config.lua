@@ -5,6 +5,7 @@ vim.bo.shiftwidth = 2
 vim.bo.softtabstop = 2
 vim.wo.number = true
 vim.opt.relativenumber = true
+vim.api.nvim_set_option("clipboard","unnamed")
 
 -- colorscheme
 require("kanagawa").setup({
