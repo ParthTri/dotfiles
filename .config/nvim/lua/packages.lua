@@ -44,4 +44,10 @@ require('packer').startup(function()
 
     -- Status line
     use 'ojroques/nvim-hardline'
+
+    -- Tab Bar
+    use {
+	'romgrk/barbar.nvim',
+	requires = {'kyazdani42/nvim-web-devicons'}
+  }
 end)
