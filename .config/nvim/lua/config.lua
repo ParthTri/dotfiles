@@ -26,7 +26,6 @@ require("kanagawa").setup({
 })
 vim.cmd("colorscheme kanagawa")
 
-
 -- file explorer
 require("nvim-tree").setup()
 
@@ -39,7 +38,19 @@ lsp.setup()
 
 -- neogit
 local neogit = require('neogit')
-
 neogit.setup {}
+
 -- Status line
 require('hardline').setup()
+
+-- Tab Bar
+require('bufferline').setup({
+	animation = true,
+	auto_hide = false,
+	tab_pages = true,
+	closable = true,
+	clickable = true,
+	icons = true,
+	insert_at_end = true,
+	insert_at_start = false
+})
