@@ -12,6 +12,7 @@ keymap('n', '<C-l>', '<C-w>l', {})
 -- Buffers
 keymap('n', 'L', ':bn<CR>', {})
 keymap('n', 'H', ':bp<CR>', {})
+keymap('n', '<C-d>', ':bd<CR>', {})
 
 -- File Explorer
 keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
