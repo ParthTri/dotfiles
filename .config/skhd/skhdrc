@@ -17,9 +17,6 @@ hyper - t : alacritty
 ## opening spotify
 hyper - m : /Applications/Spotify.app/Contents/MacOS/Spotify
 
-## opening discord
-hyper - d : /Applications/Discord.app/Contents/MacOS/Discord
-
 ## opening calendar
 hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
 
