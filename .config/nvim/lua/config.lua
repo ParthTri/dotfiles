@@ -27,7 +27,11 @@ require("kanagawa").setup({
 vim.cmd("colorscheme kanagawa")
 
 -- file explorer
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+	filters = {
+		dotfiles = false,
+	}
+})
 
 -- lsp
 local lsp = require('lsp-zero')
@@ -53,4 +57,21 @@ require('bufferline').setup({
 	icons = true,
 	insert_at_end = true,
 	insert_at_start = false
+})
+
+-- Rest Client
+require('rest-nvim').setup({
+	result_split_horizontal = false,
+	result_split_in_place = false,
+	skip_ssl_verification = false,
+	highlight = {
+		enabled = true
+	},
+	result = {
+		show_url = true,
+		show_http_info = true,
+		show_headers = true
+	},
+	jump_to_request = false,
+	env_file = ".env"
 })
