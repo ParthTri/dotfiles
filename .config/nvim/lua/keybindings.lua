@@ -10,8 +10,8 @@ keymap('n', '<C-h>', '<C-w>h', {})
 keymap('n', '<C-l>', '<C-w>l', {})
 
 -- Buffers
-keymap('n', 'L', ':bn<CR>', {})
-keymap('n', 'H', ':bp<CR>', {})
+keymap('n', 'L', ':bp<CR>', {})
+keymap('n', 'H', ':bn<CR>', {})
 keymap('n', '<C-d>', ':bd<CR>', {})
 
 -- File Explorer
