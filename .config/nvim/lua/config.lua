@@ -33,6 +33,9 @@ require("nvim-tree").setup({
 	}
 })
 
+-- Comment
+require('nvim_comment').setup()
+
 -- lsp
 local lsp = require('lsp-zero')
 

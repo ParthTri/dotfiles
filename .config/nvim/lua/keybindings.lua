@@ -19,3 +19,6 @@ keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
 
 -- Neogit
 keymap('n', '<C-g>', ':Neogit<CR>', {})
+
+-- Comments
+keymap('n', '<C-c>', ':CommentToggle<CR>', {})

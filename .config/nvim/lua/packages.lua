@@ -11,8 +11,11 @@ require('packer').startup(function()
   use 'ray-x/guihua.lua'
 
   -- File Explorer
-  use 'kyazdani42/nvim-web-devicons' 
+  use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
+
+  -- Comment
+  use "terrortylor/nvim-comment"
 
   -- Tree Sitter
   use "nvim-treesitter/nvim-treesitter"
