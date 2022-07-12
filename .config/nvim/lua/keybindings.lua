@@ -20,6 +20,7 @@ keymap('n', '<C-g>', ':Neogit<CR>', {})
 
 -- Comments
 keymap('n', '<C-c>', ':CommentToggle<CR>', {})
+keymap('v', '<C-c>', ':CommentToggle<CR>', {})
 
 -- Tabs
 keymap('n', 'L', ':BufferNext<CR>', {})
