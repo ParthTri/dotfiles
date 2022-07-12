@@ -10,8 +10,6 @@ keymap('n', '<C-h>', '<C-w>h', {})
 keymap('n', '<C-l>', '<C-w>l', {})
 
 -- Buffers
-keymap('n', 'L', ':bp<CR>', {})
-keymap('n', 'H', ':bn<CR>', {})
 keymap('n', '<C-d>', ':bd<CR>', {})
 
 -- File Explorer
@@ -22,3 +20,7 @@ keymap('n', '<C-g>', ':Neogit<CR>', {})
 
 -- Comments
 keymap('n', '<C-c>', ':CommentToggle<CR>', {})
+
+-- Tabs
+keymap('n', 'L', ':BufferNext<CR>', {})
+keymap('n', 'H', ':BufferPrevious<CR>', {})
