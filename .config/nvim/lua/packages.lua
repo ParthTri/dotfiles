@@ -53,10 +53,4 @@ require('packer').startup(function()
 	'romgrk/barbar.nvim',
 	requires = {'kyazdani42/nvim-web-devicons'}
     }
-
-    -- Rest Client
-    use {
-	"NTBBloodbath/rest.nvim",
-	requires = { "nvim-lua/plenary.nvim" }
-    }
 end)
