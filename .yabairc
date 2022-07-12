@@ -34,4 +34,13 @@ yabai -m config left_padding   10
 yabai -m config right_padding  10
 yabai -m config window_gap     10
 
+# apps to not manage (ignore)
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="^balenaEtcher$" manage=off
+yabai -m rule --add app="^Alfred Preferences$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^SpaceLauncher$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+
 echo "yabai configuration loaded.."
