@@ -43,6 +43,9 @@ lsp.preset('recommended')
 lsp.nvim_workspace()
 lsp.setup()
 
+-- Snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
 -- neogit
 local neogit = require('neogit')
 neogit.setup {}
@@ -61,3 +64,4 @@ require('bufferline').setup({
 	insert_at_end = true,
 	insert_at_start = false
 })
+
