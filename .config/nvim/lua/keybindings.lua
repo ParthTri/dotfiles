@@ -1,4 +1,5 @@
 -- keybindings.lua
+
 vim.g.mapleader = ' '
 
 local keymap = vim.api.nvim_set_keymap
@@ -26,3 +27,7 @@ keymap('v', '<C-c>', ':CommentToggle<CR>', {})
 -- Tabs
 keymap('n', 'L', ':BufferNext<CR>', {})
 keymap('n', 'H', ':BufferPrevious<CR>', {})
+
+-- Telescope
+keymap('n', '<Leader>ff', ':Telescope find_files<CR>', {})
+keymap('n', '<Leader>fb', ':Telescope buffers<CR>', {})

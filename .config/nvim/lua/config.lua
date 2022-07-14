@@ -35,6 +35,9 @@ require("nvim-tree").setup({
 	}
 })
 
+-- Telescope
+require("telescope").setup()
+
 -- Comment
 require('nvim_comment').setup()
 

@@ -14,6 +14,12 @@ require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
 
+	-- Telescope
+  use {
+	'nvim-telescope/telescope.nvim',
+	requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
   -- Comment
   use "terrortylor/nvim-comment"
 
