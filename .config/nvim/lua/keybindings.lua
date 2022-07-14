@@ -1,4 +1,5 @@
 -- keybindings.lua
+vim.g.mapleader = ' '
 
 local keymap = vim.api.nvim_set_keymap
 keymap('n', '<C-s>', ':w<CR>', {})
@@ -16,7 +17,7 @@ keymap('n', '<C-d>', ':bd<CR>', {})
 keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
 
 -- Neogit
-keymap('n', '<C-g>', ':Neogit<CR>', {})
+keymap('n', '<Leader>g', ':Neogit<CR>', {})
 
 -- Comments
 keymap('n', '<C-c>', ':CommentToggle<CR>', {})
