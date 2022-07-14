@@ -1,8 +1,10 @@
 -- config.lua
 
 vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+
 vim.wo.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_option("clipboard","unnamed")
