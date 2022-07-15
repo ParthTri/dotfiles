@@ -1,0 +1,28 @@
+#+TITLE: Dotfiles
+
+* Overview
+This is my configuration for my everyday workflow, containing all the setup files and little scripts that make my life a bit easier when getting work done.
+For the time being my system usage is limited to OSX, however later down the line this will most likely be changed to accommodate a more portable environment.
+
+To get started, download this repo into your home directory ~~/~ and run the following (if installed):
+#+begin_src bash
+  stow .
+#+end_src
+
+* Principles
+My system workflow is based on a few principles, that I try to evaluate when using new software.
+
+Almost all the software I use is free and open source. The source code is open to the public and therefore is editable by the public, feeding into the first principle.
+
+** Extensible
+All the software I use must be extensible to at least some degree, if not completely. Prime examples of this would be Neovim and Emacs, both being able to be configured in Lua and Emacs-lisp, respectively.
+
+I prefer to have full control over customising the software I use, to be able to change every little detail. Being able to do this allows me to configure it into my workflow, opposed to trying to mold my workflow around it.
+
+** Keyboard Based
+For the most part, the software I use can be highly configured around the keyboard, cutting down the usage of my mouse. Being able to not leave my keyboard allows me to get work done quicker and objectively faster. This is especially important, as I tend to avoid using the track-pad on my laptop. If there is limited keyboard configuration available in that software, I will most likely pass on it.
+
+** No Internet, No Problem
+The final principle is being able to work offline. This goes back into the FOSS philosophy of being able to own my data. I prefer to keep all my data on my computer and if I cannot connect to the internet, it wouldn't disrupt my work. Even though I tend to work mainly from my home setup, my system should be able to work if I am on the move.
+
+
