@@ -4,7 +4,7 @@
 This is my configuration for my everyday workflow, containing all the setup files and little scripts that make my life a bit easier when getting work done.
 For the time being my system usage is limited to OSX, however later down the line this will most likely be changed to accommodate a more portable environment.
 
-To get started, download this repo into your home directory ~~/~ and run the following (if installed):
+To get started, download this repo into your home directory and run the following (if installed):
 #+begin_src bash
   stow .
 #+end_src
