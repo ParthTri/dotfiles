@@ -13,6 +13,9 @@ alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Make
 # alias for fzf directory switching
 alias sd "cd && cd (find ~/* -type d -path (string join '/' $HOME 'Library/*') -prune -o -print | fzf)"
 
+# alias for python httpserver on port 8000 (replacement for nodejs live-server)
+alias pyttp "python3 -m http.server"
+
 # keyboard shortcut to open neovim in current directory
 bind \cn 'nvim'
 
