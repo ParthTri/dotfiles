@@ -74,7 +74,7 @@ local neogit = require('neogit')
 neogit.setup {}
 
 -- Status line
-require('hardline').setup()
+require('staline').setup()
 
 -- Tab Bar
 require('bufferline').setup({
