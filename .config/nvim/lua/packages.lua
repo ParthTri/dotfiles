@@ -1,10 +1,9 @@
 -- packages.lua
-require('packer').startup(function()
-  -- Packages
+require('packer').startup(function() -- Packages
   use 'wbthomason/packer.nvim'
 
   -- theme
-  use "rebelot/kanagawa.nvim" 
+	use "rrethy/nvim-base16"
 
   -- programming 
   use 'ray-x/go.nvim'
