@@ -43,9 +43,9 @@ require('packer').startup(function() -- Packages
 
 		-- Snippets
 		{'L3MON4D3/LuaSnip'},
-					{'rafamadriz/friendly-snippets'},
-				}
-			}
+		{'rafamadriz/friendly-snippets'},
+		}
+	}
 
 	-- Git
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
