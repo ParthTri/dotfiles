@@ -62,4 +62,7 @@ require('packer').startup(function() -- Packages
 	-- Automatic Tag Renaming
 	use "AndrewRadev/tagalong.vim"
 
+	-- Formatting
+	use "jose-elias-alvarez/null-ls.nvim"
+
 end)
