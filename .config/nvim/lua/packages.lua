@@ -58,4 +58,8 @@ require('packer').startup(function() -- Packages
 		'romgrk/barbar.nvim',
 		requires = {'kyazdani42/nvim-web-devicons'}
 	}
+
+	-- Automatic Tag Renaming
+	use "AndrewRadev/tagalong.vim"
+
 end)
