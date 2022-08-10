@@ -65,4 +65,9 @@ require('packer').startup(function() -- Packages
 	-- Formatting
 	use "jose-elias-alvarez/null-ls.nvim"
 
+	use {
+			"folke/todo-comments.nvim",
+			requires = "nvim-lua/plenary.nvim"
+	}
+
 end)

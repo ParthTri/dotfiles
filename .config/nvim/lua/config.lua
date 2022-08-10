@@ -68,7 +68,6 @@ require('staline').setup()
 
 -- Tab Bar
 require('bufferline').setup({
-	animation = true,
 	auto_hide = false,
 	tab_pages = true,
 	closable = true,
