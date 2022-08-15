@@ -40,20 +40,20 @@ lsp.setup()
 
 local cmp = require("cmp")
 local source_mapping = {
-	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
-	path = "[Path]",
+  buffer = "[Buffer]",
+  nvim_lsp = "[LSP]",
+  nvim_lua = "[Lua]",
+  cmp_tabnine = "[TN]",
+  path = "[Path]",
 }
 
 cmp.setup({
-	mapping = cmp.mapping.preset.insert({
-		['<C-y>'] = cmp.mapping.confirm({ select = true }),
-			["<C-u>"] = cmp.mapping.scroll_docs(-4),
-			["<C-d>"] = cmp.mapping.scroll_docs(4),
-			["<C-Space>"] = cmp.mapping.complete(),
-		})
+  mapping = cmp.mapping.preset.insert({
+    ['<TAB>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  })
 })
 
 -- Snippets
