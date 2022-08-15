@@ -90,3 +90,5 @@ local sources = {
 
 null_ls.setup({ sources = sources })
 
+-- Todo Comments
+require('todo-comments').setup()
