@@ -78,3 +78,15 @@ require('bufferline').setup({
 	insert_at_start = false
 })
 
+-- Formatting
+local null_ls= require("null-ls")
+local sources = {
+	null_ls.builtins.formatting.prettier.with({
+			filetypes = { "html", "css", "javascript", "json", "yaml", "markdown" },
+	}),
+  null_ls.builtins.formatting.prettier,
+	null_ls.builtins.completion.spell
+}
+
+null_ls.setup({ sources = sources })
+
