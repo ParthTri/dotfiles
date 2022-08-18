@@ -56,6 +56,37 @@ cmp.setup({
   })
 })
 
+-- Treesitter 
+local ts = require("nvim-treesitter")
+ts.setup({
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
+  ensure_installed = {
+		"typescript",
+    "tsx",
+		"javascript",
+		"jsx",
+    "toml",
+    "fish",
+    "json",
+    "yaml",
+    "css",
+    "html",
+    "lua",
+		"python",
+  },
+  autotag = {
+    enable = true,
+  },
+})
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.ts"}
+
 -- Snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 
