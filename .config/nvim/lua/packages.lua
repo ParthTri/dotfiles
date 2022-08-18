@@ -47,6 +47,9 @@ require('packer').startup(function() -- Packages
 		}
 	}
 
+	-- LSP Saga
+	use "glepnir/lspsaga.nvim"
+
 	-- Git
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
