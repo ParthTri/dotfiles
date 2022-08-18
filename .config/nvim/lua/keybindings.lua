@@ -29,5 +29,5 @@ keymap('n', 'L', ':BufferNext<CR>', {})
 keymap('n', 'H', ':BufferPrevious<CR>', {})
 
 -- Telescope
-keymap('n', '<Leader>ff', ':Telescope find_files<CR>', {})
+keymap('n', '<Leader>ff', ':Telescope find_files hidden=true<CR>', {})
 keymap('n', '<Leader>fb', ':Telescope buffers<CR>', {})
