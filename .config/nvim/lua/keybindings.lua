@@ -3,6 +3,8 @@
 vim.g.mapleader = ' '
 
 local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 keymap('n', '<C-s>', ':w<CR>', {})
 
 -- Windows
@@ -31,3 +33,11 @@ keymap('n', 'H', ':BufferPrevious<CR>', {})
 -- Telescope
 keymap('n', '<Leader>ff', ':Telescope find_files hidden=true<CR>', {})
 keymap('n', '<Leader>fb', ':Telescope buffers<CR>', {})
+
+-- Saga
+keymap('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+keymap('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
+keymap('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
+keymap('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
+keymap('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
