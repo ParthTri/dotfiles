@@ -69,7 +69,6 @@ ts.setup({
 		"typescript",
     "tsx",
 		"javascript",
-		"jsx",
     "toml",
     "fish",
     "json",
