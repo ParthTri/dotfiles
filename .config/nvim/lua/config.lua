@@ -83,8 +83,15 @@ ts.setup({
   },
 })
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.ts"}
+
+-- LSP Saga
+local saga = require('lspsaga')
+saga.init_lsp_saga()
+
+vim.cmd("highlight LspFloatWinNormal guibg=none ctermbg=none")
+vim.cmd("highlight LspSagaFinderSelection guibg=none")
 
 -- Snippets
 require("luasnip.loaders.from_vscode").lazy_load()
