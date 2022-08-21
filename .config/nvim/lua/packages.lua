@@ -69,7 +69,7 @@ require('packer').startup(function() -- Packages
 	use "jose-elias-alvarez/null-ls.nvim"
 
 	use {
-			"folke/todo-comments.nvim",
+			"AmeerTaweel/todo.nvim",
 			requires = "nvim-lua/plenary.nvim"
 	}
 

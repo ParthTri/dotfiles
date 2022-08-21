@@ -133,4 +133,19 @@ local sources = {
 null_ls.setup({ sources = sources })
 
 -- Todo Comments
-require('todo-comments').setup()
+require('todo').setup({
+  keyword = {
+    FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }},
+    TODO = { icon = " ", color = "info" },
+    WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+    NOTE = { icon = " ", color = "hint", alt = { "INFO" } }
+  },
+  colors = {
+    error = { "DiagnosticError", "ErrorMsg", "#E82424" },
+    warning = { "DiagnosticWarn", "WarningMsg", "#FF9E3B" },
+    info = { "DiagnosticInfo", "#7FB4CA" },
+    hint = { "DiagnosticHint", "#76946A" },
+    default = { "Identifier", "#7C3AED" }
+  }
+})
+
