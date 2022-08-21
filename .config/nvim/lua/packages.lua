@@ -57,10 +57,7 @@ require('packer').startup(function() -- Packages
 	use 'nvim-lualine/lualine.nvim'
 
 	-- Tab Bar
-	use {
-		'romgrk/barbar.nvim',
-		requires = {'kyazdani42/nvim-web-devicons'}
-	}
+	use "nanozuki/tabby.nvim"
 
 	-- Automatic Tag Renaming
 	use "AndrewRadev/tagalong.vim"

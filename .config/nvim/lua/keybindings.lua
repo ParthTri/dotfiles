@@ -27,8 +27,12 @@ keymap('n', '<C-c>', ':CommentToggle<CR>', {})
 keymap('v', '<C-c>', ':CommentToggle<CR>', {})
 
 -- Tabs
-keymap('n', 'L', ':BufferNext<CR>', {})
-keymap('n', 'H', ':BufferPrevious<CR>', {})
+keymap('n', 'L', ':tabn<CR>', {})
+keymap('n', 'H', ':tabp<CR>', {})
+keymap('n', '<Leader>tn', ':tabnew<CR>', {})
+keymap('n', '<Leader>tc', ':tabclose<CR>', {})
+keymap("n", "<leader>tp", ":-tabmove<CR>", {})
+keymap("n", "<leader>tf", ":+tabmove<CR>", {})
 
 -- Telescope
 keymap('n', '<Leader>ff', ':Telescope find_files hidden=true<CR>', {})

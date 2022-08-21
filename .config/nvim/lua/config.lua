@@ -109,15 +109,8 @@ require('lualine').setup({
 })
 
 -- Tab Bar
-require('bufferline').setup({
-	animation = true,
-	auto_hide = false,
-	tab_pages = true,
-	closable = true,
-	clickable = true,
-	icons = true,
-	insert_at_end = true,
-	insert_at_start = false
+require("tabby").setup({
+    tabline = require("tabby.presets").active_wins_at_tail,
 })
 
 -- Formatting
