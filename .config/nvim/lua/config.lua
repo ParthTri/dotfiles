@@ -10,13 +10,14 @@ vim.wo.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_option("clipboard", "unnamed")
 
--- Base 16 Color scheme
-vim.cmd("colorscheme base16-kanagawa")
-vim.cmd("highlight Normal guibg=none ctermbg=none") -- Normal focused
-vim.cmd("highlight EndOfBuffer guibg=none ctermbg=none") -- Extra space at the end of buffer
-vim.cmd("highlight SignColumn guibg=none ctermbg=none") -- Extra sign column before numbers
-vim.cmd("highlight LineNr guibg=none ctermbg=none") -- Line numbers
-vim.cmd("highlight NormalNC guibg=none ctermbg=none") -- Other windows
+-- Tokyo Night Colorscheme
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent_sidebar = true
+vim.g.tokyonight_hide_inactive_statusline = true
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+vim.cmd[[colorscheme tokyonight]]
 
 -- file explorer
 require("nvim-tree").setup({
@@ -101,10 +102,9 @@ local neogit = require('neogit')
 neogit.setup {}
 
 -- Status line
--- require('staline').setup()
 require('lualine').setup({
   options = {
-    theme = "horizon"
+    theme = "tokyonight"
   }
 })
 
