@@ -400,7 +400,7 @@
          "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
         ("l" "Something for Later" entry (file+headline gtd-file "Later")
          "** %?\n %i\n")
-        ("i" "Idea" entry (file+headline "~/org/Ideas.org" "General")
+        ("i" "Idea" entry (file+headline "~/org/Ideas.org" "Other")
          "** %?\n %i\n ")
         ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
          "** TODO %?\n")))
