@@ -101,7 +101,12 @@ local neogit = require('neogit')
 neogit.setup {}
 
 -- Status line
-require('staline').setup()
+-- require('staline').setup()
+require('lualine').setup({
+  options = {
+    theme = "horizon"
+  }
+})
 
 -- Tab Bar
 require('bufferline').setup({

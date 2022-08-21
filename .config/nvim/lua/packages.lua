@@ -54,7 +54,7 @@ require('packer').startup(function() -- Packages
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
 	-- Status line
-	use 'tamton-aquib/staline.nvim'
+	use 'nvim-lualine/lualine.nvim'
 
 	-- Tab Bar
 	use {
