@@ -108,11 +108,6 @@ require('lualine').setup({
   }
 })
 
--- Tab Bar
-require("tabby").setup({
-    tabline = require("tabby.presets").active_wins_at_tail,
-})
-
 -- Formatting
 local null_ls= require("null-ls")
 local sources = {

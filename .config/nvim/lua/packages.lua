@@ -56,9 +56,6 @@ require('packer').startup(function() -- Packages
 	-- Status line
 	use 'nvim-lualine/lualine.nvim'
 
-	-- Tab Bar
-	use "nanozuki/tabby.nvim"
-
 	-- Automatic Tag Renaming
 	use "AndrewRadev/tagalong.vim"
 
