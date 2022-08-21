@@ -11,5 +11,14 @@ window:
 font:
   normal:
     family: FiraCode Nerd Font
+  bold: 
+    family: FiraCode Nerd Font
+    style: Bold
+  italic:
+    family: Fisa Code
+    style: Book Italic
+  bold_italic:
+    family: Fisa Code
+    style: Bold Italic
   size: 12.75
 
