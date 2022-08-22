@@ -28,4 +28,5 @@ bind \ct 'tmux new -s (basename (pwd))'
 # keyboard shortcut to attach to last tmux session  
 bind \cr 'tmux a'
 
+source ~/.config/fish/hledger.fish
 starship init fish | source
