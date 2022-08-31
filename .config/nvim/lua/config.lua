@@ -59,8 +59,7 @@ cmp.setup({
 })
 
 -- Treesitter 
-local ts = require("nvim-treesitter")
-ts.setup({
+require("nvim-treesitter").setup({
   highlight = {
     enable = true,
   },
