@@ -22,6 +22,9 @@ alias pyttp "python3 -m http.server"
 # keyboard shortcut to open neovim in current directory
 bind \cn 'nvim'
 
+# keyboard shortcut to fuzzy find and switch directory and start new tmux session
+bind \ce 'sd && tpwd'
+
 # keyboard shortcut to fuzzy find and switch to directory
 bind \cf 'sd'
 
