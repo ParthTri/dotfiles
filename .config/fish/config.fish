@@ -13,6 +13,9 @@ alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Make
 # alias for fzf directory switching
 alias sd "cd && cd (find ~/Work ~/Projects ~/Developer -type d -depth 1 | fzf) "
 
+# alias for creating new tmux session in current directory
+alias tpwd "tmux new -s (basename (pwd))"
+
 # alias for python httpserver on port 8000 (replacement for nodejs live-server)
 alias pyttp "python3 -m http.server"
 
@@ -23,7 +26,7 @@ bind \cn 'nvim'
 bind \cf 'sd'
 
 # keyboard shortcut to open a tmux session in current directory
-bind \ct 'tmux new -s (basename (pwd))'
+bind \ct 'tpwd'
 
 # keyboard shortcut to attach to last tmux session  
 bind \cr 'tmux a'
