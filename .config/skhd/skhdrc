@@ -20,6 +20,10 @@ hyper - m : /Applications/Spotify.app/Contents/MacOS/Spotify
 ## opening calendar
 hyper - w : /System/Applications/Calendar.app/Contents/MacOS/Calendar
 
+## Restarting yabai
+hyper - r : yabai -m config layout bsp
+
+
 ##### YABAI BINGINGS #####
 # focus window
 ctrl + shift - h : yabai -m window --focus west
