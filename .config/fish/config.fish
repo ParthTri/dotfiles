@@ -11,7 +11,7 @@ alias ghci "stack ghci"
 alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Maker/src/main.py"
 
 # alias for fzf directory switching
-alias sd "cd && cd (find ~/* -type d -path (string join '/' $HOME 'Library/*') -prune -o -print | fzf)"
+alias sd "cd && cd (find ~/Work ~/Projects ~/Developer -type d -depth 1 | fzf) "
 
 # alias for python httpserver on port 8000 (replacement for nodejs live-server)
 alias pyttp "python3 -m http.server"
