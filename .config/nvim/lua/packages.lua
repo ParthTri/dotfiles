@@ -1,6 +1,6 @@
 -- packages.lua
-require('packer').startup(function() -- Packages
-  use 'wbthomason/packer.nvim'
+require('packer').startup(function() -- Packages 
+	use 'wbthomason/packer.nvim'
 
   -- theme
 	use 'folke/tokyonight.nvim'
@@ -62,9 +62,13 @@ require('packer').startup(function() -- Packages
 	-- Formatting
 	use "jose-elias-alvarez/null-ls.nvim"
 
+	-- Todo Comments
 	use {
 			"AmeerTaweel/todo.nvim",
 			requires = "nvim-lua/plenary.nvim"
 	}
+
+	-- Harpoon
+	use "ThePrimeagen/harpoon"
 
 end)

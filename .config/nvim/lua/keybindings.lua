@@ -39,3 +39,9 @@ keymap('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 keymap('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
 keymap('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
 keymap('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
+
+-- Harpoon
+keymap('n', 'ha', ':lua require("harpoon.mark").add_file()<CR>', {})
+keymap('n', 'hf', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {})
+keymap('n', 'hn', ':lua require("harpoon.ui").nav_next()<CR>', {})
+keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
