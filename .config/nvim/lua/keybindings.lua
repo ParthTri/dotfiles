@@ -14,9 +14,9 @@ keymap('n', '<C-h>', '<C-w>h', {})
 keymap('n', '<C-l>', '<C-w>l', {})
 
 -- Buffers
-keymap('n', '<C-d>', ':bd<CR>', {})
-keymap('n', 'L', ':bnext<CR>', {})
-keymap('n', 'H', ':bprevious<CR>', {})
+keymap('n', '∂', ':bd<CR>', {})
+keymap('n', '<C-n>', ':bnext<CR>', {})
+keymap('n', '<C-p>', ':bprevious<CR>', {})
 
 -- File Explorer
 keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
