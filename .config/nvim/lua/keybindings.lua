@@ -25,8 +25,8 @@ keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
 keymap('n', '<Leader>g', ':Neogit<CR>', {})
 
 -- Comments
-keymap('n', '<C-c>', ':CommentToggle<CR>', {})
-keymap('v', '<C-c>', ':CommentToggle<CR>', {})
+keymap('n', '<Leader>c', ':CommentToggle<CR>', {})
+keymap('v', '<Leader>c', ':CommentToggle<CR>', {})
 
 -- Telescope
 keymap('n', '<Leader>ff', ':Telescope find_files hidden=true<CR>', {})
