@@ -421,6 +421,7 @@
                       (:endgroup)
                       ("work" . ?w)
                       ("privy" . ?p)
+                      ("learn" . ?l)
                       ("school" . ?s)
                       ("dev" . ?d)
                       ("paid" . ?P)
