@@ -120,6 +120,16 @@ local sources = {
 
 null_ls.setup({ sources = sources })
 
+-- Telekasten
+local home = vim.fn.expand("~/Notes")
+require("telekasten").setup({
+	home = home,
+	take_over_my_home = true,
+	auto_set_filetype = true,
+	extension = ".md",
+  command_palette_theme = "dropdown",
+})
+
 -- Todo Comments
 require('todo').setup({
   keyword = {

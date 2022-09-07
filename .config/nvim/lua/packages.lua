@@ -71,4 +71,7 @@ require('packer').startup(function() -- Packages
 	-- Harpoon
 	use "ThePrimeagen/harpoon"
 
+	-- Telekasten
+	use	'renerocksai/telekasten.nvim'
+
 end)
