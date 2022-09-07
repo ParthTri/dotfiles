@@ -49,3 +49,7 @@ keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
 -- Telekasten + Note taking
 keymap('n', 'fn', ':Telekasten find_notes<CR>', {})
 keymap('n', 'fi', ':Telekasten insert_link<CR>', {})
+
+-- Open file in browser MAC
+keymap('n', 'fp', ":exe ':silent !open -a /Applications/Firefox.app %'<CR>", {})
+
