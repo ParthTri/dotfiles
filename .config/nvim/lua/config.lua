@@ -10,14 +10,24 @@ vim.wo.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_option("clipboard", "unnamed")
 
--- Tokyo Night Colorscheme
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_hide_inactive_statusline = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.cmd[[colorscheme tokyonight]]
+-- Kanagawa Colorscheme
+require("kanagawa").setup({
+  undercurl = true,           -- enable undercurls
+  commentStyle = { italic = true },
+  functionStyle = { italic=true},
+  keywordStyle = { italic = true},
+  statementStyle = { bold = true },
+  typeStyle = {},
+  variablebuiltinStyle = { italic = true},
+  specialReturn = true,
+  specialException = true,
+  transparent = true,
+  dimInactive = false,
+  globalStatus = false,
+  terminalColors = true,
+  theme = "default"
+})
+vim.cmd[[colorscheme kanagawa]]
 
 -- file explorer
 require("nvim-tree").setup({
