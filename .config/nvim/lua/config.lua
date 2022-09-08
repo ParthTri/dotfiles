@@ -140,6 +140,10 @@ require("telekasten").setup({
   command_palette_theme = "dropdown",
 })
 
+-- Markdown 
+vim.g.markdown_folding = 1
+vim.cmd("highlight Folded guifg=#C34043 guibg=none")
+
 -- Todo Comments
 require('todo').setup({
   keyword = {
