@@ -55,3 +55,6 @@ keymap('n', 'fp', ":exe ':silent !open -a /Applications/Firefox.app %'<CR>", {})
 
 -- Zen Mode
 keymap('n', '<Leader>z', ':ZenMode<CR>', {})
+
+-- Outline
+keymap('n', '<Leader>o', ':AerialToggle<CR>', {})

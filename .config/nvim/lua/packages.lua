@@ -71,6 +71,10 @@ require('packer').startup(function() -- Packages
 	-- Harpoon
 	use "ThePrimeagen/harpoon"
 
+
+	-- Code Outline
+	use 'stevearc/aerial.nvim'
+
 	-- Telekasten
 	use	'renerocksai/telekasten.nvim'
 

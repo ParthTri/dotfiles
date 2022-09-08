@@ -144,6 +144,9 @@ require("telekasten").setup({
 vim.g.markdown_folding = 1
 vim.cmd("highlight Folded guifg=#C34043 guibg=none")
 
+-- Code Outline
+require('aerial').setup({})
+
 -- Todo Comments
 require('todo').setup({
   keyword = {
