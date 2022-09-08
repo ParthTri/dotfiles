@@ -130,20 +130,6 @@ local sources = {
 
 null_ls.setup({ sources = sources })
 
--- Telekasten
-local home = vim.fn.expand("~/Notes")
-require("telekasten").setup({
-	home = home,
-	take_over_my_home = true,
-	auto_set_filetype = true,
-	extension = ".md",
-  command_palette_theme = "dropdown",
-})
-
--- Markdown 
-vim.g.markdown_folding = 1
-vim.cmd("highlight Folded guifg=#C34043 guibg=none")
-
 -- Code Outline
 require('aerial').setup({})
 
