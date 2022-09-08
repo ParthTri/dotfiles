@@ -53,3 +53,5 @@ keymap('n', 'fi', ':Telekasten insert_link<CR>', {})
 -- Open file in browser MAC
 keymap('n', 'fp', ":exe ':silent !open -a /Applications/Firefox.app %'<CR>", {})
 
+-- Zen Mode
+keymap('n', '<Leader>z', ':ZenMode<CR>', {})
