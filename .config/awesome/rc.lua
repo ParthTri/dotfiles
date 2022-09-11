@@ -73,9 +73,9 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
     awful.layout.suit.floating,
+    -- awful.layout.suit.max,
+    -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.magnifier,
@@ -524,4 +524,11 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
+
+-- Autotstart
+awful.util.spawn("xmodmap .Xmodmap")
+awful.util.spawn("syncthing")
+awful.util.spawn("autorandr --change")
+awful.util.spawn("nitrogen --restore")
+awful.util.spawn("picom")
 
