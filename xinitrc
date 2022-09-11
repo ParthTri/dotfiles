@@ -44,3 +44,6 @@ exec xmodmap .Xmodmap
 
 # Start syncthing
 exec syncthing
+
+# Start autorandr
+exec autorandr --change
