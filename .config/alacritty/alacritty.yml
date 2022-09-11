@@ -15,10 +15,6 @@ font:
     family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: Fisa Code
-    style: Book Italic
-  bold_italic:
-    family: Fisa Code
-    style: Bold Italic
-  size: 12.75
+    family: FiraCode Nerd Font
+  size: 12.00
 
