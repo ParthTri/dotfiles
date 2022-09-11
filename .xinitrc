@@ -50,3 +50,6 @@ exec autorandr --change
 
 # Reset wallpaper 
 exec nitrogen --restore
+
+# Picom
+exec picom
