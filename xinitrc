@@ -47,3 +47,6 @@ exec syncthing
 
 # Start autorandr
 exec autorandr --change
+
+# Reset wallpaper 
+exec nitrogen --restore
