@@ -74,4 +74,7 @@ require('packer').startup(function() -- Packages
 	-- Code Outline
 	use 'stevearc/aerial.nvim'
 
+	-- Org mode
+	use 'nvim-orgmode/orgmode'
+
 end)
