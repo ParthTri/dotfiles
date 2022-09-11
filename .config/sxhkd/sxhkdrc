@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+## HYPER == SHIFT + CMD + ALT + OPTION
+
+## open emacsclient
+super + control e 
+	emacs
+
+## open firefox
+super + control f 
+	firefox
+
+## Open discord
+super + control d
+	discord
