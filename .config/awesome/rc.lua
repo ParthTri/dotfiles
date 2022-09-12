@@ -532,5 +532,4 @@ awful.util.spawn("autorandr --change")
 awful.util.spawn("nitrogen --restore")
 awful.util.spawn("picom")
 awful.util.spawn("sxhkd")
-awful.util.spawn("polybar")
 
