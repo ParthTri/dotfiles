@@ -53,3 +53,6 @@ exec nitrogen --restore
 
 # Picom
 exec picom
+
+# Keyboard
+exec xmodmap .Xmodmap
