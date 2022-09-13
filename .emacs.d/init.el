@@ -321,7 +321,7 @@
   (org-indent-mode)
   (auto-fill-mode 0)
   (visual-line-mode 1)
-  (flyspell-mode)
+  ;; (flyspell-mode)
   (setq evil-auto-indent nil))
 
 (use-package org
