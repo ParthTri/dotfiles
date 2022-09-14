@@ -11,7 +11,7 @@ alias ghci "stack ghci"
 alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Maker/src/main.py"
 
 # alias for fzf directory switching
-alias sd "cd && cd (find ~/Work ~/Projects ~/Developer -type d -depth 1 | fzf) "
+alias sd "cd && cd (find ~/Work ~/Projects ~/Developer -maxdepth 1 | fzf) "
 
 # alias for creating new tmux session in current directory
 alias tpwd "tmux new -s (basename (pwd))"
