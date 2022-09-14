@@ -49,6 +49,10 @@ lsp.preset('recommended')
 lsp.nvim_workspace()
 lsp.setup()
 
+require('lspconfig').emmet_ls.setup{
+	filetypes = {"html", "svelte", "jsx", "tsx", "css", "scss"}
+}
+
 local cmp = require("cmp")
 local source_mapping = {
   buffer = "[Buffer]",
