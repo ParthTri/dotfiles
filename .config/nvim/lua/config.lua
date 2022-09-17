@@ -42,6 +42,9 @@ require("telescope").setup()
 -- Comment
 require('nvim_comment').setup()
 
+-- Go support
+require('go').setup()
+
 -- lsp
 local lsp = require('lsp-zero')
 

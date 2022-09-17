@@ -7,7 +7,6 @@ require('packer').startup(function() -- Packages
 
 	-- programming 
 	use 'ray-x/go.nvim'
-	use 'ray-x/guihua.lua'
 
 	-- File Explorer
 	use 'kyazdani42/nvim-web-devicons'
