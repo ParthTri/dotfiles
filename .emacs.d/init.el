@@ -636,7 +636,7 @@
   :ensure t
   :config
   (setq elfeed-show-entry-switch 'display-buffer)
-  (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+  (setq rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
   :init
   (elfeed-org))
 
