@@ -315,7 +315,7 @@
 
 ;; Org Configuration
 
-(setq org-directory "~/org/")
+(setq org-directory "~/Notes/")
 
 (defun pt/org-mode-setup ()
   (org-indent-mode)

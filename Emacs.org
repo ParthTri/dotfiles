@@ -374,7 +374,7 @@ Write backups to ~/.emacs.d/backup/
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
-  (setq org-directory "~/org/")
+  (setq org-directory "~/Notes/")
 
   (defun pt/org-mode-setup ()
     (org-indent-mode)
