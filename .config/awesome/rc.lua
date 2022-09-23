@@ -7,13 +7,8 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 
--- Widget and layout library
-local wibox = require("wibox")
-
 -- Theme handling library
 local beautiful = require("beautiful")
-
-local bar = require("bar")
 
 -- Notification library
 local naughty = require("naughty")
@@ -457,4 +452,6 @@ awful.util.spawn("autorandr --change")
 awful.util.spawn("nitrogen --restore")
 awful.util.spawn("picom")
 awful.util.spawn("sxhkd")
+
+beautiful.init("/home/parth/.config/awesome/theme/init.lua")
 
