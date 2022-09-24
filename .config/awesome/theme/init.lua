@@ -20,14 +20,17 @@ Theme.roninYellow		= "#FF9E3B"
 Theme.crystalBlue		= "#7E9CD8"
 Theme.springGreen		= "#98BB6C"
 Theme.surimiOrange	= "#FFA065"
+Theme.carpYellow		= "#E6C384"
 
 -- Border
 Theme.useless_gap		= dpi(2)
 Theme.border_width	= dpi(1)
 
 -- Taglist Theme
-Theme.taglist_fg_focus = Theme.bg
-Theme.taglist_bg_focus = Theme.roninYellow
+Theme.taglist_fg_focus		= Theme.bg
+Theme.taglist_bg_focus		= Theme.roninYellow
+Theme.taglist_fg_occupied = Theme.carpYellow
+
 
 -- Clock
 local myTextClock = wibox.widget.textclock()
