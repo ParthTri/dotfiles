@@ -24,9 +24,6 @@ Theme.surimiOrange	= "#FFA065"
 -- Border
 Theme.useless_gap		= dpi(2)
 Theme.border_width	= dpi(1)
-Theme.border_normal = "#1e3440"
-Theme.border_focus  = Theme.crystalBlue
-Theme.border_marked = "#2c3040"
 
 -- Taglist Theme
 Theme.taglist_fg_focus = Theme.bg
