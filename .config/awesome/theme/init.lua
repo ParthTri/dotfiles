@@ -33,8 +33,8 @@ Theme.taglist_fg_focus = Theme.bg
 Theme.taglist_bg_focus = Theme.roninYellow
 
 -- Clock
-local mytextclock = wibox.widget.textclock()
-mytextclock.font = Theme.font
+local myTextClock = wibox.widget.textclock()
+myTextClock.font = Theme.font
 
 -- Battery
 
@@ -107,7 +107,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			wibox.widget.systray(),
-			mytextclock,
+			myTextClock,
 			s.mylayoutbox,
 		}
 	}
