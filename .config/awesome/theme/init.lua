@@ -31,10 +31,9 @@ Theme.taglist_fg_focus		= Theme.bg
 Theme.taglist_bg_focus		= Theme.roninYellow
 Theme.taglist_fg_occupied = Theme.carpYellow
 
-
 -- Clock
-local myTextClock = wibox.widget.textclock()
-myTextClock.font = Theme.font
+local myTextClock = wibox.widget.textclock(" %a, %b %Y %H:%M ")
+myTextClock.font	= Theme.font
 
 -- Battery
 
