@@ -95,6 +95,7 @@ require("nvim-treesitter").setup({
     "html",
     "lua",
 		"python",
+    "go"
   },
   autotag = {
     enable = true,
