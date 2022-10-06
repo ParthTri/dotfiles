@@ -29,7 +29,7 @@ Theme.border_width	= dpi(1)
 -- Taglist Theme
 Theme.taglist_fg_focus		= Theme.bg
 Theme.taglist_bg_focus		= Theme.roninYellow
-Theme.taglist_fg_occupied = Theme.carpYellow
+Theme.taglist_fg_occupied = Theme.springGreen
 
 -- Clock
 local myTextClock = wibox.widget.textclock(" %a, %d %b %Y %H:%M ")
