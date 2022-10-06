@@ -57,5 +57,5 @@ exec picom
 # Keyboard
 exec xmodmap .Xmodmap
 
-# Emacs
-exec emacs --daemon
+# Sxhkd
+sxhkd
