@@ -8,7 +8,7 @@ local dpi					= xresources.apply_dpi
 
 Theme = {}
 
-Theme.font = "FiraCode Nerd Font"
+Theme.font				= "FiraCode Nerd Font"
 
 Theme.fg_normal		= "#DCD7BA"
 Theme.fg_focused	= "#C8C093"
