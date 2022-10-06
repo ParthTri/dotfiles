@@ -13,3 +13,10 @@ super + control f
 ## Open discord
 super + control d
 	discord
+
+## Rofi
+super + r
+	rofi -show drun
+
+super + shift + r
+	rofi -show run

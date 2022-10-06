@@ -235,11 +235,11 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ super }, "r",     function () awful.spawn("rofi -show drun") end,
-              {description = "open app", group = "launcher"}),
-
-    awful.key({ super, "Shift" }, "r",     function () awful.spawn("rofi -show run") end,
-              {description = "run script", group = "launcher"}),
+    -- awful.key({ super }, "r",     function () awful.spawn("rofi -show drun") end,
+    --           {description = "open app", group = "launcher"}),
+    --
+    -- awful.key({ super, "Shift" }, "r",     function () awful.spawn("rofi -show run") end,
+    --           {description = "run script", group = "launcher"}),
 
     awful.key({ super }, "x",
               function ()
