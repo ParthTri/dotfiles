@@ -32,7 +32,7 @@ Theme.taglist_bg_focus		= Theme.roninYellow
 Theme.taglist_fg_occupied = Theme.carpYellow
 
 -- Clock
-local myTextClock = wibox.widget.textclock(" %a, %b %Y %H:%M ")
+local myTextClock = wibox.widget.textclock(" %a, %d %b %Y %H:%M ")
 myTextClock.font	= Theme.font
 
 -- Battery
@@ -93,13 +93,12 @@ awful.screen.connect_for_each_screen(function(s)
 			{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
 			s.mytaglist,
-			s.mypromptbox,
 		},
 		nil,
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			wibox.widget.systray(),
-			myTextClock,
+			myTextClock
 		}
 	}
 end)
