@@ -36,3 +36,8 @@ bind \cr 'tmux a'
 
 source ~/.config/fish/hledger.fish
 starship init fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/parth/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
