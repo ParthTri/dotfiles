@@ -10,6 +10,7 @@ vim.wo.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_option("clipboard", "unnamed")
 
+
 -- Kanagawa Colorscheme
 require("kanagawa").setup({
   undercurl = true,           -- enable undercurls
@@ -25,7 +26,10 @@ require("kanagawa").setup({
   dimInactive = false,
   globalStatus = false,
   terminalColors = true,
-  theme = "default"
+  theme = "default",
+  overrides = {
+    Folded = { bg = "none"}
+  }
 })
 vim.cmd[[colorscheme kanagawa]]
 
@@ -104,6 +108,21 @@ require("nvim-treesitter.configs").setup({
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.ts"}
+
+-- Tressitter Code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 20
+vim.opt.foldtext = "v:lua.custom_fold_text()"
+vim.opt.fillchars = { eob = "-", fold = " " }
+vim.opt.viewoptions:remove("options")
+
+function _G.custom_fold_text()
+    local line = vim.fn.getline(vim.v.foldstart)
+    local line_count = vim.v.foldend - vim.v.foldstart + 1
+
+    return line .. " | " .. line_count .. " lines"
+end
 
 -- LSP Saga
 local saga = require('lspsaga')
