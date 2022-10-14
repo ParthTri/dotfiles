@@ -50,7 +50,7 @@ require('packer').startup(function() -- Packages
 	use "glepnir/lspsaga.nvim"
 
 	-- Git
-	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+	use 'kdheepak/lazygit.nvim'
 
 	-- Status line
 	use 'nvim-lualine/lualine.nvim'

@@ -21,8 +21,8 @@ keymap('n', '<C-p>', ':bprevious<CR>', {})
 -- File Explorer
 keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
 
--- Neogit
-keymap('n', '<Leader>g', ':Neogit<CR>', {})
+-- LazyGit
+keymap('n', '<Leader>g', ':LazyGit<CR>', {})
 
 -- Comments
 keymap('n', '<Leader>c', ':CommentToggle<CR>', {})
