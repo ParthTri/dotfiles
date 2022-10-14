@@ -135,11 +135,8 @@ vim.cmd("highlight LspSagaFinderSelection guibg=none")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Status line
-require('lualine').setup({
-  options = {
-    theme = "tokyonight"
-  }
-})
+require('lualine').setup()
+
 -- Git
 require("gitsigns").setup()
 
