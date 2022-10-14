@@ -51,6 +51,7 @@ require('packer').startup(function() -- Packages
 
 	-- Git
 	use 'kdheepak/lazygit.nvim'
+	use 'lewis6991/gitsigns.nvim'
 
 	-- Status line
 	use 'nvim-lualine/lualine.nvim'

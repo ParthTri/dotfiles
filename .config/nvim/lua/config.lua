@@ -140,6 +140,8 @@ require('lualine').setup({
     theme = "tokyonight"
   }
 })
+-- Git
+require("gitsigns").setup()
 
 -- Formatting
 local null_ls= require("null-ls")
