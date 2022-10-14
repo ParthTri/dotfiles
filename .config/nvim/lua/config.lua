@@ -134,10 +134,6 @@ vim.cmd("highlight LspSagaFinderSelection guibg=none")
 -- Snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- neogit
-local neogit = require('neogit')
-neogit.setup {}
-
 -- Status line
 require('lualine').setup({
   options = {
