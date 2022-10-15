@@ -31,6 +31,7 @@ keymap('v', '<Leader>c', ':CommentToggle<CR>', {})
 -- Telescope
 keymap('n', '<Leader>ff', ':Telescope find_files hidden=true<CR>', {})
 keymap('n', '<Leader>fb', ':Telescope buffers<CR>', {})
+keymap('n', '<Leader>ft', ':TODOLocationList<CR>', {})
 
 -- Saga
 keymap('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
