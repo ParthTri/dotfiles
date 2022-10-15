@@ -49,3 +49,6 @@ keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
 
 -- Outline
 keymap('n', '<Leader>o', ':AerialToggle<CR>', {})
+
+-- Center Pad
+keymap('n', '<Leader>c', ':Centerpad 22<CR>', {})

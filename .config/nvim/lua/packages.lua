@@ -77,4 +77,7 @@ require('packer').startup(function() -- Packages
 	-- Org mode
 	use 'nvim-orgmode/orgmode'
 
+	-- Center pad
+	use 'smithbm2316/centerpad.nvim'
+
 end)
