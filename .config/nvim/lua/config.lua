@@ -120,8 +120,10 @@ vim.opt.viewoptions:remove("options")
 function _G.custom_fold_text()
     local line = vim.fn.getline(vim.v.foldstart)
     local line_count = vim.v.foldend - vim.v.foldstart + 1
+		local line_end = vim.fn.getline(vim.v.foldend)
+    line_end = string.gsub(line_end, "%s", "")
 
-    return line .. " | " .. line_count .. " lines"
+    return line .. " " .. line_count .. " lines ".. line_end
 end
 
 -- LSP Saga
