@@ -8,6 +8,8 @@ set $mod Mod4
 for_window [class="^.*"] border none
 gaps inner 5
 gaps outer 5
+gaps horizontal 2
+gaps vertical 2
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
