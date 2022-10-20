@@ -22,5 +22,5 @@ super + shift + d
 	rofi -show run
 
 ## Sleep
-super + control q
-	systemctl sleep
+super + shift + q
+	rofi -show power-menu -modi power-menu:~/.config/rofi/bin/rofi-power-menu
