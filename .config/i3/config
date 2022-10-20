@@ -193,4 +193,4 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec nitrogen --restore
+exec_always nitrogen --restore
