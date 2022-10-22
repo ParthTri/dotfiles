@@ -1,0 +1,13 @@
+[Unit]
+Description=Syncthing File Syncer
+Documentation=info:syncthing man:syncthing(1) https://docs.syncthing.net/users/index.html
+
+[Service]
+Type=forking
+ExecStart=syncthing
+ExecStop=pkill syncthing
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

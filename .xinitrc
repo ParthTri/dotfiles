@@ -42,9 +42,6 @@ exec xterm -geometry 80x66+0+0 -name login
 # Source xmodmap
 exec xmodmap .Xmodmap
 
-# Start syncthing
-exec syncthing
-
 # Start autorandr
 exec autorandr --change
 
