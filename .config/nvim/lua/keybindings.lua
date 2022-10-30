@@ -52,3 +52,8 @@ keymap('n', '<Leader>o', ':AerialToggle<CR>', {})
 
 -- Center Pad
 keymap('n', '<Leader>C', ':Centerpad 22<CR>', {})
+
+-- Notes
+keymap('n', '<Leader>wp', ":MarkdownPreview<CR>", {})
+keymap('n', '<Leader>wP', ":MarkdownPreviewStop<CR>", {})
+
