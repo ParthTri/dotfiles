@@ -74,8 +74,8 @@ require('packer').startup(function() -- Packages
 	-- Code Outline
 	use 'stevearc/aerial.nvim'
 
-	-- Org mode
-	use 'nvim-orgmode/orgmode'
+	-- Note taking
+	use 'vimwiki/vimwiki'
 
 	-- Center pad
 	use 'smithbm2316/centerpad.nvim'
