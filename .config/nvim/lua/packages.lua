@@ -23,6 +23,7 @@ require('packer').startup(function() -- Packages
 
 	-- Tree Sitter
 	use "nvim-treesitter/nvim-treesitter"
+	use 'nvim-treesitter/nvim-treesitter-context'
 
 	-- LSP
 	use {
