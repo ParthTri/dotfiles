@@ -76,6 +76,10 @@ require('packer').startup(function() -- Packages
 
 	-- Note taking
 	use 'vimwiki/vimwiki'
+	use({
+			"iamcco/markdown-preview.nvim",
+			run = function() vim.fn["mkdp#util#install"]() end,
+	})
 
 	-- Center pad
 	use 'smithbm2316/centerpad.nvim'
