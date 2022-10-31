@@ -84,7 +84,4 @@ require('packer').startup(function() -- Packages
 	use 'Pocco81/true-zen.nvim'
 	use 'folke/twilight.nvim'
 
-	-- Center pad
-	use 'smithbm2316/centerpad.nvim'
-
 end)
