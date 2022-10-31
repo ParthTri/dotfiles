@@ -165,6 +165,17 @@ require('aerial').setup({})
 
 -- Zen mode
 require('true-zen').setup({
+  modes = {
+    ataraxis = {
+			minimum_writing_area = {
+				width = 85
+			},
+      padding = {
+        left = 35,
+        right = 35
+      }
+    }
+  },
   integrations = {
     twilight = true,
     lualine = true
