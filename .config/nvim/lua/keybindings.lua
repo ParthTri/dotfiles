@@ -57,3 +57,7 @@ keymap('n', '<Leader>C', ':Centerpad 22<CR>', {})
 keymap('n', '<Leader>wp', ":MarkdownPreview<CR>", {})
 keymap('n', '<Leader>wP', ":MarkdownPreviewStop<CR>", {})
 
+-- Zen
+keymap('n', '<Leader>z', ':TZAtaraxis<CR>', {})
+keymap('v', '<Leader>zn', ':TZNarrow<CR>', {})
+

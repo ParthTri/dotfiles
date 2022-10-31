@@ -81,6 +81,8 @@ require('packer').startup(function() -- Packages
 			"iamcco/markdown-preview.nvim",
 			run = function() vim.fn["mkdp#util#install"]() end,
 	})
+	use 'Pocco81/true-zen.nvim'
+	use 'folke/twilight.nvim'
 
 	-- Center pad
 	use 'smithbm2316/centerpad.nvim'

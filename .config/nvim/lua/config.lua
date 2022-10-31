@@ -159,6 +159,14 @@ null_ls.setup({ sources = sources })
 -- Code Outline
 require('aerial').setup({})
 
+-- Zen mode
+require('true-zen').setup({
+  integrations = {
+    twilight = true,
+    lualine = true
+  }
+})
+
 -- Todo Comments
 require('todo').setup({
   keyword = {
