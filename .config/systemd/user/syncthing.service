@@ -4,9 +4,8 @@ Documentation=info:syncthing man:syncthing(1) https://docs.syncthing.net/users/i
 
 [Service]
 Type=forking
+RemainAfterExit=true
 ExecStart=syncthing
-ExecStop=pkill syncthing
-Environment=SSH_AUTH_SOCK=%t/keyring/ssh
 Restart=on-failure
 
 [Install]
