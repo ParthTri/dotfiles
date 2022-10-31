@@ -10,6 +10,10 @@ vim.wo.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_option("clipboard", "unnamed")
 
+-- Line Wrapping
+vim.wo.wrap = 1
+vim.wo.linebreak = 1
+vim.wo.breakindent = 1
 
 -- Kanagawa Colorscheme
 require("kanagawa").setup({
