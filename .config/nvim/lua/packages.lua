@@ -84,4 +84,6 @@ require('packer').startup(function() -- Packages
 	use 'Pocco81/true-zen.nvim'
 	use 'folke/twilight.nvim'
 
+	-- Presenter
+	use "sotte/presenting.vim"
 end)
