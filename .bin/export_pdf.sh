@@ -1,7 +1,7 @@
 #!/bin/bash
 
-filename=$1
-template=$2
+filename=$2
+template=$1
 target="$(dirname $filename)/pdfs"
 outputFile="$(basename $filename .md).pdf"
 
