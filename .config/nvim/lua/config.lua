@@ -15,27 +15,10 @@ vim.wo.wrap = 1
 vim.wo.linebreak = 1
 vim.wo.breakindent = 1
 
--- Kanagawa Colorscheme
-require("kanagawa").setup({
-  undercurl = true,           -- enable undercurls
-  commentStyle = { italic = true },
-  functionStyle = { italic=true},
-  keywordStyle = { italic = true},
-  statementStyle = { bold = true },
-  typeStyle = {},
-  variablebuiltinStyle = { italic = true},
-  specialReturn = true,
-  specialException = true,
-  transparent = true,
-  dimInactive = false,
-  globalStatus = false,
-  terminalColors = true,
-  theme = "default",
-  overrides = {
-    Folded = { bg = "none"}
-  }
+-- Onedark Colorscheme
+require("onedark").setup({
+  transparent = true
 })
-vim.cmd[[colorscheme kanagawa]]
 
 -- file explorer
 require("nvim-tree").setup({
