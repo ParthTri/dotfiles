@@ -84,7 +84,8 @@ require("nvim-treesitter.configs").setup({
     "html",
     "lua",
 		"python",
-    "go"
+    "go",
+    "markdown_inline"
   },
   autotag = {
     enable = true,
@@ -142,7 +143,10 @@ local sources = {
 null_ls.setup({ sources = sources })
 
 -- Code Outline
-require('aerial').setup({})
+require('aerial').setup({
+  backends = { "treesitter", "lsp", "markdown"},
+})
+
 
 -- Zen mode
 require('true-zen').setup({
