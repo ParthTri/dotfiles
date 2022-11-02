@@ -8,10 +8,6 @@ require('packer').startup(function() -- Packages
 	-- programming 
 	use 'ray-x/go.nvim'
 
-	-- File Explorer
-	use 'kyazdani42/nvim-web-devicons'
-	use 'kyazdani42/nvim-tree.lua'
-
 	-- Telescope
 	use {
 		'nvim-telescope/telescope.nvim',

@@ -19,7 +19,7 @@ keymap('n', '<C-n>', ':bnext<CR>', {})
 keymap('n', '<C-p>', ':bprevious<CR>', {})
 
 -- File Explorer
-keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
+keymap('n', '<C-e>', ':Explore<CR>', {})
 
 -- LazyGit
 keymap('n', '<Leader>g', ':LazyGit<CR>', {})

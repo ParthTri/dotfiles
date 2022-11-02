@@ -21,11 +21,9 @@ require("onedark").setup({
 })
 
 -- file explorer
-require("nvim-tree").setup({
-  filters = {
-    dotfiles = false,
-  }
-})
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
+vim.g.netrw_hidden = 1
 
 -- Telescope
 require("telescope").setup()
