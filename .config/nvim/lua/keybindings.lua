@@ -58,3 +58,6 @@ keymap('n', '<Leader>wP', ":MarkdownPreviewStop<CR>", {})
 keymap('n', '<Leader>z', ':TZAtaraxis<CR>', {})
 keymap('v', '<Leader>zn', ':TZNarrow<CR>', {})
 
+-- Present
+keymap('n', '<Leader>p', ':PresentingStart<CR>:TZAtaraxis<CR>', {})
+keymap('n', '<Leader>P', ':TZAtaraxis<CR>:PresentingExit<CR>', {})
