@@ -10,11 +10,12 @@ window:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: JetBrains Mono
   bold: 
-    family: FiraCode Nerd Font
+    family: JetBrains Mono
     style: Bold
   italic:
-    family: Fisa Code 
+    family: JetBrains Mono
+    style: Italic
   size: 11.00
 
