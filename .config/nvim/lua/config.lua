@@ -8,7 +8,7 @@ vim.opt.tabstop = 2
 
 vim.wo.number = true
 vim.opt.relativenumber = true
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.opt.clipboard = 'unnamedplus'
 
 -- Line Wrapping
 vim.wo.wrap = 1
