@@ -35,6 +35,7 @@ bind \ct 'tpwd'
 bind \cr 'tmux a'
 
 source ~/.config/fish/hledger.fish
+source ~/.config/fish/prod.fish
 starship init fish | source
 
 # pnpm
