@@ -55,4 +55,4 @@ exec picom
 sxhkd
 
 # Syncthing
-exec synthing serve
+exec synthing 
