@@ -24,6 +24,7 @@ require("onedark").setup({
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 vim.g.netrw_hidden = 1
+vim.g.netrw_localcopydircmd = 'cp -r'
 
 -- Telescope
 require("telescope").setup()
