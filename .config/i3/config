@@ -51,6 +51,9 @@ bindsym $mod+Return exec alacritty
 # start terminal in float mode
 for_window [class="popup"] floating enable 
 for_window [class="popup"] border pixel 1
+for_window [class="popup"] resize set 900 550
+for_window [class="popup"] position center
+
 bindsym $mod+Shift+Return exec alacritty --class "popup"
 
 # kill focused window
