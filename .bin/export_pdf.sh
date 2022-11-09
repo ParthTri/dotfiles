@@ -1,11 +1,7 @@
 #!/bin/bash
 
 filename=$1
-target="$(dirname $filename)/pdfs"
-outputFile="$target/$(basename $filename .md).pdf"
-
-# Make the target directory for pdf file
-mkdir $target
+outputFile="./$(basename $filename .md).pdf"
 
 pandoc "$filename" \
 	--toc \
