@@ -4,8 +4,8 @@ alias t				"clear && task"
 alias tsk			"task"
 
 # show top 5 tasks for each day
-alias ttoday		"while true; t next limit:5; sleep 5; end;"
-alias ttoday-l	"t due:today list"
+alias ttoday		"while true; t list limit:5; sleep 5; end;"
+alias ttoday-l	"t due:tom list"
 
 alias tw				"timew"
 
