@@ -1,7 +1,7 @@
 #!/bin/bash
 
 filename=$1
-outputFile="./$(basename $filename .md).pdf"
+outputFile="./$(basename "$filename" .md).pdf"
 
 pandoc "$filename" \
 	--toc \
