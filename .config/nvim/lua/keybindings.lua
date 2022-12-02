@@ -51,6 +51,7 @@ keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
 keymap('n', '<Leader>o', ':AerialToggle<CR>', {})
 
 -- Notes
+keymap('n', "<leader>ww", ":e ~/Notes/index.adoc", {})
 keymap('n', '<Leader>wp', ":MarkdownPreview<CR>", {})
 keymap('n', '<Leader>wP', ":MarkdownPreviewStop<CR>", {})
 

@@ -72,11 +72,9 @@ require('packer').startup(function() -- Packages
 	use 'stevearc/aerial.nvim'
 
 	-- Note taking
-	use 'vimwiki/vimwiki'
-	use({
-			"iamcco/markdown-preview.nvim",
-			run = function() vim.fn["mkdp#util#install"]() end,
-	})
+	use 'ratfactor/vviki'
+	use 'habamax/vim-asciidoctor'
+
 	use 'Pocco81/true-zen.nvim'
 	use 'folke/twilight.nvim'
 
