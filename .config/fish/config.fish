@@ -19,6 +19,9 @@ alias tpwd "tmux new -s (basename (pwd))"
 # alias for python httpserver on port 8000 (replacement for nodejs live-server)
 alias pyttp "python3 -m http.server"
 
+# Adding shortcut to open nnn
+bind \cf nnn -a 
+
 # keyboard shortcut to open neovim in current directory
 bind \cn 'nvim'
 
@@ -26,7 +29,7 @@ bind \cn 'nvim'
 bind \ce 'sd && tpwd'
 
 # keyboard shortcut to fuzzy find and switch to directory
-bind \cf 'sd'
+# bind \cf 'sd'
 
 # keyboard shortcut to open a tmux session in current directory
 bind \ct 'tpwd'
