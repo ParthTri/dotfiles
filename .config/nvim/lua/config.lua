@@ -20,11 +20,14 @@ require("onedark").setup({
   transparent = true
 })
 
--- file explorer
+-- Netrw file explorer
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 vim.g.netrw_hidden = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
+
+-- nnn File explorer
+require("nnn").setup({})
 
 -- Telescope
 require("telescope").setup()

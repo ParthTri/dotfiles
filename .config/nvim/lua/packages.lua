@@ -5,6 +5,9 @@ require('packer').startup(function() -- Packages
 	-- theme
 	use 'monsonjeremy/onedark.nvim'
 
+	-- File Manager
+	use "luukvbaal/nnn.nvim"
+
 	-- programming 
 	use 'ray-x/go.nvim'
 
