@@ -1,4 +1,4 @@
-browser "firefox --new-tab %u"
+browser "firefox --new-window %u"
 
 # Hide read feeds
 # show-read-feeds no
