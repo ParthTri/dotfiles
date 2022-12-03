@@ -1,5 +1,6 @@
 set fish_greeting
 set TERM "xterm-256color"
+set EDITOR nvim
 
 # alias for running ghc
 alias ghc "stack ghc"
