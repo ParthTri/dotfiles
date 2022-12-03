@@ -20,6 +20,9 @@ alias tpwd "tmux new -s (basename (pwd))"
 # alias for python httpserver on port 8000 (replacement for nodejs live-server)
 alias pyttp "python3 -m http.server"
 
+# Quick command for newsboat
+alias ns "newsboat"
+
 # Adding shortcut to open nnn
 bind \cf nnn -a 
 
