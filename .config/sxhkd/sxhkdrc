@@ -24,3 +24,7 @@ super + shift + d
 ## Powermenu
 super + shift + q
 	rofi -show power-menu -modi power-menu:~/.config/rofi/bin/rofi-power-menu
+
+## Lock Screen
+super + control + l
+	~/.bin/lock.sh
