@@ -21,6 +21,6 @@ super + d
 super + shift + d
 	rofi -show run
 
-## Sleep
+## Powermenu
 super + shift + q
 	rofi -show power-menu -modi power-menu:~/.config/rofi/bin/rofi-power-menu
