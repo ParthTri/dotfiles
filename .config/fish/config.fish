@@ -10,6 +10,9 @@ alias ghc "stack ghc"
 # alias for running ghci
 alias ghci "stack ghci"
 
+# Alias for startnig vlime server
+alias vlime 'sbcl --load ~/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp'
+
 # alias for invoice-maker
 alias invoice "~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Maker/src/main.py"
 

@@ -83,4 +83,13 @@ require('packer').startup(function() -- Packages
 
 	-- Presenter
 	use "sotte/presenting.vim"
+	
+	-- Lisp
+	use {
+		'vlime/vlime',
+		config = function()
+			rtp = 'vim/'
+		end
+	}
+
 end)
