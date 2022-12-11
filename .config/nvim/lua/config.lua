@@ -15,10 +15,14 @@ vim.wo.wrap = 1
 vim.wo.linebreak = 1
 vim.wo.breakindent = 1
 
--- Onedark Colorscheme
-require("onedark").setup({
-  transparent = true
-})
+-- Minimal colorscheme
+vim.g.minimal_italic_functions = true
+vim.g.minimal_italic_comments = false
+vim.g.minimal_transparent_background = true
+vim.cmd [[colorscheme minimal-base16]]
+
+vim.cmd [[highlight LineNr guibg=none ]]
+vim.cmd [[highlight SignColumn guibg=none ]]
 
 -- Netrw file explorer
 vim.g.netrw_liststyle = 3
@@ -133,6 +137,11 @@ require('lualine').setup()
 
 -- Git
 require("gitsigns").setup()
+--
+-- Highlight colour git signs
+vim.cmd("highlight GitSignsAdd guibg=NONE")
+vim.cmd("highlight GitSignsChange guibg=NONE")
+vim.cmd("highlight GitSignsDelete guibg=NONE")
 
 -- Formatting
 local null_ls= require("null-ls")

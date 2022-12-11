@@ -3,7 +3,7 @@ require('packer').startup(function() -- Packages
 	use 'wbthomason/packer.nvim'
 
 	-- theme
-	use 'monsonjeremy/onedark.nvim'
+	use 'Yazeed1s/minimal.nvim'
 
 	-- File Manager
 	use "luukvbaal/nnn.nvim"
