@@ -17,9 +17,9 @@ vim.wo.breakindent = 1
 
 -- Minimal colorscheme
 vim.g.minimal_italic_functions = true
-vim.g.minimal_italic_comments = false
+vim.g.minimal_italic_comments = true
 vim.g.minimal_transparent_background = true
-vim.cmd [[colorscheme minimal-base16]]
+vim.cmd [[colorscheme minimal]]
 
 vim.cmd [[highlight LineNr guibg=none ]]
 vim.cmd [[highlight SignColumn guibg=none ]]
