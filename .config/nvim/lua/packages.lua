@@ -75,8 +75,7 @@ require('packer').startup(function() -- Packages
 	use 'stevearc/aerial.nvim'
 
 	-- Note taking
-	use 'ratfactor/vviki'
-	use 'habamax/vim-asciidoctor'
+	use 'vimwiki/vimwiki'
 
 	use 'Pocco81/true-zen.nvim'
 	use 'folke/twilight.nvim'
