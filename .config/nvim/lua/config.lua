@@ -156,8 +156,8 @@ local sources = {
 null_ls.setup({ sources = sources })
 
 -- Code Outline
-require('aerial').setup({
-  backends = { "treesitter", "lsp", "markdown"},
+require('symbols-outline').setup({
+  width = 15
 })
 
 

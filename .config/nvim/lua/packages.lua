@@ -72,7 +72,7 @@ require('packer').startup(function() -- Packages
 	use "ThePrimeagen/harpoon"
 
 	-- Code Outline
-	use 'stevearc/aerial.nvim'
+	use 'simrat39/symbols-outline.nvim'
 
 	-- Note taking
 	use 'vimwiki/vimwiki'
