@@ -1,0 +1,46 @@
+{
+	"Python": {
+		"inherit": false,
+		"git": true,
+		"gitignore": "__pycache__\n.venv/",
+		"env": false,
+		"externalProgramsEnd": [
+			"python3 -m venv .venv"
+		],
+		"dirs": [
+			"tests",
+			"src",
+			"docs",
+			"docs/examples"
+		],
+		"files": [
+			"docs/Purpose.org",
+			"README.org"
+		]
+	},
+	"Solid": {
+		"inherit": false,
+		"ignoreProjectPrexists": true,
+		"git": false,
+		"env": false,
+		"externalProgramsStart": [
+			"pnpx degit solidjs/templates/js $name"
+		],
+		"externalProgramsEnd": [
+			"pnpm install"
+		]
+	},
+	"Go": {
+		"inherit": false,
+		"ignoreProjectPrexists": false,
+		"git": true,
+		"env": false,
+		"dirs": [
+			"cmd",
+			"lib"
+		],
+		"files": [
+			"cmd/main.go"
+		]
+	}
+}
