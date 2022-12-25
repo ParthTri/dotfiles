@@ -25,12 +25,7 @@
                 dired-mode-hook
                 image-mode-hook
                 pdf-view-mode-hook
-                term-mode-hook
-                treemacs-mode-hook
-                elfeed-mode-hook
-                eww-mode-hook
-                eshell-mode-hook
-                vterm-mode-hook))
+                term-mode-hook ))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Make ESC quit prompts
@@ -288,32 +283,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Treemacs
-
-(use-package treemacs
-  :ensure t
-  :config
-  (treemacs-resize-icons 14)
-  (pt/leader-keys
-    "te" '(treemacs :which-key "treemacs")))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
-(use-package treemacs-persp
-  :after (treemacs persp-mode)
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
-
 ;; Org Configuration
 
 (setq org-directory "~/Notes/")
@@ -506,40 +475,6 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 
-;; Roam
-
-(use-package org-roam
-  :ensure t
-  :init
-  (setq org-roam-v2-ack t)
-  :custom
-  (org-roam-directory "~/Wiki")
-  (org-roam-completion-everywhere t)
-  (org-roam-capture-templates
-   '(("d" "default" plain
-      "%?"
-      :if-new (file+head "${slug}-%<%H%M%d%m%Y>.org" "#+title: ${title}\n")
-      :unnarrowed t)))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         :map org-mode-map
-         ("C-M-i"    . completion-at-point))
-  :config
-  (org-roam-setup))
-
-;; Roam UI
-
-(use-package org-roam-ui
-  :ensure t
-  :after org-roam
-  :bind (("C-c n u" . org-roam-ui-mode))
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
-
 ;; Journal
 
 (use-package org-journal
@@ -613,178 +548,14 @@
 (pt/leader-keys
   "Oo" '(create-tmp-org :which-key "tmp org"))
 
-;; Magit
+;; Writeroom
 
-(use-package magit
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+(use-package writeroom-mode
+  :ensure t
   :config
+  (setq writeroom-width 130)
   (pt/leader-keys
-    "g" '(:ignore g :which-key "git")
-    "gs" '(magit-stage-file :which-key "stage file")
-    "gS" '(magit-stage :which-key "stage all")
-    "gc" '(magit-commit :which-key "commit")
-    "gg" '(magit-status :which-key "status")))
-
-;; Git Gutter
-
-(use-package git-gutter
-  :ensure t
-  :config
-  (global-git-gutter-mode t))
-
-(pt/leader-keys
-  "tg" '(git-gutter-mode :which-key "gutter"))
-
-;; Projectile
-
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Projects")
-    (setq projectile-project-search-path '("~/Projects")))
-  (setq projectile-switch-project-action #'projectile-dired)
-
-  (pt/leader-keys
-    "p" '(:ignore p :which-key "projects")
-    "pp" '(projectile-switch-project :which-key "switch to project")
-    "pt" '(projectile-test-project :which-key "test project")))
-
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
-
-(use-package persp-mode-projectile-bridge
-  :ensure t
-  :after (persp projectile))
-(persp-mode-projectile-bridge-mode)
-
-;; Syntax Checking
-
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode))
-
-;; Python
-
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
-
-(use-package pyvenv
-  :config
-  (pyvenv-mode 1))
-
-(use-package lsp-jedi
-  :ensure t
-  :config
-  (with-eval-after-load "lsp-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
-
-;; Go
-
-(use-package go-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
-
-;; Web
-
-(use-package web-mode
-  :ensure t)
-
-;; Emmet
-
-(use-package emmet-mode
-  :ensure t
-  :hook ((web-mode . emmet-mode)
-         (js-mode . emmet-mode))
-  :config
-  (setq emmet-move-cursor-between-quotes t))
-
-;; JSX
-
-(use-package rjsx-mode
-  :mode ("\\.js\\'"
-         "\\.jsx\\'")
-  :config
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil
-        js2-basic-offset 2
-        js-indent-level 2))
-
-;; LSP
-
-(use-package lsp-mode
-  :ensure t
-  :commands lsp
-  :diminish lsp-mode
-  :hook ((python-mode . lsp)
-         ((js2-mode rjsx-mode) . lsp))
-  :init
-  (setq lsp-keymap-prefix "s-l")
-  :config
-  (lsp-enable-which-key-integration t)
-  (setq lsp-prefer-capf t)
-  (setq lsp-auto-configure t
-        lsp-auto-guess-root t
-        ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
-        lsp-diagnostic-package :none))
-
-;; Lsp UI
-
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom))
-
-;; Terminal
-
-(use-package vterm
-  :ensure t)
-
-;; Toggle
-
-(use-package vterm-toggle
-  :ensure t
-  :config
-  (pt/leader-keys
-    "ot" '(vterm-toggle :which-key "terminal")))
-
-;; Elfeed
-
-(use-package elfeed
-  :ensure t
-  :config
-  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
-        elfeed-show-entry-switch 'display-buffer))
-
-(defun update-and-open-elfeed ()
-  (interactive)
-  (elfeed-org)
-  (elfeed-update)
-  (elfeed))
-
-(pt/leader-keys
-  "Or" '(update-and-open-elfeed :which-key "elfeed"))
-
-;; Elfeed Org
-
-(use-package elfeed-org
-  :ensure t
-  :config
-  (setq elfeed-show-entry-switch 'display-buffer)
-  (setq rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
-  :init
-  (elfeed-org))
+    "tw" '(writeroom-mode :which-key "Writeroom")))
 
 ;; Ledger
 
