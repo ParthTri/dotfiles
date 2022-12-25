@@ -10,10 +10,11 @@
 (tool-bar-mode -1)      ; Disable the tool bar
 (tooltip-mode -1)       ; Disable tooltips
 (set-fringe-mode 10)    ; Provide breathing room
+(menu-bar-mode 0)       ; Remove Menu Bar
 
 ;; Font
 
-(set-face-attribute 'default nil :font "Fira Code" :height 115)
+(set-face-attribute 'default nil :font "Fira Code" :height 95)
 
 ;; Line Numbers
 
@@ -611,6 +612,152 @@
 
 (pt/leader-keys
   "Oo" '(create-tmp-org :which-key "tmp org"))
+
+;; Magit
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (pt/leader-keys
+    "g" '(:ignore g :which-key "git")
+    "gs" '(magit-stage-file :which-key "stage file")
+    "gS" '(magit-stage :which-key "stage all")
+    "gc" '(magit-commit :which-key "commit")
+    "gg" '(magit-status :which-key "status")))
+
+;; Git Gutter
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode t))
+
+(pt/leader-keys
+  "tg" '(git-gutter-mode :which-key "gutter"))
+
+;; Projectile
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Projects")
+    (setq projectile-project-search-path '("~/Projects")))
+  (setq projectile-switch-project-action #'projectile-dired)
+
+  (pt/leader-keys
+    "p" '(:ignore p :which-key "projects")
+    "pp" '(projectile-switch-project :which-key "switch to project")
+    "pt" '(projectile-test-project :which-key "test project")))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile))
+(persp-mode-projectile-bridge-mode)
+
+;; Syntax Checking
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
+;; Python
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+
+;; Go
+
+(use-package go-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
+;; Web
+
+(use-package web-mode
+  :ensure t)
+
+;; Emmet
+
+(use-package emmet-mode
+  :ensure t
+  :hook ((web-mode . emmet-mode)
+         (js-mode . emmet-mode))
+  :config
+  (setq emmet-move-cursor-between-quotes t))
+
+;; JSX
+
+(use-package rjsx-mode
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2))
+
+;; LSP
+
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :diminish lsp-mode
+  :hook ((python-mode . lsp)
+         ((js2-mode rjsx-mode) . lsp))
+  :init
+  (setq lsp-keymap-prefix "s-l")
+  :config
+  (lsp-enable-which-key-integration t)
+  (setq lsp-prefer-capf t)
+  (setq lsp-auto-configure t
+        lsp-auto-guess-root t
+        ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
+        lsp-diagnostic-package :none))
+
+;; Lsp UI
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+;; Terminal
+
+(use-package vterm
+  :ensure t)
+
+;; Toggle
+
+(use-package vterm-toggle
+  :ensure t
+  :config
+  (pt/leader-keys
+    "ot" '(vterm-toggle :which-key "terminal")))
 
 ;; Elfeed
 
