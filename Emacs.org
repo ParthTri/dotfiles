@@ -22,7 +22,7 @@
 #+end_src
 *** Font
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :font "Fira Code" :height 95)
+  (set-face-attribute 'default nil :font "iaWriter Duo S" :height 95)
 #+end_src
 *** Line Numbers
 #+begin_src emacs-lisp
@@ -503,7 +503,7 @@ Write backups to ~/.emacs.d/backup/
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 #+end_src
 ** Roam
-#+begin_src 
+#+begin_src emacs-lisp
   (use-package org-roam
     :ensure t
     :init
@@ -526,7 +526,7 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 
 *** Roam UI
-#+begin_src 
+#+begin_src emacs-lisp
   (use-package org-roam-ui
     :ensure t
     :after org-roam
