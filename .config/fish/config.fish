@@ -40,6 +40,9 @@ bind \ce 'sd && tpwd'
 # keyboard shortcut to fuzzy find and switch to directory
 # bind \cf 'sd'
 
+# Keyboard shortcut to open lazygit
+bind \cg 'lazygit'
+
 # keyboard shortcut to open a tmux session in current directory
 bind \ct 'tpwd'
 
