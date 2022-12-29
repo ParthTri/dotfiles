@@ -42,5 +42,27 @@
 		"files": [
 			"cmd/main.go"
 		]
-	}
+	},
+	"Api": {
+		"inherit": false,
+		"ignoreProjectPrexists": false,
+		"git": true,
+		"env": false,
+		"dirs": [
+			"routes",
+			"db",
+			"middleware",
+			"server"
+		],
+		"files": [
+			"main.go",
+			"db/db.go",
+			"routes/routes.go",
+			"middleware/middleware.go",
+			"server/server.go",
+		],
+		"externalProgramsEnd": [
+			"go get -u github.com/gin-gonic/gin"
+		]
+	},
 }
