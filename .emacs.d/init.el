@@ -14,7 +14,7 @@
 
 ;; Font
 
-(set-face-attribute 'default nil :font "Fira Code" :height 95)
+(set-face-attribute 'default nil :font "iaWriter Duo S" :height 95)
 
 ;; Line Numbers
 
@@ -474,6 +474,40 @@
         (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
+
+;; Roam
+
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "~/Wiki")
+  (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "${slug}-%<%H%M%d%m%Y>.org" "#+title: ${title}\n")
+      :unnarrowed t)))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-mode-map
+         ("C-M-i"    . completion-at-point))
+  :config
+  (org-roam-setup))
+
+;; Roam UI
+
+(use-package org-roam-ui
+  :ensure t
+  :after org-roam
+  :bind (("C-c n u" . org-roam-ui-mode))
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 ;; Journal
 
