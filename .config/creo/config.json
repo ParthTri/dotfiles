@@ -59,10 +59,10 @@
 			"db/db.go",
 			"routes/routes.go",
 			"middleware/middleware.go",
-			"server/server.go",
+			"server/server.go"
 		],
 		"externalProgramsEnd": [
 			"go get -u github.com/gin-gonic/gin"
 		]
-	},
+	}
 }
