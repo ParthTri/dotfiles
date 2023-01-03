@@ -346,6 +346,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fringe ((t (:background "#282828"))))
  '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.4))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
@@ -591,6 +592,152 @@
   (pt/leader-keys
     "tw" '(writeroom-mode :which-key "Writeroom")))
 
+;; Magit
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (pt/leader-keys
+    "g" '(:ignore g :which-key "git")
+    "gs" '(magit-stage-file :which-key "stage file")
+    "gS" '(magit-stage :which-key "stage all")
+    "gc" '(magit-commit :which-key "commit")
+    "gg" '(magit-status :which-key "status")))
+
+;; Git Gutter
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode t))
+
+(pt/leader-keys
+  "tg" '(git-gutter-mode :which-key "gutter"))
+
+;; Projectile
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Projects")
+    (setq projectile-project-search-path '("~/Projects")))
+  (setq projectile-switch-project-action #'projectile-dired)
+
+  (pt/leader-keys
+    "p" '(:ignore p :which-key "projects")
+    "pp" '(projectile-switch-project :which-key "switch to project")
+    "pt" '(projectile-test-project :which-key "test project")))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile))
+(persp-mode-projectile-bridge-mode)
+
+;; Syntax Checking
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
+;; Python
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+
+;; Go
+
+(use-package go-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
+;; Web
+
+(use-package web-mode
+  :ensure t)
+
+;; Emmet
+
+(use-package emmet-mode
+  :ensure t
+  :hook ((web-mode . emmet-mode)
+         (js-mode . emmet-mode))
+  :config
+  (setq emmet-move-cursor-between-quotes t))
+
+;; JSX
+
+(use-package rjsx-mode
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2))
+
+;; LSP
+
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :diminish lsp-mode
+  :hook ((python-mode . lsp)
+         ((js2-mode rjsx-mode) . lsp))
+  :init
+  (setq lsp-keymap-prefix "s-l")
+  :config
+  (lsp-enable-which-key-integration t)
+  (setq lsp-prefer-capf t)
+  (setq lsp-auto-configure t
+        lsp-auto-guess-root t
+        ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
+        lsp-diagnostic-package :none))
+
+;; Lsp UI
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+;; Terminal
+
+(use-package vterm
+  :ensure t)
+
+;; Toggle
+
+(use-package vterm-toggle
+  :ensure t
+  :config
+  (pt/leader-keys
+    "ot" '(vterm-toggle :which-key "terminal")))
+
 ;; Ledger
 
 (use-package ledger-mode
@@ -627,3 +774,13 @@
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" default))
+ '(epa-gpg-program "/usr/local/bin/gpg")
+ '(package-selected-packages
+   '(hl-todo vterm-toggle vterm rjsx-mode emmet-mode web-mode lsp-jedi elpy flycheck persp-mode-projectile-bridge counsel-projectile projectile git-gutter magit go-mode lsp-ui lsp-mode writeroom-mode which-key use-package toc-org rainbow-delimiters persp-mode pdf-tools org-tree-slide org-roam-ui org-ref org-journal org-bullets ledger-mode json-mode general evil-collection doom-themes doom-modeline counsel company-box centered-window all-the-icons)))
