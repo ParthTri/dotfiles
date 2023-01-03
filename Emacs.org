@@ -784,6 +784,10 @@ Write backups to ~/.emacs.d/backup/
     :ensure t
     :hook (prog-mode))
 #+end_src
+** Code Folding
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
+#+end_src
 * Other
 ** Ledger
 #+begin_src emacs-lisp

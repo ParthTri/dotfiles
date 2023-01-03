@@ -36,6 +36,11 @@
 
 (setq delete-by-moving-to-trash t)
 
+;; Tab
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
 ;; Use package
 
 (require 'package)
@@ -346,7 +351,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe ((t (:background "#282828"))))
  '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.4))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
@@ -738,6 +742,16 @@
   (pt/leader-keys
     "ot" '(vterm-toggle :which-key "terminal")))
 
+;; Comments
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode))
+
+;; Code Folding
+
+(add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
+
 ;; Ledger
 
 (use-package ledger-mode
@@ -774,13 +788,3 @@
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" default))
- '(epa-gpg-program "/usr/local/bin/gpg")
- '(package-selected-packages
-   '(hl-todo vterm-toggle vterm rjsx-mode emmet-mode web-mode lsp-jedi elpy flycheck persp-mode-projectile-bridge counsel-projectile projectile git-gutter magit go-mode lsp-ui lsp-mode writeroom-mode which-key use-package toc-org rainbow-delimiters persp-mode pdf-tools org-tree-slide org-roam-ui org-ref org-journal org-bullets ledger-mode json-mode general evil-collection doom-themes doom-modeline counsel company-box centered-window all-the-icons)))
