@@ -636,7 +636,8 @@
   (pt/leader-keys
     "p" '(:ignore p :which-key "projects")
     "pp" '(projectile-switch-project :which-key "switch to project")
-    "pt" '(projectile-test-project :which-key "test project")))
+    "pt" '(projectile-test-project :which-key "test project")
+    "pf" '(projectile-find-file :which-key "find file")))
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
@@ -644,6 +645,7 @@
 (use-package persp-mode-projectile-bridge
   :ensure t
   :after (persp projectile))
+
 (persp-mode-projectile-bridge-mode)
 
 ;; Syntax Checking
@@ -815,3 +817,43 @@
         ("/[Gmail]/Trash"     . ?t)
         ("/[Gmail]/Drafts"    . ?d)
         ("/[Gmail]/All Mail"  . ?a)))
+
+;; Accounts
+
+(setq mu4e-user-mail-address-list '("superparthman@gmail.com")
+
+(setq mu4e-contexts
+      (list
+       ;; Personal account
+       (make-mu4e-context
+        :name "Personal"
+        :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+        :vars '((user-mail-address . "superparthman@gmail.com")
+                (user-full-name    . "Parth Trivedi")
+                (smtpmail-smtp-server  . "smtp.gmail.com")
+                (smtpmail-smtp-service . 465)
+                (smtpmail-stream-type  . ssl)
+                (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
+                (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
+                (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")
+                (mu4e-trash-folder  . "/Personal/[Gmail]/Trash")))
+       (make-mu4e-context
+        :name "Work"
+        :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+        :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
+                (user-full-name    . "Parth Trivedi")
+                (smtpmail-smtp-server  . "smtp.gmail.com")
+                (smtpmail-smtp-service . 465)
+                (smtpmail-stream-type  . ssl)
+                (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
+                (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
+                (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
+                (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
+        ))
+

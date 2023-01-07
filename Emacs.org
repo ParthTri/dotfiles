@@ -670,7 +670,8 @@ Write backups to ~/.emacs.d/backup/
     (pt/leader-keys
       "p" '(:ignore p :which-key "projects")
       "pp" '(projectile-switch-project :which-key "switch to project")
-      "pt" '(projectile-test-project :which-key "test project")))
+      "pt" '(projectile-test-project :which-key "test project")
+      "pf" '(projectile-find-file :which-key "find file")))
 
   (use-package counsel-projectile
     :config (counsel-projectile-mode))
@@ -678,6 +679,7 @@ Write backups to ~/.emacs.d/backup/
   (use-package persp-mode-projectile-bridge
     :ensure t
     :after (persp projectile))
+
   (persp-mode-projectile-bridge-mode)
 #+end_src
 ** Syntax Checking
