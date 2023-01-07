@@ -28,3 +28,7 @@ super + shift + q
 ## Lock Screen
 super + control + l
 	~/.bin/lock.sh
+
+## Resource Keyboard
+super + control + r
+  xmodmap ~/.Xmodmap 
