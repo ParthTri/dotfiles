@@ -829,4 +829,67 @@ Write backups to ~/.emacs.d/backup/
       "tc" '(centered-window-mode :which-key "center"))
     (setq cwm-centered-window-width 140))
 #+end_src
+** Mu4e
+#+begin_src emacs-lisp
+  (require 'mu4e)
+  (setq mu4e-maildir (expand-file-name "~/.mail"))
+  
 
+  (setq mu4e-view-show-addresses t
+        message-kill-buffer-on-exit t
+        mu4e-context-policy 'pick-first
+        mu4e-confirm-quit nil)
+
+  (pt/leader-keys
+    "m" '(mu4e :which-key "Mail"))
+
+  ;; Set how email is to be sent
+  (setq send-mail-function (quote smtpmail-send-it))
+
+
+  (setq mu4e-maildir-shortcuts
+        '(("/[Gmail]/Sent Mail" . ?s)
+          ("/[Gmail]/Trash"     . ?t)
+          ("/[Gmail]/Drafts"    . ?d)
+          ("/[Gmail]/All Mail"  . ?a)))
+#+end_src
+
+*** COMMENT Accounts
+#+begin_src emacs-lisp
+  (setq mu4e-user-mail-address-list '("superparthman@gmail.com")
+
+  (setq mu4e-contexts
+        (list
+         ;; Personal account
+         (make-mu4e-context
+          :name "Personal"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "superparthman@gmail.com")
+                  (user-full-name    . "Parth Trivedi")
+                  (smtpmail-smtp-server  . "smtp.gmail.com")
+                  (smtpmail-smtp-service . 465)
+                  (smtpmail-stream-type  . ssl)
+                  (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/Personal/[Gmail]/Trash")))
+         (make-mu4e-context
+          :name "Work"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
+                  (user-full-name    . "Parth Trivedi")
+                  (smtpmail-smtp-server  . "smtp.gmail.com")
+                  (smtpmail-smtp-service . 465)
+                  (smtpmail-stream-type  . ssl)
+                  (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
+          ))
+#+end_src

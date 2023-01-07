@@ -791,3 +791,27 @@
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
+
+;; Mu4e
+
+(require 'mu4e)
+(setq mu4e-maildir (expand-file-name "~/.mail"))
+
+
+(setq mu4e-view-show-addresses t
+      message-kill-buffer-on-exit t
+      mu4e-context-policy 'pick-first
+      mu4e-confirm-quit nil)
+
+(pt/leader-keys
+  "m" '(mu4e :which-key "Mail"))
+
+;; Set how email is to be sent
+(setq send-mail-function (quote smtpmail-send-it))
+
+
+(setq mu4e-maildir-shortcuts
+      '(("/[Gmail]/Sent Mail" . ?s)
+        ("/[Gmail]/Trash"     . ?t)
+        ("/[Gmail]/Drafts"    . ?d)
+        ("/[Gmail]/All Mail"  . ?a)))
