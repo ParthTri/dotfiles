@@ -799,7 +799,6 @@
 (require 'mu4e)
 (setq mu4e-maildir (expand-file-name "~/.mail"))
 
-
 (setq mu4e-view-show-addresses t
       message-kill-buffer-on-exit t
       mu4e-context-policy 'pick-first
@@ -810,13 +809,6 @@
 
 ;; Set how email is to be sent
 (setq send-mail-function (quote smtpmail-send-it))
-
-
-(setq mu4e-maildir-shortcuts
-      '(("/[Gmail]/Sent Mail" . ?s)
-        ("/[Gmail]/Trash"     . ?t)
-        ("/[Gmail]/Drafts"    . ?d)
-        ("/[Gmail]/All Mail"  . ?a)))
 
 ;; Accounts
 
@@ -865,4 +857,5 @@
   :after mu4e
   (mu4e-alert-set-default-style 'libnotify)
   (mu4e-alert-enable-notifications)
+  (mu4e-alert-enable-mode-line-display)
   (mu4e-alert-mode t))
