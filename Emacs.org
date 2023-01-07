@@ -628,171 +628,6 @@ Write backups to ~/.emacs.d/backup/
       "tw" '(writeroom-mode :which-key "Writeroom")))
 #+end_src
 
-* Programming
-** Git
-*** Magit
-#+begin_src emacs-lisp
-  (use-package magit
-    :custom
-    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-    :config
-    (pt/leader-keys
-      "g" '(:ignore g :which-key "git")
-      "gs" '(magit-stage-file :which-key "stage file")
-      "gS" '(magit-stage :which-key "stage all")
-      "gc" '(magit-commit :which-key "commit")
-      "gg" '(magit-status :which-key "status")))
-#+end_src
-*** Git Gutter
-#+begin_src emacs-lisp
-  (use-package git-gutter
-    :ensure t
-    :config
-    (global-git-gutter-mode t))
-
-  (pt/leader-keys
-    "tg" '(git-gutter-mode :which-key "gutter"))
-#+end_src
-** Projectile
-#+begin_src emacs-lisp
-  (use-package projectile
-    :diminish projectile-mode
-    :config (projectile-mode)
-    :custom ((projectile-completion-system 'ivy))
-    :bind-keymap
-    ("C-c p" . projectile-command-map)
-    :init
-    ;; NOTE: Set this to the folder where you keep your Git repos!
-    (when (file-directory-p "~/Projects")
-      (setq projectile-project-search-path '("~/Projects")))
-    (setq projectile-switch-project-action #'projectile-dired)
-
-    (pt/leader-keys
-      "p" '(:ignore p :which-key "projects")
-      "pp" '(projectile-switch-project :which-key "switch to project")
-      "pt" '(projectile-test-project :which-key "test project")
-      "pf" '(projectile-find-file :which-key "find file")))
-
-  (use-package counsel-projectile
-    :config (counsel-projectile-mode))
-
-  (use-package persp-mode-projectile-bridge
-    :ensure t
-    :after (persp projectile))
-
-  (persp-mode-projectile-bridge-mode)
-#+end_src
-** Syntax Checking
-#+begin_src emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init
-    (global-flycheck-mode))
-#+end_src
-** Languages
-*** Python
-#+begin_src emacs-lisp
-  (use-package elpy
-    :ensure t
-    :defer t
-    :init
-    (advice-add 'python-mode :before 'elpy-enable))
-
-  (use-package pyvenv
-    :config
-    (pyvenv-mode 1))
-
-  (use-package lsp-jedi
-    :ensure t
-    :config
-    (with-eval-after-load "lsp-mode"
-      (add-to-list 'lsp-disabled-clients 'pyls)
-      (add-to-list 'lsp-enabled-clients 'jedi)))
-#+end_src
-*** Go
-#+begin_src emacs-lisp
-  (use-package go-mode
-    :ensure t
-    :config
-    (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
-#+end_src
-*** Web
-#+begin_src emacs-lisp
-  (use-package web-mode
-    :ensure t)
-#+end_src
-**** Emmet
-#+begin_src emacs-lisp
-  (use-package emmet-mode
-    :ensure t
-    :hook ((web-mode . emmet-mode)
-           (js-mode . emmet-mode))
-    :config
-    (setq emmet-move-cursor-between-quotes t))
-#+end_src
-**** JSX
-#+begin_src emacs-lisp
-  (use-package rjsx-mode
-    :mode ("\\.js\\'"
-           "\\.jsx\\'")
-    :config
-    (setq js2-mode-show-parse-errors nil
-          js2-mode-show-strict-warnings nil
-          js2-basic-offset 2
-          js-indent-level 2))
-#+end_src
-** LSP
-#+begin_src emacs-lisp
-  (use-package lsp-mode
-    :ensure t
-    :commands lsp
-    :diminish lsp-mode
-    :hook ((python-mode . lsp)
-           ((js2-mode rjsx-mode) . lsp))
-    :init
-    (setq lsp-keymap-prefix "s-l")
-    :config
-    (lsp-enable-which-key-integration t)
-    (setq lsp-prefer-capf t)
-    (setq lsp-auto-configure t
-          lsp-auto-guess-root t
-          ;; don't set flymake or lsp-ui so the default linter doesn't get trampled
-          lsp-diagnostic-package :none))
-#+end_src
-
-*** Lsp UI
-#+begin_src emacs-lisp
-  (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :custom
-    (lsp-ui-doc-position 'bottom))
-#+end_src
-** Terminal
-#+begin_src emacs-lisp
-  (use-package vterm
-    :ensure t
-    :config
-    (pt/leader-keys
-      "oT" '(vterm :which-key "terminal"))
-#+end_src
-*** Toggle
-#+begin_src emacs-lisp
-  (use-package vterm-toggle
-    :ensure t
-    :config
-    (pt/leader-keys
-      "ot" '(vterm-toggle :which-key "terminal")))
-#+end_src
-** Comments
-#+begin_src emacs-lisp
-  (use-package hl-todo
-    :ensure t
-    :hook (prog-mode))
-#+end_src
-** Code Folding
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
-#+end_src
 * Other
 ** Ledger
 #+begin_src emacs-lisp
@@ -834,8 +669,13 @@ Write backups to ~/.emacs.d/backup/
 ** Mu4e
 #+begin_src emacs-lisp
   (require 'mu4e)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+
   (setq mu4e-maildir (expand-file-name "~/.mail"))
-  
+
   (setq mu4e-view-show-addresses t
         message-kill-buffer-on-exit t
         mu4e-context-policy 'pick-first
