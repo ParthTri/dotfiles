@@ -1,0 +1,46 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User superparthman@gmail.com
+PassCmd "pass EAC9447E/Email/superparthman@gmail.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/.mail/Personal/
+Inbox ~/.mail/Personal/Inbox/
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Expunge Both
+SyncState *
+
+
+###### WORK #######
+IMAPAccount gmail
+Host imap.gmail.com
+User parthtrivedi.co@gmail.com
+PassCmd "pass EAC9447E/Email/parthtrivedi.co@gmail.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/.mail/Work/
+Inbox ~/.mail/Work/Inbox/
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Create Both
+Expunge Both
+SyncState *
