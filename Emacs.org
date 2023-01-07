@@ -856,7 +856,7 @@ Write backups to ~/.emacs.d/backup/
           ("/[Gmail]/All Mail"  . ?a)))
 #+end_src
 
-*** COMMENT Accounts
+*** Accounts
 #+begin_src emacs-lisp
   (setq mu4e-user-mail-address-list '("superparthman@gmail.com")
 
@@ -894,4 +894,15 @@ Write backups to ~/.emacs.d/backup/
                   (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
                   (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
           ))
+#+end_src
+
+*** Alerts
+#+begin_src emacs-lisp
+  (use-package mu4e-alert
+    :ensure t
+    :hook (after-init)
+    :after mu4e
+    (mu4e-alert-set-default-style 'libnotify)
+    (mu4e-alert-enable-notifications)
+    (mu4e-alert-mode t))
 #+end_src

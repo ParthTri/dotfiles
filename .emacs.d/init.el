@@ -857,3 +857,12 @@
                 (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
         ))
 
+;; Alerts
+
+(use-package mu4e-alert
+  :ensure t
+  :hook (after-init)
+  :after mu4e
+  (mu4e-alert-set-default-style 'libnotify)
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-mode t))
