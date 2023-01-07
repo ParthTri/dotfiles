@@ -768,7 +768,10 @@ Write backups to ~/.emacs.d/backup/
 ** Terminal
 #+begin_src emacs-lisp
   (use-package vterm
-    :ensure t)
+    :ensure t
+    :config
+    (pt/leader-keys
+      "oT" '(vterm :which-key "terminal"))
 #+end_src
 *** Toggle
 #+begin_src emacs-lisp

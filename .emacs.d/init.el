@@ -732,7 +732,10 @@
 ;; Terminal
 
 (use-package vterm
-  :ensure t)
+  :ensure t
+  :config
+  (pt/leader-keys
+    "oT" '(vterm :which-key "terminal"))
 
 ;; Toggle
 
