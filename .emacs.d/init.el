@@ -812,7 +812,8 @@
 
 ;; Accounts
 
-(setq mu4e-user-mail-address-list '("superparthman@gmail.com")
+(setq mu4e-user-mail-address-list '("superparthman@gmail.com"
+                                    "parthtrivedi.co@gmail.com"))
 
 (setq mu4e-contexts
       (list
@@ -820,9 +821,9 @@
        (make-mu4e-context
         :name "Personal"
         :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+        (lambda (msg)
+          (when msg
+            (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
         :vars '((user-mail-address . "superparthman@gmail.com")
                 (user-full-name    . "Parth Trivedi")
                 (smtpmail-smtp-server  . "smtp.gmail.com")
@@ -835,9 +836,9 @@
        (make-mu4e-context
         :name "Work"
         :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+        (lambda (msg)
+          (when msg
+            (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
         :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
                 (user-full-name    . "Parth Trivedi")
                 (smtpmail-smtp-server  . "smtp.gmail.com")
@@ -847,7 +848,7 @@
                 (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
                 (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
                 (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
-        ))
+       ))
 
 ;; Alerts
 
