@@ -31,4 +31,4 @@ super + control + l
 
 ## Resource Keyboard
 super + control + r
-  xmodmap ~/.Xmodmap 
+  xmodmap ~/.Xmodmap && notify-send "Keyboard layout reloaded"
