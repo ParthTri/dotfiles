@@ -43,9 +43,10 @@
 			"cmd/main.go"
 		]
 	},
-	"Api": {
-		"inherit": false,
-		"ignoreProjectPrexists": false,
+	"Gin": {
+		"inherit": true,
+		"parent": "Go",
+		"ignoreProjectPrexists": true,
 		"git": true,
 		"env": false,
 		"dirs": [
@@ -62,7 +63,33 @@
 			"server/server.go"
 		],
 		"externalProgramsEnd": [
+			"go mod init $name",
 			"go get -u github.com/gin-gonic/gin"
+    ]
+  },
+	"Blank": {
+		"inherit": false,
+		"git": true,
+		"gitignore": "",
+		"dirs": [
+			"src"
+		]
+	},
+	"Express": {
+		"git": true,
+		".gitignore": "node_modules\n",
+		"dirs": [
+			"routes",
+			"middleware",
+			"models",
+			"public",
+			"public/images",
+			"public/images/stylesheets",
+			"public/images/javascript"
+		],
+		"files": [
+			"app.js"
 		]
 	}
 }
+  
