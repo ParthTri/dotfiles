@@ -290,7 +290,7 @@
 
 ;; Org Configuration
 
-(setq org-directory "~/Notes/")
+(setq org-directory "~/org/")
 
 (defun pt/org-mode-setup ()
   (org-indent-mode)
@@ -377,7 +377,8 @@
         ("i" "Idea" entry (file+headline "~/Notes/Ideas.org" "Other")
          "** %?\n %i\n ")
         ("B" "Book" entry (file+headline "~/Notes/Books.org" "Other")
-         "** TODO %?\n")))
+         "** TODO %?\n")
+        ("b" "Blog" entry (file create-new-blog-post))))
 
 ;; Refile
 
@@ -596,6 +597,17 @@
   (pt/leader-keys
     "tw" '(writeroom-mode :which-key "Writeroom")))
 
+;; Blog
+
+(defun create-new-blog-post ()
+  "Create a new blog post based on passed name and date in blog-dir"
+  (interactive)
+  (let ((name (read-string "Enter blog title: ")))
+    (expand-file-name (format "%s-%s.org"
+                              (string-join (string-split name " ") "_")
+                              (format-time-string "%d%m%Y"))
+                      "~/Blog/")))
+
 ;; Ledger
 
 (use-package ledger-mode
@@ -635,7 +647,8 @@
 
 ;; Mu4e
 
-(require 'mu4e)
+(use-package mu4e
+    :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
 
 ;; Refresh mail using isync every 10 minutes
 (setq mu4e-update-interval (* 10 60))
@@ -653,6 +666,9 @@
 
 ;; Set how email is to be sent
 (setq send-mail-function (quote smtpmail-send-it))
+
+;; Split view
+(setq mu4e-split-view 'vertical)
 
 ;; Accounts
 
@@ -675,8 +691,8 @@
                 (smtpmail-stream-type  . ssl)
                 (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
                 (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
-                (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")
-                (mu4e-trash-folder  . "/Personal/[Gmail]/Trash")))
+                (mu4e-refile-folder  . "/Personal/[Gmail/All Mail")
+                (mu4e-trash-folder  . "/Personal/[Gmail/Trash")))
        (make-mu4e-context
         :name "Work"
         :match-func
