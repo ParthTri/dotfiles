@@ -30,5 +30,5 @@ super + control + l
 	~/.bin/lock.sh
 
 ## Resource Keyboard
-super + control + r
-  xmodmap ~/.Xmodmap && notify-send "Keyboard layout reloaded"
+super + shift + S
+	~/Scripts/sourceKeyboard.sh
