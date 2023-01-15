@@ -374,19 +374,19 @@
          "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
         ("l" "Something for Later" entry (file+headline gtd-file "Later")
          "** %?\n %i\n")
-        ("i" "Idea" entry (file+headline "~/Notes/Ideas.org" "Other")
+        ("i" "Idea" entry (file+headline "~/org/Ideas.org" "Other")
          "** %?\n %i\n ")
-        ("B" "Book" entry (file+headline "~/Notes/Books.org" "Other")
+        ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
          "** TODO %?\n")
         ("b" "Blog" entry (file create-new-blog-post))))
 
 ;; Refile
 
 (setq org-refile-targets
-      '(("~/Notes/gtd.org" :maxlevel . 1)
-        ("~/Notes/Ideas.org" :maxlevel . 1)
-        ("~/Notes/done.archive.org" :maxlevel . 1)
-        ("~/Notes/Books.org" :maxlevel . 1)))
+      '(("~/org/gtd.org" :maxlevel . 1)
+        ("~/org/Ideas.org" :maxlevel . 1)
+        ("~/org/done.archive.org" :maxlevel . 1)
+        ("~/org/Books.org" :maxlevel . 1)))
 
 ;; Tags
 
