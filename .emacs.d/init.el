@@ -359,20 +359,27 @@
 
 ;; Agenda
 
-;; (setq org-agenda-files '("~/org/gtd.org"))
+(setq org-agenda-files '("~/org/Todos.org" "~/org/Projects.org" "~/org/Repeated.org"))
 
 ;; Capture
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq gtd-file "~/org/gtd.org")
+(setq todos-file "~/org/Todos.org"
+      projects-file "~/org/Projects.org"
+      later-file "~/org/Later.org"
+      repeat-file "~/org/Repeated.org")
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline gtd-file "Tasks")
+      '(("t" "Todo" entry (file todos-file)
          "** TODO %?\n %i\n")
-        ("s" "School" entry (file+headline gtd-file "Projects")
-         "** TODO [/]%?\n")
-        ("p" "Project" entry (file+headline gtd-file "Projects")
-         "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
-        ("l" "Something for Later" entry (file+headline gtd-file "Later")
+        ("s" "School" entry (file todos-file)
+         "** TODO %? :school:\n")
+        ("S" "School Project" entry (file projects-file)
+         "* TODO %? [/] :school:\n")
+        ("p" "Project" entry (file projects-file)
+         "* TODO %? [/]\n#+COOKIE_DATA:todo\n %i\n")
+        ("l" "Something for Later" entry (file later-file)
+         "** %?\n %i\n")
+        ("r" "Repeated Task" entry (file repeated-file)
          "** %?\n %i\n")
         ("i" "Idea" entry (file+headline "~/org/Ideas.org" "Other")
          "** %?\n %i\n ")
@@ -383,9 +390,11 @@
 ;; Refile
 
 (setq org-refile-targets
-      '(("~/org/gtd.org" :maxlevel . 1)
+      '(("~/org/Tasks.org" :maxlevel . 1)
+        ("~/org/Projects.org" :maxlevel . 1)
+        ("~/org/Repeated.org" :maxlevel . 1)
+        ("~/org/Later.org" :maxlevel . 1)
         ("~/org/Ideas.org" :maxlevel . 1)
-        ("~/org/done.archive.org" :maxlevel . 1)
         ("~/org/Books.org" :maxlevel . 1)))
 
 ;; Tags
@@ -406,7 +415,7 @@
 ;; Keywords
 
 (setq org-todo-keywords
-      '((sequencep "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d/!)")
+      '((sequencep "TODO(t)" "NEXT(n)" "ONGOING(o)" "|" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 
 ;; Keyword Faces

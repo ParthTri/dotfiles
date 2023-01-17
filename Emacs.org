@@ -382,34 +382,43 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Agenda
 #+begin_src emacs-lisp
-  ;; (setq org-agenda-files '("~/org/gtd.org"))
+  (setq org-agenda-files '("~/org/Todos.org" "~/org/Projects.org" "~/org/Repeated.org"))
 #+end_src
 
 ** Capture
 #+begin_src emacs-lisp
-    (setq org-default-notes-file (concat org-directory "/notes.org"))
-    (setq gtd-file "~/org/gtd.org")
-    (setq org-capture-templates
-          '(("t" "Todo" entry (file+headline gtd-file "Tasks")
-             "** TODO %?\n %i\n")
-            ("s" "School" entry (file+headline gtd-file "Projects")
-             "** TODO [/]%?\n")
-            ("p" "Project" entry (file+headline gtd-file "Projects")
-             "** %? [/]\n#+COOKIE_DATA:todo\n %i\n")
-            ("l" "Something for Later" entry (file+headline gtd-file "Later")
-             "** %?\n %i\n")
-            ("i" "Idea" entry (file+headline "~/org/Ideas.org" "Other")
-             "** %?\n %i\n ")
-            ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
-             "** TODO %?\n")
-            ("b" "Blog" entry (file create-new-blog-post))))
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq todos-file "~/org/Todos.org"
+        projects-file "~/org/Projects.org"
+        later-file "~/org/Later.org"
+        repeat-file "~/org/Repeated.org")
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file todos-file)
+           "** TODO %?\n %i\n")
+          ("s" "School" entry (file todos-file)
+           "** TODO %? :school:\n")
+          ("S" "School Project" entry (file projects-file)
+           "* TODO %? [/] :school:\n")
+          ("p" "Project" entry (file projects-file)
+           "* TODO %? [/]\n#+COOKIE_DATA:todo\n %i\n")
+          ("l" "Something for Later" entry (file later-file)
+           "** %?\n %i\n")
+          ("r" "Repeated Task" entry (file repeated-file)
+           "** %?\n %i\n")
+          ("i" "Idea" entry (file+headline "~/org/Ideas.org" "Other")
+           "** %?\n %i\n ")
+          ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
+           "** TODO %?\n")
+          ("b" "Blog" entry (file create-new-blog-post))))
 #+end_src
 ** Refile
 #+begin_src emacs-lisp
   (setq org-refile-targets
-        '(("~/org/gtd.org" :maxlevel . 1)
+        '(("~/org/Tasks.org" :maxlevel . 1)
+          ("~/org/Projects.org" :maxlevel . 1)
+          ("~/org/Repeated.org" :maxlevel . 1)
+          ("~/org/Later.org" :maxlevel . 1)
           ("~/org/Ideas.org" :maxlevel . 1)
-          ("~/org/done.archive.org" :maxlevel . 1)
           ("~/org/Books.org" :maxlevel . 1)))
 #+end_src
 ** Tags
@@ -430,7 +439,7 @@ Write backups to ~/.emacs.d/backup/
 ** Keywords
 #+begin_src emacs-lisp
   (setq org-todo-keywords
-        '((sequencep "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d/!)")
+        '((sequencep "TODO(t)" "NEXT(n)" "ONGOING(o)" "|" "DONE(d/!)")
           (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
 #+end_src
 ** Keyword Faces
@@ -445,11 +454,11 @@ Write backups to ~/.emacs.d/backup/
           ("PAUSED" :foreground "OrangeRed" :weight bold)
           ("MEETING" :foreground "forest green" :weight bold)))
 #+end_src
-*** Views
+** Views
 #+begin_src emacs-lisp
   (setq org-agenda-dim-blocked-tasks nil)
 #+end_src
-**** All
+*** All
 #+begin_src emacs-lisp
   (setq org-agenda-custom-commands
         '(("n" "All"
