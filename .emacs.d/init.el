@@ -368,6 +368,8 @@
 ;; Agenda
 
 (setq org-agenda-files '("~/org/Todos.org" "~/org/Projects.org" "~/org/Repeated.org"))
+(setq org-agenda-skip-deadline-if-done t
+      org-agenda-skip-scheduled-if-done t)
 
 ;; Capture
 
@@ -378,9 +380,9 @@
       repeat-file "~/org/Repeated.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file todos-file)
-         "** TODO %?\n %i\n")
+         "* TODO %?\n %i\n")
         ("s" "School" entry (file todos-file)
-         "** TODO %? :school:\n")
+         "* TODO %? :school:\n")
         ("S" "School Project" entry (file projects-file)
          "* TODO %? [/] :school:\n")
         ("p" "Project" entry (file projects-file)
