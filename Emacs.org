@@ -48,6 +48,7 @@
 #+begin_src emacs-lisp
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
+  (setq-default evil-shift-width tab-width)
 #+end_src
 ** Use package
 #+begin_src emacs-lisp

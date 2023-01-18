@@ -40,6 +40,7 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+(setq-default evil-shift-width tab-width)
 
 ;; Use package
 
