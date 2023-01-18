@@ -304,6 +304,13 @@ Write backups to ~/.emacs.d/backup/
   (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
+** Notifications
+#+begin_src emacs-lisp
+  (use-package alert
+    :commands alert
+    :config
+    (setq alert-default-style 'notifications))
+#+end_src
 
 * Org Mode
 ** Org Configuration

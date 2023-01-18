@@ -289,6 +289,13 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; Notifications
+
+(use-package alert
+  :commands alert
+  :config
+  (setq alert-default-style 'notifications))
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
