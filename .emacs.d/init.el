@@ -627,6 +627,141 @@
                               (format-time-string "%d%m%Y"))
                       "~/Blog/")))
 
+;; Magit
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (pt/leader-keys
+    "g" '(:ignore g :which-key "git")
+    "gs" '(magit-stage-file :which-key "stage file")
+    "gS" '(magit-stage :which-key "stage all")
+    "gc" '(magit-commit :which-key "commit")
+    "gg" '(magit-status :which-key "status")))
+
+;; Git Gutter
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode t))
+
+(pt/leader-keys
+  "tg" '(git-gutter-mode :which-key "gutter"))
+
+;; Projectile
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Projects")
+    (setq projectile-project-search-path '("~/Projects")))
+  (setq projectile-switch-project-action #'projectile-dired)
+
+  (pt/leader-keys
+    "p" '(:ignore p :which-key "projects")
+    "pp" '(projectile-switch-project :which-key "switch to project")
+    "pt" '(projectile-test-project :which-key "test project")
+    "pf" '(projectile-find-file :which-key "find file")))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile))
+
+(persp-mode-projectile-bridge-mode)
+
+;; Syntax Checking
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
+;; Python
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+;; Go
+
+(use-package go-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
+;; Web
+
+(use-package web-mode
+  :ensure t)
+
+;; Emmet
+
+(use-package emmet-mode
+  :ensure t
+  :hook ((web-mode . emmet-mode)
+         (js-mode . emmet-mode))
+  :config
+  (setq emmet-move-cursor-between-quotes t))
+
+;; JSX
+
+(use-package rjsx-mode
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2))
+
+;; Terminal
+
+(use-package vterm
+  :ensure t
+  :config
+  (pt/leader-keys
+    "oT" '(vterm :which-key "terminal"))
+
+;; Toggle
+
+(use-package vterm-toggle
+  :ensure t
+  :config
+  (pt/leader-keys
+    "ot" '(vterm-toggle :which-key "terminal")))
+
+;; Comments
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode))
+
+;; Code Folding
+
+(use-package origami
+  :hook (prog-mode . origami-mode))
+
+;; Language Server Protocol
+
+(use-package eglot
+  :ensure t)
+
 ;; Ledger
 
 (use-package ledger-mode
