@@ -145,9 +145,9 @@
   "oe" '(eshell :which-key "eshell"))
 
 (pt/leader-keys
-  "O" '(:ignore O :which-key "Org")
-  "Oa" '(org-agenda :which-key "agenda")
-  "Oc" '(org-capture :which-key "capture"))
+  "o" '(:ignore O :which-key "")
+  "oa" '(org-agenda :which-key "agenda")
+  "oc" '(org-capture :which-key "capture"))
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
