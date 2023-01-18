@@ -74,7 +74,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-tokyo-night t)
+  (load-theme 'doom-tomorrow-night t)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t)
   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
