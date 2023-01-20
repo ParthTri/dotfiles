@@ -941,3 +941,32 @@ Write backups to ~/.emacs.d/backup/
     (mu4e-alert-enable-mode-line-display)
     (mu4e-alert-mode t))
 #+end_src
+
+** Elfeed
+#+begin_src emacs-lisp
+  (use-package elfeed
+    :ensure t
+    :config
+    (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+          elfeed-show-entry-switch 'display-buffer))
+
+  (defun update-and-open-elfeed ()
+    (interactive)
+    (elfeed-org)
+    (elfeed-update)
+    (elfeed))
+
+  (pt/leader-keys
+    "or" '(update-and-open-elfeed :which-key "elfeed"))
+#+end_src
+
+*** Elfeed Org
+#+begin_src emacs-lisp
+  (use-package elfeed-org
+    :ensure t
+    :config
+    (setq elfeed-show-entry-switch 'display-buffer)
+    (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+    :init
+    (elfeed-org))
+#+end_src

@@ -901,3 +901,48 @@
   (mu4e-alert-enable-notifications)
   (mu4e-alert-enable-mode-line-display)
   (mu4e-alert-mode t))
+
+;; Elfeed
+
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+        elfeed-show-entry-switch 'display-buffer))
+
+(defun update-and-open-elfeed ()
+  (interactive)
+  (elfeed-org)
+  (elfeed-update)
+  (elfeed))
+
+(pt/leader-keys
+  "or" '(update-and-open-elfeed :which-key "elfeed"))
+
+;; Elfeed Org
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (setq elfeed-show-entry-switch 'display-buffer)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+  :init
+  (elfeed-org))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(epa-gpg-program "/usr/local/bin/gpg")
+ '(package-selected-packages
+   '(elfeed-org elfeed writeroom-mode which-key web-mode vterm-toggle use-package toc-org spinner rjsx-mode rainbow-delimiters persp-mode-projectile-bridge pdf-tools origami org-tree-slide org-roam-ui org-ref org-journal org-bullets mu4e-alert markdown-mode magit ledger-mode hl-todo go-mode git-gutter general flycheck evil-collection emmet-mode elpy eglot doom-themes doom-modeline csv-mode counsel-projectile company-box centered-window all-the-icons)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.4))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.3))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.2))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
