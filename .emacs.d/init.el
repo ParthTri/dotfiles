@@ -752,18 +752,18 @@
 ;; Terminal
 
 (use-package vterm
-  :ensure t
-  :config
-  (pt/leader-keys
-    "oT" '(vterm :which-key "terminal"))
+  :ensure t )
+
+(pt/leader-keys
+  "oT" '(vterm :which-key "terminal"))
 
 ;; Toggle
 
 (use-package vterm-toggle
-  :ensure t
-  :config
-  (pt/leader-keys
-    "ot" '(vterm-toggle :which-key "terminal")))
+  :ensure t)
+
+(pt/leader-keys
+  "ot" '(vterm-toggle :which-key "terminal"))
 
 ;; Comments
 
