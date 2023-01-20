@@ -816,6 +816,15 @@ Write backups to ~/.emacs.d/backup/
   (use-package eglot
     :ensure t)
 #+end_src
+** Other Formats
+*** CSV
+#+begin_src emacs-lisp
+  (use-package csv-mode
+    :ensure t
+    :mode ("\\.csv\\'")
+    :hook (csv-mode . csv-align-mode)
+    )
+#+end_src
 * Other
 ** Ledger
 #+begin_src emacs-lisp

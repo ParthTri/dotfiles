@@ -781,6 +781,14 @@
 (use-package eglot
   :ensure t)
 
+;; CSV
+
+(use-package csv-mode
+  :ensure t
+  :mode ("\\.csv\\'")
+  :hook (csv-mode . csv-align-mode)
+  )
+
 ;; Ledger
 
 (use-package ledger-mode
