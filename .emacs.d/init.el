@@ -559,7 +559,7 @@
   :ensure t
   :init
   (pt/leader-keys
-    "Oj" '(org-journal-new-entry :which-key "journal"))
+    "oj" '(org-journal-new-entry :which-key "journal"))
   :config
   (setq org-journal-dir "~/journal/"
         org-journal-date-format "%A, %d %B %Y"))
@@ -611,7 +611,7 @@
   (setq org-tree-slide-slide-in-effect nil))
 
 (pt/leader-keys
-  "Op" '(org-tree-slide-mode :which-key "Present"))
+  "op" '(org-tree-slide-mode :which-key "Present"))
 
 ;; Temporary Buffer
 
@@ -624,7 +624,7 @@
   (org-mode))
 
 (pt/leader-keys
-  "Oo" '(create-tmp-org :which-key "tmp org"))
+  "oo" '(create-tmp-org :which-key "tmp org"))
 
 ;; Writeroom
 
