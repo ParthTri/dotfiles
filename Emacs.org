@@ -809,7 +809,7 @@ Write backups to ~/.emacs.d/backup/
 ** Code Folding
 #+begin_src emacs-lisp
   (use-package origami
-    :hook (prog-mode . origami-mode))
+    :hook (prog-mode))
 #+end_src
 ** Language Server Protocol
 #+begin_src emacs-lisp

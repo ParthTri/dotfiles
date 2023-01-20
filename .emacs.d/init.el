@@ -774,7 +774,7 @@
 ;; Code Folding
 
 (use-package origami
-  :hook (prog-mode . origami-mode))
+  :hook (prog-mode))
 
 ;; Language Server Protocol
 
