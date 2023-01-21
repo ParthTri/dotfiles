@@ -219,6 +219,7 @@
 (use-package persp-mode
   :ensure t
   :config
+  (setq persp-autokill-buffer-on-remove t)
   (persp-mode)
   (pt/leader-keys
     "k" '(:ignore k :which-key "workspaces")
