@@ -336,6 +336,11 @@
 
 (setq org-duration-format (quote h:mm))
 
+;; Org Habits
+
+(setq org-modules '(org-habit))
+(org-load-modules-maybe t)
+
 ;; Org Citations
 
 (use-package org-ref
