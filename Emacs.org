@@ -684,6 +684,14 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 
 * Programming
+#+begin_src emacs-lisp
+  (define-key prog-mode-map (kbd "C-c e s") #'eglot)
+  (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
+  (define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
+  (define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
+  (define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
+#+end_src
+
 ** Git
 *** Magit
 #+begin_src emacs-lisp
