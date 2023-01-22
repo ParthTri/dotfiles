@@ -420,7 +420,10 @@
          "** %?\n %i\n ")
         ("B" "Book" entry (file+headline "~/org/Books.org" "Other")
          "** TODO %?\n")
-        ("b" "Blog" entry (file create-new-blog-post))))
+        ("b" "Blog" entry (file create-new-blog-post))
+        ("I" "Invoice" entry (file "~/Work/Invoices/Invoices.org")
+         "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
+        ))
 
 ;; Refile
 
