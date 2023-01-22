@@ -443,11 +443,13 @@
                       (:endgroup)
                       ("work" . ?w)
                       ("privy" . ?p)
+                      ("health" . ?h)
                       ("learn" . ?l)
                       ("school" . ?s)
                       ("dev" . ?d)
                       ("paid" . ?P)
                       ("volunteer" . ?V)
+                      ("DAILY" . ?D)
                       ("crypt" . ?c)))
 
 ;; Keywords

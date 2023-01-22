@@ -467,11 +467,13 @@ Write backups to ~/.emacs.d/backup/
                         (:endgroup)
                         ("work" . ?w)
                         ("privy" . ?p)
+                        ("health" . ?h)
                         ("learn" . ?l)
                         ("school" . ?s)
                         ("dev" . ?d)
                         ("paid" . ?P)
                         ("volunteer" . ?V)
+                        ("DAILY" . ?D)
                         ("crypt" . ?c)))
 #+end_src
 ** Keywords
