@@ -952,3 +952,22 @@
   (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
   :init
   (elfeed-org))
+
+;; Invoice Maker
+
+(defun get-invoice-value (keyword)
+  "Get keyword value based on passed value"
+  (setq tags (org-collect-keywords keyword))
+  (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
+  )
+
+(defun create-invoice ()
+  "Get key details for generating invoices."
+  (interactive)
+  (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
+  (org-table-export "~/Work/Invoices/invoice.csv")
+  (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
+                         (car values)
+                         (cadr values)
+                         (caddr values)))
+  )
