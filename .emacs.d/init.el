@@ -435,6 +435,10 @@
         ("~/org/Ideas.org" :maxlevel . 1)
         ("~/org/Books.org" :maxlevel . 1)))
 
+(setq org-refile-allow-creating-parent-nodes 'confirm
+      org-refile-use-outline-path 'file
+      org-outline-path-complete-in-steps nil)
+
 ;; Tags
 
 (setq org-tag-alist '((:startgroup)

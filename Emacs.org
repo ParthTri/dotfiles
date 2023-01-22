@@ -458,6 +458,10 @@ Write backups to ~/.emacs.d/backup/
           ("~/org/Later.org" :maxlevel . 1)
           ("~/org/Ideas.org" :maxlevel . 1)
           ("~/org/Books.org" :maxlevel . 1)))
+
+  (setq org-refile-allow-creating-parent-nodes 'confirm
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil)
 #+end_src
 ** Tags
 #+begin_src emacs-lisp
