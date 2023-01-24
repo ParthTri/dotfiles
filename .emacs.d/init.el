@@ -980,3 +980,32 @@
                          (cadr values)
                          (caddr values)))
   )
+
+;; Open URL in reader view
+
+(defun open-firefox-reader (url)
+  "Open passed URL in firefox in reader mode"
+  (shell-command (format "firefox \"about:reader?url=%s\"" url))
+  (message "Link Opened")
+  )
+
+(defun open-in-reader (&optional url)
+  "Open a given link in reader view"
+  (interactive "P")
+  (if (stringp url)
+      (progn
+        (open-firefox-reader url))
+    (progn
+      (let ((at-point (thing-at-point-url-at-point)))
+        (if at-point
+            (progn
+              (open-firefox-reader (thing-at-point-url-at-point))
+              )
+          (progn
+            (let ((url (read-string "Entery URL: ")))
+              (open-firefox-reader url)
+              ))))
+      )))
+
+(pt/leader-keys
+  "oR" '(open-in-reader :which-key "Reader"))
