@@ -122,7 +122,8 @@
   "b" '(:ignore b :which-key "buffer")
   "bk" '(kill-this-buffer :which-key "kill")
   "bi" '(ibuffer :which-key "ibuffer")
-  "bb" '(switch-to-buffer :which-key "switch"))
+  "bb" '(switch-to-buffer :which-key "switch")
+  "br" '(revert-buffer-quick :which-key "revert"))
 
 (pt/leader-keys
   "t"  '(:ignore t :which-key "toggles")
