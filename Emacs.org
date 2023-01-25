@@ -420,7 +420,6 @@ Write backups to ~/.emacs.d/backup/
   (setq org-agenda-skip-deadline-if-done t
         org-agenda-skip-scheduled-if-done t)
 #+end_src
-
 ** Capture
 #+begin_src emacs-lisp
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -506,16 +505,23 @@ Write backups to ~/.emacs.d/backup/
 *** All
 #+begin_src emacs-lisp
   (setq org-agenda-custom-commands
-        '(("n" "All"
-           ((agenda "" nil)
+        '(
+          ("n" "All"
+           (
+            (agenda ""
+                    ((org-agenda-span 'day)
+                     (org-agenda-overriding-header "Todays Tasks")))
             (todo "ONGOING"
                   ((org-agenda-overriding-header "Ongoing Tasks")))
             (todo "NEXT"
                   ((org-agenda-overriding-header "Next Tasks")))
             (todo "WAITING"
-                  ((org-agenda-overriding-header "Waiting On"))))
-           nil)
-          ))
+                  ((org-agenda-overriding-header "Waiting On")))
+            )
+           nil
+           "~/Agenda/all.html"
+           )
+        )) 
 #+end_src
 ** Mobile
 #+begin_src emacs-lisp

@@ -482,16 +482,23 @@
 ;; All
 
 (setq org-agenda-custom-commands
-      '(("n" "All"
-         ((agenda "" nil)
+      '(
+        ("n" "All"
+         (
+          (agenda ""
+                  ((org-agenda-span 'day)
+                   (org-agenda-overriding-header "Todays Tasks")))
           (todo "ONGOING"
                 ((org-agenda-overriding-header "Ongoing Tasks")))
           (todo "NEXT"
                 ((org-agenda-overriding-header "Next Tasks")))
           (todo "WAITING"
-                ((org-agenda-overriding-header "Waiting On"))))
-         nil)
-        ))
+                ((org-agenda-overriding-header "Waiting On")))
+          )
+         nil
+         "~/Agenda/all.html"
+         )
+      ))
 
 ;; Mobile
 
