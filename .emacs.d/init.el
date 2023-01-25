@@ -478,9 +478,6 @@
 ;; Views
 
 (setq org-agenda-dim-blocked-tasks nil)
-
-;; All
-
 (setq org-agenda-custom-commands
       '(
         ("n" "All"
@@ -488,6 +485,13 @@
           (agenda ""
                   ((org-agenda-span 'day)
                    (org-agenda-overriding-header "Todays Tasks")))
+          (agenda ""
+                  ((org-agenda-span 'month)
+                   (org-agenda-time-grid nil)
+                   (org-agenda-show-all-dates nil)
+                   (org-agenda-entry-types '(:deadline))
+                   (org-deadline-warning-days 0)
+                   (org-agenda-overriding-header "Upcoming Deadlines")))
           (todo "ONGOING"
                 ((org-agenda-overriding-header "Ongoing Tasks")))
           (todo "NEXT"

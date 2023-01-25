@@ -501,9 +501,6 @@ Write backups to ~/.emacs.d/backup/
 ** Views
 #+begin_src emacs-lisp
   (setq org-agenda-dim-blocked-tasks nil)
-#+end_src
-*** All
-#+begin_src emacs-lisp
   (setq org-agenda-custom-commands
         '(
           ("n" "All"
@@ -511,6 +508,13 @@ Write backups to ~/.emacs.d/backup/
             (agenda ""
                     ((org-agenda-span 'day)
                      (org-agenda-overriding-header "Todays Tasks")))
+            (agenda ""
+                    ((org-agenda-span 'month)
+                     (org-agenda-time-grid nil)
+                     (org-agenda-show-all-dates nil)
+                     (org-agenda-entry-types '(:deadline))
+                     (org-deadline-warning-days 0)
+                     (org-agenda-overriding-header "Upcoming Deadlines")))
             (todo "ONGOING"
                   ((org-agenda-overriding-header "Ongoing Tasks")))
             (todo "NEXT"
@@ -522,6 +526,7 @@ Write backups to ~/.emacs.d/backup/
            "~/Agenda/all.html"
            )
         )) 
+
 #+end_src
 ** Mobile
 #+begin_src emacs-lisp
