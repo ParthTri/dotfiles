@@ -480,14 +480,13 @@
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-custom-commands
       '(
-        ("n" "All"
+        ("m" "Main"
          (
           (agenda ""
-                  ((org-agenda-span 'day)
-                   (org-agenda-skip-if 'deadline)
+                  ((org-agenda-span 'week)
+                   (org-agenda-show-all-dates nil)
                    (org-scheduled-past-days 0)
-                   (org-deadline-warning-days 0)
-                   (org-agenda-overriding-header "Todays Tasks")))
+                   (org-agenda-entry-types '(:scheduled :timestamp))))
           (agenda ""
                   ((org-agenda-span 'month)
                    (org-agenda-time-grid nil)
@@ -502,9 +501,7 @@
           (todo "WAITING"
                 ((org-agenda-overriding-header "Waiting On")))
           )
-         nil
-         "~/Agenda/all.html"
-         )
+         nil "~/Agenda/all.html")
         ))
 
 ;; Mobile
