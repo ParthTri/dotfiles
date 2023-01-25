@@ -502,6 +502,22 @@
                 ((org-agenda-overriding-header "Waiting On")))
           )
          nil "~/Agenda/all.html")
+        ("u" "Upcoming"
+         ((agenda ""
+                 ((org-agenda-span 'week)
+                  (org-agenda-grid nil)
+                  (org-agenda-show-all-dates nil)
+                  (org-agenda-entry-types '(:scheduled))
+                   (org-scheduled-past-days 0)
+                  (org-agenda-files '("~/org/Todos.org" "~/org/Projects.org"))
+                  (org-agenda-overriding-header "Upcoming Tasks")))
+         (agenda ""
+                 ((org-agenda-span 'week)
+                  (org-agenda-grid nil)
+                  (org-agenda-show-all-dates nil)
+                  (org-agenda-entry-types '(:deadline))
+                  (org-deadline-warning-days 0)
+                  (org-agenda-overriding-header "Upcoming Deadlines")))))
         ))
 
 ;; Mobile
