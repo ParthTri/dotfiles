@@ -484,6 +484,9 @@
          (
           (agenda ""
                   ((org-agenda-span 'day)
+                   (org-agenda-skip-if 'deadline)
+                   (org-scheduled-past-days 0)
+                   (org-deadline-warning-days 0)
                    (org-agenda-overriding-header "Todays Tasks")))
           (agenda ""
                   ((org-agenda-span 'month)
@@ -502,7 +505,7 @@
          nil
          "~/Agenda/all.html"
          )
-      ))
+        ))
 
 ;; Mobile
 

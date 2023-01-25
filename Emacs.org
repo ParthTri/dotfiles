@@ -507,6 +507,9 @@ Write backups to ~/.emacs.d/backup/
            (
             (agenda ""
                     ((org-agenda-span 'day)
+                     (org-agenda-skip-if 'deadline)
+                     (org-scheduled-past-days 0)
+                     (org-deadline-warning-days 0)
                      (org-agenda-overriding-header "Todays Tasks")))
             (agenda ""
                     ((org-agenda-span 'month)
@@ -525,7 +528,7 @@ Write backups to ~/.emacs.d/backup/
            nil
            "~/Agenda/all.html"
            )
-        )) 
+          )) 
 
 #+end_src
 ** Mobile
