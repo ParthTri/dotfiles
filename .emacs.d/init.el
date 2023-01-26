@@ -14,7 +14,7 @@
 
 ;; Font
 
-(set-face-attribute 'default nil :font "iaWriter Duo S" :height 95)
+(set-face-attribute 'default nil :font "Roboto Mono" :height 95)
 
 ;; Line Numbers
 
