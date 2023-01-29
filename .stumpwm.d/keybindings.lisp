@@ -41,3 +41,15 @@
 (setf *resize-increment* 25)
 
 (tr-define-key "f" "fullscreen")
+
+;; Groups
+(when *initializing*
+  (grename "[WWW]")
+  (gnewbg  "[EMACS]")
+  (gnewbg  "[TERM]")
+  (gnewbg  "[PRIV]")
+  )
+
+(clear-window-placement-rules)
+(define-key *top-map* (kbd "s-TAB") "gnext")
+(define-key *top-map* (kbd "s-ISO_Left_Tab") "gprev")
