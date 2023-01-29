@@ -429,7 +429,7 @@
 ;; Refile
 
 (setq org-refile-targets
-      '(("~/org/Tasks.org" :maxlevel . 1)
+      '(("~/org/Todos.org" :maxlevel . 1)
         ("~/org/Projects.org" :maxlevel . 1)
         ("~/org/Repeated.org" :maxlevel . 1)
         ("~/org/Later.org" :maxlevel . 1)
