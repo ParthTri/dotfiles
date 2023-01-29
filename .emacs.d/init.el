@@ -725,19 +725,21 @@
   :diminish projectile-mode
   :config (projectile-mode)
   :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
   :init
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/Projects")
     (setq projectile-project-search-path '("~/Projects")))
   (setq projectile-switch-project-action #'projectile-dired)
+  (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
+  )
 
-  (pt/leader-keys
-    "p" '(:ignore p :which-key "projects")
-    "pp" '(projectile-switch-project :which-key "switch to project")
-    "pt" '(projectile-test-project :which-key "test project")
-    "pf" '(projectile-find-file :which-key "find file")))
+(pt/leader-keys
+  "p" '(:ignore p :which-key "projects")
+  "pp" '(projectile-switch-project :which-key "switch")
+  "pt" '(projectile-test-project :which-key "test")
+  "pf" '(projectile-find-file :which-key "find")
+  "pr" '(projectile-run-project :whick-key "run")
+  "pc" '(projectile-compile-project :which-key "compile"))
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
