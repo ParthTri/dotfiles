@@ -504,9 +504,8 @@ Write backups to ~/.emacs.d/backup/
   (setq org-agenda-custom-commands
         '(
           ("m" "Main"
-           (
-            (agenda ""
-                    ((org-agenda-span 'week)
+           ((agenda ""
+                    ((org-agenda-span 'day)
                      (org-agenda-show-all-dates nil)
                      (org-scheduled-past-days 0)
                      (org-agenda-entry-types '(:scheduled :timestamp))))
@@ -541,8 +540,7 @@ Write backups to ~/.emacs.d/backup/
                     (org-agenda-entry-types '(:deadline))
                     (org-deadline-warning-days 0)
                     (org-agenda-overriding-header "Upcoming Deadlines")))))
-          )) 
-
+          ))
 #+end_src
 ** Mobile
 #+begin_src emacs-lisp

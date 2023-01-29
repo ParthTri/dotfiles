@@ -481,9 +481,8 @@
 (setq org-agenda-custom-commands
       '(
         ("m" "Main"
-         (
-          (agenda ""
-                  ((org-agenda-span 'week)
+         ((agenda ""
+                  ((org-agenda-span 'day)
                    (org-agenda-show-all-dates nil)
                    (org-scheduled-past-days 0)
                    (org-agenda-entry-types '(:scheduled :timestamp))))
