@@ -1036,3 +1036,15 @@
 
 (pt/leader-keys
   "oR" '(open-in-reader :which-key "Reader"))
+
+;; Auto Update TODO State
+
+(defun org-auto-update-to-next ()
+  "Auto update TODO state to NEXT when marked as done."
+  (interactive)
+  (org-todo "DONE")
+  (org-get-next-sibling)
+  (org-todo "NEXT")
+  )
+
+(define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)

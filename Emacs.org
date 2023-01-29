@@ -1080,3 +1080,15 @@ Write backups to ~/.emacs.d/backup/
     "oR" '(open-in-reader :which-key "Reader"))
 
 #+end_src
+** Auto Update TODO State
+#+begin_src emacs-lisp
+  (defun org-auto-update-to-next ()
+    "Auto update TODO state to NEXT when marked as done."
+    (interactive)
+    (org-todo "DONE")
+    (org-get-next-sibling)
+    (org-todo "NEXT")
+    )
+
+  (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
+#+end_src
