@@ -14,7 +14,7 @@
 
 ;; Font
 
-(set-face-attribute 'default nil :font "Roboto Mono" :height 95)
+(set-face-attribute 'default nil :font "Jet Brains Mono" :height 90)
 
 ;; Line Numbers
 
