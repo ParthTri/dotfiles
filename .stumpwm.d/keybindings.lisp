@@ -53,3 +53,22 @@
 (clear-window-placement-rules)
 (define-key *top-map* (kbd "s-TAB") "gnext")
 (define-key *top-map* (kbd "s-ISO_Left_Tab") "gprev")
+
+(define-key *top-map* (kbd "s-1") "gselect 1")
+(define-key *top-map* (kbd "s-!") "gmove 1")
+
+(define-key *top-map* (kbd "s-2") "gselect 2")
+(define-key *top-map* (kbd "s-@") "gmove 2")
+
+(define-key *top-map* (kbd "s-3") "gselect 3")
+(define-key *top-map* (kbd "s-#") "gmove 3")
+
+(define-key *top-map* (kbd "s-4") "gselect 4")
+(define-key *top-map* (kbd "s-$") "gmove 4")
+
+(define-key *top-map* (kbd "s-5") "gselect 5")
+(define-key *top-map* (kbd "s-%") "gmove 5")
+
+(define-key *top-map* (kbd "s-g") "group-list")
+(define-key *top-map* (kbd "s-G") "gmove")
+
