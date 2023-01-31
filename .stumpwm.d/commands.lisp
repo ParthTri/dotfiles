@@ -1,7 +1,7 @@
 (in-package :stumpwm)
 
+;; Sound
 (setf *volume-step* "5")
-
 (defun volume (direction)
   (if direction
         (progn
@@ -13,3 +13,7 @@
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") (volume 't))
 (define-key *top-map* (kbd "XF86AudioLowerVolume") (volume 'nil))
 (define-key *top-map* (kbd "XF86AudioMute") "exec pactl set-sink-mute 0 toggle")
+
+;; Terminal
+(define-key *top-map* (kbd "s-Return") "exec alacritty")
+
