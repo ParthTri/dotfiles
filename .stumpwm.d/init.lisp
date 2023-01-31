@@ -9,6 +9,9 @@
 
 (setf *startup-message* nil)
 
+(when *initializing*
+  (run-shell-command "nitrogen --restore"))
+
 (load "~/.stumpwm.d/keybindings.lisp")
 (load "~/.stumpwm.d/modeline.lisp")
 (load "~/.stumpwm.d/commands.lisp")
