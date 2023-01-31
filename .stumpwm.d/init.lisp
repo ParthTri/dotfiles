@@ -11,4 +11,5 @@
 
 (load "~/.stumpwm.d/keybindings.lisp")
 (load "~/.stumpwm.d/modeline.lisp")
+(load "~/.stumpwm.d/commands.lisp")
 
