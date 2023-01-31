@@ -116,7 +116,7 @@
 
 (pt/leader-keys
   "SPC" '(find-file :which-key "files")
-  "RET" '(list-bookmarks :which-key "bookmarks"))
+  "RET" '(counsel-bookmark :which-key "bookmarks"))
 
 (pt/leader-keys
   "b" '(:ignore b :which-key "buffer")
