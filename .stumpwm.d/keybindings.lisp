@@ -69,6 +69,6 @@
 (define-key *top-map* (kbd "s-5") "gselect 5")
 (define-key *top-map* (kbd "s-%") "gmove 5")
 
-(define-key *top-map* (kbd "s-g") "group-list")
+(define-key *top-map* (kbd "s-g") "grouplist")
 (define-key *top-map* (kbd "s-G") "gmove")
 
