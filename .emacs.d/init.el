@@ -517,6 +517,13 @@
                   (org-agenda-entry-types '(:deadline))
                   (org-deadline-warning-days 0)
                   (org-agenda-overriding-header "Upcoming Deadlines")))))
+        ("c" "Calendar"
+         ((agenda ""
+                  (
+                   (org-agenda-files '("~/org/Events.org"))
+                   (org-agenda-span 'month)
+                   (org-agenda-show-all-dates 'nil)
+                   (org-agenda-overriding-header "Upcoming Events")))))
         ))
 
 ;; Mobile
