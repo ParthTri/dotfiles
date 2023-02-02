@@ -10,9 +10,13 @@
 (setf *startup-message* nil)
 
 (when *initializing*
-  (run-shell-command "nitrogen --restore"))
+  (run-shell-command "nitrogen --restore")
+  (toggle-mode-line (current-screen)
+                    (current-head)))
 
+(load "~/.stumpwm.d/colours.lisp")
 (load "~/.stumpwm.d/keybindings.lisp")
 (load "~/.stumpwm.d/modeline.lisp")
 (load "~/.stumpwm.d/commands.lisp")
+(load "~/.stumpwm.d/theme.lisp")
 
