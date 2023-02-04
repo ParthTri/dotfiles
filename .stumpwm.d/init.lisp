@@ -14,6 +14,8 @@
   (toggle-mode-line (current-screen)
                     (current-head)))
 
+(setf *mouse-focus-policy* :sloppy)
+
 (load "~/.stumpwm.d/colours.lisp")
 (load "~/.stumpwm.d/keybindings.lisp")
 (load "~/.stumpwm.d/modeline.lisp")
