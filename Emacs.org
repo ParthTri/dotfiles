@@ -726,7 +726,7 @@ Write backups to ~/.emacs.d/backup/
                         "~/Blog/")))
 #+end_src
 
-* Programming
+* COMMENT Programming
 #+begin_src emacs-lisp
   (define-key prog-mode-map (kbd "C-c e s") #'eglot)
   (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
@@ -895,200 +895,200 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 * Other
 ** Ledger
-#+begin_src emacs-lisp
-  (use-package ledger-mode
-    :ensure t
-    :mode ("\\.journal\\'" "\\.ledger.*\\'"))
++begin_src emacs-lisp
+ (use-package ledger-mode
+   :ensure t
+   :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 
-  (setq ledger-binary-path "hledger")
-  (setq ledger-mode-should-check-version nil)
-  (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
+ (setq ledger-binary-path "hledger")
+ (setq ledger-mode-should-check-version nil)
+ (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
 
-  (defvar ledger-report-balance
-    (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
+ (defvar ledger-report-balance
+   (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
 
-  (defvar ledger-report-reg
-    (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
+ (defvar ledger-report-reg
+   (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
 
-  (defvar ledger-report-payee
-    (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
+ (defvar ledger-report-payee
+   (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
 
-  (defvar ledger-report-account
-    (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
+ (defvar ledger-report-account
+   (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
 
-  (setq ledger-reports
-        (list ledger-report-balance
-              ledger-report-reg
-              ledger-report-payee
-              ledger-report-account))
-#+end_src
+ (setq ledger-reports
+       (list ledger-report-balance
+             ledger-report-reg
+             ledger-report-payee
+             ledger-report-account))
++end_src
 ** Centered Window
-#+begin_src emacs-lisp
-  (use-package centered-window
-    :ensure t
-    :config
-    (pt/leader-keys
-      "tc" '(centered-window-mode :which-key "center"))
-    (setq cwm-centered-window-width 140))
-#+end_src
++begin_src emacs-lisp
+ (use-package centered-window
+   :ensure t
+   :config
+   (pt/leader-keys
+     "tc" '(centered-window-mode :which-key "center"))
+   (setq cwm-centered-window-width 140))
++end_src
 ** Mu4e
-#+begin_src emacs-lisp
-  (use-package mu4e
-      :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
++begin_src emacs-lisp
+ (use-package mu4e
+     :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
 
-  ;; Refresh mail using isync every 10 minutes
-  (setq mu4e-update-interval (* 10 60))
-  (setq mu4e-get-mail-command "mbsync -a")
+ ;; Refresh mail using isync every 10 minutes
+ (setq mu4e-update-interval (* 10 60))
+ (setq mu4e-get-mail-command "mbsync -a")
 
-  (setq mu4e-maildir (expand-file-name "~/.mail"))
+ (setq mu4e-maildir (expand-file-name "~/.mail"))
 
-  (setq mu4e-view-show-addresses t
-        message-kill-buffer-on-exit t
-        mu4e-context-policy 'pick-first
-        mu4e-confirm-quit nil)
+ (setq mu4e-view-show-addresses t
+       message-kill-buffer-on-exit t
+       mu4e-context-policy 'pick-first
+       mu4e-confirm-quit nil)
 
-  (pt/leader-keys
-    "m" '(mu4e :which-key "Mail"))
+ (pt/leader-keys
+   "m" '(mu4e :which-key "Mail"))
 
-  ;; Set how email is to be sent
-  (setq send-mail-function (quote smtpmail-send-it))
+ ;; Set how email is to be sent
+ (setq send-mail-function (quote smtpmail-send-it))
 
-  ;; Split view
-  (setq mu4e-split-view 'vertical)
-#+end_src
+ ;; Split view
+ (setq mu4e-split-view 'vertical)
++end_src
 
 *** Accounts
-#+begin_src emacs-lisp
-  (setq mu4e-user-mail-address-list '("superparthman@gmail.com"
-                                      "parthtrivedi.co@gmail.com"))
++begin_src emacs-lisp
+ (setq mu4e-user-mail-address-list '("superparthman@gmail.com"
+                                     "parthtrivedi.co@gmail.com"))
 
-  (setq mu4e-contexts
-        (list
-         ;; Personal account
-         (make-mu4e-context
-          :name "Personal"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "superparthman@gmail.com")
-                  (user-full-name    . "Parth Trivedi")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-service . 465)
-                  (smtpmail-stream-type  . ssl)
-                  (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
-                  (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
-                  (mu4e-refile-folder  . "/Personal/[Gmail/All Mail")
-                  (mu4e-trash-folder  . "/Personal/[Gmail/Trash")))
-         (make-mu4e-context
-          :name "Work"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
-                  (user-full-name    . "Parth Trivedi")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-service . 465)
-                  (smtpmail-stream-type  . ssl)
-                  (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
-                  (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
-                  (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
-         ))
-#+end_src
+ (setq mu4e-contexts
+       (list
+        ;; Personal account
+        (make-mu4e-context
+         :name "Personal"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+         :vars '((user-mail-address . "superparthman@gmail.com")
+                 (user-full-name    . "Parth Trivedi")
+                 (smtpmail-smtp-server  . "smtp.gmail.com")
+                 (smtpmail-smtp-service . 465)
+                 (smtpmail-stream-type  . ssl)
+                 (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
+                 (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
+                 (mu4e-refile-folder  . "/Personal/[Gmail/All Mail")
+                 (mu4e-trash-folder  . "/Personal/[Gmail/Trash")))
+        (make-mu4e-context
+         :name "Work"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+         :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
+                 (user-full-name    . "Parth Trivedi")
+                 (smtpmail-smtp-server  . "smtp.gmail.com")
+                 (smtpmail-smtp-service . 465)
+                 (smtpmail-stream-type  . ssl)
+                 (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
+                 (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
+                 (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
+                 (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
+        ))
++end_src
 
 *** Alerts
-#+begin_src emacs-lisp
-  (use-package mu4e-alert
-    :ensure t
-    :hook (after-init)
-    :after mu4e
-    (mu4e-alert-set-default-style 'libnotify)
-    (mu4e-alert-enable-notifications)
-    (mu4e-alert-enable-mode-line-display)
-    (mu4e-alert-mode t))
-#+end_src
++begin_src emacs-lisp
+ (use-package mu4e-alert
+   :ensure t
+   :hook (after-init)
+   :after mu4e
+   (mu4e-alert-set-default-style 'libnotify)
+   (mu4e-alert-enable-notifications)
+   (mu4e-alert-enable-mode-line-display)
+   (mu4e-alert-mode t))
++end_src
 
 ** Elfeed
-#+begin_src emacs-lisp
-  (use-package elfeed
-    :ensure t
-    :config
-    (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
-          elfeed-show-entry-switch 'display-buffer))
++begin_src emacs-lisp
+ (use-package elfeed
+   :ensure t
+   :config
+   (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+         elfeed-show-entry-switch 'display-buffer))
 
-  (defun update-and-open-elfeed ()
-    (interactive)
-    (elfeed-org)
-    (elfeed-update)
-    (elfeed))
+ (defun update-and-open-elfeed ()
+   (interactive)
+   (elfeed-org)
+   (elfeed-update)
+   (elfeed))
 
-  (pt/leader-keys
-    "or" '(update-and-open-elfeed :which-key "elfeed"))
-#+end_src
+ (pt/leader-keys
+   "or" '(update-and-open-elfeed :which-key "elfeed"))
++end_src
 
 *** Elfeed Org
-#+begin_src emacs-lisp
-  (use-package elfeed-org
-    :ensure t
-    :config
-    (setq elfeed-show-entry-switch 'display-buffer)
-    (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
-    :init
-    (elfeed-org))
-#+end_src
++begin_src emacs-lisp
+ (use-package elfeed-org
+   :ensure t
+   :config
+   (setq elfeed-show-entry-switch 'display-buffer)
+   (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+   :init
+   (elfeed-org))
++end_src
 
 ** Invoice Maker
-#+begin_src emacs-lisp
-  (defun get-invoice-value (keyword)
-    "Get keyword value based on passed value"
-    (setq tags (org-collect-keywords keyword))
-    (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
-    )
++begin_src emacs-lisp
+ (defun get-invoice-value (keyword)
+   "Get keyword value based on passed value"
+   (setq tags (org-collect-keywords keyword))
+   (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
+   )
 
-  (defun create-invoice ()
-    "Get key details for generating invoices."
-    (interactive)
-    (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
-    (org-table-export "~/Work/Invoices/invoice.csv")
-    (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
-                           (car values)
-                           (cadr values)
-                           (caddr values)))
-    )
-#+end_src
+ (defun create-invoice ()
+   "Get key details for generating invoices."
+   (interactive)
+   (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
+   (org-table-export "~/Work/Invoices/invoice.csv")
+   (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
+                          (car values)
+                          (cadr values)
+                          (caddr values)))
+   )
++end_src
 
 ** Open URL in reader view
-#+begin_src emacs-lisp
-  (defun open-firefox-reader (url)
-    "Open passed URL in firefox in reader mode"
-    (shell-command (format "firefox \"about:reader?url=%s\"" url))
-    (message "Link Opened")
-    )
++begin_src emacs-lisp
+ (defun open-firefox-reader (url)
+   "Open passed URL in firefox in reader mode"
+   (shell-command (format "firefox \"about:reader?url=%s\"" url))
+   (message "Link Opened")
+   )
 
-  (defun open-in-reader (&optional url)
-    "Open a given link in reader view"
-    (interactive "P")
-    (if (stringp url)
-        (progn
-          (open-firefox-reader url))
-      (progn
-        (let ((at-point (thing-at-point-url-at-point)))
-          (if at-point
-              (progn
-                (open-firefox-reader (thing-at-point-url-at-point))
-                )
-            (progn
-              (let ((url (read-string "Entery URL: ")))
-                (open-firefox-reader url)
-                ))))
-        )))
+ (defun open-in-reader (&optional url)
+   "Open a given link in reader view"
+   (interactive "P")
+   (if (stringp url)
+       (progn
+         (open-firefox-reader url))
+     (progn
+       (let ((at-point (thing-at-point-url-at-point)))
+         (if at-point
+             (progn
+               (open-firefox-reader (thing-at-point-url-at-point))
+               )
+           (progn
+             (let ((url (read-string "Entery URL: ")))
+               (open-firefox-reader url)
+               ))))
+       )))
 
-  (pt/leader-keys
-    "oR" '(open-in-reader :which-key "Reader"))
+ (pt/leader-keys
+   "oR" '(open-in-reader :which-key "Reader"))
 
-#+end_src
++end_src
 ** Auto Update TODO State
 #+begin_src emacs-lisp
   (defun org-auto-update-to-next ()
@@ -1100,4 +1100,5 @@ Write backups to ~/.emacs.d/backup/
     )
 
   (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
+
 #+end_src
