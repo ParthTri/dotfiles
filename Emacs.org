@@ -726,7 +726,7 @@ Write backups to ~/.emacs.d/backup/
                         "~/Blog/")))
 #+end_src
 
-* COMMENT Programming
+* Programming
 #+begin_src emacs-lisp
   (define-key prog-mode-map (kbd "C-c e s") #'eglot)
   (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
@@ -769,8 +769,8 @@ Write backups to ~/.emacs.d/backup/
     ;; NOTE: Set this to the folder where you keep your Git repos!
     (when (file-directory-p "~/Projects")
       (setq projectile-project-search-path '("~/Projects")))
-    (setq projectile-switch-project-action #'projectile-dired)
-    (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
+    (setq projectile-switch-project-action 'projectile-dired)
+    ;; (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
     )
 
   (pt/leader-keys
@@ -895,44 +895,44 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 * Other
 ** Ledger
-+begin_src emacs-lisp
- (use-package ledger-mode
-   :ensure t
-   :mode ("\\.journal\\'" "\\.ledger.*\\'"))
+#+begin_src emacs-lisp
+(use-package ledger-mode
+    :ensure t
+    :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 
- (setq ledger-binary-path "hledger")
- (setq ledger-mode-should-check-version nil)
- (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
+  (setq ledger-binary-path "hledger")
+  (setq ledger-mode-should-check-version nil)
+  (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
 
- (defvar ledger-report-balance
-   (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
+  (defvar ledger-report-balance
+    (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
 
- (defvar ledger-report-reg
-   (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
+  (defvar ledger-report-reg
+    (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
 
- (defvar ledger-report-payee
-   (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
+  (defvar ledger-report-payee
+    (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
 
- (defvar ledger-report-account
-   (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
+  (defvar ledger-report-account
+    (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
 
- (setq ledger-reports
-       (list ledger-report-balance
-             ledger-report-reg
-             ledger-report-payee
-             ledger-report-account))
-+end_src
+  (setq ledger-reports
+        (list ledger-report-balance
+              ledger-report-reg
+              ledger-report-payee
+              ledger-report-account))
+#+end_src
 ** Centered Window
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (use-package centered-window
    :ensure t
    :config
    (pt/leader-keys
      "tc" '(centered-window-mode :which-key "center"))
    (setq cwm-centered-window-width 140))
-+end_src
-** Mu4e
-+begin_src emacs-lisp
+#+end_src
+** COMMENT Mu4e
+#+begin_src emacs-lisp
  (use-package mu4e
      :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
 
@@ -955,10 +955,10 @@ Write backups to ~/.emacs.d/backup/
 
  ;; Split view
  (setq mu4e-split-view 'vertical)
-+end_src
+#+end_src
 
 *** Accounts
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (setq mu4e-user-mail-address-list '("superparthman@gmail.com"
                                      "parthtrivedi.co@gmail.com"))
 
@@ -996,10 +996,10 @@ Write backups to ~/.emacs.d/backup/
                  (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
                  (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
         ))
-+end_src
+#+end_src
 
 *** Alerts
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (use-package mu4e-alert
    :ensure t
    :hook (after-init)
@@ -1008,10 +1008,10 @@ Write backups to ~/.emacs.d/backup/
    (mu4e-alert-enable-notifications)
    (mu4e-alert-enable-mode-line-display)
    (mu4e-alert-mode t))
-+end_src
+#+end_src
 
 ** Elfeed
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (use-package elfeed
    :ensure t
    :config
@@ -1026,10 +1026,10 @@ Write backups to ~/.emacs.d/backup/
 
  (pt/leader-keys
    "or" '(update-and-open-elfeed :which-key "elfeed"))
-+end_src
+#+end_src
 
 *** Elfeed Org
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (use-package elfeed-org
    :ensure t
    :config
@@ -1037,10 +1037,10 @@ Write backups to ~/.emacs.d/backup/
    (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
    :init
    (elfeed-org))
-+end_src
+#+end_src
 
 ** Invoice Maker
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (defun get-invoice-value (keyword)
    "Get keyword value based on passed value"
    (setq tags (org-collect-keywords keyword))
@@ -1057,10 +1057,10 @@ Write backups to ~/.emacs.d/backup/
                           (cadr values)
                           (caddr values)))
    )
-+end_src
+#+end_src
 
 ** Open URL in reader view
-+begin_src emacs-lisp
+#+begin_src emacs-lisp
  (defun open-firefox-reader (url)
    "Open passed URL in firefox in reader mode"
    (shell-command (format "firefox \"about:reader?url=%s\"" url))
@@ -1087,8 +1087,7 @@ Write backups to ~/.emacs.d/backup/
 
  (pt/leader-keys
    "oR" '(open-in-reader :which-key "Reader"))
-
-+end_src
+#+end_src
 ** Auto Update TODO State
 #+begin_src emacs-lisp
   (defun org-auto-update-to-next ()

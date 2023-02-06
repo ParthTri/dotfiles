@@ -23,6 +23,8 @@
 ;; Fontify any future frames
 (push 'fontify-frame after-make-frame-functions)
 
+;; Line Numbers
+
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'visual)
 (dolist (mode '(org-mode-hook
@@ -33,13 +35,21 @@
                 term-mode-hook ))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Make ESC quit prompts
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Move to trash instead of delete
+
 (setq delete-by-moving-to-trash t)
+
+;; Tab
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
+
+;; Use package
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -56,7 +66,7 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-
+;; Backups
 ;; Write backups to ~/.emacs.d/backup/
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -65,6 +75,8 @@
       delete-old-versions    t  ; Automatically delete excess backups:
       kept-new-versions      20 ; how many of the newest versions to keep
       kept-old-versions      5) ; and how many of the old
+
+;; Theme
 
 (use-package doom-themes
   :ensure t
@@ -77,6 +89,8 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+;; Modeline
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -84,14 +98,20 @@
   (doom-modeline-height 5)
   (display-time-mode 't))
 
+;; Icons
+
 (use-package all-the-icons
   :if (display-graphic-p))
+
+;; Which Key
 
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
   :config
   (setq which-key-idle 0.3))
+
+;; Keybindings
 
 (use-package general
   :ensure t
@@ -139,6 +159,8 @@
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
+;; Ivy
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -157,11 +179,15 @@
   :config
   (ivy-mode 1))
 
+;; Counsel
+
 (use-package counsel
   :ensure t
   :config (counsel-mode))
 
 (global-set-key (kbd "M-x") 'counsel-M-x)
+
+;; Hydra
 
 (use-package hydra)
 (defhydra hydra-text-scale (:timeout 4)
@@ -169,6 +195,8 @@
   ("j" text-scale-increase "in")
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
+
+;; Evil
 
 (use-package evil
   :init
@@ -194,6 +222,8 @@
   :config
   (evil-collection-init))
 
+;; Persp
+
 (use-package persp-mode
   :ensure t
   :config
@@ -208,6 +238,8 @@
     "kk" '(persp-kill :which-key "kill")
     ))
 
+;; Company
+
 (use-package company
   :ensure t
   :init
@@ -220,9 +252,13 @@
   :after (company-mode)
   :hook (company-mode . company-box-mode))
 
+;; Pdf Tools
+
 (use-package pdf-tools
   :ensure t
   :init (pdf-tools-install))
+
+;; Transparency
 
 (setq transparent 'nil)
 
@@ -247,19 +283,29 @@
 (pt/leader-keys
   "tt" '(toggle-transparency :which-key "transparency"))
 
+;; Moving Frames
+
 (global-set-key (kbd "<prior>") 'ns-next-frame)
 (global-set-key (kbd "<next>") 'ns-prev-frame)
+
+;; Org Capture Todo
 
 (fset 'open-org-capture-todo
    (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
+;; Rainbow Delimiters
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Notifications
 
 (use-package alert
   :commands alert
   :config
   (setq alert-default-style 'notifications))
+
+;; Org Configuration
 
 (setq org-directory "~/org/")
 
@@ -299,18 +345,28 @@
 
 (setq org-duration-format (quote h:mm))
 
+;; Org Habits
+
 (setq org-modules '(org-habit))
-(org-load-modules-maybe t)
+;; (org-load-modules-maybe t)
+
+;; Org Citations
 
 (use-package org-ref
   :ensure t
   :after org)
 
+;; Single line
+
 (fset 'latex-frag
       (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?\} escape ?i ?e ?q ?a backspace ?u ?a ?t ?i ?o ?n escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?O escape ?\s-s] 0 "%d"))
 
+;; Multiline 
+
 (fset 'latex-frag-mult
    (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?e ?q ?u ?a ?t ?i ?o ?n ?\} escape ?y ?y ?p ?l ?w ?w ?c ?w ?s ?p ?l ?i ?t escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?k ?k ?y ?y ?j ?j ?p ?w ?c ?w ?e ?n ?d escape ?k ?O escape] 0 "%d"))
+
+;; Custom Faces
 
 (setq toggle-org-faces-check t)
 
@@ -342,9 +398,13 @@
 (pt/leader-keys
   "th" '(toggle-org-faces :which-key "Headings"))
 
+;; Agenda
+
 (setq org-agenda-files '("~/org/Todos.org" "~/org/Projects.org" "~/org/Repeated.org"))
 (setq org-agenda-skip-deadline-if-done t
       org-agenda-skip-scheduled-if-done t)
+
+;; Capture
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq todos-file "~/org/Todos.org"
@@ -373,6 +433,8 @@
          "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
         ))
 
+;; Refile
+
 (setq org-refile-targets
       '(("~/org/Todos.org" :maxlevel . 1)
         ("~/org/Projects.org" :maxlevel . 1)
@@ -384,6 +446,8 @@
 (setq org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
+
+;; Tags
 
 (setq org-tag-alist '((:startgroup)
                       ("@work" . ?W)
@@ -400,9 +464,13 @@
                       ("DAILY" . ?D)
                       ("crypt" . ?c)))
 
+;; Keywords
+
 (setq org-todo-keywords
       '((sequencep "TODO(t)" "NEXT(n)" "ONGOING(o)" "|" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
+
+;; Keyword Faces
 
 (setq org-todo-keyword-faces
       '(("TODO" :foreground "Purple" :weight bold )
@@ -413,6 +481,8 @@
         ("CANCELLED" :foreground "Red" :weight bold)
         ("PAUSED" :foreground "OrangeRed" :weight bold)
         ("MEETING" :foreground "forest green" :weight bold)))
+
+;; Views
 
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-custom-commands
@@ -456,6 +526,8 @@
                   (org-agenda-overriding-header "Upcoming Deadlines")))))
         ))
 
+;; Mobile
+
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-mobile-inbox-for-pull "~/org/flagged.org")
 (setq org-mobile-files (list "~/org/Ideas.org"
@@ -463,6 +535,8 @@
                              "~/org/gtd.org"
                              "~/org/Learn.org"
                              "~/org/Shows to watch.org"))
+
+;; Crypt
 
 (use-package org-crypt
   :ensure nil
@@ -475,11 +549,15 @@
   :custom
   (setq org-crypt-key "0x577FBF62"))
 
+;; Epa
+
 (use-package epa
   :ensure t
   :config
   (custom-set-variables '(epa-gpg-program "/usr/local/bin/gpg"))
   (epa-file-enable))
+
+;; Tangle on save
 
 (defun pt/org-babel-tangle-config ()
     (when (string-equal (buffer-file-name)
@@ -489,6 +567,8 @@
         (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
+
+;; Roam
 
 (use-package org-roam
   :ensure t
@@ -510,6 +590,8 @@
   :config
   (org-roam-setup))
 
+;; Roam UI
+
 (use-package org-roam-ui
   :ensure t
   :after org-roam
@@ -520,6 +602,8 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+;; Journal
+
 (use-package org-journal
   :ensure t
   :init
@@ -529,13 +613,21 @@
   (setq org-journal-dir "~/journal/"
         org-journal-date-format "%A, %d %B %Y"))
 
+;; toc
+
 (use-package toc-org
   :ensure t
   :config (add-hook 'org-mode-hook 'toc-org-mode))
 
+;; iCal
+
 (setq org-icalendar-use-scheduled '(event-if-todo-not-done))
 
+;; Html
+
 (setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
+
+;; Latex
 
 (setq org-latex-toc-command "\\tableofcontents \\clearpage")
 (setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
@@ -559,6 +651,8 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
+;; Presentations
+
 (use-package org-tree-slide
   :ensure t
   :after org
@@ -567,6 +661,8 @@
 
 (pt/leader-keys
   "op" '(org-tree-slide-mode :which-key "Present"))
+
+;; Temporary Buffer
 
 (defun create-tmp-org ()
   "Create a temporary org buffer"
@@ -579,12 +675,16 @@
 (pt/leader-keys
   "oo" '(create-tmp-org :which-key "tmp org"))
 
+;; Writeroom
+
 (use-package writeroom-mode
   :ensure t
   :config
   (setq writeroom-width 130)
   (pt/leader-keys
     "tw" '(writeroom-mode :which-key "Writeroom")))
+
+;; Blog
 
 (defun create-new-blog-post ()
   "Create a new blog post based on passed name and date in blog-dir"
@@ -595,6 +695,283 @@
                               (format-time-string "%d%m%Y"))
                       "~/Blog/")))
 
+;; Programming
+
+(define-key prog-mode-map (kbd "C-c e s") #'eglot)
+(define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
+(define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
+(define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
+(define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
+
+;; Magit
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (pt/leader-keys
+    "g" '(:ignore g :which-key "git")
+    "gs" '(magit-stage-file :which-key "stage file")
+    "gS" '(magit-stage :which-key "stage all")
+    "gc" '(magit-commit :which-key "commit")
+    "gg" '(magit-status :which-key "status")))
+
+;; Git Gutter
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode t))
+
+(pt/leader-keys
+  "tg" '(git-gutter-mode :which-key "gutter"))
+
+;; Projectile
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Projects")
+    (setq projectile-project-search-path '("~/Projects")))
+  (setq projectile-switch-project-action 'projectile-dired)
+  ;; (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
+  )
+
+(pt/leader-keys
+  "p" '(:ignore p :which-key "projects")
+  "pp" '(projectile-switch-project :which-key "switch")
+  "pt" '(projectile-test-project :which-key "test")
+  "pf" '(projectile-find-file :which-key "find")
+  "pr" '(projectile-run-project :whick-key "run")
+  "pc" '(projectile-compile-project :which-key "compile"))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package persp-mode-projectile-bridge
+  :ensure t
+  :after (persp projectile))
+
+(persp-mode-projectile-bridge-mode)
+
+;; Syntax Checking
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
+;; Python
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+;; Go
+
+(use-package go-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+
+;; Web
+
+(use-package web-mode
+  :ensure t)
+
+;; Emmet
+
+(use-package emmet-mode
+  :ensure t
+  :hook ((web-mode . emmet-mode)
+         (js-mode . emmet-mode))
+  :config
+  (setq emmet-move-cursor-between-quotes t))
+
+;; JSX
+
+(use-package rjsx-mode
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2))
+
+;; Terminal
+
+(use-package vterm
+  :ensure t )
+
+(pt/leader-keys
+  "oT" '(vterm :which-key "terminal"))
+
+;; Toggle
+
+(use-package vterm-toggle
+  :ensure t)
+
+(pt/leader-keys
+  "ot" '(vterm-toggle :which-key "terminal"))
+
+;; Comments
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode)
+  :bind (:map hl-todo-mode-map
+              ("C-c t n" . hl-todo-next)
+              ("C-c t p" . hl-todo-previous)
+              ("C-c t l" . hl-todo-occur)))
+
+ (setq hl-todo-keyword-faces
+  '(("TODO"   . "#cc9393")
+    ("FIXME"  . "#cc9393")
+    ("NOTE"   . "#d0bf8f")
+    ("BUG"    . "#8c5353")))
+
+;; Code Folding
+
+(use-package origami
+  :hook (prog-mode))
+
+;; Language Server Protocol
+
+(use-package eglot
+  :ensure t)
+
+;; CSV
+
+(use-package csv-mode
+  :ensure t
+  :mode ("\\.csv\\'")
+  :hook (csv-mode . csv-align-mode)
+  )
+
+;; Ledger
+
+(use-package ledger-mode
+    :ensure t
+    :mode ("\\.journal\\'" "\\.ledger.*\\'"))
+
+  (setq ledger-binary-path "hledger")
+  (setq ledger-mode-should-check-version nil)
+  (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
+
+  (defvar ledger-report-balance
+    (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
+
+  (defvar ledger-report-reg
+    (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
+
+  (defvar ledger-report-payee
+    (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
+
+  (defvar ledger-report-account
+    (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
+
+  (setq ledger-reports
+        (list ledger-report-balance
+              ledger-report-reg
+              ledger-report-payee
+              ledger-report-account))
+
+;; Centered Window
+
+(use-package centered-window
+  :ensure t
+  :config
+  (pt/leader-keys
+    "tc" '(centered-window-mode :which-key "center"))
+  (setq cwm-centered-window-width 140))
+
+;; Elfeed
+
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+        elfeed-show-entry-switch 'display-buffer))
+
+(defun update-and-open-elfeed ()
+  (interactive)
+  (elfeed-org)
+  (elfeed-update)
+  (elfeed))
+
+(pt/leader-keys
+  "or" '(update-and-open-elfeed :which-key "elfeed"))
+
+;; Elfeed Org
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (setq elfeed-show-entry-switch 'display-buffer)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+  :init
+  (elfeed-org))
+
+;; Invoice Maker
+
+(defun get-invoice-value (keyword)
+  "Get keyword value based on passed value"
+  (setq tags (org-collect-keywords keyword))
+  (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
+  )
+
+(defun create-invoice ()
+  "Get key details for generating invoices."
+  (interactive)
+  (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
+  (org-table-export "~/Work/Invoices/invoice.csv")
+  (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
+                         (car values)
+                         (cadr values)
+                         (caddr values)))
+  )
+
+;; Open URL in reader view
+
+(defun open-firefox-reader (url)
+  "Open passed URL in firefox in reader mode"
+  (shell-command (format "firefox \"about:reader?url=%s\"" url))
+  (message "Link Opened")
+  )
+
+(defun open-in-reader (&optional url)
+  "Open a given link in reader view"
+  (interactive "P")
+  (if (stringp url)
+      (progn
+        (open-firefox-reader url))
+    (progn
+      (let ((at-point (thing-at-point-url-at-point)))
+        (if at-point
+            (progn
+              (open-firefox-reader (thing-at-point-url-at-point))
+              )
+          (progn
+            (let ((url (read-string "Entery URL: ")))
+              (open-firefox-reader url)
+              ))))
+      )))
+
+(pt/leader-keys
+  "oR" '(open-in-reader :which-key "Reader"))
+
+;; Auto Update TODO State
+
 (defun org-auto-update-to-next ()
   "Auto update TODO state to NEXT when marked as done."
   (interactive)
@@ -604,17 +981,3 @@
   )
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(epa-gpg-program "/usr/local/bin/gpg")
- '(package-selected-packages
-   '(writeroom-mode org-tree-slide toc-org org-journal org-roam-ui org-roam org-ref org-bullets alert rainbow-delimiters pdf-tools company-box company persp-mode evil-collection evil hydra counsel ivy general which-key all-the-icons doom-modeline doom-themes)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
