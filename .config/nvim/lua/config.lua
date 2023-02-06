@@ -11,27 +11,34 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = 'unnamedplus'
 
 -- Line Wrapping
-vim.wo.wrap = 1
-vim.wo.linebreak = 1
-vim.wo.breakindent = 1
+vim.wo.wrap = true
+vim.wo.linebreak = true
+vim.wo.breakindent = true
 
 -- Minimal colorscheme
-vim.g.minimal_italic_functions = true
-vim.g.minimal_italic_comments = true
-vim.g.minimal_transparent_background = true
-vim.cmd [[colorscheme minimal]]
-
-vim.cmd [[highlight LineNr guibg=none ]]
-vim.cmd [[highlight SignColumn guibg=none ]]
+require("kanagawa").setup({
+  undercurl = true,           -- enable undercurls
+  commentStyle = { italic = true },
+  functionStyle = { italic=true},
+  keywordStyle = { italic = true},
+  statementStyle = { bold = true },
+  typeStyle = {},
+  variablebuiltinStyle = { italic = true},
+  specialReturn = true,
+  specialException = true,
+  transparent = false,
+  dimInactive = false,
+  globalStatus = false,
+  terminalColors = true,
+  theme = "dark",
+})
+vim.cmd[[colorscheme kanagawa]]
 
 -- Netrw file explorer
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 vim.g.netrw_hidden = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
-
--- nnn File explorer
-require("nnn").setup({})
 
 -- Telescope
 require("telescope").setup()
@@ -40,7 +47,7 @@ require("telescope").setup()
 require('nvim_comment').setup()
 
 -- Go support
-require('go').setup()
+require('go').setup({})
 
 -- lsp
 local lsp = require('lsp-zero')
@@ -63,6 +70,7 @@ local source_mapping = {
 }
 
 cmp.setup({
+  manage_nvim_cmp = false,
   mapping = cmp.mapping.preset.insert({
     ['<TAB>'] = cmp.mapping.confirm({ select = true }),
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -74,30 +82,30 @@ cmp.setup({
 
 -- Treesitter 
 require("nvim-treesitter.configs").setup({
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  ensure_installed = {
-		"typescript",
-    "tsx",
-		"javascript",
-    "toml",
-    "fish",
-    "json",
-    "yaml",
-    "css",
-    "html",
-    "lua",
-		"python",
-    "go",
-    "markdown_inline"
-  },
-  autotag = {
-    enable = true,
-  },
+ highlight = {
+   enable = true,
+ },
+ indent = {
+   enable = true,
+ },
+ ensure_installed = {
+   "typescript",
+   "tsx",
+   "javascript",
+   "toml",
+   "fish",
+   "json",
+   "yaml",
+   "css",
+   "html",
+   "lua",
+   "python",
+   "go",
+   "markdown_inline"
+ },
+ autotag = {
+   enable = true,
+ },
 })
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -124,7 +132,6 @@ end
 
 -- LSP Saga
 local saga = require('lspsaga')
-saga.init_lsp_saga()
 
 vim.cmd("highlight LspFloatWinNormal guibg=none ctermbg=none")
 vim.cmd("highlight LspSagaFinderSelection guibg=none")
@@ -137,7 +144,7 @@ require('lualine').setup()
 
 -- Git
 require("gitsigns").setup()
---
+
 -- Highlight colour git signs
 vim.cmd("highlight GitSignsAdd guibg=NONE")
 vim.cmd("highlight GitSignsChange guibg=NONE")
@@ -181,7 +188,7 @@ require('true-zen').setup({
 })
 
 -- Todo Comments
-require('todo').setup({
+ require('todo').setup({
   keyword = {
     FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }},
     TODO = { icon = " ", color = "info" },

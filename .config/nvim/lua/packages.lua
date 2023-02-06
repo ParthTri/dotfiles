@@ -3,10 +3,7 @@ require('packer').startup(function() -- Packages
 	use 'wbthomason/packer.nvim'
 
 	-- theme
-	use 'Yazeed1s/minimal.nvim'
-
-	-- File Manager
-	use "luukvbaal/nnn.nvim"
+	use "rebelot/kanagawa.nvim"
 
 	-- programming 
 	use 'ray-x/go.nvim'
