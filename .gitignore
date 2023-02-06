@@ -6,3 +6,10 @@
 .config/karabiner/automatic_backups/
 .config/nvim/plugin
 *.org_archive
+.emacs.d/auto-save-list
+.emacs.d/elpa
+.emacs.d/org-roam.db
+.config/gh
+.config/lazygit
+.config/pulse
+.config/systemd/user
