@@ -132,6 +132,7 @@ end
 
 -- LSP Saga
 local saga = require('lspsaga')
+saga.setup({})
 
 vim.cmd("highlight LspFloatWinNormal guibg=none ctermbg=none")
 vim.cmd("highlight LspSagaFinderSelection guibg=none")
