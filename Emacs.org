@@ -23,7 +23,7 @@
 *** Font
 #+begin_src emacs-lisp
   (defun fontify-frame (frame)
-    (set-frame-parameter frame 'font "Jet Brains Mono-9"))
+    (set-frame-parameter frame 'font "Jet Brains Mono-10"))
 
   ;; Fontify current frame
   (fontify-frame nil)
@@ -365,7 +365,7 @@ Write backups to ~/.emacs.d/backup/
 ** Org Habits
 #+begin_src emacs-lisp
   (setq org-modules '(org-habit))
-  (org-load-modules-maybe t)
+  ;; (org-load-modules-maybe t)
 #+end_src
 ** Org Citations
 #+begin_src emacs-lisp

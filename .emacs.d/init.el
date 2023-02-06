@@ -1,6 +1,10 @@
+;; No flashing or alerting
+
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Remove bar
 
 (scroll-bar-mode -1)    ; Remove bar
 (tool-bar-mode -1)      ; Disable the tool bar
@@ -8,8 +12,10 @@
 (set-fringe-mode 10)    ; Provide breathing room
 (menu-bar-mode 0)       ; Remove Menu Bar
 
+;; Font
+
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Jet Brains Mono-9"))
+  (set-frame-parameter frame 'font "Jet Brains Mono-10"))
 
 ;; Fontify current frame
 (fontify-frame nil)
