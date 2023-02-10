@@ -67,7 +67,7 @@ keymap('n', '<Leader>p', ':PresentingStart<CR>:TZAtaraxis<CR>', {})
 keymap('n', '<Leader>P', ':TZAtaraxis<CR>:PresentingExit<CR>', {})
 
 -- Terminal
-keymap('n', '<Leader>th', ':ToggleTerm direction=horizontal<CR>', {})
-keymap('n', '<Leader>tv', ':ToggleTerm size=40 direction=vertical<CR>', {})
-keymap('n', '<Leader>tf', ':ToggleTerm direction=float<CR>', {})
+keymap('n', '<Leader>oh', ':ToggleTerm direction=horizontal<CR>', {})
+keymap('n', '<Leader>ov', ':ToggleTerm size=40 direction=vertical<CR>', {})
+keymap('n', '<Leader>of', ':ToggleTerm direction=float<CR>', {})
 
