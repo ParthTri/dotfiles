@@ -91,4 +91,7 @@ require('packer').startup(function() -- Packages
 	-- Ledger
 	use 'ledger/vim-ledger'
 
+	-- Terminal
+	use 'akinsho/toggleterm.nvim'
+
 end)

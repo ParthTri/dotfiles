@@ -188,6 +188,13 @@ require('true-zen').setup({
   }
 })
 
+-- Terminal
+require('toggleterm').setup({
+  open_mapping = [[<c-\>]],
+  persist = true
+})
+
+
 -- Todo Comments
  require('todo').setup({
   keyword = {
