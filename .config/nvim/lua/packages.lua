@@ -88,4 +88,7 @@ require('packer').startup(function() -- Packages
 		end
 	}
 
+	-- Ledger
+	use 'ledger/vim-ledger'
+
 end)
