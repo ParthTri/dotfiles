@@ -51,7 +51,7 @@ keymap('n', 'hn', ':lua require("harpoon.ui").nav_next()<CR>', {})
 keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
 
 -- Outline
-keymap('n', '<Leader>o', ':SymbolsOutline<CR>', {})
+keymap('n', '<Leader>oo', ':SymbolsOutline<CR>', {})
 
 -- Notes
 keymap('n', "<leader>ww", ":VimwikiIndex<CR>", {})
