@@ -94,4 +94,7 @@ require('packer').startup(function() -- Packages
 	-- Terminal
 	use 'akinsho/toggleterm.nvim'
 
+	-- Which key
+	use 'folke/which-key.nvim'
+
 end)

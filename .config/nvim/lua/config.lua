@@ -194,6 +194,11 @@ require('toggleterm').setup({
   persist = true
 })
 
+-- Which Key
+vim.o.timeout = true
+vim.o.timeoutlen = 200
+require('which-key').setup({
+})
 
 -- Todo Comments
  require('todo').setup({
