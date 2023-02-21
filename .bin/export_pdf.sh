@@ -4,7 +4,6 @@ filename=$1
 outputFile="./$(basename "$filename" .md).pdf"
 
 pandoc "$filename" \
-	--toc \
 	-V colorlinks=true\
 	-V linkcolor=blue \
 	-V toccolor=blue \
