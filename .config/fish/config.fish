@@ -4,6 +4,7 @@ set EDITOR nvim
 
 export PATH="$HOME/.bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.cargo/bin/:$PATH"
 
 # alias for running ghc
 alias ghc "stack ghc"
