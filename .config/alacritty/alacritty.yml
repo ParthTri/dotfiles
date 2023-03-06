@@ -10,12 +10,12 @@ window:
 
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font Mono
   bold: 
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font Mono
     style: Bold
   italic:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font Mono
     style: Italic
-  size: 10.00
+  size: 12.00
 
