@@ -47,7 +47,8 @@ require('packer').startup(function() -- Packages
 	use "glepnir/lspsaga.nvim"
 
 	-- Git
-	use 'kdheepak/lazygit.nvim'
+	-- use 'kdheepak/lazygit.nvim'
+	use 'aspeddro/gitui.nvim'
 	use 'lewis6991/gitsigns.nvim'
 
 	-- Status line
