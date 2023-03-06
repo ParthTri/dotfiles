@@ -34,6 +34,9 @@ require("kanagawa").setup({
 })
 vim.cmd[[colorscheme kanagawa]]
 
+vim.cmd [[highlight LineNr guibg=none ]]
+vim.cmd [[highlight SignColumn guibg=none ]]
+
 -- Netrw file explorer
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
