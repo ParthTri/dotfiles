@@ -52,7 +52,7 @@ exec nitrogen --restore
 exec picom
 
 # Sxhkd
-sxhkd
+exec sxhkd
 
 # Syncthing
 exec synthing 
