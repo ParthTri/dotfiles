@@ -17,3 +17,5 @@ alias download="~/.local/share/virtualenvs/Media-Downloader-Q9ismdSu/bin/python3
 alias invoice="~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Maker/src/main.py"
 
 eval "$(starship init zsh)"
+
+if [ -e /home/parth/.nix-profile/etc/profile.d/nix.sh ]; then . /home/parth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

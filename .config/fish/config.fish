@@ -5,6 +5,8 @@ set EDITOR nvim
 export PATH="$HOME/.bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
+export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
+export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
 # alias for running ghc
 alias ghc "stack ghc"
@@ -54,6 +56,7 @@ bind \cr 'tmux a'
 source ~/.config/fish/hledger.fish
 source ~/.config/fish/prod.fish
 source ~/.config/fish/nnn.fish
+source ~/.nix-profile/etc/profile.d/nix.fish 
 starship init fish | source
 
 # pnpm
