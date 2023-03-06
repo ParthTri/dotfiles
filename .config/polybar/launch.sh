@@ -6,6 +6,6 @@ killall -q polybar
 # polybar-msg cmd quit
 
 # Launch Polybar, using default config location ~/.config/polybar/config.ini
-polybar 
+polybar -c ~/.config/polybar/config.ini main
 
 echo "Polybar launched..."
