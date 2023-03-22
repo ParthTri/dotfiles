@@ -44,7 +44,14 @@ vim.g.netrw_hidden = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 
 -- Telescope
-require("telescope").setup()
+require("telescope").setup({
+	ignore_file_patterns = {
+		"/.git/",
+		"node_modules/",
+		"__pycache__",
+		".venv"
+	}	
+})
 
 -- Comment
 require('nvim_comment').setup()
