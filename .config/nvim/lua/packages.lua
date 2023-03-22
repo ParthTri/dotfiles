@@ -44,7 +44,12 @@ require('packer').startup(function() -- Packages
 	}
 
 	-- LSP Saga
-	use "glepnir/lspsaga.nvim"
+	use { 
+		"glepnir/lspsaga.nvim",
+		requires = {
+			{'nvim-tree/nvim-web-devicons'},
+		}
+	}
 
 	-- Git
 	-- use 'kdheepak/lazygit.nvim'
