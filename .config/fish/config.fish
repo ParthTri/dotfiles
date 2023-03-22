@@ -8,6 +8,8 @@ export PATH="$HOME/.cargo/bin/:$PATH"
 export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
+alias bat "batcat"
+
 # alias for running ghc
 alias ghc "stack ghc"
 
