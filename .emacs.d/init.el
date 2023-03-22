@@ -15,7 +15,7 @@
 ;; Font
 
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Jet Brains Mono-10"))
+  (set-frame-parameter frame 'font "Jetbrains Mono Nerd Font Mono"))
 
 ;; Fontify current frame
 (fontify-frame nil)
@@ -95,7 +95,7 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom
-  (doom-modeline-height 5)
+  (setq doom-modeline-height 2)
   (display-time-mode 't))
 
 ;; Icons
@@ -632,7 +632,9 @@
 (setq org-latex-toc-command "\\tableofcontents \\clearpage")
 (setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
 
-(setq org-latex-listings t)
+(setq org-latex-listings 'minted)
+
+(add-to-list 'org-latex-packages-alist '("" "minted"))
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
@@ -650,6 +652,11 @@
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 ;; Presentations
 
@@ -981,3 +988,17 @@
   )
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(epa-gpg-program "/usr/local/bin/gpg")
+ '(package-selected-packages
+   '(eglot origami hl-todo vterm-toggle vterm rjsx-mode emmet-mode web-mode go-mode elpy flycheck persp-mode-projectile-bridge counsel-projectile writeroom-mode which-key use-package toc-org rainbow-delimiters projectile persp-mode pdf-tools org-tree-slide org-roam-ui org-ref org-journal org-bullets magit ledger-mode git-gutter general evil-collection elfeed-org doom-themes doom-modeline csv-mode counsel company-box centered-window all-the-icons alert)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -23,7 +23,7 @@
 *** Font
 #+begin_src emacs-lisp
   (defun fontify-frame (frame)
-    (set-frame-parameter frame 'font "Jet Brains Mono-10"))
+    (set-frame-parameter frame 'font "Jetbrains Mono Nerd Font Mono"))
 
   ;; Fontify current frame
   (fontify-frame nil)
@@ -103,7 +103,7 @@ Write backups to ~/.emacs.d/backup/
     :ensure t
     :init (doom-modeline-mode 1)
     :custom
-    (doom-modeline-height 5)
+    (setq doom-modeline-height 2)
     (display-time-mode 't))
 #+end_src
 ** Icons
@@ -660,7 +660,9 @@ Write backups to ~/.emacs.d/backup/
   (setq org-latex-toc-command "\\tableofcontents \\clearpage")
   (setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
 
-  (setq org-latex-listings t)
+  (setq org-latex-listings 'minted)
+
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
   (add-to-list 'org-latex-packages-alist '("" "listings"))
   (add-to-list 'org-latex-packages-alist '("" "color"))
   (add-to-list 'org-latex-packages-alist '("" "tabularx"))
@@ -678,6 +680,11 @@ Write backups to ~/.emacs.d/backup/
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+  (setq org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 #+end_src
 ** Presentations
 #+begin_src emacs-lisp
@@ -884,8 +891,8 @@ Write backups to ~/.emacs.d/backup/
   (use-package eglot
     :ensure t)
 #+end_src
-** Other Formats
-*** CSV
+* Other Formats
+** CSV
 #+begin_src emacs-lisp
   (use-package csv-mode
     :ensure t
