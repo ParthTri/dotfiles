@@ -103,4 +103,7 @@ require('packer').startup(function() -- Packages
 	-- Which key
 	use 'folke/which-key.nvim'
 
+	-- Nim
+	use 'alaviss/nim.nvim'
+
 end)
