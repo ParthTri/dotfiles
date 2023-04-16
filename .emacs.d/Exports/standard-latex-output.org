@@ -1,15 +1,18 @@
 #+LaTeX_CLASS: org-plain-latex
 #+LaTeX_CLASS_OPTIONS: [a4paper]
-#+LATEX_HEADER: \usepackage{lmodern} % Ensures we have the right font
+
+% Ensures we have the right font
+#+LATEX_HEADER: \usepackage{lmodern} 
 #+LATEX_HEADER: \usepackage[default]{sourcesanspro}
 
-#+LATEX_HEADER: \setcounter{secnumdepth}{0} % ignoring heading numbers
+% ignoring heading numbers
+#+LATEX_HEADER: \setcounter{secnumdepth}{0} 
 
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
 #+LATEX_HEADER: \usepackage{graphicx}
 #+LATEX_HEADER: \usepackage{amsmath, amsthm, amssymb}
 #+LATEX_HEADER: \usepackage[table, xcdraw]{xcolor}
-#+LaTeX_HEADER: \usepackage{minted}
+% #+LaTeX_HEADER: \usepackage{minted}
 
 % Colorizing links in a nicer way.
 #+LATEX_HEADER: \definecolor{bblue}{HTML}{0645AD}
