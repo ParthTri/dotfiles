@@ -7,6 +7,7 @@ local opts = { noremap = true, silent = true }
 
 keymap('n', '<C-s>', ':w<CR>', {})
 keymap('n', '<Leader>v', '<c-v>', {})
+keymap('i', 'jk', '<Esc>', {})
 
 -- Windows
 keymap('n', '<C-j>', '<C-w>j', {})
