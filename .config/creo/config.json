@@ -102,6 +102,18 @@
     "externalProgramsEnd": [
       "pnpx degit solidjs/templates/js ./frontend"
     ]
-  }
+  },
+	"Flask": {
+		"inherit": false,
+    "git": true,
+		".gitignore": "__pycache__\n.venv/\n.env",
+    "env": true,
+    "dirs": [
+      "static",
+      "routes",
+			"public",
+			"views"
+    ]
+	}
 }
   
