@@ -15,7 +15,7 @@
 ;; Font
 
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Jetbrains Mono Nerd Font Mono"))
+  (set-frame-parameter frame 'font "JetBrainsMonoNL Nerd Font Mono"))
 
 ;; Fontify current frame
 (fontify-frame nil)
@@ -209,6 +209,9 @@
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
   (define-key evil-normal-state-map (kbd "?") 'replace-regexp)
+
+  ;; exit insert mode by pressing jj quickly
+  (define-key evil-insert-state-map (kbd "C-;") 'evil-normal-state)
 
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
@@ -702,161 +705,6 @@
                               (format-time-string "%d%m%Y"))
                       "~/Blog/")))
 
-;; Programming
-
-(define-key prog-mode-map (kbd "C-c e s") #'eglot)
-(define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
-(define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
-(define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
-(define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
-
-;; Magit
-
-(use-package magit
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  :config
-  (pt/leader-keys
-    "g" '(:ignore g :which-key "git")
-    "gs" '(magit-stage-file :which-key "stage file")
-    "gS" '(magit-stage :which-key "stage all")
-    "gc" '(magit-commit :which-key "commit")
-    "gg" '(magit-status :which-key "status")))
-
-;; Git Gutter
-
-(use-package git-gutter
-  :ensure t
-  :config
-  (global-git-gutter-mode t))
-
-(pt/leader-keys
-  "tg" '(git-gutter-mode :which-key "gutter"))
-
-;; Projectile
-
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
-  :init
-  ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Projects")
-    (setq projectile-project-search-path '("~/Projects")))
-  (setq projectile-switch-project-action 'projectile-dired)
-  ;; (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
-  )
-
-(pt/leader-keys
-  "p" '(:ignore p :which-key "projects")
-  "pp" '(projectile-switch-project :which-key "switch")
-  "pt" '(projectile-test-project :which-key "test")
-  "pf" '(projectile-find-file :which-key "find")
-  "pr" '(projectile-run-project :whick-key "run")
-  "pc" '(projectile-compile-project :which-key "compile"))
-
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
-
-(use-package persp-mode-projectile-bridge
-  :ensure t
-  :after (persp projectile))
-
-(persp-mode-projectile-bridge-mode)
-
-;; Syntax Checking
-
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode))
-
-;; Python
-
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
-
-(use-package pyvenv
-  :config
-  (pyvenv-mode 1))
-
-;; Go
-
-(use-package go-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
-
-;; Web
-
-(use-package web-mode
-  :ensure t)
-
-;; Emmet
-
-(use-package emmet-mode
-  :ensure t
-  :hook ((web-mode . emmet-mode)
-         (js-mode . emmet-mode))
-  :config
-  (setq emmet-move-cursor-between-quotes t))
-
-;; JSX
-
-(use-package rjsx-mode
-  :mode ("\\.js\\'"
-         "\\.jsx\\'")
-  :config
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil
-        js2-basic-offset 2
-        js-indent-level 2))
-
-;; Terminal
-
-(use-package vterm
-  :ensure t )
-
-(pt/leader-keys
-  "oT" '(vterm :which-key "terminal"))
-
-;; Toggle
-
-(use-package vterm-toggle
-  :ensure t)
-
-(pt/leader-keys
-  "ot" '(vterm-toggle :which-key "terminal"))
-
-;; Comments
-
-(use-package hl-todo
-  :ensure t
-  :hook (prog-mode)
-  :bind (:map hl-todo-mode-map
-              ("C-c t n" . hl-todo-next)
-              ("C-c t p" . hl-todo-previous)
-              ("C-c t l" . hl-todo-occur)))
-
- (setq hl-todo-keyword-faces
-  '(("TODO"   . "#cc9393")
-    ("FIXME"  . "#cc9393")
-    ("NOTE"   . "#d0bf8f")
-    ("BUG"    . "#8c5353")))
-
-;; Code Folding
-
-(use-package origami
-  :hook (prog-mode))
-
-;; Language Server Protocol
-
-(use-package eglot
-  :ensure t)
-
 ;; CSV
 
 (use-package csv-mode
@@ -988,17 +836,3 @@
   )
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(epa-gpg-program "/usr/local/bin/gpg")
- '(package-selected-packages
-   '(eglot origami hl-todo vterm-toggle vterm rjsx-mode emmet-mode web-mode go-mode elpy flycheck persp-mode-projectile-bridge counsel-projectile writeroom-mode which-key use-package toc-org rainbow-delimiters projectile persp-mode pdf-tools org-tree-slide org-roam-ui org-ref org-journal org-bullets magit ledger-mode git-gutter general evil-collection elfeed-org doom-themes doom-modeline csv-mode counsel company-box centered-window all-the-icons alert)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -23,7 +23,7 @@
 *** Font
 #+begin_src emacs-lisp
   (defun fontify-frame (frame)
-    (set-frame-parameter frame 'font "Jetbrains Mono Nerd Font Mono"))
+    (set-frame-parameter frame 'font "JetBrainsMonoNL Nerd Font Mono"))
 
   ;; Fontify current frame
   (fontify-frame nil)
@@ -220,7 +220,10 @@ Write backups to ~/.emacs.d/backup/
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
     (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
     (define-key evil-normal-state-map (kbd "?") 'replace-regexp)
- 
+
+    ;; exit insert mode by pressing jj quickly
+    (define-key evil-insert-state-map (kbd "C-;") 'evil-normal-state)
+
     ;; Use visual line motions even outside of visual-line-mode buffers
     (evil-global-set-key 'motion "j" 'evil-next-visual-line)
     (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
@@ -248,7 +251,6 @@ Write backups to ~/.emacs.d/backup/
       "kb" '(persp-switch-to-buffer :which-key "buffer")
       "kk" '(persp-kill :which-key "kill")
       ))
-
 #+end_src
 ** Company
 #+begin_src emacs-lisp
@@ -733,7 +735,7 @@ Write backups to ~/.emacs.d/backup/
                         "~/Blog/")))
 #+end_src
 
-* Programming
+* COMMENT Programming
 #+begin_src emacs-lisp
   (define-key prog-mode-map (kbd "C-c e s") #'eglot)
   (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
@@ -823,6 +825,11 @@ Write backups to ~/.emacs.d/backup/
     :ensure t
     :config
     (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+#+end_src
+*** Nim
+#+begin_src emacs-lisp 
+  (use-package nim-mode
+    :ensure t)
 #+end_src
 *** Web
 #+begin_src emacs-lisp
