@@ -5,7 +5,10 @@
 (stumpwm:set-prefix-key (stumpwm:kbd "s-SPC"))
 
 ;; Restart
-(define-key *groups-map* (kbd "r") "restart-soft")
+(define-key *groups-map* (kbd "R") "loadrc")
+
+;; Exit Session
+(define-key *root-map* (kbd "q") "quit")
 
 ;; Helper function
 (defun tr-define-key (key command)

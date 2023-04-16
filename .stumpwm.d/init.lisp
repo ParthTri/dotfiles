@@ -10,9 +10,12 @@
 (setf *startup-message* nil)
 
 (when *initializing*
-  (run-shell-command "nitrogen --restore")
   (toggle-mode-line (current-screen)
-                    (current-head)))
+                    (current-head))
+  (run-shell-command "sxhkd")
+  (run-shell-command "picom")
+  (run-shell-command "autorandr --change")
+  (run-shell-command "nitrogen --restore"))
 
 (setf *mouse-focus-policy* :sloppy)
 
