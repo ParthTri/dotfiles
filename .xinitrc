@@ -49,10 +49,10 @@ exec autorandr --change
 exec nitrogen --restore
 
 # Picom
-exec picom
+# exec picom
 
 # Sxhkd
-exec sxhkd
+# exec sxhkd
 
 # Syncthing
 exec synthing 
