@@ -109,4 +109,7 @@ require('packer').startup(function() -- Packages
 	-- Nim
 	use "alaviss/nim.nvim"
 
+	-- Org mode
+	use "nvim-orgmode/orgmode"
+
 end)
