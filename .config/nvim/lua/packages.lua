@@ -103,9 +103,10 @@ require('packer').startup(function() -- Packages
 	-- Which key
 	use 'folke/which-key.nvim'
 
-	-- Nim
-	use 'alaviss/nim.nvim'
 	-- Folding Pairs
 	use "jiangmiao/auto-pairs"
+
+	-- Nim
+	use "alaviss/nim.nvim"
 
 end)
