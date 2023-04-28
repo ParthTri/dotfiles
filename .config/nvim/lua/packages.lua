@@ -52,8 +52,8 @@ require('packer').startup(function() -- Packages
 	}
 
 	-- Git
-	-- use 'kdheepak/lazygit.nvim'
-	use 'aspeddro/gitui.nvim'
+	use 'kdheepak/lazygit.nvim'
+	-- use 'aspeddro/gitui.nvim'
 	use 'lewis6991/gitsigns.nvim'
 
 	-- Status line
@@ -105,5 +105,7 @@ require('packer').startup(function() -- Packages
 
 	-- Nim
 	use 'alaviss/nim.nvim'
+	-- Folding Pairs
+	use "jiangmiao/auto-pairs"
 
 end)

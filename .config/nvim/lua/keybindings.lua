@@ -26,7 +26,7 @@ keymap('n', '<Leader>e', ':NnnExplorer<CR>', {})
 keymap('n', '<Leader>E', ':NnnPicker<CR>', {})
 
 -- LazyGit
-keymap('n', '<Leader>g', ':lua require("gitui").open()<CR>', {})
+keymap('n', '<Leader>g', ':LazyGit<CR>', {})
 
 -- Comments
 keymap('n', '<Leader>c', ':CommentToggle<CR>', {})
