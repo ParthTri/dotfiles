@@ -37,7 +37,7 @@ bind \ce 'sd && tpwd'
 # bind \cf 'sd'
 
 # Keyboard shortcut to open lazygit
-bind \cg 'gitui'
+bind \cg 'lazygit'
 
 # keyboard shortcut to open a tmux session in current directory
 bind \ct 'tpwd'
