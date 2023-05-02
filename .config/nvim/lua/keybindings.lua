@@ -22,8 +22,9 @@ keymap('n', '<C-p>', ':bprevious<CR>', {})
 
 -- File Explorer
 keymap('n', '<C-e>', ':Explore<CR>', {})
-keymap('n', '<Leader>e', ':NnnExplorer<CR>', {})
-keymap('n', '<Leader>E', ':NnnPicker<CR>', {})
+
+-- keymap('n', '<Leader>e', ':NnnExplorer<CR>', {})
+-- keymap('n', '<Leader>E', ':NnnPicker<CR>', {})
 
 -- LazyGit
 keymap('n', '<Leader>g', ':LazyGit<CR>', {})
