@@ -195,6 +195,25 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}),
 
+		-- Media Keys
+		awful.key({  }, "XF86AudioRaiseVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%") end,
+		{description = "Raise volume", group="awesome"}
+		),
+
+		awful.key({  }, "XF86AudioLowerVolume", 
+			function () 
+				awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%") 
+			end,
+			{description = "Lower volume", group="awesome"}
+		),
+
+		awful.key({  }, "XF86AudioMute", 
+			function () 
+				awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") 
+			end,
+			{description = "Mute volume", group="awesome"}
+		),
+
     -- Standard program
     awful.key({ super,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
