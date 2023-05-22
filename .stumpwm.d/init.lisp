@@ -19,6 +19,8 @@
 
 (setf *mouse-focus-policy* :sloppy)
 
+(setf (getenv "GDK_CORE_DEVICE_EVENTS") "1")
+
 (load "~/.stumpwm.d/colours.lisp")
 (load "~/.stumpwm.d/keybindings.lisp")
 (load "~/.stumpwm.d/modeline.lisp")
