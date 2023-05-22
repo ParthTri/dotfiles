@@ -747,7 +747,7 @@ Write backups to ~/.emacs.d/backup/
                         "~/Blog/")))
 #+end_src
 
-* COMMENT Programming
+* Programming
 #+begin_src emacs-lisp
   (define-key prog-mode-map (kbd "C-c e s") #'eglot)
   (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
