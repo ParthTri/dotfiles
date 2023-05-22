@@ -905,6 +905,10 @@ Write backups to ~/.emacs.d/backup/
   (use-package origami
     :hook (prog-mode))
 #+end_src
+** Auto Closing
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'electric-pair-mode)
+#+end_src
 ** Language Server Protocol
 #+begin_src emacs-lisp
   (use-package eglot
