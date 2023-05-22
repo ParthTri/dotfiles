@@ -13,3 +13,4 @@
 .config/lazygit
 .config/pulse
 .config/systemd/user
+.config/newsboat/urls
