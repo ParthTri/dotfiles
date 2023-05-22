@@ -32,6 +32,7 @@
                 dired-mode-hook
                 image-mode-hook
                 pdf-view-mode-hook
+                vterm-mode-hook
                 term-mode-hook ))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
