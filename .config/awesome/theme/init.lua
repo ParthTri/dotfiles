@@ -8,7 +8,7 @@ local dpi					= xresources.apply_dpi
 
 Theme = {}
 
-Theme.font				= "FiraCode Nerd Font"
+Theme.font				= "JetBrains Mono Nerd Font Mono"
 
 Theme.fg_normal		= "#DCD7BA"
 Theme.fg_focused	= "#C8C093"
@@ -34,9 +34,14 @@ Theme.taglist_fg_focus		= Theme.bg
 Theme.taglist_bg_focus		= Theme.roninYellow
 Theme.taglist_fg_occupied = Theme.katanaGray
 
--- Clock
-local myTextClock = wibox.widget.textclock(" %a, %d %b %Y %H:%M ")
+-- Date
+local myTextDate = wibox.widget.textclock("%A, %d %b %Y ")
+myTextDate.font	= Theme.font
+
+-- Time
+local myTextClock = wibox.widget.textclock(" %H:%M ")
 myTextClock.font	= Theme.font
+myTextClock.fg_color = Theme.springGreen
 
 -- Battery
 
@@ -95,13 +100,17 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.align.horizontal,
 			{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			s.mytaglist,
+			s.mytaglist
 		},
-		nil,
+		{ -- Center Widgets
+			layout = wibox.layout.fixed.horizontal,
+		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			wibox.widget.systray(),
-			myTextClock
+			myTextClock,
+			myTextDate,
+			spacing = 5
 		}
 	}
 end)
