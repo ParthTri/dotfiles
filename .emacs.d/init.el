@@ -583,6 +583,10 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 
+;; Source Code Editing
+
+(setq org-src-window-setup "split-window-below")
+
 ;; Roam
 
 (use-package org-roam

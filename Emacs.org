@@ -608,6 +608,10 @@ Write backups to ~/.emacs.d/backup/
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 #+end_src
+*** Source Code Editing
+#+begin_src emacs-lisp
+  (setq org-src-window-setup "split-window-below")
+#+end_src
 ** Roam
 #+begin_src emacs-lisp
   (use-package org-roam
