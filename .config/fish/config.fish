@@ -6,8 +6,8 @@ set -gx EDITOR "nvim"
 export PATH="$HOME/.bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
-export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 export PATH="$HOME/.nix-profile/bin:$PATH"
+export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 
 source ~/.config/fish/hledger.fish
 source ~/.config/fish/prod.fish
@@ -27,4 +27,3 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/parth/.ghcup/bin # ghcup-env
