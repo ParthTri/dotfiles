@@ -178,26 +178,6 @@ require('symbols-outline').setup({
   width = 15
 })
 
-
--- Zen mode
-require('true-zen').setup({
-  modes = {
-    ataraxis = {
-			minimum_writing_area = {
-				width = 85
-			},
-      padding = {
-        left = 35,
-        right = 35
-      }
-    }
-  },
-  integrations = {
-    twilight = true,
-    lualine = true
-  }
-})
-
 -- Terminal
 require('toggleterm').setup({
   open_mapping = [[<c-\>]],
@@ -209,21 +189,3 @@ vim.o.timeout = true
 vim.o.timeoutlen = 200
 require('which-key').setup({
 })
-
--- Todo Comments
- require('todo').setup({
-  keyword = {
-    FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }},
-    TODO = { icon = " ", color = "info" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } }
-  },
-  colors = {
-    error = { "DiagnosticError", "ErrorMsg", "#E82424" },
-    warning = { "DiagnosticWarn", "WarningMsg", "#FF9E3B" },
-    info = { "DiagnosticInfo", "#7FB4CA" },
-    hint = { "DiagnosticHint", "#76946A" },
-    default = { "Identifier", "#7C3AED" }
-  }
-})
-
