@@ -50,27 +50,8 @@ keymap('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
 keymap('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 keymap('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
 
--- Harpoon
-keymap('n', 'ha', ':lua require("harpoon.mark").add_file()<CR>', {})
-keymap('n', 'hf', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {})
-keymap('n', 'hn', ':lua require("harpoon.ui").nav_next()<CR>', {})
-keymap('n', 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', {})
-
 -- Outline
 keymap('n', '<Leader>oo', ':SymbolsOutline<CR>', {})
-
--- Notes
-keymap('n', "<leader>ww", ":VimwikiIndex<CR>", {})
-keymap('n', '<Leader>wp', ":MarkdownPreview<CR>", {})
-keymap('n', '<Leader>wP', ":MarkdownPreviewStop<CR>", {})
-
--- Zen
-keymap('n', '<Leader>z', ':TZAtaraxis<CR>', {})
-keymap('v', '<Leader>zn', ':TZNarrow<CR>', {})
-
--- Present
-keymap('n', '<Leader>p', ':PresentingStart<CR>:TZAtaraxis<CR>', {})
-keymap('n', '<Leader>P', ':TZAtaraxis<CR>:PresentingExit<CR>', {})
 
 -- Terminal
 keymap('n', '<Leader>oh', ':ToggleTerm direction=horizontal<CR>', {})
