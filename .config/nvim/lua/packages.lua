@@ -65,34 +65,8 @@ require('packer').startup(function() -- Packages
 	-- Formatting
 	use "jose-elias-alvarez/null-ls.nvim"
 
-	-- Todo Comments
-	use {
-		"AmeerTaweel/todo.nvim",
-		requires = "nvim-lua/plenary.nvim"
-	}
-
-	-- Harpoon
-	use "ThePrimeagen/harpoon"
-
 	-- Code Outline
 	use 'simrat39/symbols-outline.nvim'
-
-	-- Note taking
-	use 'vimwiki/vimwiki'
-
-	use 'Pocco81/true-zen.nvim'
-	use 'folke/twilight.nvim'
-
-	-- Presenter
-	use "sotte/presenting.vim"
-	
-	-- Lisp
-	use {
-		'vlime/vlime',
-		config = function()
-			rtp = 'vim/'
-		end
-	}
 
 	-- Ledger
 	use 'ledger/vim-ledger'
@@ -105,9 +79,6 @@ require('packer').startup(function() -- Packages
 
 	-- Folding Pairs
 	use "jiangmiao/auto-pairs"
-
-	-- Nim
-	use "alaviss/nim.nvim"
 
 	-- Org mode
 	use "nvim-orgmode/orgmode"
