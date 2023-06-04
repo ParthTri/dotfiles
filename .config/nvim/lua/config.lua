@@ -1,4 +1,3 @@
--- config.lua
 
 vim.opt.termguicolors = true
 vim.bo.expandtab = true
@@ -26,7 +25,7 @@ require("kanagawa").setup({
   variablebuiltinStyle = { italic = true},
   specialReturn = true,
   specialException = true,
-  transparent = true,
+  transparent = false,
   dimInactive = false,
   globalStatus = false,
   terminalColors = true,
