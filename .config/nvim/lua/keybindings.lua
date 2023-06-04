@@ -22,10 +22,13 @@ keymap('n', '<Leader>bp', ':bprevious<CR>', {})
 keymap('n', '<Leader>bb', ':buffers<CR>', {})
 
 -- File Explorer
-keymap('n', '<C-e>', ':Explore<CR>', {})
+function get_project_root()
+	local curr_path = vim.api.nvim_exec('pwd', true)
+	return curr_path
+end
 
--- keymap('n', '<Leader>e', ':NnnExplorer<CR>', {})
--- keymap('n', '<Leader>E', ':NnnPicker<CR>', {})
+keymap('n', '<C-e>', ':Explore<CR>', {})
+keymap('n', '<Leader>E', string.format(':Vexplore %s<CR>', get_project_root()), {})
 
 -- LazyGit
 keymap('n', '<Leader>g', ':LazyGit<CR>', {})
