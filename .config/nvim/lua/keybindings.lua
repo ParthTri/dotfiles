@@ -16,9 +16,10 @@ keymap('n', '<C-h>', '<C-w>h', {})
 keymap('n', '<C-l>', '<C-w>l', {})
 
 -- Buffers
-keymap('n', '∂', ':bd<CR>', {})
-keymap('n', '<C-n>', ':bnext<CR>', {})
-keymap('n', '<C-p>', ':bprevious<CR>', {})
+keymap('n', '<Leader>bd', ':bd<CR>', {})
+keymap('n', '<Leader>bn', ':bnext<CR>', {})
+keymap('n', '<Leader>bp', ':bprevious<CR>', {})
+keymap('n', '<Leader>bb', ':buffers<CR>', {})
 
 -- File Explorer
 keymap('n', '<C-e>', ':Explore<CR>', {})
