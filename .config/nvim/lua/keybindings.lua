@@ -27,8 +27,8 @@ function get_project_root()
 	return curr_path
 end
 
-keymap('n', '<C-e>', ':Explore<CR>', {})
-keymap('n', '<Leader>E', string.format(':Vexplore %s<CR>', get_project_root()), {})
+keymap('n', '<Leader>e', ':Explore<CR>', {})
+keymap('n', '<C-e>', string.format(':Vexplore %s<CR>', get_project_root()), {})
 
 -- LazyGit
 keymap('n', '<Leader>g', ':LazyGit<CR>', {})
