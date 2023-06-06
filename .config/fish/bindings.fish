@@ -28,7 +28,7 @@ alias ns "newsboat"
 bind \cf nnn -a 
 
 # keyboard shortcut to open neovim in current directory
-bind \cn 'nvim'
+bind \cn '~/nvim.appimage'
 
 # keyboard shortcut to fuzzy find and switch directory and start new tmux session
 bind \ce 'sd && tpwd'
