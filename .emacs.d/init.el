@@ -162,7 +162,7 @@
 
 (pt/leader-keys
   "o" '(:ignore o :which-key "open")
-  "oe" '(eshell :which-key "eshell"))
+  "oE" '(eshell :which-key "eshell"))
 
 (pt/leader-keys
   "o" '(:ignore O :which-key "")
@@ -319,6 +319,16 @@
   :commands alert
   :config
   (setq alert-default-style 'notifications))
+
+;; Neotree
+
+(use-package neotree
+  :ensure t
+  :init
+  (setq neo-smart-open t))
+
+(pt/leader-keys
+  "oe" '(neotree :which-key "Neotree"))
 
 ;; Org Configuration
 

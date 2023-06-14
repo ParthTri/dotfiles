@@ -170,7 +170,7 @@ Write backups to ~/.emacs.d/backup/
 
   (pt/leader-keys
     "o" '(:ignore o :which-key "open")
-    "oe" '(eshell :which-key "eshell"))
+    "oE" '(eshell :which-key "eshell"))
 
   (pt/leader-keys
     "o" '(:ignore O :which-key "")
@@ -333,6 +333,16 @@ Write backups to ~/.emacs.d/backup/
     :commands alert
     :config
     (setq alert-default-style 'notifications))
+#+end_src
+** Neotree
+#+begin_src emacs-lisp
+  (use-package neotree
+    :ensure t
+    :init
+    (setq neo-smart-open t))
+
+  (pt/leader-keys
+    "oe" '(neotree :which-key "Neotree"))
 #+end_src
 
 * Org Mode
@@ -795,6 +805,8 @@ Write backups to ~/.emacs.d/backup/
     (when (file-directory-p "~/Projects")
       (setq projectile-project-search-path '("~/Projects")))
     (setq projectile-switch-project-action 'projectile-dired)
+    (setq projectile-switch-project-action 'neotree-projectile-action)
+
     ;; (add-to-list 'projectile-globally-ignored-directories "^\\node_modules")
     )
 
@@ -871,6 +883,16 @@ Write backups to ~/.emacs.d/backup/
           js2-mode-show-strict-warnings nil
           js2-basic-offset 2
           js-indent-level 2))
+#+end_src
+**** Typescript
+#+begin_src emacs-lisp
+  (use-package typescript-mode
+    :ensure t)
+#+end_src
+**** Svelte
+#+begin_src emacs-lisp
+  (use-package svelte-mode
+    :ensure t)
 #+end_src
 ** Terminal
 #+begin_src emacs-lisp
