@@ -826,6 +826,11 @@
 (use-package nim-mode
   :ensure t)
 
+;; Lua
+
+(use-package lua-mode
+  :ensure t)
+
 ;; Web
 
 (use-package web-mode
