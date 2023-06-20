@@ -83,4 +83,7 @@ require('packer').startup(function() -- Packages
 	-- Org mode
 	use "nvim-orgmode/orgmode"
 
+	-- Tree
+	use "nvim-tree/nvim-tree.lua"
+
 end)
