@@ -877,6 +877,10 @@
 (use-package svelte-mode
   :ensure t)
 
+;; Astro
+
+(add-to-list 'auto-mode-alist '("\\.astro\\'" . web-mode))
+
 ;; Terminal
 
 (use-package vterm

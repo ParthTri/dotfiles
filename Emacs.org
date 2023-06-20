@@ -910,6 +910,10 @@ Write backups to ~/.emacs.d/backup/
   (use-package svelte-mode
     :ensure t)
 #+end_src
+**** Astro
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.astro\\'" . web-mode))
+#+end_src
 ** Terminal
 #+begin_src emacs-lisp
   (use-package vterm
