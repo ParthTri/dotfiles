@@ -70,7 +70,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.floating,
+    awful.layout.suit.floating,
     -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.spiral,
@@ -136,6 +136,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    -- awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+    --           {description = "jump to urgent client", group = "client"}),
     awful.key({ super,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ super,           }, "Left",   awful.tag.viewprev,
@@ -452,10 +454,10 @@ end)
 -- Autotstart
 awful.util.spawn("xmodmap .Xmodmap")
 awful.util.spawn("syncthing")
-awful.util.spawn("autorandr --change")
-awful.util.spawn("nitrogen --restore")
 awful.util.spawn("picom")
 awful.util.spawn("sxhkd")
+awful.util.spawn("autorandr --change")
+awful.util.spawn("nitrogen --restore")
 
 beautiful.init("/home/parth/.config/awesome/theme/init.lua")
 

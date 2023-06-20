@@ -1,12 +1,15 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local lain  = require("lain")
 local beautiful = require("beautiful")
 
 local xresources	= require("beautiful.xresources")
 local dpi					= xresources.apply_dpi
 
 Theme = {}
+
+Theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/theme"
 
 Theme.font				= "JetBrains Mono Nerd Font Mono"
 
@@ -34,6 +37,8 @@ Theme.taglist_fg_focus		= Theme.bg
 Theme.taglist_bg_focus		= Theme.roninYellow
 Theme.taglist_fg_occupied = Theme.katanaGray
 
+local markup = lain.util.markup
+
 -- Date
 local myTextDate = wibox.widget.textclock("%A, %d %b %Y ")
 myTextDate.font	= Theme.font
@@ -44,10 +49,40 @@ myTextClock.font	= Theme.font
 myTextClock.fg_color = Theme.springGreen
 
 -- Battery
+local bat = lain.widget.bat({
+    settings = function()
+        if bat_now.status and bat_now.status ~= "N/A" then
+            if bat_now.ac_status == 1 then
+                widget:set_markup(markup.font(theme.font, " AC "))
+                baticon:set_image(theme.widget_ac)
+                return
+            elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
+                baticon:set_image(theme.widget_battery_empty)
+            elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
+                baticon:set_image(theme.widget_battery_low)
+            else
+                baticon:set_image(theme.widget_battery)
+            end
+            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+        else
+            widget:set_markup()
+            baticon:set_image(theme.widget_ac)
+        end
+    end
+})
 
 -- Volume
+-- local volume = lain.widget.alsabar({
+--     --togglechannel = "IEC958,3",
+--     notification_preset = { font = Theme.font, fg = Theme.fg_normal },
+-- })
 
--- Background 
+-- Memory
+local mem = lain.widget.mem({
+    settings = function()
+        widget:set_markup(markup.font(Theme.font, " " .. mem_now.used .. "MB "))
+    end
+})
 
 -- Bar
 local tasklist_buttons = gears.table.join(
@@ -107,6 +142,8 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+      -- volume,
+      mem,
 			wibox.widget.systray(),
 			myTextClock,
 			myTextDate,
