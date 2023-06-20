@@ -1054,3 +1054,8 @@
   )
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
+
+;; Rest Client
+
+(use-package restclient
+  :ensure t)

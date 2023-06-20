@@ -1173,3 +1173,8 @@ Write backups to ~/.emacs.d/backup/
   (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
 
 #+end_src
+** Rest Client
+#+begin_src emacs-lisp
+  (use-package restclient
+    :ensure t)
+#+end_src
