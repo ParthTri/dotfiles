@@ -325,10 +325,11 @@
 (use-package neotree
   :ensure t
   :init
-  (setq neo-smart-open t))
+  (setq neo-smart-open t)
+  (setq neo-theme 'icons))
 
 (pt/leader-keys
-  "oe" '(neotree :which-key "Neotree"))
+  "oe" '(neotree-toggle :which-key "Neotree"))
 
 ;; Packages
 

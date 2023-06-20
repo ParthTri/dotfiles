@@ -339,10 +339,22 @@ Write backups to ~/.emacs.d/backup/
   (use-package neotree
     :ensure t
     :init
-    (setq neo-smart-open t))
+    (setq neo-smart-open t)
+    (setq neo-theme 'icons))
 
   (pt/leader-keys
-    "oe" '(neotree :which-key "Neotree"))
+    "oe" '(neotree-toggle :which-key "Neotree"))
+#+end_src
+
+*** COMMENT Move to Sync folder
+#+begin_src emacs-lisp
+  (defun move-to-sync ()
+      "Move neotree node to ~/Sync directory"
+    (interactive)
+    (let (this-buffer (buffer-file-name)
+         (message this-buffer))))
+
+  (move-to-sync)
 #+end_src
 ** Packages
 #+begin_src emacs-lisp
