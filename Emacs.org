@@ -54,9 +54,10 @@
 #+end_src
 *** Tab
 #+begin_src emacs-lisp
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2)
-  (setq-default evil-shift-width tab-width)
+	(setq-default indent-tabs-mode nil)
+	(setq-default tab-width 2)
+	(setq-default evil-shift-width tab-width)
+	(setq indent-line-function 'insert-tab)
 #+end_src
 ** Use package
 #+begin_src emacs-lisp
@@ -786,11 +787,11 @@ Write backups to ~/.emacs.d/backup/
 
 * Programming
 #+begin_src emacs-lisp
-  (define-key prog-mode-map (kbd "C-c e s") #'eglot)
-  (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
-  (define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
-  (define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
-  (define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
+	(define-key prog-mode-map (kbd "C-c e s") #'eglot)
+	(define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
+	(define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
+	(define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
+	(define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
 #+end_src
 
 ** Git
@@ -889,8 +890,10 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 *** Web
 #+begin_src emacs-lisp
-  (use-package web-mode
-    :ensure t)
+	(use-package web-mode
+		:ensure t
+		:config
+		(setq web-mode-code-indent-offset tab-width))
 #+end_src
 **** Emmet
 #+begin_src emacs-lisp

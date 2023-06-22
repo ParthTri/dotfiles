@@ -49,6 +49,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
+(setq indent-line-function 'insert-tab)
 
 ;; Use package
 
@@ -846,7 +847,9 @@
 ;; Web
 
 (use-package web-mode
-  :ensure t)
+	:ensure t
+	:config
+	(setq web-mode-code-indent-offset tab-width))
 
 ;; Emmet
 
