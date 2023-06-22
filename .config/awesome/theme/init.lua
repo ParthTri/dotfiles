@@ -11,7 +11,7 @@ Theme = {}
 
 Theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/theme"
 
-Theme.font				= "JetBrains Mono Nerd Font Mono"
+Theme.font				= "JetBrains Mono Nerd Font Mono 11"
 
 Theme.fg_normal		= "#DCD7BA"
 Theme.fg_focused	= "#C8C093"
@@ -51,31 +51,25 @@ myTextClock.fg_color = Theme.springGreen
 -- Battery
 local bat = lain.widget.bat({
     settings = function()
-        if bat_now.status and bat_now.status ~= "N/A" then
+        if bat_now.status ~= "N/A" then
             if bat_now.ac_status == 1 then
-                widget:set_markup(markup.font(theme.font, " AC "))
-                baticon:set_image(theme.widget_ac)
+                widget:set_markup(markup.font(Theme.font, " AC "))
                 return
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
-                baticon:set_image(theme.widget_battery_empty)
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
-                baticon:set_image(theme.widget_battery_low)
-            else
-                baticon:set_image(theme.widget_battery)
             end
-            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+            widget:set_markup(markup.font(Theme.font, " " .. bat_now.perc .. "% "))
         else
-            widget:set_markup()
-            baticon:set_image(theme.widget_ac)
+            widget:set_markup(markup.font(Theme.font, " AC "))
         end
     end
 })
 
+
 -- Volume
--- local volume = lain.widget.alsabar({
---     --togglechannel = "IEC958,3",
---     notification_preset = { font = Theme.font, fg = Theme.fg_normal },
--- })
+local volume = lain.widget.alsa({
+    settings = function()
+        widget:set_markup(markup.font(Theme.font, " " .. volume_now.level .. "% "))
+    end
+})
 
 -- Memory
 local mem = lain.widget.mem({
@@ -142,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-      -- volume,
+      volume.widget,
       mem,
 			wibox.widget.systray(),
 			myTextClock,
