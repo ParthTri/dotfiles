@@ -341,7 +341,7 @@
 (pt/leader-keys
   "oe" '(neotree-toggle :which-key "Neotree"))
 
-;; Packages
+;; Auto Update Packages
 
 (use-package auto-package-update
   :custom

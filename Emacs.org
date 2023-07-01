@@ -362,7 +362,7 @@ Write backups to ~/.emacs.d/backup/
 
   (move-to-sync)
 #+end_src
-** Packages
+** Auto Update Packages
 #+begin_src emacs-lisp
   (use-package auto-package-update
     :custom
