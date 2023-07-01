@@ -2,6 +2,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+font pango: JetBrainsMonoNL Nerd Font Mono 9
 set $mod Mod4
 
 # Border
