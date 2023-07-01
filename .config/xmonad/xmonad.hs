@@ -19,6 +19,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
     ( avoidStruts, docks, manageDocks, Direction2D(D, L, R, U) )
 import XMonad.Hooks.ManageHelpers ( doFullFloat, isFullscreen )
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Spacing ( spacingRaw, Border(Border) )
 import XMonad.Layout.Gaps
     ( Direction2D(D, L, R, U),
@@ -60,7 +61,7 @@ myModMask       = mod4Mask
 --
 -- A tagging example:
 --
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+-- myWorkspaces =  ["web", "irc", "code"] ++ map show [4..9] }
 --
 myWorkspaces    = ["\63083", "\63288", "\63306", "\61723", "\63107", "\63601", "\63391", "\61713", "\61884"]
 
@@ -141,11 +142,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_d     ), spawn "exec ~/bin/do_not_disturb.sh")
 
     -- close focused window
-    , ((modm, xK_q), kill)
+    , ((modm,               xK_q     ), kill)
 
     -- GAPS!!!
     , ((modm .|. controlMask, xK_g), sendMessage $ ToggleGaps)               -- toggle all gaps
-    , ((modm .|. shiftMask, xK_g), sendMessage $ setGaps [(L,30), (R,30), (U,40), (D,60)]) -- reset the GapSpec
+    , ((modm .|. shiftMask, xK_g), sendMessage $ setGaps [(L,30), (R,30), (U,40), (D,30)]) -- reset the GapSpec
     
     , ((modm .|. controlMask, xK_t), sendMessage $ IncGap 10 L)              -- increment the left-hand gap
     , ((modm .|. shiftMask, xK_t     ), sendMessage $ DecGap 10 L)           -- decrement the left-hand gap
@@ -339,6 +340,7 @@ myStartupHook = do
   spawnOnce "exec eww daemon"
   spawn "xsetroot -cursor_name left_ptr"
   spawn "exec ~/bin/lock.sh"
+  spawnOnce "autorandr -c"
   spawnOnce "nitrogen --restore"
   spawnOnce "picom --experimental-backends"
   spawnOnce "greenclip daemon"
@@ -375,7 +377,7 @@ defaults = def {
 
       -- hooks, layouts
         manageHook = myManageHook, 
-        layoutHook = gaps [(L,10), (R,10), (U,10), (D,10)] $ spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $ smartBorders $ myLayout,
+        layoutHook = gaps [(L,30), (R,30), (U,30), (D,30)] $ spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $ smartBorders $ myLayout,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
         startupHook        = myStartupHook >> addEWMHFullscreen
