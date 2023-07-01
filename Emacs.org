@@ -971,7 +971,7 @@ Write backups to ~/.emacs.d/backup/
   (pt/leader-keys
     "ot" '(vterm-toggle :which-key "terminal"))
 #+end_src
-** Comments
+** COMMENT Comments
 #+begin_src emacs-lisp
   (use-package hl-todo
     :ensure t
@@ -987,7 +987,7 @@ Write backups to ~/.emacs.d/backup/
       ("NOTE"   . "#d0bf8f")
       ("BUG"    . "#8c5353")))
 #+end_src
-** Code Folding
+** COMMENT Code Folding
 #+begin_src emacs-lisp
   (use-package origami
     :hook (prog-mode))

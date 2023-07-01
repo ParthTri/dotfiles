@@ -930,27 +930,6 @@
 (pt/leader-keys
   "ot" '(vterm-toggle :which-key "terminal"))
 
-;; Comments
-
-(use-package hl-todo
-  :ensure t
-  :hook (prog-mode)
-  :bind (:map hl-todo-mode-map
-              ("C-c t n" . hl-todo-next)
-              ("C-c t p" . hl-todo-previous)
-              ("C-c t l" . hl-todo-occur)))
-
- (setq hl-todo-keyword-faces
-  '(("TODO"   . "#cc9393")
-    ("FIXME"  . "#cc9393")
-    ("NOTE"   . "#d0bf8f")
-    ("BUG"    . "#8c5353")))
-
-;; Code Folding
-
-(use-package origami
-  :hook (prog-mode))
-
 ;; Auto Closing
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
