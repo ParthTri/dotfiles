@@ -107,8 +107,7 @@ bindsym $mod+v split h
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -159,8 +158,6 @@ bindsym $mod+Delete workspace number $ws11
 bindsym $mod+Home   workspace number $ws12
 bindsym $mod+Prior  workspace number $ws13
 bindsym $mod+Next   workspace number $ws14
-
-bindsym $mod+p workspace number $ws6
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
