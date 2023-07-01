@@ -127,6 +127,10 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -139,6 +143,11 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Delete workspace number $ws11
+bindsym $mod+Home   workspace number $ws12
+bindsym $mod+Prior  workspace number $ws13
+bindsym $mod+Next   workspace number $ws14
 
 bindsym $mod+p workspace number $ws6
 
@@ -154,6 +163,11 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+bindsym $mod+Shift+Delete move container to workspace number $ws11
+bindsym $mod+Shift+Home   move container to workspace number $ws12
+bindsym $mod+Shift+Prior  move container to workspace number $ws13
+bindsym $mod+Shift+Next   move container to workspace number $ws14
+
 # Assigning workspaces to screens
 workspace $ws1 output HDMI1 DP1 
 workspace $ws2 output HDMI1 DP1 
@@ -162,6 +176,11 @@ workspace $ws4 output HDMI1 DP1
 workspace $ws5 output HDMI1 DP1 
 
 workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws10 output eDP-1
+
 workspace $ws7 output eDP-1
 workspace $ws8 output eDP-1
 workspace $ws9 output eDP-1
