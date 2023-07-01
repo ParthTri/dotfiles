@@ -1,1 +1,6 @@
-@theme "~/.config/rofi/theme.rasi"
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "candy-icons";
+}
