@@ -1,3 +1,12 @@
+;; #+TITLE: Emacs Configuration
+;; #+AUTHOR: Parth Trivedi
+;; #+DESCRIPTION: My Emacs Configuration that I use on a daily basis for writing
+;; #+PROPERTY: header-args:emacs-lisp :tangle ./.emacs.d/init.el :comments org
+
+
+(setq byte-compile-warnings '(cl-functions))
+(setq debug-on-error t)
+
 ;; No flashing or alerting
 
 (setq inhibit-startup-message t)
