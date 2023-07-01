@@ -863,6 +863,16 @@
 (use-package lua-mode
   :ensure t)
 
+;; Haskell
+
+(use-package haskell-mode
+  :ensure t)
+
+;; Yuck
+
+(use-package yuck-mode
+  :ensure t)
+
 ;; Web
 
 (use-package web-mode

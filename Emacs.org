@@ -904,6 +904,16 @@ Write backups to ~/.emacs.d/backup/
   (use-package lua-mode
     :ensure t)
 #+end_src
+*** Haskell
+#+begin_src emacs-lisp
+  (use-package haskell-mode
+    :ensure t)
+#+end_src
+*** Yuck
+#+begin_src emacs-lisp
+  (use-package yuck-mode
+    :ensure t)
+#+end_src
 *** Web
 #+begin_src emacs-lisp
 	(use-package web-mode
