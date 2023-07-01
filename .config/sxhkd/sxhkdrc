@@ -15,10 +15,10 @@ super + control d
 	discord
 
 ## Rofi
-super + d
+super + p
 	rofi -show drun
 
-super + shift + d
+super + shift + p
 	rofi -show run
 
 ## Powermenu
