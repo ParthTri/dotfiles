@@ -403,6 +403,16 @@
   :ensure t
   :after org)
 
+;; Org Mime
+
+(use-package org-mime
+  :ensure t)
+
+(add-hook 'org-mime-html-hook
+          (lambda ()
+            (org-mime-change-element-style
+             "outline-2" ("color: red;"))))
+
 ;; Single line
 
 (fset 'latex-frag
