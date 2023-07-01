@@ -5,21 +5,26 @@
 font pango: JetBrainsMonoNL Nerd Font Mono 9
 set $mod Mod4
 
+#############################################################################
 # Border
 for_window [class="^.*"] border pixel 0
-# client.focused          #61AFEF #285577 #ffffff #2e9ef4 #C678DD
-# client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e #222222
-# client.urgent           #2f343a #900000 #ffffff #900000 #E06C75
-# client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+# client.focused            #000000 #FFFFFF #ffffff #000000 #C678DD
+# client.focused_inactive   #000000 #000000 #ffffff #000000 #5f676a
+# client.unfocused          #000000 #000000 #ffffff #000000 #222222
+# client.urgent             #000000 #000000 #ffffff #000000 #E06C75
+# client.placeholder        #000000 #000000 #ffffff #000000 #0c0c0c
+# client.focused_tab_title  #ffffff #000000 #ffffff #00FF00 #000000
 
 # client.background       #ffffff
 
+#############################################################################
 # Gaps
 # gaps inner 5
 # gaps outer 6
 # gaps horizontal 2
 # gaps vertical 2
+
+#############################################################################
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
