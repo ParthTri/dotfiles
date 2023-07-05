@@ -225,7 +225,15 @@ Write backups to ~/.emacs.d/backup/
     ("f" nil "finished" :exit t))
 
 #+end_src
-** Evil
+** Emacs Keybindings Cheat Sheet
+#+begin_src emacs-lisp
+  (defun open-keybind-cheat-sheet ()
+    "Open the keybinding cheat sheet in another window"
+    (interactive)
+    (find-file-other-window "~/Downloads/Cheatsheet-emacs.pdf"))
+  (global-set-key (kbd "C-h C-k") 'open-keybind-cheat-sheet)
+#+end_src
+** COMMENT Evil
 #+begin_src emacs-lisp
   (use-package evil
     :init
@@ -373,7 +381,6 @@ Write backups to ~/.emacs.d/backup/
     (auto-package-update-maybe)
     (auto-package-update-at-time "09:00"))
 #+end_src
-
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
