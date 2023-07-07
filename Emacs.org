@@ -233,7 +233,7 @@ Write backups to ~/.emacs.d/backup/
     (find-file-other-window "~/Downloads/Cheatsheet-emacs.pdf"))
   (global-set-key (kbd "C-h C-k") 'open-keybind-cheat-sheet)
 #+end_src
-** COMMENT Evil
+** Evil
 #+begin_src emacs-lisp
   (use-package evil
     :init
