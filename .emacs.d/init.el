@@ -635,7 +635,7 @@
 
 ;; Source Code Editing
 
-(setq org-src-window-setup "split-window-below")
+(setq org-src-window-setup 'split-window-below)
 
 ;; Roam
 
