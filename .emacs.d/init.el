@@ -416,10 +416,10 @@
 (use-package org-mime
   :ensure t)
 
-(add-hook 'org-mime-html-hook
-          (lambda ()
-            (org-mime-change-element-style
-             "outline-2" ("color: red;"))))
+;; (remove-hook 'org-mime-html-hook
+;;           (lambda ()
+;;             (org-mime-change-element-style
+;;              "outline-2" ("color: red;"))))
 
 ;; Single line
 
