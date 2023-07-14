@@ -472,10 +472,10 @@
 ;; Capture
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq todos-file "~/org/Todos.org"
-      projects-file "~/org/Projects.org"
-      later-file "~/org/Later.org"
-      repeat-file "~/org/Repeated.org")
+(setq todos-file "~/Notes/Todos.org"
+      projects-file "~/Notes/Projects.org"
+      later-file "~/Notes/Later.org"
+      repeat-file "~/Notes/Repeated.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file todos-file)
          "* TODO %?\n %i\n")
