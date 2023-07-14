@@ -955,8 +955,7 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 **** Svelte
 #+begin_src emacs-lisp
-  (use-package svelte-mode
-    :ensure t)
+  (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 #+end_src
 **** Astro
 #+begin_src emacs-lisp

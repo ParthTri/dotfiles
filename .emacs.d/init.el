@@ -915,8 +915,7 @@
 
 ;; Svelte
 
-(use-package svelte-mode
-  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 
 ;; Astro
 
