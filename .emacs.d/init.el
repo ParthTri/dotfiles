@@ -959,6 +959,17 @@
   :hook (csv-mode . csv-align-mode)
   )
 
+;; Mermaid-JS
+
+(use-package mermaid-mode
+  :ensure t)
+
+(use-package ob-mermaid
+  :ensure t
+  :after (mermaid-mode)
+  :custom
+  (setq ob-mermaid-cli-path '~/.local/share/pnpm/mmdc))
+
 ;; Ledger
 
 (use-package ledger-mode

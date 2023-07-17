@@ -1021,6 +1021,17 @@ Write backups to ~/.emacs.d/backup/
     :hook (csv-mode . csv-align-mode)
     )
 #+end_src
+** Mermaid-JS
+#+begin_src emacs-lisp
+  (use-package mermaid-mode
+    :ensure t)
+
+  (use-package ob-mermaid
+    :ensure t
+    :after (mermaid-mode)
+    :custom
+    (setq ob-mermaid-cli-path '~/.local/share/pnpm/mmdc))
+#+end_src
 * Other
 ** Ledger
 #+begin_src emacs-lisp
