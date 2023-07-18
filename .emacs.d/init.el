@@ -421,6 +421,35 @@
 ;;             (org-mime-change-element-style
 ;;              "outline-2" ("color: red;"))))
 
+;; Org Pomodoro
+
+(use-package org-pomodoro
+  :ensure t
+  :commands (org-pomodoro)
+  :config
+  (setq
+   alert-user-configuration (quote ((((:category . "org-pomodoro")) libnotify nil)))
+   org-pomodoro-length 25
+   org-pomodoro-short-break-length 5
+   ))
+
+(pt/leader-keys
+  "p" '(org-pomodoro :which-key "pomodoro"))
+
+(defun pt/org-pomodoro-time ()
+  "Return the remaining pomodoro time"
+  (if (org-pomodoro-active-p)
+      (cl-case org-pomodoro-state
+        (:pomodoro
+         (format "Pomo: %d minutes" (/ (org-pomodoro-remaining-seconds) 60)))
+        (:short-break
+         (format "Short break time: %d minutes" (/ (org-pomodoro-remaining-seconds) 60)))
+        (:long-break
+         (format "Long break time: %d minutes" (/ (org-pomodoro-remaining-seconds) 60)))
+        (:overtime
+         (format "Overtime! %d minutes" (/ (org-pomodoro-remaining-seconds) 60))))
+    "No active pomo"))
+
 ;; Single line
 
 (fset 'latex-frag
