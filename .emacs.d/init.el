@@ -434,7 +434,7 @@
    ))
 
 (pt/leader-keys
-  "p" '(org-pomodoro :which-key "pomodoro"))
+  "P" '(org-pomodoro :which-key "pomodoro"))
 
 (defun pt/org-pomodoro-time ()
   "Return the remaining pomodoro time"
