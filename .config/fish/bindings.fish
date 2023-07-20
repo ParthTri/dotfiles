@@ -1,5 +1,7 @@
 alias bat "batcat"
 
+alias pom "openpomodoro-cli"
+
 # alias for running ghc
 alias ghc "stack ghc"
 

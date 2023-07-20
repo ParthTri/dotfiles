@@ -32,3 +32,13 @@ super + control + l
 ## Resource Keyboard
 super + shift + S
 	~/Scripts/sourceKeyboard.sh
+
+## Pomodoro
+super + shift + c
+  pom finish
+
+super + shift + v
+  pom start
+
+super + shift + b
+  pom break
