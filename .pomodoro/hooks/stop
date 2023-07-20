@@ -1,0 +1,4 @@
+#!/bin/sh
+  
+notify-send "Pomodoro Ended"
+play ~/Music/chime.wav &
