@@ -947,6 +947,10 @@
 (use-package typescript-mode
   :ensure t)
 
+;; TSX
+
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
 ;; Svelte
 
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))

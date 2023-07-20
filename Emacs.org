@@ -988,6 +988,11 @@ Write backups to ~/.emacs.d/backup/
   (use-package typescript-mode
     :ensure t)
 #+end_src
+
+***** TSX
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+#+end_src
 **** Svelte
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
