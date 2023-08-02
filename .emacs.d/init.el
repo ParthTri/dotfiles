@@ -363,7 +363,9 @@
 ;; Calendar
 
 (use-package calfw
-  :ensure t)
+  :ensure t
+  :config
+  (setq calendar-week-start-day 1))
 
 (use-package calfw-org
   :ensure t
