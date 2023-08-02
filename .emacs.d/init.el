@@ -1075,24 +1075,24 @@
         elfeed-show-entry-switch 'display-buffer)
   )
 
-(defun update-and-open-elfeed ()
-  (interactive)
-  (elfeed-org)
-  (elfeed-update)
-  (elfeed))
-
 (pt/leader-keys
-  "or" '(update-and-open-elfeed :which-key "elfeed"))
+  "or" '(elfeed :which-key "elfeed"))
 
-;; Elfeed Org
+;; Elfeed Protocol
 
-(use-package elfeed-org
+(use-package elfeed-protocol
   :ensure t
+  :after elfeed
   :config
-  (setq elfeed-show-entry-switch 'display-buffer)
-  (setq rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
-  :init
-  (elfeed-org))
+  (elfeed-protocol-enable)
+  :custom
+  (elfeed-use-curl t)
+  (elfeed-set-timeout 36000)
+  (elfeed-log-level 'debug)
+  (elfeed-feeds (list
+                 (list "fever+https://parth@rss.kolide.co.nz"
+                       :api-url "https://rss.kolide.co.nz/api/fever.php"
+                       :password (password-read "Enter password: ")))))
 
 ;; Invoice Maker
 
