@@ -514,7 +514,10 @@
 
 ;; Agenda
 
-(setq org-agenda-files '("~/org/Todos.org" "~/org/Projects.org" "~/org/Repeated.org"))
+(setq org-agenda-files '("~/Notes/Todos.org"
+                         "~/Notes/Projects.org"
+                         "~/Notes/Repeated.org"
+                         "~/Notes/Calendar.org"))
 (setq org-agenda-skip-deadline-if-done t
       org-agenda-skip-scheduled-if-done t)
 
@@ -524,7 +527,8 @@
 (setq todos-file "~/Notes/Todos.org"
       projects-file "~/Notes/Projects.org"
       later-file "~/Notes/Later.org"
-      repeat-file "~/Notes/Repeated.org")
+      repeat-file "~/Notes/Repeated.org"
+      calendar-file "~/Notes/Calendar.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file todos-file)
          "* TODO %?\n %i\n")
@@ -545,6 +549,8 @@
         ("b" "Blog" entry (file create-new-blog-post))
         ("I" "Invoice" entry (file "~/Work/Invoices/Invoices.org")
          "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
+        ("c" "Calendar Event" entry (file calendar-file)
+         "* %?\n")
         ))
 
 ;; Refile
