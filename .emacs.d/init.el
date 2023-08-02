@@ -360,6 +360,26 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
 
+;; Calendar
+
+(use-package calfw
+  :ensure t)
+
+(use-package calfw-org
+  :ensure t
+  :custom
+  (setq cfw:org-agenda-schedule-args '(:timestamp))
+  (defalias 'ca 'cfw:open-org-calendar))
+
+(pt/leader-keys
+  "oC" '(cfw:open-org-calendar :which-key "Calendar"))
+
+;; Calendar Capture
+
+(setq cfw:org-capture-template '
+          ("c" "Calendar Event" entry (file calendar-file)
+           "* %?\n"))
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")
