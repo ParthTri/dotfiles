@@ -5,7 +5,7 @@
 
 
 (setq byte-compile-warnings '(cl-functions))
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;; No flashing or alerting
 
