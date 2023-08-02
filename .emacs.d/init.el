@@ -556,12 +556,12 @@
 ;; Refile
 
 (setq org-refile-targets
-      '(("~/org/Todos.org" :maxlevel . 1)
-        ("~/org/Projects.org" :maxlevel . 1)
-        ("~/org/Repeated.org" :maxlevel . 1)
-        ("~/org/Later.org" :maxlevel . 1)
-        ("~/org/Ideas.org" :maxlevel . 1)
-        ("~/org/Books.org" :maxlevel . 1)))
+      '(("~/Notes/Todos.org" :maxlevel . 1)
+        ("~/Notes/Projects.org" :maxlevel . 1)
+        ("~/Notes/Repeated.org" :maxlevel . 1)
+        ("~/Notes/Later.org" :maxlevel . 1)
+        ("~/Notes/Ideas.org" :maxlevel . 1)
+        ("~/Notes/Books.org" :maxlevel . 1)))
 
 (setq org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
