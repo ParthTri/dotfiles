@@ -873,11 +873,11 @@ Write backups to ~/.emacs.d/backup/
 
 * Programming
 #+begin_src emacs-lisp
-	(define-key prog-mode-map (kbd "C-c e s") #'eglot)
-	(define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
-	(define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
-	(define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
-	(define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
+  (define-key prog-mode-map (kbd "C-c e s") #'eglot)
+  (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
+  (define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
+  (define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
+  (define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
 #+end_src
 
 ** Git
@@ -1074,6 +1074,17 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (use-package eglot
     :ensure t)
+#+end_src
+** Snippets
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :init (yas-global-mode t)
+    :custom
+      (define-key prog-mode-map (kbd "C-c s s") #'yas-insert-snippet)
+      (define-key prog-mode-map (kbd "C-c s n") #'yas-new-snippet)
+      (define-key prog-mode-map (kbd "C-c s v") #'yas-visit-snippet-file)
+    )
 #+end_src
 * Other Formats
 ** CSV
