@@ -968,6 +968,8 @@
 
 (use-package emmet-mode
   :ensure t
+  :bind (:map web-mode-map
+              ("C-c w" . emmet-wrap-with-markup))
   :hook ((web-mode . emmet-mode)
          (js-mode . emmet-mode))
   :config
