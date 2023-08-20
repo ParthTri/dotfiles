@@ -205,7 +205,10 @@
 
 (use-package counsel
   :ensure t
-  :config (counsel-mode))
+  :config (counsel-mode)
+  :custom
+  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+
 
 (global-set-key (kbd "M-x") 'counsel-M-x)
 
