@@ -56,3 +56,6 @@ exec nitrogen --restore
 
 # Syncthing
 exec synthing 
+
+# emacs
+exec emacs
