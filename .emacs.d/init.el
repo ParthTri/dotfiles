@@ -376,8 +376,19 @@
   (setq cfw:org-agenda-schedule-args '(:timestamp))
   (defalias 'ca 'cfw:open-org-calendar))
 
+(use-package calfw-ical
+  :ensure t)
+
+(defun my-open-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-source "Blue")  ; orgmode source
+   )))
+
 (pt/leader-keys
-  "oC" '(cfw:open-org-calendar :which-key "Calendar"))
+  "oC" '(my-open-calendar :which-key "Calendar"))
 
 ;; Calendar Capture
 
