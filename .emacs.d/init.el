@@ -1032,11 +1032,10 @@
 
 (use-package yasnippet
   :ensure t
-  :init (yas-global-mode t)
-  :custom
-    (define-key prog-mode-map (kbd "C-c s s") #'yas-insert-snippet)
-    (define-key prog-mode-map (kbd "C-c s n") #'yas-new-snippet)
-    (define-key prog-mode-map (kbd "C-c s v") #'yas-visit-snippet-file)
+  :config (yas-global-mode t)
+  :bind (("C-c s s" . yas-insert-snippet)
+         ("C-c s n" . yas-new-snippet)
+         ("C-c s v" . yas-visit-snippet-file))
   )
 
 ;; CSV
