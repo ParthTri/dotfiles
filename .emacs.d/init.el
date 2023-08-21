@@ -102,23 +102,12 @@
 
 ;; Modeline
 
-;; (BUFFER STATUS) (LINE) (BUFFER NAME) (GIT STATUS) (MAJOR MODE) (TIME)
-(setq-default mode-line-format
-              (list
-               "   "
-               mode-line-modified
-               "   "
-               "L%l"
-               "   "
-               mode-line-buffer-identification
-               "   "
-               (propertize " %m " 'face 'font-lock-string-face)
-               "   "
-               ;; persp-last-persp-name
-               "   "
-               ;; display-time-string
-               "   "
-               ))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom
+  (setq doom-modeline-height 2)
+  (display-time-mode 't))
 
 ;; Icons
 
