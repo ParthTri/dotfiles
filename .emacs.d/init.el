@@ -385,6 +385,18 @@
           ("c" "Calendar Event" entry (file calendar-file)
            "* %?\n"))
 
+;; Dashboard
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-agenda-release-buffers t
+        dashboard-center-content t)
+  (dashboard-setup-startup-hook)
+  (dashboard-refresh-buffer))
+
+(setq initial-buffer-choice 'dashboard-open)
+
 ;; Org Configuration
 
 (setq org-directory "~/org/")

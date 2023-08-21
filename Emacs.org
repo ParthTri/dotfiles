@@ -406,6 +406,18 @@ Write backups to ~/.emacs.d/backup/
             ("c" "Calendar Event" entry (file calendar-file)
              "* %?\n"))
 #+end_src
+** Dashboard
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (setq dashboard-agenda-release-buffers t
+          dashboard-center-content t)
+    (dashboard-setup-startup-hook)
+    (dashboard-refresh-buffer))
+
+  (setq initial-buffer-choice 'dashboard-open)
+#+end_src
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
