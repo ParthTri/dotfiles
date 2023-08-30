@@ -26,8 +26,7 @@
 ;;   (efs/run-in-background "nm-applet"))
 
 
-;; (use-package
-  exwm
+(use-package exwm
   :config
   ;; Set the default number of workspaces
   (setq exwm-workspace-number 5)

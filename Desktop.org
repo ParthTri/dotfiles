@@ -17,22 +17,21 @@
 
   (add-hook 'exwm-init-hook #'efs/after-exwm-init)
 
-  ;; (defun dw/exwm-init-hook ()
-  ;;   ;; Make workspace 1 be the one where we land at startup
-  ;;   (exwm-workspace-switch-create 1)
+  (defun dw/exwm-init-hook ()
+    ;; Make workspace 1 be the one where we land at startup
+    (exwm-workspace-switch-create 1)
 
-  ;;   ;; Open eshell by default
-  ;;   ;;(eshell)
+    ;; Open eshell by default
+    ;;(eshell)
 
-  ;;   ;; Launch apps that will run in the background
-  ;;   (efs/run-in-background "nm-applet"))
+    ;; Launch apps that will run in the background
+    (efs/run-in-background "nm-applet"))
 
 
-  ;; (use-package
-    exwm
+  (use-package exwm
     :config
     ;; Set the default number of workspaces
-    (setq exwm-workspace-number 5)
+    ;; (setq exwm-workspace-number 5)
 
     ;; When window "class" updates, use it to set the buffer name
     ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
@@ -45,6 +44,7 @@
             ?\M-x
             ?\M-`
             ?\M-&
+            ?\s-w
             ?\M-:
             ?\C-w
             ?\C-\M-j  ;; Buffer list
@@ -87,8 +87,8 @@
 
 * Xrandr
 #+begin_src emacs-lisp
-(require 'exwm-randr)
-(exwm-randr-enable)
+  (require 'exwm-randr)
+  (exwm-randr-enable)
 #+end_src
 
 * Multimonitor
