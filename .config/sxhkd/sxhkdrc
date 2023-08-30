@@ -11,8 +11,8 @@ super + control f
 	firefox
 
 ## Open discord
-super + control d
-	discord
+# super + control d
+# 	discord
 
 ## Rofi
 super + p
@@ -42,3 +42,8 @@ super + shift + v
 
 super + shift + b
   pom break
+
+## Files
+super + control + d
+  nautilus
+  
