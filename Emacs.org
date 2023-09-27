@@ -99,6 +99,7 @@
 
   (straight-use-package 'use-package)
   (setq straight-use-package-by-default t)
+  (straight-use-package 'org)
 #+end_src
 ** Backups
 Write backups to ~/.emacs.d/backup/
@@ -485,9 +486,20 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Org Citations
 #+begin_src emacs-lisp
-  (use-package org-ref
+  (use-package citar
     :ensure t
-    :after org)
+    :after org
+    :custom
+    (org-cite-insert-processor 'citar)
+    (org-cite-follow-processor 'citar)
+    (org-cite-activate-processor 'citar)
+    :general
+    (:keymaps 'org-mode-map
+              :prefix "C-c b"
+              "b" '(citar-insert-citation :wk "Insert citation")
+              "r" '(citar-insert-reference :wk "Insert reference")
+              "o" '(citar-open-notes :wk "Open note"))
+    )
 #+end_src
 ** Org Mime
 #+begin_src emacs-lisp 
@@ -723,7 +735,7 @@ Write backups to ~/.emacs.d/backup/
                                "~/org/Shows to watch.org"))
 
 #+end_src
-** Crypt
+** COMMENT Crypt
 #+begin_src emacs-lisp
   (use-package org-crypt
     :ensure nil

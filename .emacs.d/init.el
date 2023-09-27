@@ -7,15 +7,21 @@
 (setq byte-compile-warnings '(cl-functions))
 ;; (setq debug-on-error t)
 
+;; No flashing or alerting
+
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Remove bar
 
 (scroll-bar-mode -1)    ; Remove bar
 (tool-bar-mode -1)      ; Disable the tool bar
 (tooltip-mode -1)       ; Disable tooltips
 (set-fringe-mode 10)    ; Provide breathing room
 (menu-bar-mode 0)       ; Remove Menu Bar
+
+;; Font
 
 (defun fontify-frame (frame)
   (set-frame-parameter frame 'font "JetBrainsMonoNL Nerd Font Mono"))
@@ -25,6 +31,8 @@
 
 ;; Fontify any future frames
 (push 'fontify-frame after-make-frame-functions)
+
+;; Line Numbers
 
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'visual)
@@ -37,14 +45,22 @@
                 term-mode-hook ))
                 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Make ESC quit prompts
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Move to trash instead of delete
+
 (setq delete-by-moving-to-trash t)
+
+;; Tab
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
 (setq indent-line-function 'insert-tab)
+
+;; Use package
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -61,6 +77,8 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; Straight
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -76,8 +94,9 @@
 
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+(straight-use-package 'org)
 
-
+;; Backups
 ;; Write backups to ~/.emacs.d/backup/
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -86,6 +105,8 @@
       delete-old-versions    t  ; Automatically delete excess backups:
       kept-new-versions      20 ; how many of the newest versions to keep
       kept-old-versions      5) ; and how many of the old
+
+;; Theme
 
 (use-package doom-themes
   :ensure t
@@ -98,6 +119,8 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+;; Modeline
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -105,14 +128,20 @@
   (setq doom-modeline-height 2)
   (display-time-mode 't))
 
+;; Icons
+
 (use-package all-the-icons
   :if (display-graphic-p))
+
+;; Which Key
 
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
   :config
   (setq which-key-idle 0.3))
+
+;; Keybindings
 
 (use-package general
   :ensure t
@@ -160,6 +189,8 @@
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
+;; Ivy
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -178,6 +209,8 @@
   :config
   (ivy-mode 1))
 
+;; Counsel
+
 (use-package counsel
   :ensure t
   :config (counsel-mode)
@@ -187,6 +220,8 @@
 
 (global-set-key (kbd "M-x") 'counsel-M-x)
 
+;; Hydra
+
 (use-package hydra)
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
@@ -194,11 +229,15 @@
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
+;; Emacs Keybindings Cheat Sheet
+
 (defun open-keybind-cheat-sheet ()
   "Open the keybinding cheat sheet in another window"
   (interactive)
   (find-file-other-window "~/Downloads/Cheatsheet-emacs.pdf"))
 (global-set-key (kbd "C-h C-k") 'open-keybind-cheat-sheet)
+
+;; Evil
 
 (use-package evil
   :init
@@ -227,6 +266,8 @@
   :config
   (evil-collection-init))
 
+;; Persp
+
 (use-package persp-mode
   :ensure t
   :config
@@ -241,6 +282,8 @@
     "kk" '(persp-kill :which-key "kill")
     ))
 
+;; Company
+
 (use-package company
   :ensure t
   :init
@@ -253,9 +296,13 @@
   :after (company-mode)
   :hook (company-mode . company-box-mode))
 
+;; Pdf Tools
+
 (use-package pdf-tools
   :ensure t
   :init (pdf-tools-install))
+
+;; Transparency
 
 (setq transparent 'nil)
 
@@ -280,19 +327,29 @@
 (pt/leader-keys
   "tt" '(toggle-transparency :which-key "transparency"))
 
+;; Moving Frames
+
 (global-set-key (kbd "<prior>") 'ns-next-frame)
 (global-set-key (kbd "<next>") 'ns-prev-frame)
+
+;; Org Capture Todo
 
 (fset 'open-org-capture-todo
    (kmacro-lambda-form [?  ?o ?c ?t] 0 "%d"))
 
+;; Rainbow Delimiters
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Notifications
 
 (use-package alert
   :commands alert
   :config
   (setq alert-default-style 'notifications))
+
+;; Neotree
 
 (use-package neotree
   :ensure t
@@ -303,6 +360,8 @@
 (pt/leader-keys
   "oe" '(neotree-toggle :which-key "Neotree"))
 
+;; Auto Update Packages
+
 (use-package auto-package-update
   :custom
   (auto-package-update-interval 7)
@@ -311,6 +370,8 @@
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
+
+;; Calendar
 
 (use-package calfw
   :ensure t
@@ -337,9 +398,13 @@
 (pt/leader-keys
   "oC" '(my-open-calendar :which-key "Calendar"))
 
+;; Calendar Capture
+
 (setq cfw:org-capture-template '
           ("c" "Calendar Event" entry (file calendar-file)
            "* %?\n"))
+
+;; Dashboard
 
 (use-package dashboard
   :ensure t
@@ -350,6 +415,8 @@
   (dashboard-refresh-buffer))
 
 (setq initial-buffer-choice 'dashboard-open)
+
+;; Org Configuration
 
 (setq org-directory "~/org/")
 
@@ -389,12 +456,29 @@
 
 (setq org-duration-format (quote h:mm))
 
+;; Org Habits
+
 (setq org-modules '(org-habit))
 ;; (org-load-modules-maybe t)
 
-(use-package org-ref
+;; Org Citations
+
+(use-package citar
   :ensure t
-  :after org)
+  :after org
+  :custom
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  :general
+  (:keymaps 'org-mode-map
+            :prefix "C-c b"
+            "b" '(citar-insert-citation :wk "Insert citation")
+            "r" '(citar-insert-reference :wk "Insert reference")
+            "o" '(citar-open-notes :wk "Open note"))
+  )
+
+;; Org Mime
 
 (use-package org-mime
   :ensure t)
@@ -403,6 +487,8 @@
 ;;           (lambda ()
 ;;             (org-mime-change-element-style
 ;;              "outline-2" ("color: red;"))))
+
+;; Org Pomodoro
 
 (use-package org-pomodoro
   :ensure t
@@ -431,11 +517,17 @@
          (format "Overtime! %d minutes" (/ (org-pomodoro-remaining-seconds) 60))))
     "No active pomo"))
 
+;; Single line
+
 (fset 'latex-frag
       (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?\} escape ?i ?e ?q ?a backspace ?u ?a ?t ?i ?o ?n escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?O escape ?\s-s] 0 "%d"))
 
+;; Multiline 
+
 (fset 'latex-frag-mult
    (kmacro-lambda-form [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?e ?q ?u ?a ?t ?i ?o ?n ?\} escape ?y ?y ?p ?l ?w ?w ?c ?w ?s ?p ?l ?i ?t escape ?y ?y ?p ?w ?c ?w ?e ?n ?d escape ?k ?k ?y ?y ?j ?j ?p ?w ?c ?w ?e ?n ?d escape ?k ?O escape] 0 "%d"))
+
+;; Custom Faces
 
 (setq toggle-org-faces-check t)
 
@@ -467,12 +559,16 @@
 (pt/leader-keys
   "th" '(toggle-org-faces :which-key "Headings"))
 
+;; Agenda
+
 (setq org-agenda-files '("~/Notes/Todos.org"
                          "~/Notes/Projects.org"
                          "~/Notes/Repeated.org"
                          "~/Notes/Calendar.org"))
 (setq org-agenda-skip-deadline-if-done t
       org-agenda-skip-scheduled-if-done t)
+
+;; Capture
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq todos-file "~/Notes/Todos.org"
@@ -504,6 +600,8 @@
          "* %?\n")
         ))
 
+;; Refile
+
 (setq org-refile-targets
       '(("~/Notes/Todos.org" :maxlevel . 1)
         ("~/Notes/Projects.org" :maxlevel . 1)
@@ -515,6 +613,8 @@
 (setq org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
+
+;; Tags
 
 (setq org-tag-alist '((:startgroup)
                       ("@work" . ?W)
@@ -531,9 +631,13 @@
                       ("DAILY" . ?D)
                       ("crypt" . ?c)))
 
+;; Keywords
+
 (setq org-todo-keywords
       '((sequencep "TODO(t)" "NEXT(n)" "ONGOING(o)" "|" "DONE(d/!)")
         (sequencep "WAITING(w@/!)" "|" "CANCELLED(c@/!)" "PAUSED(p@/!)" "MEETING")))
+
+;; Keyword Faces
 
 (setq org-todo-keyword-faces
       '(("TODO" :foreground "Purple" :weight bold )
@@ -544,6 +648,8 @@
         ("CANCELLED" :foreground "Red" :weight bold)
         ("PAUSED" :foreground "OrangeRed" :weight bold)
         ("MEETING" :foreground "forest green" :weight bold)))
+
+;; Views
 
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-custom-commands
@@ -587,6 +693,8 @@
                   (org-agenda-overriding-header "Upcoming Deadlines")))))
         ))
 
+;; Mobile
+
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-mobile-inbox-for-pull "~/org/flagged.org")
 (setq org-mobile-files (list "~/org/Ideas.org"
@@ -595,22 +703,15 @@
                              "~/org/Learn.org"
                              "~/org/Shows to watch.org"))
 
-(use-package org-crypt
-  :ensure nil
-  :after org
-  :bind (:map org-mode-map
-              ("C-c d" . org-decrypt-entry))
-  :config
-  (org-crypt-use-before-save-magic)
-  (setq org-tags-exclude-from-inheritance '("crypt"))
-  :custom
-  (setq org-crypt-key "0x577FBF62"))
+;; Epa
 
 (use-package epa
   :ensure t
   :config
   (custom-set-variables '(epa-gpg-program "/usr/local/bin/gpg"))
   (epa-file-enable))
+
+;; Tangle on save
 
 (defun pt/org-babel-tangle-config ()
     (when (string-equal (buffer-file-name)
@@ -621,7 +722,11 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pt/org-babel-tangle-config)))
 
+;; Source Code Editing
+
 (setq org-src-window-setup 'split-window-below)
+
+;; Roam
 
 (use-package org-roam
   :ensure t
@@ -648,6 +753,8 @@
   :config
   (org-roam-setup))
 
+;; Roam UI
+
 (use-package org-roam-ui
   :ensure t
   :after org-roam
@@ -658,6 +765,8 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+;; Journal
+
 (use-package org-journal
   :ensure t
   :init
@@ -667,13 +776,21 @@
   (setq org-journal-dir "~/journal/"
         org-journal-date-format "%A, %d %B %Y"))
 
+;; toc
+
 (use-package toc-org
   :ensure t
   :config (add-hook 'org-mode-hook 'toc-org-mode))
 
+;; iCal
+
 (setq org-icalendar-use-scheduled '(event-if-todo-not-done))
 
+;; Html
+
 (setq org-html-head "<link rel='stylesheet' type='text/css' href='~/.dotfiles/.emacs.d/html_export.css' />")
+
+;; Latex
 
 (setq org-latex-toc-command "\\tableofcontents \\clearpage")
 (setq org-latex-packages-alist '(("margin=1.7cm" "geometry" nil)))
@@ -704,6 +821,8 @@
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
+;; Presentations
+
 (use-package org-tree-slide
   :ensure t
   :after org
@@ -712,6 +831,8 @@
 
 (pt/leader-keys
   "op" '(org-tree-slide-mode :which-key "Present"))
+
+;; Temporary Buffer
 
 (defun create-tmp-org ()
   "Create a temporary org buffer"
@@ -724,11 +845,15 @@
 (pt/leader-keys
   "oo" '(create-tmp-org :which-key "tmp org"))
 
+;; ExcaliDraw
+
 (use-package org-excalidraw
   :straight (:type git :host github :repo "wdavew/org-excalidraw")
   :config
   (setq org-excalidraw-directory "~/org-images/")
 )
+
+;; Writeroom
 
 (use-package writeroom-mode
   :ensure t
@@ -736,6 +861,8 @@
   (setq writeroom-width 130)
   (pt/leader-keys
     "tw" '(writeroom-mode :which-key "Writeroom")))
+
+;; Blog
 
 (defun create-new-blog-post ()
   "Create a new blog post based on passed name and date in blog-dir"
@@ -746,11 +873,15 @@
                               (format-time-string "%d%m%Y"))
                       "~/Blog/")))
 
+;; Programming
+
 (define-key prog-mode-map (kbd "C-c e s") #'eglot)
 (define-key prog-mode-map (kbd "C-c e r") #'eglot-reconnect)
 (define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
 (define-key prog-mode-map (kbd "C-c e p") #'flycheck-previous-error)
 (define-key prog-mode-map (kbd "C-c e n") #'flycheck-next-error)
+
+;; Treesitter
 
 (use-package tree-sitter
   :ensure t
@@ -765,6 +896,8 @@
   :ensure t
   :after tree-sitter)
 
+;; Magit
+
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
@@ -776,6 +909,8 @@
     "gc" '(magit-commit :which-key "commit")
     "gg" '(magit-status :which-key "status")))
 
+;; Git Gutter
+
 (use-package git-gutter
   :ensure t
   :config
@@ -783,6 +918,8 @@
 
 (pt/leader-keys
   "tg" '(git-gutter-mode :which-key "gutter"))
+
+;; Projectile
 
 (use-package projectile
   :diminish projectile-mode
@@ -815,10 +952,14 @@
 
 (persp-mode-projectile-bridge-mode)
 
+;; Syntax Checking
+
 (use-package flycheck
   :ensure t
   :init
   (global-flycheck-mode))
+
+;; Python
 
 (use-package elpy
   :ensure t
@@ -830,27 +971,41 @@
   :config
   (pyvenv-mode 1))
 
+;; Go
+
 (use-package go-mode
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
 
+;; Nim
+
 (use-package nim-mode
   :ensure t)
+
+;; Lua
 
 (use-package lua-mode
   :ensure t)
 
+;; Haskell
+
 (use-package haskell-mode
   :ensure t)
 
+;; Yuck
+
 (use-package yuck-mode
   :ensure t)
+
+;; Web
 
 (use-package web-mode
 	:ensure t
 	:config
 	(setq web-mode-code-indent-offset tab-width))
+
+;; Emmet
 
 (use-package emmet-mode
   :ensure t
@@ -861,6 +1016,8 @@
   :config
   (setq emmet-move-cursor-between-quotes t))
 
+;; JSX
+
 (use-package rjsx-mode
   :mode ("\\.js\\'"
          "\\.jsx\\'")
@@ -869,6 +1026,8 @@
         js2-mode-show-strict-warnings nil
         js2-basic-offset 2
         js-indent-level 2))
+
+;; Typescript
 
 (use-package typescript-mode
   :ensure t
@@ -883,11 +1042,19 @@
   ;; use our derived mode to map both .tsx AND .ts -> typescriptreact-mode -> treesitter tsx
   (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx)))
 
+;; TSX
+
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+;; Svelte
 
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 
+;; Astro
+
 (add-to-list 'auto-mode-alist '("\\.astro\\'" . web-mode))
+
+;; Terminal
 
 (use-package vterm
   :ensure t )
@@ -895,16 +1062,24 @@
 (pt/leader-keys
   "oT" '(vterm :which-key "terminal"))
 
+;; Toggle
+
 (use-package vterm-toggle
   :ensure t)
 
 (pt/leader-keys
   "ot" '(vterm-toggle :which-key "terminal"))
 
+;; Auto Closing
+
 (add-hook 'prog-mode-hook 'electric-pair-mode)
+
+;; Language Server Protocol
 
 (use-package eglot
   :ensure t)
+
+;; Snippets
 
 (use-package yasnippet
   :ensure t
@@ -914,11 +1089,15 @@
          ("C-c s v" . yas-visit-snippet-file))
   )
 
+;; CSV
+
 (use-package csv-mode
   :ensure t
   :mode ("\\.csv\\'")
   :hook (csv-mode . csv-align-mode)
   )
+
+;; Mermaid-JS
 
 (use-package mermaid-mode
   :ensure t)
@@ -928,6 +1107,8 @@
   :after (mermaid-mode)
   :custom
   (setq ob-mermaid-cli-path '~/.local/share/pnpm/mmdc))
+
+;; Ledger
 
 (use-package ledger-mode
     :ensure t
@@ -955,12 +1136,16 @@
               ledger-report-payee
               ledger-report-account))
 
+;; Centered Window
+
 (use-package centered-window
   :ensure t
   :config
   (pt/leader-keys
     "tc" '(centered-window-mode :which-key "center"))
   (setq cwm-centered-window-width 140))
+
+;; Elfeed
 
 (use-package elfeed
   :ensure t
@@ -971,6 +1156,8 @@
 
 (pt/leader-keys
   "or" '(elfeed :which-key "elfeed"))
+
+;; Elfeed Protocol
 
 (use-package elfeed-protocol
   :ensure t
@@ -985,6 +1172,8 @@
                  (list "fever+https://parth@rss.kolide.co.nz"
                        :api-url "https://rss.kolide.co.nz/api/fever.php"
                        :password (password-read "Enter password: ")))))
+
+;; Invoice Maker
 
 (defun get-invoice-value (keyword)
   "Get keyword value based on passed value"
@@ -1002,6 +1191,8 @@
                          (cadr values)
                          (caddr values)))
   )
+
+;; Open URL in reader view
 
 (defun open-firefox-reader (url)
   "Open passed URL in firefox in reader mode"
@@ -1030,6 +1221,8 @@
 (pt/leader-keys
   "oR" '(open-in-reader :which-key "Reader"))
 
+;; Auto Update TODO State
+
 (defun org-auto-update-to-next ()
   "Auto update TODO state to NEXT when marked as done."
   (interactive)
@@ -1039,6 +1232,8 @@
   )
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
+
+;; Rest Client
 
 (use-package restclient
   :ensure t)
