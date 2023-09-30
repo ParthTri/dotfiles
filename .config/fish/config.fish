@@ -3,6 +3,7 @@ set TERM "xterm-256color"
 set -gx TMUXIFIER_LAYOUT_PATH "$HOME/.config/tmuxifier/"
 set -gx EDITOR "nvim"
 
+alias python="python3"
 set -gx PATH "$HOME/.bin/:$PATH"
 set -gx PATH "$HOME/.local/bin/:$PATH"
 set -gx PATH "$HOME/.cargo/bin/:$PATH"
