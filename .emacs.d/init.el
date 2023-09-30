@@ -302,6 +302,13 @@
   :ensure t
   :init (pdf-tools-install))
 
+;; Save View
+
+(use-package pdf-view-restore
+  :ensure t
+  :after pdf-view
+  :hook (pdf-view-mode . pdf-view-restore-mode))
+
 ;; Transparency
 
 (setq transparent 'nil)
@@ -418,7 +425,7 @@
 
 ;; Org Configuration
 
-(setq org-directory "~/org/")
+(setq org-directory "~/Notes/")
 
 (defun pt/org-mode-setup ()
   (org-indent-mode)

@@ -310,6 +310,14 @@ Write backups to ~/.emacs.d/backup/
     :ensure t
     :init (pdf-tools-install))
 #+end_src
+
+*** Save View
+#+begin_src emacs-lisp
+  (use-package pdf-view-restore
+    :ensure t
+    :after pdf-view
+    :hook (pdf-view-mode . pdf-view-restore-mode))
+#+end_src
 ** Transparency
 #+begin_src emacs-lisp
   (setq transparent 'nil)
@@ -441,7 +449,7 @@ Write backups to ~/.emacs.d/backup/
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
-  (setq org-directory "~/org/")
+  (setq org-directory "~/Notes/")
 
   (defun pt/org-mode-setup ()
     (org-indent-mode)
