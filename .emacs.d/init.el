@@ -463,10 +463,14 @@
 
 ;; Org Citations
 
+(require 'oc)
+
 (use-package citar
   :ensure t
   :after org
   :custom
+  (org-cite-global-bibliography '("/home/parth/Zotero/main.bib"))
+  (citar-bibliography org-cite-global-bibliography)
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
