@@ -3,7 +3,7 @@ require('packer').startup(function() -- Packages
 	use 'wbthomason/packer.nvim'
 
 	-- theme
-	use "rebelot/kanagawa.nvim"
+	use "sainnhe/gruvbox-material"
 
 	-- programming 
 	use 'ray-x/go.nvim'

@@ -15,26 +15,13 @@ vim.wo.linebreak = true
 vim.wo.breakindent = true
 
 -- Minimal colorscheme
-require("kanagawa").setup({
-  undercurl = true,           -- enable undercurls
-  commentStyle = { italic = true },
-  functionStyle = { italic=true},
-  keywordStyle = { italic = true},
-  statementStyle = { bold = true },
-  typeStyle = {},
-  variablebuiltinStyle = { italic = true},
-  specialReturn = true,
-  specialException = true,
-  transparent = false,
-  dimInactive = false,
-  globalStatus = false,
-  terminalColors = true,
-  theme = "dark",
-})
-vim.cmd[[colorscheme kanagawa]]
+vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_foreground = 'material'
+vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_enable_italic = 1
 
-vim.cmd [[highlight LineNr guibg=none ]]
-vim.cmd [[highlight SignColumn guibg=none ]]
+vim.cmd[[ colorscheme  gruvbox-material ]]
 
 -- Netrw file explorer
 vim.g.netrw_liststyle = 3
@@ -152,7 +139,9 @@ vim.cmd("highlight LspSagaFinderSelection guibg=none")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Status line
-require('lualine').setup()
+require('lualine').setup({
+  theme = 'gruvbox-material'
+})
 
 -- Git
 require("gitsigns").setup()
