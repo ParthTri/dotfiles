@@ -15,7 +15,7 @@ require('packer').startup(function() -- Packages
 	}
 
 	-- Comment
-	use "terrortylor/nvim-comment"
+	use "numToStr/Comment.nvim"
 
 	-- Tree Sitter
 	use "nvim-treesitter/nvim-treesitter"

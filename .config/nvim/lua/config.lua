@@ -54,7 +54,8 @@ require("telescope").setup({
 })
 
 -- Comment
-require('nvim_comment').setup()
+-- require('nvim_comment').setup()
+require('Comment').setup()
 
 -- Go support
 require('go').setup({})
