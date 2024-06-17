@@ -9,7 +9,7 @@ local dpi					= xresources.apply_dpi
 
 Theme = {}
 
-Theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/theme"
+Theme.dir         = os.getenv("HOME") .. "/.config/awesome/theme"
 
 Theme.font				= "JetBrains Mono Nerd Font Mono 11"
 
@@ -49,19 +49,19 @@ myTextClock.font	= Theme.font
 myTextClock.fg_color = Theme.springGreen
 
 -- Battery
-local bat = lain.widget.bat({
-    settings = function()
-        if bat_now.status ~= "N/A" then
-            if bat_now.ac_status == 1 then
-                widget:set_markup(markup.font(Theme.font, " AC "))
-                return
-            end
-            widget:set_markup(markup.font(Theme.font, " " .. bat_now.perc .. "% "))
-        else
-            widget:set_markup(markup.font(Theme.font, " AC "))
-        end
-    end
-})
+-- local bat = lain.widget.bat({
+--     settings = function()
+--         if bat_now.status ~= "N/A" then
+--             if bat_now.ac_status == 1 then
+--                 widget:set_markup(markup.font(Theme.font, " AC "))
+--                 return
+--             end
+--             widget:set_markup(markup.font(Theme.font, " " .. bat_now.perc .. "% "))
+--         else
+--             widget:set_markup(markup.font(Theme.font, " AC "))
+--         end
+--     end
+-- })
 
 
 -- Volume
@@ -136,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-      volume.widget,
+      -- volume.widget,
       mem,
 			wibox.widget.systray(),
 			myTextClock,

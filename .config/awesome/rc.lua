@@ -45,7 +45,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -446,10 +446,10 @@ end)
 -- Autotstart
 awful.util.spawn("xmodmap .Xmodmap")
 awful.util.spawn("syncthing")
-awful.util.spawn("picom")
+-- awful.util.spawn("picom")
 awful.util.spawn("sxhkd")
 awful.util.spawn("autorandr --change")
 awful.util.spawn("nitrogen --restore")
 
-beautiful.init("/home/parth/.config/awesome/theme/init.lua")
+-- beautiful.init("/home/parth/.config/awesome/theme/init.lua")
 
