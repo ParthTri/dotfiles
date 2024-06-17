@@ -26,8 +26,7 @@
 (defun fontify-frame (frame)
   (set-frame-parameter frame 'font "JetBrainsMonoNL Nerd Font Mono"))
 
-;; Fontify current frame
-(fontify-frame nil)
+;; Fontify current frame (fontify-frame nil)
 
 ;; Fontify any future frames
 (push 'fontify-frame after-make-frame-functions)
@@ -185,7 +184,8 @@
 (pt/leader-keys
   "o" '(:ignore O :which-key "")
   "oa" '(org-agenda :which-key "agenda")
-  "oc" '(org-capture :which-key "capture"))
+  "oc" 
+'(org-capture :which-key "capture"))
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
@@ -360,6 +360,9 @@
 
 (use-package neotree
   :ensure t
+  :bind (:map neotree-mode-map ("C-c o v" . neotree-enter-vertical-split)
+                                ("C-c o h" . neotree-enter-horizontal-split)
+                                )
   :init
   (setq neo-smart-open t)
   (setq neo-theme 'icons))
@@ -604,7 +607,6 @@
          "* %?\n %i\n ")
         ("B" "Book" entry (file+headline "~/Notes/Books.org" "Other")
          "** TODO %?\n")
-        ("b" "Blog" entry (file create-new-blog-post))
         ("I" "Invoice" entry (file "~/Work/Invoices/Invoices.org")
          "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
         ("c" "Calendar Event" entry (file calendar-file)
@@ -873,16 +875,41 @@
   (pt/leader-keys
     "tw" '(writeroom-mode :which-key "Writeroom")))
 
+;; Hugo
+
+(use-package ox-hugo
+  :ensure t
+  :pin melpa
+  :after ox)
+
 ;; Blog
 
-(defun create-new-blog-post ()
-  "Create a new blog post based on passed name and date in blog-dir"
-  (interactive)
-  (let ((name (read-string "Enter blog title: ")))
-    (expand-file-name (format "%s-%s.org"
-                              (string-join (string-split name " ") "_")
-                              (format-time-string "%d%m%Y"))
-                      "~/Blog/")))
+(setq blog-directory "~/Developer/blog/")
+
+(defun blog-title-to-fname (title)
+  (thread-last
+    title
+    (replace-regexp-in-string "[[:space:]]" "-")
+    (replace-regexp-in-string "-+" "-")
+    (replace-regexp-in-string "[^[:alnum:]-]+" "")
+    downcase))
+
+(defun blog-generate-file-name (&rest _)
+  (let ((title (read-string "Title: ")))
+    (setq blog--current-post-name title)
+    (find-file
+     (file-name-concat
+      (expand-file-name blog-directory)
+      "posts"
+      (format "%s-%s.org"
+              (format-time-string "%Y-%m-%d")
+              (blog-title-to-fname title))))))
+
+;; (setq org-capture-templates 
+;;       '(("b" "Blog" plain
+;;          (function blog-generate-file-name)
+;;          (file "~/.emacs.d/Templates/hugo-post.txt")
+;;          )))
 
 ;; Programming
 
@@ -1100,6 +1127,14 @@
          ("C-c s v" . yas-visit-snippet-file))
   )
 
+;; Formatter
+
+(use-package prettier
+  :ensure t
+  :hook (( prog-mode . prettier-mode ))
+  :bind (:map prog-mode-map
+              ("C-c f" . prettier-prettify)))
+
 ;; CSV
 
 (use-package csv-mode
@@ -1122,30 +1157,30 @@
 ;; Ledger
 
 (use-package ledger-mode
-    :ensure t
-    :mode ("\\.journal\\'" "\\.ledger.*\\'"))
+  :ensure t
+  :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 
-  (setq ledger-binary-path "hledger")
-  (setq ledger-mode-should-check-version nil)
-  (add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
+(setq ledger-binary-path "hledger")
+(setq ledger-mode-should-check-version nil)
+(add-to-list 'auto-mode-alist '("\\.\\(h?ledger\\|journal\\|j\\)$" . ledger-mode))
 
-  (defvar ledger-report-balance
-    (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
+(defvar ledger-report-balance
+  (list "bal" (concat ledger-binary-path " -f %(ledger-file) bal")))
 
-  (defvar ledger-report-reg
-    (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
+(defvar ledger-report-reg
+  (list "reg" (concat ledger-binary-path " -f %(ledger-file) reg")))
 
-  (defvar ledger-report-payee
-    (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
+(defvar ledger-report-payee
+  (list "payee" (concat ledger-binary-path " -f %(ledger-file) reg @%(payee)")))
 
-  (defvar ledger-report-account
-    (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
+(defvar ledger-report-account
+  (list "account" (concat ledger-binary-path " -f %(ledger-file) reg %(account)")))
 
-  (setq ledger-reports
-        (list ledger-report-balance
-              ledger-report-reg
-              ledger-report-payee
-              ledger-report-account))
+(setq ledger-reports
+      (list ledger-report-balance
+            ledger-report-reg
+            ledger-report-payee
+            ledger-report-account))
 
 ;; Centered Window
 
@@ -1198,9 +1233,9 @@
   (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
   (org-table-export "~/Work/Invoices/invoice.csv")
   (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
-                         (car values)
-                         (cadr values)
-                         (caddr values)))
+                               (car values)
+                               (cadr values)
+                               (caddr values)))
   )
 
 ;; Open URL in reader view
@@ -1248,3 +1283,22 @@
 
 (use-package restclient
   :ensure t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("49acd691c89118c0768c4fb9a333af33e3d2dca48e6f79787478757071d64e68" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "a589c43f8dd8761075a2d6b8d069fc985660e731ae26f6eddef7068fece8a414" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" "4ff1c4d05adad3de88da16bd2e857f8374f26f9063b2d77d38d14686e3868d8d" "a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "2e05569868dc11a52b08926b4c1a27da77580daa9321773d92822f7a639956ce" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" "7ea883b13485f175d3075c72fceab701b5bf76b2076f024da50dff4107d0db25" "a44e2d1636a0114c5e407a748841f6723ed442dc3a0ed086542dc71b92a87aee" "a9abd706a4183711ffcca0d6da3808ec0f59be0e8336868669dc3b10381afb6f" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "512ce140ea9c1521ccaceaa0e73e2487e2d3826cc9d287275550b47c04072bc4" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "2dd4951e967990396142ec54d376cced3f135810b2b69920e77103e0bcedfba9" default))
+ '(epa-gpg-program "/usr/local/bin/gpg"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fringe ((t (:background "#0D0E16"))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.4))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.2))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
