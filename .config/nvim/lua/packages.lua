@@ -4,9 +4,11 @@ require('packer').startup(function() -- Packages
 
 	-- theme
 	use "sainnhe/gruvbox-material"
+	use "rebelot/kanagawa.nvim"
 
 	-- programming 
 	use 'ray-x/go.nvim'
+	use 'alaviss/nim.nvim'
 
 	-- Telescope
 	use {
@@ -85,5 +87,8 @@ require('packer').startup(function() -- Packages
 
 	-- Tree
 	use "nvim-tree/nvim-tree.lua"
+
+	-- Prettier
+	use "MunifTanjim/prettier.nvim"
 
 end)
