@@ -40,13 +40,13 @@ xterm -geometry 80x20+494-0 &
 exec xterm -geometry 80x66+0+0 -name login
 
 # Source xmodmap
-exec xmodmap .Xmodmap
+# exec xmodmap .Xmodmap
 
 # Start autorandr
 exec autorandr --change
 
 # Reset wallpaper 
-exec nitrogen --restore
+# exec nitrogen --restore
 
 # Picom
 # exec picom
