@@ -30,8 +30,7 @@
   (defun fontify-frame (frame)
     (set-frame-parameter frame 'font "JetBrainsMonoNL Nerd Font Mono"))
 
-  ;; Fontify current frame
-  (fontify-frame nil)
+  ;; Fontify current frame (fontify-frame nil)
 
   ;; Fontify any future frames
   (push 'fontify-frame after-make-frame-functions)
@@ -190,7 +189,8 @@ Write backups to ~/.emacs.d/backup/
   (pt/leader-keys
     "o" '(:ignore O :which-key "")
     "oa" '(org-agenda :which-key "agenda")
-    "oc" '(org-capture :which-key "capture"))
+    "oc" 
+  '(org-capture :which-key "capture"))
 
   (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 #+end_src
@@ -372,12 +372,16 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (use-package neotree
     :ensure t
+    :bind (:map neotree-mode-map ("C-c o v" . neotree-enter-vertical-split)
+                                  ("C-c o h" . neotree-enter-horizontal-split)
+                                  )
     :init
     (setq neo-smart-open t)
     (setq neo-theme 'icons))
 
   (pt/leader-keys
     "oe" '(neotree-toggle :which-key "Neotree"))
+
 #+end_src
 
 *** COMMENT Move to Sync folder
@@ -614,35 +618,34 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Capture
 #+begin_src emacs-lisp
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (setq todos-file "~/Notes/Todos.org"
-        projects-file "~/Notes/Projects.org"
-        later-file "~/Notes/Later.org"
-        repeat-file "~/Notes/Repeated.org"
-        calendar-file "~/Notes/Calendar.org")
-  (setq org-capture-templates
-        '(("t" "Todo" entry (file todos-file)
-           "* TODO %?\n %i\n")
-          ("s" "School" entry (file todos-file)
-           "* TODO %? :school:\n")
-          ("S" "School Project" entry (file projects-file)
-           "* TODO %? [/] :school:\n")
-          ("p" "Project" entry (file projects-file)
-           "* TODO %? [/]\n#+COOKIE_DATA:todo\n %i\n")
-          ("l" "Something for Later" entry (file later-file)
-           "** %?\n %i\n")
-          ("r" "Repeated Task" entry (file repeated-file)
-           "** %?\n %i\n")
-          ("i" "Idea" entry (file "~/Notes/Ideas.org")
-           "* %?\n %i\n ")
-          ("B" "Book" entry (file+headline "~/Notes/Books.org" "Other")
-           "** TODO %?\n")
-          ("b" "Blog" entry (file create-new-blog-post))
-          ("I" "Invoice" entry (file "~/Work/Invoices/Invoices.org")
-           "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
-          ("c" "Calendar Event" entry (file calendar-file)
-           "* %?\n")
-          ))
+      (setq org-default-notes-file (concat org-directory "/notes.org"))
+      (setq todos-file "~/Notes/Todos.org"
+            projects-file "~/Notes/Projects.org"
+            later-file "~/Notes/Later.org"
+            repeat-file "~/Notes/Repeated.org"
+            calendar-file "~/Notes/Calendar.org")
+      (setq org-capture-templates
+            '(("t" "Todo" entry (file todos-file)
+               "* TODO %?\n %i\n")
+              ("s" "School" entry (file todos-file)
+               "* TODO %? :school:\n")
+              ("S" "School Project" entry (file projects-file)
+               "* TODO %? [/] :school:\n")
+              ("p" "Project" entry (file projects-file)
+               "* TODO %? [/]\n#+COOKIE_DATA:todo\n %i\n")
+              ("l" "Something for Later" entry (file later-file)
+               "** %?\n %i\n")
+              ("r" "Repeated Task" entry (file repeated-file)
+               "** %?\n %i\n")
+              ("i" "Idea" entry (file "~/Notes/Ideas.org")
+               "* %?\n %i\n ")
+              ("B" "Book" entry (file+headline "~/Notes/Books.org" "Other")
+               "** TODO %?\n")
+              ("I" "Invoice" entry (file "~/Work/Invoices/Invoices.org")
+               "* %?\n#+ENTITY: \n#+ADDRESS: \n#+DUEDATE: \n| Quantity | Description | Unit Price | Total |\n|----------+-------------+------------+-------|")
+              ("c" "Calendar Event" entry (file calendar-file)
+               "* %?\n")
+              ))
 #+end_src
 ** Refile
 #+begin_src emacs-lisp
@@ -926,18 +929,42 @@ Write backups to ~/.emacs.d/backup/
     (pt/leader-keys
       "tw" '(writeroom-mode :which-key "Writeroom")))
 #+end_src
+** Hugo
+#+begin_src emacs-lisp
+  (use-package ox-hugo
+    :ensure t
+    :pin melpa
+    :after ox)
+#+end_src
 ** Blog
 #+begin_src emacs-lisp
-  (defun create-new-blog-post ()
-    "Create a new blog post based on passed name and date in blog-dir"
-    (interactive)
-    (let ((name (read-string "Enter blog title: ")))
-      (expand-file-name (format "%s-%s.org"
-                                (string-join (string-split name " ") "_")
-                                (format-time-string "%d%m%Y"))
-                        "~/Blog/")))
-#+end_src
+  (setq blog-directory "~/Developer/blog/")
 
+  (defun blog-title-to-fname (title)
+    (thread-last
+      title
+      (replace-regexp-in-string "[[:space:]]" "-")
+      (replace-regexp-in-string "-+" "-")
+      (replace-regexp-in-string "[^[:alnum:]-]+" "")
+      downcase))
+
+  (defun blog-generate-file-name (&rest _)
+    (let ((title (read-string "Title: ")))
+      (setq blog--current-post-name title)
+      (find-file
+       (file-name-concat
+        (expand-file-name blog-directory)
+        "posts"
+        (format "%s-%s.org"
+                (format-time-string "%Y-%m-%d")
+                (blog-title-to-fname title))))))
+
+  ;; (setq org-capture-templates 
+  ;;       '(("b" "Blog" plain
+  ;;          (function blog-generate-file-name)
+  ;;          (file "~/.emacs.d/Templates/hugo-post.txt")
+  ;;          )))
+  #+end_src
 * Programming
 #+begin_src emacs-lisp
   (define-key prog-mode-map (kbd "C-c e s") #'eglot)
@@ -1069,10 +1096,10 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 *** Web
 #+begin_src emacs-lisp
-	(use-package web-mode
-		:ensure t
-		:config
-		(setq web-mode-code-indent-offset tab-width))
+  (use-package web-mode
+  	:ensure t
+  	:config
+  	(setq web-mode-code-indent-offset tab-width))
 #+end_src
 **** Emmet
 #+begin_src emacs-lisp
@@ -1150,11 +1177,11 @@ Write backups to ~/.emacs.d/backup/
                 ("C-c t p" . hl-todo-previous)
                 ("C-c t l" . hl-todo-occur)))
 
-   (setq hl-todo-keyword-faces
-    '(("TODO"   . "#cc9393")
-      ("FIXME"  . "#cc9393")
-      ("NOTE"   . "#d0bf8f")
-      ("BUG"    . "#8c5353")))
+  (setq hl-todo-keyword-faces
+        '(("TODO"   . "#cc9393")
+          ("FIXME"  . "#cc9393")
+          ("NOTE"   . "#d0bf8f")
+          ("BUG"    . "#8c5353")))
 #+end_src
 ** COMMENT Code Folding
 #+begin_src emacs-lisp
@@ -1181,7 +1208,14 @@ Write backups to ~/.emacs.d/backup/
     )
 
 #+end_src
-
+** Formatter
+#+begin_src emacs-lisp
+  (use-package prettier
+    :ensure t
+    :hook (( prog-mode . prettier-mode ))
+    :bind (:map prog-mode-map
+                ("C-c f" . prettier-prettify)))
+#+end_src
 * Other Formats
 ** CSV
 #+begin_src emacs-lisp
@@ -1205,7 +1239,7 @@ Write backups to ~/.emacs.d/backup/
 * Other
 ** Ledger
 #+begin_src emacs-lisp
-(use-package ledger-mode
+  (use-package ledger-mode
     :ensure t
     :mode ("\\.journal\\'" "\\.ledger.*\\'"))
 
@@ -1233,90 +1267,90 @@ Write backups to ~/.emacs.d/backup/
 #+end_src
 ** Centered Window
 #+begin_src emacs-lisp
- (use-package centered-window
-   :ensure t
-   :config
-   (pt/leader-keys
-     "tc" '(centered-window-mode :which-key "center"))
-   (setq cwm-centered-window-width 140))
+  (use-package centered-window
+    :ensure t
+    :config
+    (pt/leader-keys
+      "tc" '(centered-window-mode :which-key "center"))
+    (setq cwm-centered-window-width 140))
 #+end_src
 ** COMMENT Mu4e
 #+begin_src emacs-lisp
- (use-package mu4e
-     :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
+  (use-package mu4e
+    :load-path  "/usr/local/share/emacs/site-lisp/mu4e/")
 
- ;; Refresh mail using isync every 10 minutes
- (setq mu4e-update-interval (* 10 60))
- (setq mu4e-get-mail-command "mbsync -a")
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
 
- (setq mu4e-maildir (expand-file-name "~/.mail"))
+  (setq mu4e-maildir (expand-file-name "~/.mail"))
 
- (setq mu4e-view-show-addresses t
-       message-kill-buffer-on-exit t
-       mu4e-context-policy 'pick-first
-       mu4e-confirm-quit nil)
+  (setq mu4e-view-show-addresses t
+        message-kill-buffer-on-exit t
+        mu4e-context-policy 'pick-first
+        mu4e-confirm-quit nil)
 
- (pt/leader-keys
-   "m" '(mu4e :which-key "Mail"))
+  (pt/leader-keys
+    "m" '(mu4e :which-key "Mail"))
 
- ;; Set how email is to be sent
- (setq send-mail-function (quote smtpmail-send-it))
+  ;; Set how email is to be sent
+  (setq send-mail-function (quote smtpmail-send-it))
 
- ;; Split view
- (setq mu4e-split-view 'vertical)
+  ;; Split view
+  (setq mu4e-split-view 'vertical)
 #+end_src
 
 *** Accounts
 #+begin_src emacs-lisp
- (setq mu4e-user-mail-address-list '("superparthman@gmail.com"
-                                     "parthtrivedi.co@gmail.com"))
+  (setq mu4e-user-mail-address-list '("superparthman@gmail.com"
+                                      "parthtrivedi.co@gmail.com"))
 
- (setq mu4e-contexts
-       (list
-        ;; Personal account
-        (make-mu4e-context
-         :name "Personal"
-         :match-func
-         (lambda (msg)
-           (when msg
-             (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-         :vars '((user-mail-address . "superparthman@gmail.com")
-                 (user-full-name    . "Parth Trivedi")
-                 (smtpmail-smtp-server  . "smtp.gmail.com")
-                 (smtpmail-smtp-service . 465)
-                 (smtpmail-stream-type  . ssl)
-                 (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
-                 (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
-                 (mu4e-refile-folder  . "/Personal/[Gmail/All Mail")
-                 (mu4e-trash-folder  . "/Personal/[Gmail/Trash")))
-        (make-mu4e-context
-         :name "Work"
-         :match-func
-         (lambda (msg)
-           (when msg
-             (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-         :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
-                 (user-full-name    . "Parth Trivedi")
-                 (smtpmail-smtp-server  . "smtp.gmail.com")
-                 (smtpmail-smtp-service . 465)
-                 (smtpmail-stream-type  . ssl)
-                 (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
-                 (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
-                 (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
-                 (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
-        ))
+  (setq mu4e-contexts
+        (list
+         ;; Personal account
+         (make-mu4e-context
+          :name "Personal"
+          :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "superparthman@gmail.com")
+                  (user-full-name    . "Parth Trivedi")
+                  (smtpmail-smtp-server  . "smtp.gmail.com")
+                  (smtpmail-smtp-service . 465)
+                  (smtpmail-stream-type  . ssl)
+                  (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/Personal/[Gmail/All Mail")
+                  (mu4e-trash-folder  . "/Personal/[Gmail/Trash")))
+         (make-mu4e-context
+          :name "Work"
+          :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "parthtrivedi.co@gmail.com")
+                  (user-full-name    . "Parth Trivedi")
+                  (smtpmail-smtp-server  . "smtp.gmail.com")
+                  (smtpmail-smtp-service . 465)
+                  (smtpmail-stream-type  . ssl)
+                  (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/Work/[Gmail]/Trash")))
+         ))
 #+end_src
 
 *** Alerts
 #+begin_src emacs-lisp
- (use-package mu4e-alert
-   :ensure t
-   :hook (after-init)
-   :after mu4e
-   (mu4e-alert-set-default-style 'libnotify)
-   (mu4e-alert-enable-notifications)
-   (mu4e-alert-enable-mode-line-display)
-   (mu4e-alert-mode t))
+  (use-package mu4e-alert
+    :ensure t
+    :hook (after-init)
+    :after mu4e
+    (mu4e-alert-set-default-style 'libnotify)
+    (mu4e-alert-enable-notifications)
+    (mu4e-alert-enable-mode-line-display)
+    (mu4e-alert-mode t))
 #+end_src
 
 ** Elfeed
@@ -1351,52 +1385,52 @@ Write backups to ~/.emacs.d/backup/
 
 ** Invoice Maker
 #+begin_src emacs-lisp
- (defun get-invoice-value (keyword)
-   "Get keyword value based on passed value"
-   (setq tags (org-collect-keywords keyword))
-   (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
-   )
+  (defun get-invoice-value (keyword)
+    "Get keyword value based on passed value"
+    (setq tags (org-collect-keywords keyword))
+    (list (cadar tags) (cadadr tags) (cadar (cddr tags)))
+    )
 
- (defun create-invoice ()
-   "Get key details for generating invoices."
-   (interactive)
-   (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
-   (org-table-export "~/Work/Invoices/invoice.csv")
-   (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
-                          (car values)
-                          (cadr values)
-                          (caddr values)))
-   )
+  (defun create-invoice ()
+    "Get key details for generating invoices."
+    (interactive)
+    (setq values (get-invoice-value '("ENTITY" "ADDRESS" "DUEDATE")))
+    (org-table-export "~/Work/Invoices/invoice.csv")
+    (async-shell-command (format "invoice -c=/home/parth/Work/Invoices/invoice.csv -e=\"%s\" -a=\"%s\" -d=\"%s\""
+                                 (car values)
+                                 (cadr values)
+                                 (caddr values)))
+    )
 #+end_src
 
 ** Open URL in reader view
 #+begin_src emacs-lisp
- (defun open-firefox-reader (url)
-   "Open passed URL in firefox in reader mode"
-   (shell-command (format "firefox \"about:reader?url=%s\"" url))
-   (message "Link Opened")
-   )
+  (defun open-firefox-reader (url)
+    "Open passed URL in firefox in reader mode"
+    (shell-command (format "firefox \"about:reader?url=%s\"" url))
+    (message "Link Opened")
+    )
 
- (defun open-in-reader (&optional url)
-   "Open a given link in reader view"
-   (interactive "P")
-   (if (stringp url)
-       (progn
-         (open-firefox-reader url))
-     (progn
-       (let ((at-point (thing-at-point-url-at-point)))
-         (if at-point
-             (progn
-               (open-firefox-reader (thing-at-point-url-at-point))
-               )
-           (progn
-             (let ((url (read-string "Entery URL: ")))
-               (open-firefox-reader url)
-               ))))
-       )))
+  (defun open-in-reader (&optional url)
+    "Open a given link in reader view"
+    (interactive "P")
+    (if (stringp url)
+        (progn
+          (open-firefox-reader url))
+      (progn
+        (let ((at-point (thing-at-point-url-at-point)))
+          (if at-point
+              (progn
+                (open-firefox-reader (thing-at-point-url-at-point))
+                )
+            (progn
+              (let ((url (read-string "Entery URL: ")))
+                (open-firefox-reader url)
+                ))))
+        )))
 
- (pt/leader-keys
-   "oR" '(open-in-reader :which-key "Reader"))
+  (pt/leader-keys
+    "oR" '(open-in-reader :which-key "Reader"))
 #+end_src
 ** Auto Update TODO State
 #+begin_src emacs-lisp
