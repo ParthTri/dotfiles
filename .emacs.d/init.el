@@ -1011,11 +1011,6 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
 
-;; Nim
-
-(use-package nim-mode
-  :ensure t)
-
 ;; Lua
 
 (use-package lua-mode
