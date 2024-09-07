@@ -1074,16 +1074,6 @@ Write backups to ~/.emacs.d/backup/
   (use-package lua-mode
     :ensure t)
 #+end_src
-*** Haskell
-#+begin_src emacs-lisp
-  (use-package haskell-mode
-    :ensure t)
-#+end_src
-*** Yuck
-#+begin_src emacs-lisp
-  (use-package yuck-mode
-    :ensure t)
-#+end_src
 *** Web
 #+begin_src emacs-lisp
   (use-package web-mode
@@ -1091,6 +1081,7 @@ Write backups to ~/.emacs.d/backup/
   	:config
   	(setq web-mode-code-indent-offset tab-width))
 #+end_src
+
 **** Emmet
 #+begin_src emacs-lisp
   (use-package emmet-mode
@@ -1101,17 +1092,6 @@ Write backups to ~/.emacs.d/backup/
            (js-mode . emmet-mode))
     :config
     (setq emmet-move-cursor-between-quotes t))
-#+end_src
-**** JSX
-#+begin_src emacs-lisp
-  (use-package rjsx-mode
-    :mode ("\\.js\\'"
-           "\\.jsx\\'")
-    :config
-    (setq js2-mode-show-parse-errors nil
-          js2-mode-show-strict-warnings nil
-          js2-basic-offset 2
-          js-indent-level 2))
 #+end_src
 **** Typescript
 #+begin_src emacs-lisp
@@ -1140,6 +1120,11 @@ Write backups to ~/.emacs.d/backup/
 **** Astro
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.astro\\'" . web-mode))
+#+end_src
+**** Jinja2
+#+begin_src emacs-lisp
+  (use-package jinja2-mode
+    :ensure t)
 #+end_src
 ** Terminal
 #+begin_src emacs-lisp

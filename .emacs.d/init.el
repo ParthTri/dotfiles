@@ -1016,16 +1016,6 @@
 (use-package lua-mode
   :ensure t)
 
-;; Haskell
-
-(use-package haskell-mode
-  :ensure t)
-
-;; Yuck
-
-(use-package yuck-mode
-  :ensure t)
-
 ;; Web
 
 (use-package web-mode
@@ -1043,17 +1033,6 @@
          (js-mode . emmet-mode))
   :config
   (setq emmet-move-cursor-between-quotes t))
-
-;; JSX
-
-(use-package rjsx-mode
-  :mode ("\\.js\\'"
-         "\\.jsx\\'")
-  :config
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil
-        js2-basic-offset 2
-        js-indent-level 2))
 
 ;; Typescript
 
@@ -1081,6 +1060,11 @@
 ;; Astro
 
 (add-to-list 'auto-mode-alist '("\\.astro\\'" . web-mode))
+
+;; Jinja2
+
+(use-package jinja2-mode
+  :ensure t)
 
 ;; Terminal
 
