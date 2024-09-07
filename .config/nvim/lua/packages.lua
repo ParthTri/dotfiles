@@ -47,7 +47,7 @@ require('packer').startup(function() -- Packages
 
 	-- LSP Saga
 	use { 
-		"glepnir/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 		requires = {
 			{'nvim-tree/nvim-web-devicons'},
 		}
