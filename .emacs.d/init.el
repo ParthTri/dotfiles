@@ -450,7 +450,8 @@
   :config
   (setq org-ellipsis " ▾"
         org-hide-emphasis-markers t)
-  (setq org-image-actual-width nil))
+  (setq org-image-actual-width nil)
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
 (setq org-hide-emphasis-markers t)
 (use-package org-bullets
@@ -999,12 +1000,6 @@
 
 ;; Python
 
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
-
 (use-package pyvenv
   :config
   (pyvenv-mode 1))
@@ -1126,14 +1121,6 @@
          ("C-c s n" . yas-new-snippet)
          ("C-c s v" . yas-visit-snippet-file))
   )
-
-;; Formatter
-
-(use-package prettier
-  :ensure t
-  :hook (( prog-mode . prettier-mode ))
-  :bind (:map prog-mode-map
-              ("C-c f" . prettier-prettify)))
 
 ;; CSV
 
@@ -1279,26 +1266,11 @@
 
 (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
 
-;; Rest Client
+;; Calendar
 
-(use-package restclient
-  :ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("49acd691c89118c0768c4fb9a333af33e3d2dca48e6f79787478757071d64e68" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "a589c43f8dd8761075a2d6b8d069fc985660e731ae26f6eddef7068fece8a414" "467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" "4ff1c4d05adad3de88da16bd2e857f8374f26f9063b2d77d38d14686e3868d8d" "a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "2e05569868dc11a52b08926b4c1a27da77580daa9321773d92822f7a639956ce" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" "7ea883b13485f175d3075c72fceab701b5bf76b2076f024da50dff4107d0db25" "a44e2d1636a0114c5e407a748841f6723ed442dc3a0ed086542dc71b92a87aee" "a9abd706a4183711ffcca0d6da3808ec0f59be0e8336868669dc3b10381afb6f" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "512ce140ea9c1521ccaceaa0e73e2487e2d3826cc9d287275550b47c04072bc4" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "2dd4951e967990396142ec54d376cced3f135810b2b69920e77103e0bcedfba9" default))
- '(epa-gpg-program "/usr/local/bin/gpg"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fringe ((t (:background "#0D0E16"))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.4))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.2))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
+(use-package org-caldav
+  :ensure t
+  :config
+  (setq org-caldav-url "http://localhost/"
+        org-caldav-calendar-id "parth/4b51c3d7-880d-3dd2-1022-0d86e49c7e99"
+        org-caldav-inbox "~/Notes/Calendar.org"))

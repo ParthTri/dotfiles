@@ -453,43 +453,44 @@ Write backups to ~/.emacs.d/backup/
 * Org Mode
 ** Org Configuration
 #+begin_src emacs-lisp
-  (setq org-directory "~/Notes/")
+    (setq org-directory "~/Notes/")
 
-  (defun pt/org-mode-setup ()
-    (org-indent-mode)
-    (auto-fill-mode 0)
-    (visual-line-mode 1)
-    ;; (flyspell-mode)
-    (setq evil-auto-indent nil))
+    (defun pt/org-mode-setup ()
+      (org-indent-mode)
+      (auto-fill-mode 0)
+      (visual-line-mode 1)
+      ;; (flyspell-mode)
+      (setq evil-auto-indent nil))
 
-  (use-package org
-    :hook ((org-mode . pt/org-mode-setup))
-    :bind (:map org-mode-map
-                ("C-C e" . org-mobile-push)
-                ("C-c i" . org-mobile-pull)
-                ("C-c l" . latex-frag)
-                ("C-c L" . latex-frag-mult)
-                ("C-c R" . org-table-sort-lines)
-                ("C-c [" . org-reftex-citation))
+    (use-package org
+      :hook ((org-mode . pt/org-mode-setup))
+      :bind (:map org-mode-map
+                  ("C-C e" . org-mobile-push)
+                  ("C-c i" . org-mobile-pull)
+                  ("C-c l" . latex-frag)
+                  ("C-c L" . latex-frag-mult)
+                  ("C-c R" . org-table-sort-lines)
+                  ("C-c [" . org-reftex-citation))
 
-    :config
-    (setq org-ellipsis " ▾"
-          org-hide-emphasis-markers t)
-    (setq org-image-actual-width nil))
+      :config
+      (setq org-ellipsis " ▾"
+            org-hide-emphasis-markers t)
+      (setq org-image-actual-width nil)
+      (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
-  (setq org-hide-emphasis-markers t)
-  (use-package org-bullets
-    :after org
-    :hook (org-mode . org-bullets-mode)
-    :custom
-    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+    (setq org-hide-emphasis-markers t)
+    (use-package org-bullets
+      :after org
+      :hook (org-mode . org-bullets-mode)
+      :custom
+      (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-  ;; Replace list hyphen with dot
-  (font-lock-add-keywords 'org-mode
-                           '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+    ;; Replace list hyphen with dot
+    (font-lock-add-keywords 'org-mode
+                             '(("^ *\\([-]\\) "
+                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-  (setq org-duration-format (quote h:mm))
+    (setq org-duration-format (quote h:mm))
 #+end_src
 ** Org Habits
 #+begin_src emacs-lisp
@@ -1057,12 +1058,6 @@ Write backups to ~/.emacs.d/backup/
 ** Languages
 *** Python
 #+begin_src emacs-lisp
-  (use-package elpy
-    :ensure t
-    :defer t
-    :init
-    (advice-add 'python-mode :before 'elpy-enable))
-
   (use-package pyvenv
     :config
     (pyvenv-mode 1))
@@ -1208,7 +1203,7 @@ Write backups to ~/.emacs.d/backup/
     )
 
 #+end_src
-** Formatter
+** COMMENT Formatter
 #+begin_src emacs-lisp
   (use-package prettier
     :ensure t
@@ -1445,8 +1440,12 @@ Write backups to ~/.emacs.d/backup/
   (define-key org-mode-map (kbd "C-c t") #'org-auto-update-to-next)
 
 #+end_src
-** Rest Client
+** Calendar
 #+begin_src emacs-lisp
-  (use-package restclient
-    :ensure t)
+  (use-package org-caldav
+    :ensure t
+    :config
+    (setq org-caldav-url "http://localhost/"
+          org-caldav-calendar-id "parth/4b51c3d7-880d-3dd2-1022-0d86e49c7e99"
+          org-caldav-inbox "~/Notes/Calendar.org"))
 #+end_src
