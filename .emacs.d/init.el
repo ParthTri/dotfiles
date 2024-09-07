@@ -1001,8 +1001,8 @@
 ;; Python
 
 (use-package pyvenv
-  :config
-  (pyvenv-mode 1))
+  :hook (python-mode . pyvenv-mode)
+  )
 
 ;; Go
 

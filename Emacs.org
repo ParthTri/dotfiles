@@ -1059,8 +1059,8 @@ Write backups to ~/.emacs.d/backup/
 *** Python
 #+begin_src emacs-lisp
   (use-package pyvenv
-    :config
-    (pyvenv-mode 1))
+    :hook (python-mode . pyvenv-mode)
+    )
 #+end_src
 *** Go
 #+begin_src emacs-lisp
