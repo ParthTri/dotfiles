@@ -30,3 +30,6 @@ fish_add_path /home/parth/.spicetify
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Created by `userpath` on 2024-06-21 02:41:35
+set PATH $PATH /home/parth/.local/bin
