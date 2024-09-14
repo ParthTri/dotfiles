@@ -19,3 +19,7 @@ alias invoice="~/Projects/Invoice-Maker/venv/bin/python3 ~/Projects/Invoice-Make
 eval "$(starship init zsh)"
 
 if [ -e /home/parth/.nix-profile/etc/profile.d/nix.sh ]; then . /home/parth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
