@@ -5,7 +5,7 @@
 
 
 (setq byte-compile-warnings '(cl-functions))
-;; (setq debug-on-error t)
+(setq debug-on-error t)
 
 ;; No flashing or alerting
 
@@ -1091,6 +1091,12 @@
 (use-package eglot
   :ensure t)
 
+;; TS/JS
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(typescript-mode . ("~/.local/share/nvm/v20.17.0/bin/typescript-language-server" "--stdio"))))
+
 ;; Snippets
 
 (use-package yasnippet
@@ -1253,3 +1259,17 @@
   (setq org-caldav-url "http://localhost/"
         org-caldav-calendar-id "parth/4b51c3d7-880d-3dd2-1022-0d86e49c7e99"
         org-caldav-inbox "~/Notes/Calendar.org"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("467dc6fdebcf92f4d3e2a2016145ba15841987c71fbe675dcfe34ac47ffb9195" default))
+ '(epa-gpg-program "/usr/local/bin/gpg"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

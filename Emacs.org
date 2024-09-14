@@ -5,7 +5,7 @@
 
 #+begin_src emacs-lisp
   (setq byte-compile-warnings '(cl-functions))
-  ;; (setq debug-on-error t)
+  (setq debug-on-error t)
 #+end_src
 
 * General
@@ -1171,6 +1171,13 @@ Write backups to ~/.emacs.d/backup/
 #+begin_src emacs-lisp
   (use-package eglot
     :ensure t)
+#+end_src
+
+*** TS/JS
+#+begin_src emacs-lisp
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '(typescript-mode . ("~/.local/share/nvm/v20.17.0/bin/typescript-language-server" "--stdio"))))
 #+end_src
 ** Snippets
 #+begin_src emacs-lisp
